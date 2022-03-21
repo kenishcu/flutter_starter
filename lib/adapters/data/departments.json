@@ -1,0 +1,160 @@
+{
+  "app_version": "20200826",
+  "errors": null,
+  "results": [
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1204,
+      "parent_name": "Khoa ITS PTM",
+      "room_code": "itsptm",
+      "room_id": 1204,
+      "room_name": "Khoa ITS PTM"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1214,
+      "parent_name": "PTM - Khoa Sản (Tầng 2)",
+      "room_code": "ksanptm",
+      "room_id": 1214,
+      "room_name": "PTM - Khoa Sản (Tầng 2)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1402,
+      "parent_name": "PTM - Khoa Nhi  (Tầng 7)",
+      "room_code": "knhiptm",
+      "room_id": 1402,
+      "room_name": "PTM - Khoa Nhi  (Tầng 7)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1522,
+      "parent_name": "PTM - Khoa Ngoại (Tầng 9)",
+      "room_code": "kngoaiptm",
+      "room_id": 1522,
+      "room_name": "PTM - Khoa Ngoại (Tầng 9)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1568,
+      "parent_name": "PTM  - Khoa Nội (Tầng 6)",
+      "room_code": "knoiptmt6",
+      "room_id": 1568,
+      "room_name": "PTM  - Khoa Nội (Tầng 6)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1658,
+      "parent_name": "PTM - Khoa ICU ( Tầng 5)",
+      "room_code": "ptmicu",
+      "room_id": 1658,
+      "room_name": "PTM - Khoa ICU ( Tầng 5)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1690,
+      "parent_name": "PTM - Khoa Thận Nhân Tạo",
+      "room_code": "khstc",
+      "room_id": 1690,
+      "room_name": "PTM - Khoa Thận Nhân Tạo"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1692,
+      "parent_name": "PTM 4-100 - Phòng HSTC - Thận Nhân Tạo",
+      "room_code": "ptm4101",
+      "room_id": 1692,
+      "room_name": "PTM 4-100 - Phòng HSTC - Thận Nhân Tạo"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1694,
+      "parent_name": "PTM - Phòng Khám Sàng Lọc",
+      "room_code": "ptmsangloc",
+      "room_id": 1694,
+      "room_name": "PTM - Phòng Khám Sàng Lọc"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1730,
+      "parent_name": "PTM  - Khoa Liên Chuyên Khoa (Tầng 7)",
+      "room_code": "ptmclk",
+      "room_id": 1730,
+      "room_name": "PTM  - Khoa Liên Chuyên Khoa (Tầng 7)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1734,
+      "parent_name": "PTM - Khoa Y Học Cổ Truyền - Phục Hồi Chức Năng",
+      "room_code": "ptm7000",
+      "room_id": 1734,
+      "room_name": "PTM - Khoa Y Học Cổ Truyền - Phục Hồi Chức Năng"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1766,
+      "parent_name": "PTM - TMH sàng lọc",
+      "room_code": "ptmsangloctmh",
+      "room_id": 1766,
+      "room_name": "PTM - TMH sàng lọc"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1778,
+      "parent_name": "PTM - Khoa Đẻ Thường (Tầng 2)",
+      "room_code": "kdethuongptm",
+      "room_id": 1778,
+      "room_name": "PTM - Khoa Đẻ Thường (Tầng 2)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1834,
+      "parent_name": "PTM - Khoa Điều Trị (Tầng 11)",
+      "room_code": "ptmt11kdtri",
+      "room_id": 1834,
+      "room_name": "PTM - Khoa Điều Trị (Tầng 11)"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1844,
+      "parent_name": "PTM - Khu Sàng Lọc Dịch Tễ",
+      "room_code": "ptmkhusanglocdichte",
+      "room_id": 1844,
+      "room_name": "PTM - Khu Sàng Lọc Dịch Tễ"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1846,
+      "parent_name": "PTM - Khu Sàng Lọc Đi Tỉnh",
+      "room_code": "ptmkhusanglocditinh",
+      "room_id": 1846,
+      "room_name": "PTM - Khu Sàng Lọc Đi Tỉnh"
+    },
+    {
+      "branch_id": 1706,
+      "company_id": 1,
+      "parent_id": 1848,
+      "parent_name": "PTM - Khu Sàng Lọc Vào viện",
+      "room_code": "ptmkhusanglocvaovien",
+      "room_id": 1848,
+      "room_name": "PTM - Khu Sàng Lọc Vào viện"
+    }
+  ],
+  "status": true
+}
