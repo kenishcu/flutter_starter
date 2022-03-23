@@ -11,7 +11,8 @@ import 'package:flutter_stater/models/settings/room_model.dart';
 import 'package:flutter_stater/models/settings/setting_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mac_address/mac_address.dart';
+
+import '../routes/app_pages.dart';
 
 class SettingController extends GetxController {
 
@@ -85,7 +86,6 @@ class SettingController extends GetxController {
   void setDepartment(DepartmentModel departmentModel) {
     rooms.clear();
     selectedDepartment.value = departmentModel;
-    print("selected Department:" + selectedDepartment.value.toString());
     List<RoomModel> room = listRooms.where((element) => element.parentId == departmentModel.parentId).toList();
     selectedRoom.value = RoomModel(
         roomId: 0,
@@ -140,12 +140,9 @@ class SettingController extends GetxController {
   /// params: Null
   /// Get list departments of application
   Future getDeviceInfo() async {
-
     // get ip address
     final ipv4 = await Ipify.ipv4();
     ipAddress.value.text = ipv4;
-
-    // get mac address
   }
 
 
@@ -175,7 +172,35 @@ class SettingController extends GetxController {
 
   ///
   void storeSettingConfig(SettingModel setting) {
+    print("write: ${setting.toJson()}");
     box.write("device_info", setting.toJson());
+  }
+
+  void submitSetting() async {
+    SettingModel setting =  SettingModel(
+      parentId: selectedDepartment.value.parentId,
+      parentName: selectedDepartment.value.parentName,
+      roomId: selectedRoom.value.roomId,
+      roomName: selectedRoom.value.roomName,
+      bedId: selectedBed.value.bedId,
+      bedName: selectedBed.value.bedName,
+      ipAddress: ipAddress.value.text,
+      macAddress: macAddress.value.text,
+      deviceToken: "",
+      hotLine: "",
+      authToken: "",
+      contracts: []
+    );
+    ResultModel res = await settingRepository.sendSetting(setting.toJson());
+    if(res.status == true) {
+      storeSettingConfig(setting);
+      final map = box.read("device_info") ?? {};
+      print('map save : ' + map.toString());
+      Get.offAndToNamed(Routes.INTRO);
+    } else {
+      print("error");
+    }
+
   }
 
 }

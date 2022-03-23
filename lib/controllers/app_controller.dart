@@ -3,6 +3,8 @@ import 'package:flutter_stater/models/app_setting.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../routes/app_pages.dart';
+
 enum AppState {
   loading, ready
 }
@@ -29,6 +31,12 @@ class AppController extends GetxController {
   }
 
   void init() {}
+
+  bool isSettingDeviceInfo() {
+    print("box : " + box.read("device_info").toString());
+    Get.offAndToNamed(Routes.INTRO);
+    return false;
+  }
 
   ThemeMode getThemeMode() {
     return ThemeMode.light;

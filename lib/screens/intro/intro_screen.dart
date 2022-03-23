@@ -12,12 +12,32 @@ class IntroScreen extends GetView<IntroController> {
   Widget build(BuildContext context) {
     return SettingLayout(
       childContent: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(top: 20.0, bottom: 20, left: 40, right: 40),
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               flex: 3,
-              child: YoutubePLayer()
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      height: 60,
+                      child: Padding(
+                        padding: EdgeInsets.all(0),
+                        child: Text("Chào mừng đến với bệnh viện đa khoa Hồng Ngọc", style: TextStyle(
+                            fontSize: 35,
+                            color: Theme.of(context).colorScheme.primaryVariant
+                        )),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 6,
+                    child: YoutubePLayer(),
+                  )
+                ],
+              )
             ),
             Expanded(
               flex: 1,
@@ -25,7 +45,8 @@ class IntroScreen extends GetView<IntroController> {
                 children: [
                   Expanded(
                     flex: 4,
-                    child: Container(),
+                    child: Container(
+                    ),
                   ),
                   Expanded(
                     flex: 1,

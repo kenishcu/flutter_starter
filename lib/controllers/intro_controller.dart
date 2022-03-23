@@ -6,5 +6,7 @@ class IntroController extends GetxController {
     init();
   }
 
-  void init() {}
+  void init() {
+
+  }
 }

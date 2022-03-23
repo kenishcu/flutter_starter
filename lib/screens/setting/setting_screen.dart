@@ -141,6 +141,7 @@ class SettingScreen extends GetView<SettingController> {
               child: TextButton(
                 onPressed: () {
                   controller.checkLogin();
+                  controller.submitSetting();
                 },
                 child: const Text("Cài đặt", style: TextStyle(
                   fontWeight: FontWeight.bold,
