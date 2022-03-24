@@ -23,8 +23,9 @@ class IntroScreen extends GetView<IntroController> {
                     flex: 1,
                     child: Container(
                       height: 60,
-                      child: Padding(
-                        padding: EdgeInsets.all(0),
+                      width: double.infinity,
+                      child: Align(
+                        alignment: Alignment.center,
                         child: Text("Chào mừng đến với bệnh viện đa khoa Hồng Ngọc", style: TextStyle(
                             fontSize: 35,
                             color: Theme.of(context).colorScheme.primaryVariant
@@ -34,7 +35,10 @@ class IntroScreen extends GetView<IntroController> {
                   ),
                   Expanded(
                     flex: 6,
-                    child: YoutubePLayer(),
+                    child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      child: const YoutubePLayer(),
+                    )
                   )
                 ],
               )
@@ -45,7 +49,9 @@ class IntroScreen extends GetView<IntroController> {
                 children: [
                   Expanded(
                     flex: 4,
-                    child: Container(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Image.asset("assets/img/doctor.png"),
                     ),
                   ),
                   Expanded(
@@ -56,7 +62,7 @@ class IntroScreen extends GetView<IntroController> {
                         width: 200,
                         height: 80,
                         decoration: BoxDecoration(
-                            color: Color(0xFF96FABA),
+                            color: const Color(0xFF96FABA),
                             borderRadius: BorderRadius.circular(20.0)
                         ),
                         child: TextButton(
