@@ -7,8 +7,8 @@ part of 'bed_model.dart';
 // **************************************************************************
 
 _$_BedModel _$$_BedModelFromJson(Map<String, dynamic> json) => _$_BedModel(
-      bedId: json['bed_id'] as int?,
-      bedName: json['bed_name'] as String?,
+      bedId: json['bedId'] as int?,
+      bedName: json['bedName'] as String?,
     );
 
 Map<String, dynamic> _$$_BedModelToJson(_$_BedModel instance) =>

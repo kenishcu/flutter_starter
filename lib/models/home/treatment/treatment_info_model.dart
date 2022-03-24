@@ -19,7 +19,7 @@ class TreatmentInfoModel {
     String? serviceCategoryName,
     int? serviceCategoryParentId,
     String? serviceCategoryParentName,
-    double? currentDayTime,
+    DateTime? currentDayTime,
   }) = _TreatmentInfoModel;
 
   factory TreatmentInfoModel.fromJson(Map<String, dynamic> json) =>
