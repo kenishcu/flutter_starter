@@ -20,6 +20,6 @@ class UserModel {
     String? domainApi,
   }) = _UserModel;
 
-  factory UserModelModel.fromJson(Map<String, dynamic> json) =>
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 }

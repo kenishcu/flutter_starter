@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'pharma_info_model.dart';
 
-part 'pharma_info_model.freezed.dart';
-part 'pharma_info_model.g.dart';
+part 'reception_pharma_model.freezed.dart';
+part 'reception_pharma_model.g.dart';
 
 @freezed
 class ReceptionPharmaModel {
