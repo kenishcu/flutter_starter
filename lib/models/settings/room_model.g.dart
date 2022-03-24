@@ -18,9 +18,9 @@ _$_RoomModel _$$_RoomModelFromJson(Map<String, dynamic> json) => _$_RoomModel(
 
 Map<String, dynamic> _$$_RoomModelToJson(_$_RoomModel instance) =>
     <String, dynamic>{
-      'roomId': instance.roomId,
-      'roomName': instance.roomName,
-      'parentId': instance.parentId,
-      'parentName': instance.parentName,
+      'room_id': instance.roomId,
+      'room_name': instance.roomName,
+      'parent_id': instance.parentId,
+      'parent_name': instance.parentName,
       'beds': instance.beds,
     };

@@ -55,7 +55,11 @@ class _SplashScreenState extends State<SplashScreen> {
       onEnd: () {
         appController.ready();
         if (Get.currentRoute == Routes.SPLASH) {
-          Get.offAndToNamed(Routes.SETTING);
+          if(appController.isSettingDeviceInfo()){
+            Get.offAndToNamed(Routes.INTRO);
+          } else {
+            Get.offAndToNamed(Routes.SETTING);
+          }
         }
       },
     );

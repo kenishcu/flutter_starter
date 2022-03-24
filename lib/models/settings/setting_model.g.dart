@@ -8,17 +8,17 @@ part of 'setting_model.dart';
 
 _$_SettingModel _$$_SettingModelFromJson(Map<String, dynamic> json) =>
     _$_SettingModel(
-      bedId: json['bedId'] as int?,
-      bedName: json['bedName'] as String?,
-      roomId: json['roomId'] as int?,
-      roomName: json['roomName'] as String?,
-      parentId: json['parentId'] as int?,
-      parentName: json['parentName'] as String?,
-      macAddress: json['macAddress'] as String?,
-      ipAddress: json['ipAddress'] as String?,
-      deviceToken: json['deviceToken'] as String?,
-      hotLine: json['hotLine'] as String?,
-      authToken: json['authToken'] as String?,
+      bedId: json['bed_id'] as int?,
+      bedName: json['bed_name'] as String?,
+      roomId: json['room_id'] as int?,
+      roomName: json['room_name'] as String?,
+      parentId: json['parent_id'] as int?,
+      parentName: json['parent_name'] as String?,
+      macAddress: json['mac_address'] as String?,
+      ipAddress: json['ip_address'] as String?,
+      deviceToken: json['device_token'] as String?,
+      hotLine: json['hot_line'] as String?,
+      authToken: json['auth_token'] as String?,
       contracts: (json['contracts'] as List<dynamic>?)
           ?.map((e) => ContactModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -26,16 +26,16 @@ _$_SettingModel _$$_SettingModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_SettingModelToJson(_$_SettingModel instance) =>
     <String, dynamic>{
-      'bedId': instance.bedId,
-      'bedName': instance.bedName,
-      'roomId': instance.roomId,
-      'roomName': instance.roomName,
-      'parentId': instance.parentId,
-      'parentName': instance.parentName,
-      'macAddress': instance.macAddress,
-      'ipAddress': instance.ipAddress,
-      'deviceToken': instance.deviceToken,
-      'hotLine': instance.hotLine,
-      'authToken': instance.authToken,
+      'bed_id': instance.bedId,
+      'bed_name': instance.bedName,
+      'room_id': instance.roomId,
+      'room_name': instance.roomName,
+      'parent_id': instance.parentId,
+      'parent_name': instance.parentName,
+      'mac_address': instance.macAddress,
+      'ip_address': instance.ipAddress,
+      'device_token': instance.deviceToken,
+      'hot_line': instance.hotLine,
+      'auth_token': instance.authToken,
       'contracts': instance.contracts,
     };
