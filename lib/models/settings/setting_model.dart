@@ -5,7 +5,6 @@ import 'contact_model.dart';
 part 'setting_model.freezed.dart';
 part 'setting_model.g.dart';
 
-@freezed
 class SettingModel with _$SettingModel {
 
   const SettingModel._();

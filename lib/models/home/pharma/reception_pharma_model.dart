@@ -5,7 +5,7 @@ part 'reception_pharma_model.freezed.dart';
 part 'reception_pharma_model.g.dart';
 
 @freezed
-class ReceptionPharmaModel {
+class ReceptionPharmaModel with _$ReceptionPharmaModel {
 
   const ReceptionPharmaModel._();
 

@@ -4,7 +4,7 @@ part 'pharma_info_model.freezed.dart';
 part 'pharma_info_model.g.dart';
 
 @freezed
-class PharmaInfoModel {
+class PharmaInfoModel with _$PharmaInfoModel {
 
   const PharmaInfoModel._();
 

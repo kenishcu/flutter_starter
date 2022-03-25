@@ -5,7 +5,6 @@ import 'bed_model.dart';
 part 'room_model.freezed.dart';
 part 'room_model.g.dart';
 
-@freezed
 class RoomModel with _$RoomModel {
 
   const RoomModel._();

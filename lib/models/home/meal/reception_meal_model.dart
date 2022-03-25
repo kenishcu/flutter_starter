@@ -5,7 +5,7 @@ import 'package:flutter_stater/models/home/meal/meal_info_model.dart';
 part 'reception_meal_model.freezed.dart';
 part 'reception_meal_model.g.dart';
 
-class ReceptionMealModel {
+class ReceptionMealModel with _$ReceptionMealModel {
 
   const ReceptionMealModel._();
 

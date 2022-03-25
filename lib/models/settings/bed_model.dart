@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'bed_model.freezed.dart';
 part 'bed_model.g.dart';
 
-@freezed
 class BedModel with _$BedModel {
 
   const BedModel._();

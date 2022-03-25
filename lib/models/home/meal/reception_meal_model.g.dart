@@ -21,9 +21,14 @@ _$_ReceptionMealModel _$$_ReceptionMealModelFromJson(Map<String, dynamic> json) 
   );
 }
 
-Map<String, dynamic> _$$_MealInfoModelToJson(_$_MealInfoModel instance) =>
+Map<String, dynamic> _$$_ReceptionMealModelToJson(_$_ReceptionMealModel instance) =>
     <String, dynamic>{
       'patient_id': instance.patientId,
-      'patient_fullname': instance.patientFullName,
+      'patient_fullname': instance.patientFullname,
       'reception_queue_id': instance.receptionQueueId,
+      'used_at': instance.usedAt,
+      'meal_type_id': instance.mealTypeId,
+      'meal_type_name': instance.mealTypeId,
+      'meal_type_code': instance.mealTypeCode,
+      'meals': instance.meals
     };
