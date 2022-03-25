@@ -42,6 +42,7 @@ dependencies:
   youtube_player_flutter: ^8.0.0
   shared_preferences: ^2.0.13
   firebase_messaging: ^10.0.6
+  loading_overlay_pro: ^2.1.1
   firebase_core: ^1.5.0
   dart_ipify: ^1.1.1
   freezed_annotation:
