@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_stater/bindings/intro_binding.dart';
 import 'package:flutter_stater/storages/app_storages.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -24,4 +25,6 @@ Future<void> setup() async {
     /// app binding
     AppBinding(box: GetStorage(AppStorages.APP)).dependencies();
     SettingBinding(box: GetStorage(AppStorages.APP)).dependencies();
+    IntroBinding(box: GetStorage(AppStorages.APP)).dependencies();
+
 }

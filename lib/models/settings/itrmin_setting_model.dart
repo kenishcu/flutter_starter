@@ -4,7 +4,7 @@ part 'itrmin_setting_model.freezed.dart';
 part 'itrmin_setting_model.g.dart';
 
 @freezed
-class ItrminSettingModel {
+class ItrminSettingModel with _$ItrminSettingModel {
 
   const ItrminSettingModel._();
 

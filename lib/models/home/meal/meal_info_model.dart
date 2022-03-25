@@ -3,8 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'meal_info_model.freezed.dart';
 part 'meal_info_model.g.dart';
 
-@freezed
-class MealInfoModel {
+class MealInfoModel with _$MealInfoModel{
 
   const MealInfoModel._();
 
