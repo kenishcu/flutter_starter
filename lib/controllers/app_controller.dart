@@ -33,8 +33,10 @@ class AppController extends GetxController {
   void init() {}
 
   bool isSettingDeviceInfo() {
-    print("box : " + box.read("device_info").toString());
-    Get.offAndToNamed(Routes.INTRO);
+    final map = box.read("device_info") ?? {};
+    if(map['bed_id'] != null){
+      return true;
+    }
     return false;
   }
 
