@@ -21,7 +21,7 @@ class SettingBinding extends Bindings {
 
     Get.put<SettingController>(
       SettingController(
-        box: GetStorage(AppStorages.SETTING),
+        box: GetStorage(AppStorages.APP),
         departmentRepository: departmentRepository,
         roomRepository: roomRepository,
         settingRepository: settingRepository,
