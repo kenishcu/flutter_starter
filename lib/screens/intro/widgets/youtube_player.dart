@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/index.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:get/get.dart';
 
-class YoutubePLayer extends StatefulWidget {
+class YoutubePLayer extends GetView<IntroController> {
 
   const YoutubePLayer({Key? key}) : super(key: key);
 
   @override
-  _YoutubePlayerState createState() => _YoutubePlayerState();
-}
-
-class _YoutubePlayerState extends State<YoutubePLayer> {
-
-  final YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: '1_s4yyvMaeU',
-    flags: const YoutubePlayerFlags(
-      autoPlay: true,
-      mute: true,
-    ),
-  );
-
-  @override
   Widget build(BuildContext context) {
+    final YoutubePlayerController _controller = YoutubePlayerController(
+      initialVideoId: "f7kMpqvP2kY",
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: true,
+      ),
+    );
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -31,5 +27,4 @@ class _YoutubePlayerState extends State<YoutubePLayer> {
       ),
     );
   }
-
 }

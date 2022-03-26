@@ -11,13 +11,14 @@ _$_ItrminSettingModel _$$_ItrminSettingModelFromJson(
     _$_ItrminSettingModel(
       id: json['id'] as int?,
       appName: json['app_name'] as String?,
-      slogan: json['slogan'] as int?,
+      slogan: json['slogan'] as String?,
       logoUrl: json['logo_url'] as String?,
-      hotLine: json['hotline'] as int?,
+      hotLine: json['hotline'] as String?,
       videoUrl: json['video_url'] as String?,
       videoAppUrl: json['video_app_url'] as String?,
       domainFileServer: json['domain_file_server'] as String?,
       domainApi: json['domain_api'] as String?,
+      sleepTime: json['sleep_time'] as int?
     );
 
 Map<String, dynamic> _$$_ItrminSettingModelToJson(
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$_ItrminSettingModelToJson(
       'video_app_url': instance.videoAppUrl,
       'domain_file_server': instance.domainFileServer,
       'domain_api': instance.domainApi,
+      'sleep_time': instance.sleepTime
     };

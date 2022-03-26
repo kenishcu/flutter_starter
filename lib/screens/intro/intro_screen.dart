@@ -4,7 +4,7 @@ import 'package:flutter_stater/screens/intro/widgets/youtube_player.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class IntroScreen extends GetView<IntroController> {
+class IntroScreen extends StatelessWidget {
 
   const IntroScreen({Key? key}) : super(key: key);
 
@@ -67,6 +67,7 @@ class IntroScreen extends GetView<IntroController> {
                         ),
                         child: TextButton(
                           onPressed: () {
+
                           },
                           child: Text("Tiếp theo", style: TextStyle(
                             fontSize: 20,

@@ -1,5 +1,6 @@
 import 'package:flutter_stater/adapters/repository/home/user_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/setting_repository.dart';
+import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:flutter_stater/models/settings/itrmin_setting_model.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,14 @@ class IntroController extends GetxController {
     init();
   }
 
-  late ItrminSettingModel itrminSettingModel;
+  ItrminSettingModel itrminSetting = ItrminSettingModel(
+      appName: "",
+      videoAppUrl: "",
+      domainApi: "",
+      domainFileServer: "",
+      id: 0,
+      videoUrl: ""
+  );
 
   void init() {
     getAppSetting();
@@ -30,9 +38,22 @@ class IntroController extends GetxController {
     if(response.status == true) {
       ItrminSettingModel itrminSetting =  ItrminSettingModel.fromJson(response.results);
       print("Itrmin Setting :" + itrminSetting.toString());
-    } else {
+      storeAppConfig(itrminSetting);
+      itrminSetting = itrminSetting;
     }
   }
 
+  void storeAppConfig(ItrminSettingModel setting) {
+    print("write: ${setting.toJson()}");
+    box.write("setting_config", setting.toJson());
+  }
+
+  Future<bool> getUserInfo() async {
+    ResultModel response = await userRepository.getPatientInfo();
+    if(response.status == true) {
+      HomeController homeController = GetxController
+    }
+
+  }
 
 }
