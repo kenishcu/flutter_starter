@@ -1,4 +1,5 @@
 
+import 'package:flutter_stater/models/user/user_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -12,6 +13,7 @@ class HomeController extends GetxController {
     init();
   }
 
+  late UserModel patientInfo;
 
 
   void init() {

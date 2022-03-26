@@ -11,13 +11,14 @@ class ItrminSettingModel with _$ItrminSettingModel {
   factory ItrminSettingModel({
     int? id,
     String? appName,
-    int? slogan,
+    String? slogan,
     String? logoUrl,
-    int? hotLine,
+    String? hotLine,
     String? videoUrl,
     String? videoAppUrl,
     String? domainFileServer,
     String? domainApi,
+    int? sleepTime,
   }) = _ItrminSettingModel;
 
   factory ItrminSettingModel.fromJson(Map<String, dynamic> json) =>

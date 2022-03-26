@@ -24,14 +24,15 @@ class _$ItrminSettingModelTearOff {
 
   _ItrminSettingModel call(
       {int? id,
-      String? appName,
-      int? slogan,
-      String? logoUrl,
-      int? hotLine,
-      String? videoUrl,
-      String? videoAppUrl,
-      String? domainFileServer,
-      String? domainApi}) {
+        String? appName,
+        String? slogan,
+        String? logoUrl,
+        String? hotLine,
+        String? videoUrl,
+        String? videoAppUrl,
+        String? domainFileServer,
+        String? domainApi,
+        int? sleepTime}) {
     return _ItrminSettingModel(
       id: id,
       appName: appName,
@@ -42,6 +43,7 @@ class _$ItrminSettingModelTearOff {
       videoAppUrl: videoAppUrl,
       domainFileServer: domainFileServer,
       domainApi: domainApi,
+      sleepTime: sleepTime,
     );
   }
 
@@ -57,13 +59,14 @@ const $ItrminSettingModel = _$ItrminSettingModelTearOff();
 mixin _$ItrminSettingModel {
   int? get id => throw _privateConstructorUsedError;
   String? get appName => throw _privateConstructorUsedError;
-  int? get slogan => throw _privateConstructorUsedError;
+  String? get slogan => throw _privateConstructorUsedError;
   String? get logoUrl => throw _privateConstructorUsedError;
-  int? get hotLine => throw _privateConstructorUsedError;
+  String? get hotLine => throw _privateConstructorUsedError;
   String? get videoUrl => throw _privateConstructorUsedError;
   String? get videoAppUrl => throw _privateConstructorUsedError;
   String? get domainFileServer => throw _privateConstructorUsedError;
   String? get domainApi => throw _privateConstructorUsedError;
+  int? get sleepTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,18 +77,19 @@ mixin _$ItrminSettingModel {
 /// @nodoc
 abstract class $ItrminSettingModelCopyWith<$Res> {
   factory $ItrminSettingModelCopyWith(
-          ItrminSettingModel value, $Res Function(ItrminSettingModel) then) =
-      _$ItrminSettingModelCopyWithImpl<$Res>;
+      ItrminSettingModel value, $Res Function(ItrminSettingModel) then) =
+  _$ItrminSettingModelCopyWithImpl<$Res>;
   $Res call(
       {int? id,
-      String? appName,
-      int? slogan,
-      String? logoUrl,
-      int? hotLine,
-      String? videoUrl,
-      String? videoAppUrl,
-      String? domainFileServer,
-      String? domainApi});
+        String? appName,
+        String? slogan,
+        String? logoUrl,
+        String? hotLine,
+        String? videoUrl,
+        String? videoAppUrl,
+        String? domainFileServer,
+        String? domainApi,
+        int? sleepTime});
 }
 
 /// @nodoc
@@ -108,44 +112,49 @@ class _$ItrminSettingModelCopyWithImpl<$Res>
     Object? videoAppUrl = freezed,
     Object? domainFileServer = freezed,
     Object? domainApi = freezed,
+    Object? sleepTime = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       appName: appName == freezed
           ? _value.appName
           : appName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       slogan: slogan == freezed
           ? _value.slogan
           : slogan // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as String?,
       logoUrl: logoUrl == freezed
           ? _value.logoUrl
           : logoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       hotLine: hotLine == freezed
           ? _value.hotLine
           : hotLine // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as String?,
       videoUrl: videoUrl == freezed
           ? _value.videoUrl
           : videoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       videoAppUrl: videoAppUrl == freezed
           ? _value.videoAppUrl
           : videoAppUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       domainFileServer: domainFileServer == freezed
           ? _value.domainFileServer
           : domainFileServer // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       domainApi: domainApi == freezed
           ? _value.domainApi
           : domainApi // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
+      sleepTime: sleepTime == freezed
+          ? _value.sleepTime
+          : sleepTime // ignore: cast_nullable_to_non_nullable
+      as int?,
     ));
   }
 }
@@ -154,19 +163,20 @@ class _$ItrminSettingModelCopyWithImpl<$Res>
 abstract class _$ItrminSettingModelCopyWith<$Res>
     implements $ItrminSettingModelCopyWith<$Res> {
   factory _$ItrminSettingModelCopyWith(
-          _ItrminSettingModel value, $Res Function(_ItrminSettingModel) then) =
-      __$ItrminSettingModelCopyWithImpl<$Res>;
+      _ItrminSettingModel value, $Res Function(_ItrminSettingModel) then) =
+  __$ItrminSettingModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {int? id,
-      String? appName,
-      int? slogan,
-      String? logoUrl,
-      int? hotLine,
-      String? videoUrl,
-      String? videoAppUrl,
-      String? domainFileServer,
-      String? domainApi});
+        String? appName,
+        String? slogan,
+        String? logoUrl,
+        String? hotLine,
+        String? videoUrl,
+        String? videoAppUrl,
+        String? domainFileServer,
+        String? domainApi,
+        int? sleepTime});
 }
 
 /// @nodoc
@@ -191,44 +201,49 @@ class __$ItrminSettingModelCopyWithImpl<$Res>
     Object? videoAppUrl = freezed,
     Object? domainFileServer = freezed,
     Object? domainApi = freezed,
+    Object? sleepTime = freezed,
   }) {
     return _then(_ItrminSettingModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       appName: appName == freezed
           ? _value.appName
           : appName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       slogan: slogan == freezed
           ? _value.slogan
           : slogan // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as String?,
       logoUrl: logoUrl == freezed
           ? _value.logoUrl
           : logoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       hotLine: hotLine == freezed
           ? _value.hotLine
           : hotLine // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as String?,
       videoUrl: videoUrl == freezed
           ? _value.videoUrl
           : videoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       videoAppUrl: videoAppUrl == freezed
           ? _value.videoAppUrl
           : videoAppUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       domainFileServer: domainFileServer == freezed
           ? _value.domainFileServer
           : domainFileServer // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       domainApi: domainApi == freezed
           ? _value.domainApi
           : domainApi // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
+      sleepTime: sleepTime == freezed
+          ? _value.sleepTime
+          : sleepTime // ignore: cast_nullable_to_non_nullable
+      as int?,
     ));
   }
 }
@@ -238,14 +253,15 @@ class __$ItrminSettingModelCopyWithImpl<$Res>
 class _$_ItrminSettingModel extends _ItrminSettingModel {
   _$_ItrminSettingModel(
       {this.id,
-      this.appName,
-      this.slogan,
-      this.logoUrl,
-      this.hotLine,
-      this.videoUrl,
-      this.videoAppUrl,
-      this.domainFileServer,
-      this.domainApi})
+        this.appName,
+        this.slogan,
+        this.logoUrl,
+        this.hotLine,
+        this.videoUrl,
+        this.videoAppUrl,
+        this.domainFileServer,
+        this.domainApi,
+        this.sleepTime})
       : super._();
 
   factory _$_ItrminSettingModel.fromJson(Map<String, dynamic> json) =>
@@ -256,11 +272,11 @@ class _$_ItrminSettingModel extends _ItrminSettingModel {
   @override
   final String? appName;
   @override
-  final int? slogan;
+  final String? slogan;
   @override
   final String? logoUrl;
   @override
-  final int? hotLine;
+  final String? hotLine;
   @override
   final String? videoUrl;
   @override
@@ -269,10 +285,12 @@ class _$_ItrminSettingModel extends _ItrminSettingModel {
   final String? domainFileServer;
   @override
   final String? domainApi;
+  @override
+  final int? sleepTime;
 
   @override
   String toString() {
-    return 'ItrminSettingModel(id: $id, appName: $appName, slogan: $slogan, logoUrl: $logoUrl, hotLine: $hotLine, videoUrl: $videoUrl, videoAppUrl: $videoAppUrl, domainFileServer: $domainFileServer, domainApi: $domainApi)';
+    return 'ItrminSettingModel(id: $id, appName: $appName, slogan: $slogan, logoUrl: $logoUrl, hotLine: $hotLine, videoUrl: $videoUrl, videoAppUrl: $videoAppUrl, domainFileServer: $domainFileServer, domainApi: $domainApi, sleepTime: $sleepTime)';
   }
 
   @override
@@ -290,7 +308,8 @@ class _$_ItrminSettingModel extends _ItrminSettingModel {
                 .equals(other.videoAppUrl, videoAppUrl) &&
             const DeepCollectionEquality()
                 .equals(other.domainFileServer, domainFileServer) &&
-            const DeepCollectionEquality().equals(other.domainApi, domainApi));
+            const DeepCollectionEquality().equals(other.domainApi, domainApi) &&
+            const DeepCollectionEquality().equals(other.sleepTime, sleepTime));
   }
 
   @override
@@ -304,7 +323,8 @@ class _$_ItrminSettingModel extends _ItrminSettingModel {
       const DeepCollectionEquality().hash(videoUrl),
       const DeepCollectionEquality().hash(videoAppUrl),
       const DeepCollectionEquality().hash(domainFileServer),
-      const DeepCollectionEquality().hash(domainApi));
+      const DeepCollectionEquality().hash(domainApi),
+      const DeepCollectionEquality().hash(sleepTime));
 
   @JsonKey(ignore: true)
   @override
@@ -320,29 +340,30 @@ class _$_ItrminSettingModel extends _ItrminSettingModel {
 abstract class _ItrminSettingModel extends ItrminSettingModel {
   factory _ItrminSettingModel(
       {int? id,
-      String? appName,
-      int? slogan,
-      String? logoUrl,
-      int? hotLine,
-      String? videoUrl,
-      String? videoAppUrl,
-      String? domainFileServer,
-      String? domainApi}) = _$_ItrminSettingModel;
+        String? appName,
+        String? slogan,
+        String? logoUrl,
+        String? hotLine,
+        String? videoUrl,
+        String? videoAppUrl,
+        String? domainFileServer,
+        String? domainApi,
+        int? sleepTime}) = _$_ItrminSettingModel;
   _ItrminSettingModel._() : super._();
 
   factory _ItrminSettingModel.fromJson(Map<String, dynamic> json) =
-      _$_ItrminSettingModel.fromJson;
+  _$_ItrminSettingModel.fromJson;
 
   @override
   int? get id;
   @override
   String? get appName;
   @override
-  int? get slogan;
+  String? get slogan;
   @override
   String? get logoUrl;
   @override
-  int? get hotLine;
+  String? get hotLine;
   @override
   String? get videoUrl;
   @override
@@ -351,6 +372,8 @@ abstract class _ItrminSettingModel extends ItrminSettingModel {
   String? get domainFileServer;
   @override
   String? get domainApi;
+  @override
+  int? get sleepTime;
   @override
   @JsonKey(ignore: true)
   _$ItrminSettingModelCopyWith<_ItrminSettingModel> get copyWith =>
