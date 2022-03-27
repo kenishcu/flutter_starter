@@ -4,7 +4,7 @@ part 'patient_company_insurance_selected_model.freezed.dart';
 part 'patient_company_insurance_selected_model.g.dart';
 
 @freezed
-class PatientCompanyInsuranceSelectedModel extends _$PatientCompanyInsuranceSelectedModel {
+class PatientCompanyInsuranceSelectedModel with _$PatientCompanyInsuranceSelectedModel {
 
   const PatientCompanyInsuranceSelectedModel._();
 
