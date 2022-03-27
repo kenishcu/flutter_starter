@@ -39,8 +39,12 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       totalFinalPrice: json['totalFinalPrice'] as int?,
       totalDepositPrice: json['totalDepositPrice'] as int?,
       totalReturnPrice: json['totalReturnPrice'] as int?,
-      bloodTypes: json['bloodTypes'] as String?,
-      vitality: json['vitality'] as String?,
+      bloodTypes: json['bloodTypes'] == null
+          ? null
+          : BloodTypeModel.fromJson(json['bloodTypes'] as Map<String, dynamic>),
+      vitality: json['vitality'] == null
+          ? null
+          : VitalityModel.fromJson(json['vitality'] as Map<String, dynamic>),
       identityId: json['identityId'] as String?,
       passportId: json['passportId'] as String?,
       ethnicName: json['ethnicName'] as String?,
