@@ -1,4 +1,3 @@
-
 import 'package:flutter_stater/models/user/user_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -20,6 +19,5 @@ class HomeController extends GetxController {
 
   void setPatientInfo(UserModel user) {
     patientInfo = user;
-
   }
 }

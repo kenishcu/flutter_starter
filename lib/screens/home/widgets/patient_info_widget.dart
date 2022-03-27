@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:get/get.dart';
 
-class PatientInfoWidget extends StatelessWidget {
+class PatientInfoWidget extends GetView<HomeController> {
 
   const PatientInfoWidget({Key? key}) : super(key: key);
 
