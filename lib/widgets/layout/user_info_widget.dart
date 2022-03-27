@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
-class UserInfoWidget extends StatelessWidget {
+class UserInfoWidget extends GetView<HomeController> {
 
   const UserInfoWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    final userController = Get.find<HomeController>();
-    UserModel patientInfo = userController.patientInfo.
+    
     return Container(
       padding: const EdgeInsets.only(top: 20.0),
       child: Row(
@@ -23,7 +21,7 @@ class UserInfoWidget extends StatelessWidget {
             height: 60,
             child: Image.asset("assets/img/avatar.png"),
           ),
-          SizedBox(
+          Obx(() => SizedBox(
             child: Container(
               height: 60,
               margin: const EdgeInsets.only(left: 20.0),
@@ -31,20 +29,20 @@ class UserInfoWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text("Nguyễn Minh Hạnh", overflow: TextOverflow.ellipsis
+                children: [
+                  Text('${controller.patientInfo.patientName.toString()}', overflow: TextOverflow.ellipsis
                       ,style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  )),
-                  Text("Mã y tế: 01234567890", style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      )),
+                  Text("Mã y tế: ${controller.patientInfo.passportId.toString()}", style: TextStyle(
                     fontSize: 14,
                   ))
                 ],
               ),
 
             ),
-          )
+          ))
         ],
       ),
     );
