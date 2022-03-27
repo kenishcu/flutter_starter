@@ -4,7 +4,7 @@ part 'icd_model.freezed.dart';
 part 'icd_model.g.dart';
 
 @freezed
-class IcdModel extends _$IcdModel {
+class IcdModel with _$IcdModel {
 
   const IcdModel._();
 

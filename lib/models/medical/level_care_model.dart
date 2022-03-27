@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'level_care_model.freezed.dart';
-part 'level_care.g.dart';
+part 'level_care_model.g.dart';
 
 @freezed
-class LevelCareModel extends _$LevelCareModel {
+class LevelCareModel with _$LevelCareModel {
 
   const LevelCareModel._();
 
