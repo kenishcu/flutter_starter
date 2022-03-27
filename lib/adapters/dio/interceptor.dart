@@ -9,6 +9,7 @@ class InterWrapper extends InterceptorsWrapper {
     // handle header token
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
+    print("Bearer ${token.toString()}");
     if(token != null) {
       options.headers["Authorization"] = "Bearer " + token;
     }
@@ -29,6 +30,7 @@ class InterWrapper extends InterceptorsWrapper {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     print('ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
+    print('ERROR[${err.toString()}]');
     return super.onError(err, handler);
   }
 

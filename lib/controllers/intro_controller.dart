@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_stater/adapters/repository/home/user_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/setting_repository.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:flutter_stater/models/settings/itrmin_setting_model.dart';
+import 'package:flutter_stater/models/user/user_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -33,7 +35,15 @@ class IntroController extends GetxController {
     getAppSetting();
   }
 
+  /// Function: getAppSetting()
+  /// Params: Null
+  /// Description: If setting existed in local storage => update data setting,
+  /// else call API get AppSetting and save setting to local storage
   Future getAppSetting() async {
+    /// check data in storage
+    getAppConfigFromStorage();
+
+    /// get app setting
     ResultModel response = await settingRepository.getAppSetting();
     if(response.status == true) {
       ItrminSettingModel itrminSetting =  ItrminSettingModel.fromJson(response.results);
@@ -48,12 +58,22 @@ class IntroController extends GetxController {
     box.write("setting_config", setting.toJson());
   }
 
+  void getAppConfigFromStorage() {
+    print("------------------------------");
+    final setting = box.read("setting_config");
+    print('setting : ' + setting.toString());
+  }
+
   Future<bool> getUserInfo() async {
     ResultModel response = await userRepository.getPatientInfo();
     if(response.status == true) {
-      HomeController homeController = GetxController
+      UserModel user = UserModel.fromJson(response.results);
+      final HomeController homeController = Get.find<HomeController>();
+      homeController.setPatientInfo(user);
+      return true;
+    } else {
+      return false;
     }
-
   }
 
 }

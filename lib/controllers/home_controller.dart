@@ -15,7 +15,11 @@ class HomeController extends GetxController {
 
   late UserModel patientInfo;
 
-
   void init() {
+  }
+
+  void setPatientInfo(UserModel user) {
+    patientInfo = user;
+
   }
 }
