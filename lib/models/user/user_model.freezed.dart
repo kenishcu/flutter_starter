@@ -49,8 +49,8 @@ class _$UserModelTearOff {
       int? totalFinalPrice,
       int? totalDepositPrice,
       int? totalReturnPrice,
-      String? bloodTypes,
-      String? vitality,
+      BloodTypeModel? bloodTypes,
+      VitalityModel? vitality,
       String? identityId,
       String? passportId,
       String? ethnicName,
@@ -129,8 +129,8 @@ mixin _$UserModel {
   int? get totalFinalPrice => throw _privateConstructorUsedError;
   int? get totalDepositPrice => throw _privateConstructorUsedError;
   int? get totalReturnPrice => throw _privateConstructorUsedError;
-  String? get bloodTypes => throw _privateConstructorUsedError;
-  String? get vitality => throw _privateConstructorUsedError;
+  BloodTypeModel? get bloodTypes => throw _privateConstructorUsedError;
+  VitalityModel? get vitality => throw _privateConstructorUsedError;
   String? get identityId => throw _privateConstructorUsedError;
   String? get passportId => throw _privateConstructorUsedError;
   String? get ethnicName => throw _privateConstructorUsedError;
@@ -175,8 +175,8 @@ abstract class $UserModelCopyWith<$Res> {
       int? totalFinalPrice,
       int? totalDepositPrice,
       int? totalReturnPrice,
-      String? bloodTypes,
-      String? vitality,
+      BloodTypeModel? bloodTypes,
+      VitalityModel? vitality,
       String? identityId,
       String? passportId,
       String? ethnicName,
@@ -184,6 +184,8 @@ abstract class $UserModelCopyWith<$Res> {
       PatientCompanyInsuranceSelectedModel? patientCompanyInsuranceSelected});
 
   $LevelCareModelCopyWith<$Res>? get levelCare;
+  $BloodTypeModelCopyWith<$Res>? get bloodTypes;
+  $VitalityModelCopyWith<$Res>? get vitality;
   $PatientCompanyInsuranceSelectedModelCopyWith<$Res>?
       get patientCompanyInsuranceSelected;
 }
@@ -340,11 +342,11 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       bloodTypes: bloodTypes == freezed
           ? _value.bloodTypes
           : bloodTypes // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as BloodTypeModel?,
       vitality: vitality == freezed
           ? _value.vitality
           : vitality // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as VitalityModel?,
       identityId: identityId == freezed
           ? _value.identityId
           : identityId // ignore: cast_nullable_to_non_nullable
@@ -377,6 +379,28 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
 
     return $LevelCareModelCopyWith<$Res>(_value.levelCare!, (value) {
       return _then(_value.copyWith(levelCare: value));
+    });
+  }
+
+  @override
+  $BloodTypeModelCopyWith<$Res>? get bloodTypes {
+    if (_value.bloodTypes == null) {
+      return null;
+    }
+
+    return $BloodTypeModelCopyWith<$Res>(_value.bloodTypes!, (value) {
+      return _then(_value.copyWith(bloodTypes: value));
+    });
+  }
+
+  @override
+  $VitalityModelCopyWith<$Res>? get vitality {
+    if (_value.vitality == null) {
+      return null;
+    }
+
+    return $VitalityModelCopyWith<$Res>(_value.vitality!, (value) {
+      return _then(_value.copyWith(vitality: value));
     });
   }
 
@@ -427,8 +451,8 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       int? totalFinalPrice,
       int? totalDepositPrice,
       int? totalReturnPrice,
-      String? bloodTypes,
-      String? vitality,
+      BloodTypeModel? bloodTypes,
+      VitalityModel? vitality,
       String? identityId,
       String? passportId,
       String? ethnicName,
@@ -437,6 +461,10 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
 
   @override
   $LevelCareModelCopyWith<$Res>? get levelCare;
+  @override
+  $BloodTypeModelCopyWith<$Res>? get bloodTypes;
+  @override
+  $VitalityModelCopyWith<$Res>? get vitality;
   @override
   $PatientCompanyInsuranceSelectedModelCopyWith<$Res>?
       get patientCompanyInsuranceSelected;
@@ -595,11 +623,11 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       bloodTypes: bloodTypes == freezed
           ? _value.bloodTypes
           : bloodTypes // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as BloodTypeModel?,
       vitality: vitality == freezed
           ? _value.vitality
           : vitality // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as VitalityModel?,
       identityId: identityId == freezed
           ? _value.identityId
           : identityId // ignore: cast_nullable_to_non_nullable
@@ -720,9 +748,9 @@ class _$_UserModel extends _UserModel {
   @override
   final int? totalReturnPrice;
   @override
-  final String? bloodTypes;
+  final BloodTypeModel? bloodTypes;
   @override
-  final String? vitality;
+  final VitalityModel? vitality;
   @override
   final String? identityId;
   @override
@@ -879,8 +907,8 @@ abstract class _UserModel extends UserModel {
       int? totalFinalPrice,
       int? totalDepositPrice,
       int? totalReturnPrice,
-      String? bloodTypes,
-      String? vitality,
+      BloodTypeModel? bloodTypes,
+      VitalityModel? vitality,
       String? identityId,
       String? passportId,
       String? ethnicName,
@@ -945,9 +973,9 @@ abstract class _UserModel extends UserModel {
   @override
   int? get totalReturnPrice;
   @override
-  String? get bloodTypes;
+  BloodTypeModel? get bloodTypes;
   @override
-  String? get vitality;
+  VitalityModel? get vitality;
   @override
   String? get identityId;
   @override
