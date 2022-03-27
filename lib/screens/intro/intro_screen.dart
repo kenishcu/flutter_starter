@@ -1,10 +1,11 @@
 import 'package:flutter_stater/controllers/index.dart';
 import 'package:flutter_stater/layout/setting_layout.dart';
+import 'package:flutter_stater/routes/app_pages.dart';
 import 'package:flutter_stater/screens/intro/widgets/youtube_player.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class IntroScreen extends StatelessWidget {
+class IntroScreen extends GetView<IntroController> {
 
   const IntroScreen({Key? key}) : super(key: key);
 
@@ -66,8 +67,11 @@ class IntroScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20.0)
                         ),
                         child: TextButton(
-                          onPressed: () {
-
+                          onPressed: () async {
+                            bool res = await controller.getUserInfo();
+                            if(res) {
+                              Get.offAndToNamed(Routes.HOME);
+                            }
                           },
                           child: Text("Tiếp theo", style: TextStyle(
                             fontSize: 20,
