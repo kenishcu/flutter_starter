@@ -31,4 +31,8 @@ class HomeController extends GetxController {
       print('device_info : ' + deviceInfo.toString());
     }
   }
+
+  Future getBillAndPaymentInfo() async {
+
+  }
 }
