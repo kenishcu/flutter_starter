@@ -190,6 +190,7 @@ class SettingController extends GetxController {
       authToken: "",
       contracts: []
     );
+    print('save setting: ' + setting.toString());
     ResultModel res = await settingRepository.sendSetting(setting.toJson());
     if(res.status == true) {
       storeSettingConfig(setting);

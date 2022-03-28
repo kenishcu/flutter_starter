@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:get/get.dart';
 
-class BedTypeWidget extends StatelessWidget {
+class BedTypeWidget extends GetView<HomeController> {
 
   const BedTypeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
         padding: const EdgeInsets.only(left: 20, top: 15, right: 20, bottom: 10),
         decoration: BoxDecoration(
@@ -43,7 +46,7 @@ class BedTypeWidget extends StatelessWidget {
                         ),
                         Container(
                           child: Text(
-                            "Phòng 2, Tầng 3"
+                            "${controller.deviceInfo.roomName} , ${controller.deviceInfo.bedName}"
                           ),
                         )
                       ],
@@ -69,8 +72,8 @@ class BedTypeWidget extends StatelessWidget {
                   text: TextSpan(
                     text: 'Bác sĩ : ',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
-                    children: const <TextSpan>[
-                      TextSpan(text: 'Nguyễn Quang Hiệu', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                    children: <TextSpan>[
+                      TextSpan(text: controller.patientInfo.examiningByFullname ?? '', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                     ],
                   ),
                 ),
@@ -93,8 +96,8 @@ class BedTypeWidget extends StatelessWidget {
                   text: TextSpan(
                     text: 'Y tá : ',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
-                    children: const <TextSpan>[
-                      TextSpan(text: 'Trần Ngọc Anh', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                    children: <TextSpan>[
+                      TextSpan(text:  controller.patientInfo.nurseByFullname ?? '', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                     ],
                   ),
                 ),

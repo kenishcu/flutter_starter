@@ -7,90 +7,90 @@ part of 'user_model.dart';
 // **************************************************************************
 
 _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
-      patientId: json['patientId'] as int?,
-      patientName: json['patientName'] as String?,
-      birthDay: json['birthDay'] as int?,
+      patientId: json['patient_id'] as int?,
+      patientName: json['patient_fullname'] as String?,
+      birthDay: json['birth_day'] as int?,
       sex: json['sex'] as int?,
-      examiningByFullname: json['examiningByFullname'] as String?,
-      examiningBy: json['examiningBy'] as String?,
-      examiningById: json['examiningById'] as int?,
-      nurseByFullname: json['nurseByFullname'] as String?,
-      nurseBy: json['nurseBy'] as String?,
-      nurseById: json['nurseById'] as int?,
-      allergyFood: (json['allergyFood'] as List<dynamic>?)
+      examiningByFullname: json['examining_by_fullname'] as String?,
+      examiningBy: json['examining_by'] as String?,
+      examiningById: json['examining_by_id'] as int?,
+      nurseByFullname: json['nurse_by_fullname'] as String?,
+      nurseBy: json['nurse_by'] as String?,
+      nurseById: json['nurse_by_id'] as int?,
+      allergyFood: (json['allergy_foods'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      examiningDiagnosis: json['examiningDiagnosis'] as String?,
-      icds: (json['icds'] as List<dynamic>?)
+      examiningDiagnosis: json['examining_diagnosis'] as String?,
+      icds: (json['examining_service_icd'] as List<dynamic>?)
           ?.map((e) => IcdModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      levelCare: json['levelCare'] == null
+      levelCare: json['level_care'] == null
           ? null
-          : LevelCareModel.fromJson(json['levelCare'] as Map<String, dynamic>),
+          : LevelCareModel.fromJson(json['level_care'] as Map<String, dynamic>),
       note: json['note'] as String?,
-      phoneNumber: json['phoneNumber'] as String?,
-      countryName: json['countryName'] as String?,
-      provinceName: json['provinceName'] as String?,
-      districtName: json['districtName'] as String?,
-      familyContact: json['familyContact'] as String?,
-      phoneContact: json['phoneContact'] as String?,
+      phoneNumber: json['phone_number'] as String?,
+      countryName: json['country_name'] as String?,
+      provinceName: json['province_name'] as String?,
+      districtName: json['district_name'] as String?,
+      familyContact: json['family_contact'] as String?,
+      phoneContact: json['phone_contact'] as String?,
       attention: json['attention'] as String?,
-      receptionQueueId: json['receptionQueueId'] as String?,
-      totalFinalPrice: json['totalFinalPrice'] as int?,
-      totalDepositPrice: json['totalDepositPrice'] as int?,
-      totalReturnPrice: json['totalReturnPrice'] as int?,
-      bloodTypes: json['bloodTypes'] == null
+      receptionQueueId: json['reception_queue_id'] as String?,
+      totalFinalPrice: json['total_final_price'] as int?,
+      totalDepositPrice: json['total_deposit_price'] as int?,
+      totalReturnPrice: json['total_return_price'] as int?,
+      bloodTypes: json['blood_types'] == null
           ? null
-          : BloodTypeModel.fromJson(json['bloodTypes'] as Map<String, dynamic>),
+          : BloodTypeModel.fromJson(json['blood_types'] as Map<String, dynamic>),
       vitality: json['vitality'] == null
           ? null
           : VitalityModel.fromJson(json['vitality'] as Map<String, dynamic>),
-      identityId: json['identityId'] as String?,
-      passportId: json['passportId'] as String?,
-      ethnicName: json['ethnicName'] as String?,
+      identityId: json['identity_id'] as String?,
+      passportId: json['passport_id'] as String?,
+      ethnicName: json['ethnic_name'] as String?,
       address1: json['address1'] as String?,
       patientCompanyInsuranceSelected:
-          json['patientCompanyInsuranceSelected'] == null
+          json['patient_company_insurance_selected'] == null
               ? null
               : PatientCompanyInsuranceSelectedModel.fromJson(
-                  json['patientCompanyInsuranceSelected']
+                  json['patient_company_insurance_selected']
                       as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
     <String, dynamic>{
-      'patientId': instance.patientId,
-      'patientName': instance.patientName,
-      'birthDay': instance.birthDay,
+      'patient_id': instance.patientId,
+      'patient_name': instance.patientName,
+      'birth_day': instance.birthDay,
       'sex': instance.sex,
-      'examiningByFullname': instance.examiningByFullname,
-      'examiningBy': instance.examiningBy,
-      'examiningById': instance.examiningById,
-      'nurseByFullname': instance.nurseByFullname,
-      'nurseBy': instance.nurseBy,
-      'nurseById': instance.nurseById,
-      'allergyFood': instance.allergyFood,
-      'examiningDiagnosis': instance.examiningDiagnosis,
+      'examining_by_fullname': instance.examiningByFullname,
+      'examining_by': instance.examiningBy,
+      'examining_by_id': instance.examiningById,
+      'nurse_by_fullname': instance.nurseByFullname,
+      'nurse_by': instance.nurseBy,
+      'nurse_by_id': instance.nurseById,
+      'allergy_food': instance.allergyFood,
+      'examining_diagnosis': instance.examiningDiagnosis,
       'icds': instance.icds,
-      'levelCare': instance.levelCare,
+      'level_care': instance.levelCare,
       'note': instance.note,
-      'phoneNumber': instance.phoneNumber,
-      'countryName': instance.countryName,
-      'provinceName': instance.provinceName,
-      'districtName': instance.districtName,
-      'familyContact': instance.familyContact,
-      'phoneContact': instance.phoneContact,
+      'phone_bumber': instance.phoneNumber,
+      'country_name': instance.countryName,
+      'province_name': instance.provinceName,
+      'district_name': instance.districtName,
+      'family_contact': instance.familyContact,
+      'phone_contact': instance.phoneContact,
       'attention': instance.attention,
-      'receptionQueueId': instance.receptionQueueId,
-      'totalFinalPrice': instance.totalFinalPrice,
-      'totalDepositPrice': instance.totalDepositPrice,
-      'totalReturnPrice': instance.totalReturnPrice,
-      'bloodTypes': instance.bloodTypes,
+      'reception_queue_id': instance.receptionQueueId,
+      'total_final_price': instance.totalFinalPrice,
+      'total_deposit_price': instance.totalDepositPrice,
+      'total_return_price': instance.totalReturnPrice,
+      'blood_types': instance.bloodTypes,
       'vitality': instance.vitality,
-      'identityId': instance.identityId,
-      'passportId': instance.passportId,
-      'ethnicName': instance.ethnicName,
+      'identity_id': instance.identityId,
+      'passport_id': instance.passportId,
+      'ethnic_name': instance.ethnicName,
       'address1': instance.address1,
-      'patientCompanyInsuranceSelected':
+      'patient_company_insurance_selected':
           instance.patientCompanyInsuranceSelected,
     };

@@ -70,6 +70,7 @@ class IntroController extends GetxController {
       UserModel user = UserModel.fromJson(response.results);
       final HomeController homeController = Get.find<HomeController>();
       homeController.setPatientInfo(user);
+      homeController.setBedInfo();
       return true;
     } else {
       return false;
