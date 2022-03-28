@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:get/get.dart';
 
-class DiagnosisWidget extends StatelessWidget {
+class DiagnosisWidget extends GetView<HomeController> {
   
   const DiagnosisWidget({Key? key}) : super(key: key);
   
@@ -31,8 +33,8 @@ class DiagnosisWidget extends StatelessWidget {
                         text: TextSpan(
                           text: 'Chẩn đoán điều trị : ',
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
-                          children: const <TextSpan>[
-                            TextSpan(text: 'Bệnh tả', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                          children: <TextSpan>[
+                            TextSpan(text: controller.patientInfo.icds?.first.serviceName ?? '', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -46,8 +48,8 @@ class DiagnosisWidget extends StatelessWidget {
                         text: TextSpan(
                           text: 'Mức chăm sóc : ',
                           style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onBackground),
-                          children: const <TextSpan>[
-                            TextSpan(text: 'Mức ICU', style: TextStyle(fontSize: 14)),
+                          children: <TextSpan>[
+                            TextSpan(text: controller.patientInfo.levelCare?.levelCareName ?? '', style: TextStyle(fontSize: 14)),
                           ],
                         ),
                       ),
@@ -94,7 +96,7 @@ class DiagnosisWidget extends StatelessWidget {
                                     child: RichText(
                                       overflow: TextOverflow.ellipsis,
                                       text: TextSpan(
-                                        text: 'Mocphine',
+                                        text: controller.patientInfo.allergyFood?.first ?? '',
                                         style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onBackground),
                                       ),
                                     ),
@@ -144,7 +146,7 @@ class DiagnosisWidget extends StatelessWidget {
                                 child: RichText(
                                   overflow: TextOverflow.ellipsis,
                                   text: TextSpan(
-                                    text: 'Tránh đi lại',
+                                    text: controller.patientInfo.attention ?? 'Chưa có thông tin',
                                     style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onBackground),
                                   ),
                                 ),

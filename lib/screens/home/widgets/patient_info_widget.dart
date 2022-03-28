@@ -8,6 +8,7 @@ class PatientInfoWidget extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -36,7 +37,7 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 30,
-                    child: Text("AB", textAlign: TextAlign.center ,style: TextStyle(
+                    child: Text(controller.patientInfo.bloodTypes?.bloodType?.name ?? '', textAlign: TextAlign.center ,style: TextStyle(
                         color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -70,7 +71,8 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 30,
-                    child: Text("165 cm", textAlign: TextAlign.center ,style: TextStyle(
+                    child: Text('${controller.patientInfo.vitality?.vitals != null ?
+                    controller.patientInfo.vitality?.vitals?.first.chieuCao.toString() : ''}', textAlign: TextAlign.center ,style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -105,7 +107,8 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 30,
-                    child: Text("54 kg", textAlign: TextAlign.center ,style: TextStyle(
+                    child: Text('${controller.patientInfo.vitality?.vitals != null ?
+                    controller.patientInfo.vitality?.vitals?.first.canNang : ''}', textAlign: TextAlign.center ,style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,

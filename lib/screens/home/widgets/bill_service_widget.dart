@@ -15,6 +15,8 @@ class BillServiceWidget extends StatelessWidget {
             color: Theme.of(context).colorScheme.surface
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               height: 50,
@@ -59,6 +61,18 @@ class BillServiceWidget extends StatelessWidget {
             ),
             SizedBox(
               height: 50,
+              width: double.infinity,
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text("Tổng tạm tính: 0" , style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600
+                  )),
+                ),
+              ),
             )
           ],
         ),

@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
-class UserInfoWidget extends GetView<HomeController> {
+class UserInfoWidget extends StatelessWidget {
 
   const UserInfoWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
+
+    final controller = Get.find<HomeController>();
+
     return Container(
       padding: const EdgeInsets.only(top: 20.0),
       child: Row(
@@ -21,7 +23,7 @@ class UserInfoWidget extends GetView<HomeController> {
             height: 60,
             child: Image.asset("assets/img/avatar.png"),
           ),
-          Obx(() => SizedBox(
+          SizedBox(
             child: Container(
               height: 60,
               margin: const EdgeInsets.only(left: 20.0),
@@ -30,19 +32,18 @@ class UserInfoWidget extends GetView<HomeController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('${controller.patientInfo.patientName.toString()}', overflow: TextOverflow.ellipsis
+                  Text(controller.patientInfo.patientName.toString(), overflow: TextOverflow.ellipsis
                       ,style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       )),
-                  Text("Mã y tế: ${controller.patientInfo.passportId.toString()}", style: TextStyle(
+                  Text("Mã y tế: ${controller.patientInfo.patientId.toString()}", style: TextStyle(
                     fontSize: 14,
                   ))
                 ],
               ),
-
             ),
-          ))
+          )
         ],
       ),
     );

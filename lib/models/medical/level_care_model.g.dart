@@ -8,14 +8,14 @@ part of 'level_care_model.dart';
 
 _$_LevelCareModel _$$_LevelCareModelFromJson(Map<String, dynamic> json) =>
     _$_LevelCareModel(
-      levelCareId: json['levelCareId'] as int?,
-      levelCareCode: json['levelCareCode'] as String?,
-      levelCareName: json['levelCareName'] as String?,
+      levelCareId: json['level_care_id'] as int?,
+      levelCareCode: json['level_care_code'] as String?,
+      levelCareName: json['level_care_name'] as String?,
     );
 
 Map<String, dynamic> _$$_LevelCareModelToJson(_$_LevelCareModel instance) =>
     <String, dynamic>{
-      'levelCareId': instance.levelCareId,
-      'levelCareCode': instance.levelCareCode,
-      'levelCareName': instance.levelCareName,
+      'level_care_id': instance.levelCareId,
+      'level_care_code': instance.levelCareCode,
+      'level_care_name': instance.levelCareName,
     };

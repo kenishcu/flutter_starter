@@ -9,7 +9,7 @@ part of 'setting_model.dart';
 _$_SettingModel _$$_SettingModelFromJson(Map<String, dynamic> json) =>
     _$_SettingModel(
       bedId: json['bed_id'] as int?,
-      bedName: json['room_id'] as String?,
+      bedName: json['bed_name'] as String?,
       roomId: json['room_id'] as int?,
       roomName: json['room_name'] as String?,
       parentId: json['parent_id'] as int?,
