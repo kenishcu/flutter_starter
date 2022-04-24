@@ -8,7 +8,7 @@ part of 'meal_info_model.dart';
 
 _$_MealInfoModel _$$_MealInfoModelFromJson(Map<String, dynamic> json) =>
     _$_MealInfoModel(
-      productId: json['productId'] as String?,
+      productId: json['product_id'] as String?,
       name: json['name'] as String?,
       quantity: json['quantity'] as int?,
       unit: json['unit'] as String?,

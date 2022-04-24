@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:get/get.dart';
 
-class BillServiceWidget extends StatelessWidget {
+import '../../../utils/convert.dart';
+
+class BillServiceWidget extends GetView<HomeController> {
 
   const BillServiceWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    int total = 0;
+    for (var element in controller.billAndPaymentInfo) {
+      total += (element.quantity!) * (element.servicePrice!);
+    }
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -42,7 +50,7 @@ class BillServiceWidget extends StatelessWidget {
                       onPressed: () {  },
                       child: Text(
                         "Xem chi tiết".toUpperCase(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12
                         ),
@@ -54,8 +62,128 @@ class BillServiceWidget extends StatelessWidget {
             ),
             Expanded(
               child: Container(
+                padding: const EdgeInsets.only(right: 20, left: 20),
                 decoration: const BoxDecoration(
                   color: Colors.white
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 50,
+                      child: Row(
+                        children: const [
+                          Expanded(
+                            flex: 1,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                  "Tên dịch vụ"
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: Text(
+                                  "Số lượng"
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: Text(
+                                  "Đơn giá"
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: Text(
+                                  "Thành tiền"
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: Text(
+                                  "Ngày dùng"
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                        child: ListView.builder(
+                            itemCount: controller.billAndPaymentInfo.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return SizedBox(
+                                height: 50,
+                                width: double.infinity,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: (index.isOdd) ? Theme.of(context).colorScheme.background : Colors.white,
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.grey,
+                                              width: 1.0
+                                          )
+                                      )
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                              controller.billAndPaymentInfo[index].serviceName.toString()
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Center(
+                                          child: Text(
+                                              controller.billAndPaymentInfo[index].quantity.toString()
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Center(
+                                          child: Text(
+                                              formatPrice(controller.billAndPaymentInfo[index].servicePrice!).toString()
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Center(
+                                          child: Text(
+                                              formatPrice(controller.billAndPaymentInfo[index].finalPrice! * (controller.billAndPaymentInfo[index].quantity!)).toString()
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Center(
+                                          child: Text(
+                                              convertFromUnixToTimeString(controller.billAndPaymentInfo[index].usedAt!).toString()
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }
+                        )
+                    )
+                  ],
                 ),
               ),
             ),
@@ -65,9 +193,9 @@ class BillServiceWidget extends StatelessWidget {
               child: Container(
                 height: 50,
                 width: double.infinity,
-                child: const Align(
+                child: Align(
                   alignment: Alignment.center,
-                  child: Text("Tổng tạm tính: 0" , style: TextStyle(
+                  child: Text("Tổng tạm tính: ${formatPrice(total)}" , style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600
                   )),

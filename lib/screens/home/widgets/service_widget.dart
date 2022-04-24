@@ -1,12 +1,17 @@
+import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/widgets/button/button_service_widget.dart';
 
-class ServiceWidget extends StatelessWidget {
+import '../../../routes/app_pages.dart';
+
+class ServiceWidget extends GetView<HomeController> {
 
   const ServiceWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -44,17 +49,26 @@ class ServiceWidget extends StatelessWidget {
                       ButtonServiceWidget(
                         iconData: Icons.restaurant,
                         buttonTitle: 'Nhà hàng',
-                        onPressed: () {  },
+                        onPressed: () {
+                          controller.getRestaurantInfo();
+                          Get.offAndToNamed(Routes.RESTAURANT);
+                        },
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.ramen_dining_outlined,
                         buttonTitle: 'Đồ ăn điều trị',
-                        onPressed: () {  },
+                        onPressed: () {
+                          controller.getFoodTreatmentInfo();
+                          Get.offAndToNamed(Routes.FOOD_TREATMENT);
+                        },
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.checkroom_outlined,
                         buttonTitle: 'Mượn đồ',
-                        onPressed: () {  },
+                        onPressed: () {
+                          controller.getLoanServiceInfo();
+                          Get.offAndToNamed(Routes.LOAN_SERVICE);
+                        },
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.payments_outlined,

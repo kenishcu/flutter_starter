@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_stater/adapters/repository/home/user_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/setting_repository.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
@@ -71,6 +70,9 @@ class IntroController extends GetxController {
       final HomeController homeController = Get.find<HomeController>();
       homeController.setPatientInfo(user);
       homeController.setBedInfo();
+      await homeController.getBillAndPaymentInfo(user.patientId!, user.receptionQueueId!);
+      await homeController.getScheduleOfPatient();
+      homeController.setList();
       return true;
     } else {
       return false;

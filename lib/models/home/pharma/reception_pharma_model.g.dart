@@ -5,8 +5,8 @@ _$_ReceptionPharmaModel _$$_ReceptionPharmaModelFromJson(Map<String, dynamic> js
       patientId: json['patient_id'] as int?,
       patientFullname: json['patient_fullname'] as String?,
       receptionQueueId: json['reception_queue_id'] as String?,
-      inPatientRoomId: json['in_patient_room_id'] as String?,
-      inPatientRoomName: json['in_patient_room_name'] as int?,
+      inPatientRoomId: json['in_patient_room_id'] as int?,
+      inPatientRoomName: json['in_patient_room_name'] as String?,
       bedId: json['bed_id'] as int?,
       bedName: json['bed_name'] as String?,
       pharmas: (json['pharmas'] as List<dynamic>?)
@@ -23,7 +23,7 @@ Map<String, dynamic> _$$_ReceptionPharmaModelToJson(_$_ReceptionPharmaModel inst
       'reception_queue_id': instance.receptionQueueId,
       'in_patient_room_id': instance.inPatientRoomId,
       'in_patient_room_name': instance.inPatientRoomName,
-      'bedId': instance.bedId,
-      'bedName': instance.bedName,
+      'bed_id': instance.bedId,
+      'bed_name': instance.bedName,
       'pharmas': instance.pharmas
     };

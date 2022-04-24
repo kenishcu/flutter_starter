@@ -36,7 +36,7 @@ class _$PharmaInfoModelTearOff {
       num? numberDay,
       String? wayToUseName,
       String? unitName,
-      DateTime? currentDayTime}) {
+      int? currentDayTime}) {
     return _PharmaInfoModel(
       pharmaId: pharmaId,
       pharmaName: pharmaName,
@@ -78,7 +78,7 @@ mixin _$PharmaInfoModel {
   num? get numberDay => throw _privateConstructorUsedError;
   String? get wayToUseName => throw _privateConstructorUsedError;
   String? get unitName => throw _privateConstructorUsedError;
-  DateTime? get currentDayTime => throw _privateConstructorUsedError;
+  int? get currentDayTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -105,7 +105,7 @@ abstract class $PharmaInfoModelCopyWith<$Res> {
       num? numberDay,
       String? wayToUseName,
       String? unitName,
-      DateTime? currentDayTime});
+      int? currentDayTime});
 }
 
 /// @nodoc
@@ -190,7 +190,7 @@ class _$PharmaInfoModelCopyWithImpl<$Res>
       currentDayTime: currentDayTime == freezed
           ? _value.currentDayTime
           : currentDayTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
     ));
   }
 }
@@ -216,7 +216,7 @@ abstract class _$PharmaInfoModelCopyWith<$Res>
       num? numberDay,
       String? wayToUseName,
       String? unitName,
-      DateTime? currentDayTime});
+      int? currentDayTime});
 }
 
 /// @nodoc
@@ -303,7 +303,7 @@ class __$PharmaInfoModelCopyWithImpl<$Res>
       currentDayTime: currentDayTime == freezed
           ? _value.currentDayTime
           : currentDayTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
     ));
   }
 }
@@ -358,7 +358,7 @@ class _$_PharmaInfoModel extends _PharmaInfoModel {
   @override
   final String? unitName;
   @override
-  final DateTime? currentDayTime;
+  final int? currentDayTime;
 
   @override
   String toString() {
@@ -439,7 +439,7 @@ abstract class _PharmaInfoModel extends PharmaInfoModel {
       num? numberDay,
       String? wayToUseName,
       String? unitName,
-      DateTime? currentDayTime}) = _$_PharmaInfoModel;
+      int? currentDayTime}) = _$_PharmaInfoModel;
   _PharmaInfoModel._() : super._();
 
   factory _PharmaInfoModel.fromJson(Map<String, dynamic> json) =
@@ -472,7 +472,7 @@ abstract class _PharmaInfoModel extends PharmaInfoModel {
   @override
   String? get unitName;
   @override
-  DateTime? get currentDayTime;
+  int? get currentDayTime;
   @override
   @JsonKey(ignore: true)
   _$PharmaInfoModelCopyWith<_PharmaInfoModel> get copyWith =>

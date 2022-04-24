@@ -13,7 +13,7 @@ class ReceptionMealModel with _$ReceptionMealModel {
     int? patientId,
     String? patientFullname,
     String? receptionQueueId,
-    DateTime? usedAt,
+    int? usedAt,
     int? mealTypeId,
     String? mealTypeCode,
     String? mealTypeName,
