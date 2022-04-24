@@ -9,21 +9,21 @@ part of 'bill_and_payment_model.dart';
 _$_BillAndPaymentModel _$$_BillAndPaymentModelFromJson(
         Map<String, dynamic> json) =>
     _$_BillAndPaymentModel(
-      serviceId: json['serviceId'] as int?,
-      serviceName: json['serviceName'] as String?,
+      serviceId: json['service_id'] as int?,
+      serviceName: json['service_name'] as String?,
       quantity: json['quantity'] as int?,
-      servicePrice: json['servicePrice'] as int?,
-      finalPrice: json['finalPrice'] as int?,
-      usedAt: json['usedAt'] as int?,
+      servicePrice: json['service_price'] as int?,
+      finalPrice: json['final_price'] as int?,
+      usedAt: json['used_at'] as int?,
     );
 
 Map<String, dynamic> _$$_BillAndPaymentModelToJson(
         _$_BillAndPaymentModel instance) =>
     <String, dynamic>{
-      'serviceId': instance.serviceId,
-      'serviceName': instance.serviceName,
+      'service_id': instance.serviceId,
+      'service_name': instance.serviceName,
       'quantity': instance.quantity,
-      'servicePrice': instance.servicePrice,
-      'finalPrice': instance.finalPrice,
-      'usedAt': instance.usedAt,
+      'service_price': instance.servicePrice,
+      'final_price': instance.finalPrice,
+      'used_at': instance.usedAt,
     };

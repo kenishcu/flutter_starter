@@ -26,7 +26,7 @@ class _$ReceptionMealModelTearOff {
       {int? patientId,
       String? patientFullname,
       String? receptionQueueId,
-      DateTime? usedAt,
+      int? usedAt,
       int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
@@ -56,7 +56,7 @@ mixin _$ReceptionMealModel {
   int? get patientId => throw _privateConstructorUsedError;
   String? get patientFullname => throw _privateConstructorUsedError;
   String? get receptionQueueId => throw _privateConstructorUsedError;
-  DateTime? get usedAt => throw _privateConstructorUsedError;
+  int? get usedAt => throw _privateConstructorUsedError;
   int? get mealTypeId => throw _privateConstructorUsedError;
   String? get mealTypeCode => throw _privateConstructorUsedError;
   String? get mealTypeName => throw _privateConstructorUsedError;
@@ -77,7 +77,7 @@ abstract class $ReceptionMealModelCopyWith<$Res> {
       {int? patientId,
       String? patientFullname,
       String? receptionQueueId,
-      DateTime? usedAt,
+      int? usedAt,
       int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
@@ -120,7 +120,7 @@ class _$ReceptionMealModelCopyWithImpl<$Res>
       usedAt: usedAt == freezed
           ? _value.usedAt
           : usedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
       mealTypeId: mealTypeId == freezed
           ? _value.mealTypeId
           : mealTypeId // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ abstract class _$ReceptionMealModelCopyWith<$Res>
       {int? patientId,
       String? patientFullname,
       String? receptionQueueId,
-      DateTime? usedAt,
+      int? usedAt,
       int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
@@ -197,7 +197,7 @@ class __$ReceptionMealModelCopyWithImpl<$Res>
       usedAt: usedAt == freezed
           ? _value.usedAt
           : usedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
       mealTypeId: mealTypeId == freezed
           ? _value.mealTypeId
           : mealTypeId // ignore: cast_nullable_to_non_nullable
@@ -242,7 +242,7 @@ class _$_ReceptionMealModel extends _ReceptionMealModel {
   @override
   final String? receptionQueueId;
   @override
-  final DateTime? usedAt;
+  final int? usedAt;
   @override
   final int? mealTypeId;
   @override
@@ -305,7 +305,7 @@ abstract class _ReceptionMealModel extends ReceptionMealModel {
       {int? patientId,
       String? patientFullname,
       String? receptionQueueId,
-      DateTime? usedAt,
+      int? usedAt,
       int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
@@ -322,7 +322,7 @@ abstract class _ReceptionMealModel extends ReceptionMealModel {
   @override
   String? get receptionQueueId;
   @override
-  DateTime? get usedAt;
+  int? get usedAt;
   @override
   int? get mealTypeId;
   @override

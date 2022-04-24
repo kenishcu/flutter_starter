@@ -25,7 +25,7 @@ class _$TreatmentInfoModelTearOff {
   _TreatmentInfoModel call(
       {int? patientId,
       String? patientFullname,
-      int? receptionQueueId,
+      String? receptionQueueId,
       int? serviceId,
       String? serviceCode,
       String? serviceName,
@@ -33,7 +33,7 @@ class _$TreatmentInfoModelTearOff {
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
-      DateTime? currentDayTime}) {
+      int? currentDayTime}) {
     return _TreatmentInfoModel(
       patientId: patientId,
       patientFullname: patientFullname,
@@ -61,7 +61,7 @@ const $TreatmentInfoModel = _$TreatmentInfoModelTearOff();
 mixin _$TreatmentInfoModel {
   int? get patientId => throw _privateConstructorUsedError;
   String? get patientFullname => throw _privateConstructorUsedError;
-  int? get receptionQueueId => throw _privateConstructorUsedError;
+  String? get receptionQueueId => throw _privateConstructorUsedError;
   int? get serviceId => throw _privateConstructorUsedError;
   String? get serviceCode => throw _privateConstructorUsedError;
   String? get serviceName => throw _privateConstructorUsedError;
@@ -69,7 +69,7 @@ mixin _$TreatmentInfoModel {
   String? get serviceCategoryName => throw _privateConstructorUsedError;
   int? get serviceCategoryParentId => throw _privateConstructorUsedError;
   String? get serviceCategoryParentName => throw _privateConstructorUsedError;
-  DateTime? get currentDayTime => throw _privateConstructorUsedError;
+  int? get currentDayTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -85,7 +85,7 @@ abstract class $TreatmentInfoModelCopyWith<$Res> {
   $Res call(
       {int? patientId,
       String? patientFullname,
-      int? receptionQueueId,
+      String? receptionQueueId,
       int? serviceId,
       String? serviceCode,
       String? serviceName,
@@ -93,7 +93,7 @@ abstract class $TreatmentInfoModelCopyWith<$Res> {
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
-      DateTime? currentDayTime});
+      int? currentDayTime});
 }
 
 /// @nodoc
@@ -131,7 +131,7 @@ class _$TreatmentInfoModelCopyWithImpl<$Res>
       receptionQueueId: receptionQueueId == freezed
           ? _value.receptionQueueId
           : receptionQueueId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       serviceId: serviceId == freezed
           ? _value.serviceId
           : serviceId // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ class _$TreatmentInfoModelCopyWithImpl<$Res>
       currentDayTime: currentDayTime == freezed
           ? _value.currentDayTime
           : currentDayTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
     ));
   }
 }
@@ -178,7 +178,7 @@ abstract class _$TreatmentInfoModelCopyWith<$Res>
   $Res call(
       {int? patientId,
       String? patientFullname,
-      int? receptionQueueId,
+      String? receptionQueueId,
       int? serviceId,
       String? serviceCode,
       String? serviceName,
@@ -186,7 +186,7 @@ abstract class _$TreatmentInfoModelCopyWith<$Res>
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
-      DateTime? currentDayTime});
+      int? currentDayTime});
 }
 
 /// @nodoc
@@ -226,7 +226,7 @@ class __$TreatmentInfoModelCopyWithImpl<$Res>
       receptionQueueId: receptionQueueId == freezed
           ? _value.receptionQueueId
           : receptionQueueId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       serviceId: serviceId == freezed
           ? _value.serviceId
           : serviceId // ignore: cast_nullable_to_non_nullable
@@ -258,7 +258,7 @@ class __$TreatmentInfoModelCopyWithImpl<$Res>
       currentDayTime: currentDayTime == freezed
           ? _value.currentDayTime
           : currentDayTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
     ));
   }
 }
@@ -288,7 +288,7 @@ class _$_TreatmentInfoModel extends _TreatmentInfoModel {
   @override
   final String? patientFullname;
   @override
-  final int? receptionQueueId;
+  final String? receptionQueueId;
   @override
   final int? serviceId;
   @override
@@ -304,7 +304,7 @@ class _$_TreatmentInfoModel extends _TreatmentInfoModel {
   @override
   final String? serviceCategoryParentName;
   @override
-  final DateTime? currentDayTime;
+  final int? currentDayTime;
 
   @override
   String toString() {
@@ -368,7 +368,7 @@ abstract class _TreatmentInfoModel extends TreatmentInfoModel {
   factory _TreatmentInfoModel(
       {int? patientId,
       String? patientFullname,
-      int? receptionQueueId,
+      String? receptionQueueId,
       int? serviceId,
       String? serviceCode,
       String? serviceName,
@@ -376,7 +376,7 @@ abstract class _TreatmentInfoModel extends TreatmentInfoModel {
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
-      DateTime? currentDayTime}) = _$_TreatmentInfoModel;
+      int? currentDayTime}) = _$_TreatmentInfoModel;
   _TreatmentInfoModel._() : super._();
 
   factory _TreatmentInfoModel.fromJson(Map<String, dynamic> json) =
@@ -387,7 +387,7 @@ abstract class _TreatmentInfoModel extends TreatmentInfoModel {
   @override
   String? get patientFullname;
   @override
-  int? get receptionQueueId;
+  String? get receptionQueueId;
   @override
   int? get serviceId;
   @override
@@ -403,7 +403,7 @@ abstract class _TreatmentInfoModel extends TreatmentInfoModel {
   @override
   String? get serviceCategoryParentName;
   @override
-  DateTime? get currentDayTime;
+  int? get currentDayTime;
   @override
   @JsonKey(ignore: true)
   _$TreatmentInfoModelCopyWith<_TreatmentInfoModel> get copyWith =>

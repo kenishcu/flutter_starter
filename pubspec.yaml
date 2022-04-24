@@ -45,6 +45,10 @@ dependencies:
   loading_overlay_pro: ^2.1.1
   firebase_core: ^1.5.0
   dart_ipify: ^1.1.1
+  syncfusion_flutter_calendar: ^20.1.47
+  syncfusion_flutter_datepicker: ^20.1.47
+  money2: ^3.1.2
+  overlay_container: ^0.0.5+1
   freezed_annotation:
 dev_dependencies:
   flutter_test:

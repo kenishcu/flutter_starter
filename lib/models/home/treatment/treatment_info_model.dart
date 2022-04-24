@@ -4,14 +4,14 @@ part 'treatment_info_model.freezed.dart';
 part 'treatment_info_model.g.dart';
 
 @freezed
-class TreatmentInfoModel {
+class TreatmentInfoModel with _$TreatmentInfoModel {
 
   const TreatmentInfoModel._();
 
   factory TreatmentInfoModel({
     int? patientId,
     String? patientFullname,
-    int? receptionQueueId,
+    String? receptionQueueId,
     int? serviceId,
     String? serviceCode,
     String? serviceName,
@@ -19,7 +19,7 @@ class TreatmentInfoModel {
     String? serviceCategoryName,
     int? serviceCategoryParentId,
     String? serviceCategoryParentName,
-    DateTime? currentDayTime,
+    int? currentDayTime,
   }) = _TreatmentInfoModel;
 
   factory TreatmentInfoModel.fromJson(Map<String, dynamic> json) =>

@@ -22,7 +22,7 @@ class PharmaInfoModel with _$PharmaInfoModel {
     num? numberDay,
     String? wayToUseName,
     String? unitName,
-    DateTime? currentDayTime,
+    int? currentDayTime,
   }) = _PharmaInfoModel;
 
   factory PharmaInfoModel.fromJson(Map<String, dynamic> json) =>

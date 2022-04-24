@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/widgets/button/button_header_widget.dart';
+import 'package:get/get.dart';
+
+import '../../routes/app_pages.dart';
 
 class HeaderWidget extends StatelessWidget {
 
@@ -53,6 +56,7 @@ class HeaderWidget extends StatelessWidget {
               children: [
                 ButtonHeaderWidget(
                   onPressed: () {
+                    Get.toNamed(Routes.HOME);
                   },
                   iconData: Icons.home,
                   buttonTitle: 'Trang chủ',

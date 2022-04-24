@@ -74,9 +74,11 @@ ThemeData lightTheme(BuildContext context) {
     ),
     colorScheme: const ColorScheme.light().copyWith(
       primary: kTextColor,
+      onPrimary: kPrimaryColor,
       primaryVariant: kOnBackgroundVariantColor,
       secondary: kSecondaryColor,
-      secondaryVariant: kSecondaryVariant2Color,
+      secondaryContainer: kSecondaryVariant2Color,
+      secondaryVariant: kSecondaryVariantColor,
       background: kBackgroundColor,
       onBackground: kOnBackgroundColor,
       onSurface: kSurfaceVariantColor,

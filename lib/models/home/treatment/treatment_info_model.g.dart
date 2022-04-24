@@ -9,33 +9,31 @@ part of 'treatment_info_model.dart';
 _$_TreatmentInfoModel _$$_TreatmentInfoModelFromJson(
         Map<String, dynamic> json) =>
     _$_TreatmentInfoModel(
-      patientId: json['patientId'] as int?,
-      patientFullname: json['patientFullname'] as String?,
-      receptionQueueId: json['receptionQueueId'] as int?,
-      serviceId: json['serviceId'] as int?,
-      serviceCode: json['serviceCode'] as String?,
-      serviceName: json['serviceName'] as String?,
-      serviceCategoryId: json['serviceCategoryId'] as int?,
-      serviceCategoryName: json['serviceCategoryName'] as String?,
-      serviceCategoryParentId: json['serviceCategoryParentId'] as int?,
-      serviceCategoryParentName: json['serviceCategoryParentName'] as String?,
-      currentDayTime: json['currentDayTime'] == null
-          ? null
-          : DateTime.parse(json['currentDayTime'] as String),
+      patientId: json['patient_id'] as int?,
+      patientFullname: json['patient_fullname'] as String?,
+      receptionQueueId: json['reception_queue_id'] as String?,
+      serviceId: json['service_id'] as int?,
+      serviceCode: json['service_code'] as String?,
+      serviceName: json['service_name'] as String?,
+      serviceCategoryId: json['service_category_id'] as int?,
+      serviceCategoryName: json['service_category_name'] as String?,
+      serviceCategoryParentId: json['service_category_parent_id'] as int?,
+      serviceCategoryParentName: json['service_category_parent_name'] as String?,
+      currentDayTime: json['current_day_time'] as int?,
     );
 
 Map<String, dynamic> _$$_TreatmentInfoModelToJson(
         _$_TreatmentInfoModel instance) =>
     <String, dynamic>{
-      'patientId': instance.patientId,
-      'patientFullname': instance.patientFullname,
-      'receptionQueueId': instance.receptionQueueId,
-      'serviceId': instance.serviceId,
-      'serviceCode': instance.serviceCode,
-      'serviceName': instance.serviceName,
-      'serviceCategoryId': instance.serviceCategoryId,
-      'serviceCategoryName': instance.serviceCategoryName,
-      'serviceCategoryParentId': instance.serviceCategoryParentId,
-      'serviceCategoryParentName': instance.serviceCategoryParentName,
-      'currentDayTime': instance.currentDayTime?.toIso8601String(),
+      'patient_id': instance.patientId,
+      'patient_fullname': instance.patientFullname,
+      'reception_queue_id': instance.receptionQueueId,
+      'service_id': instance.serviceId,
+      'service_code': instance.serviceCode,
+      'service_name': instance.serviceName,
+      'service_category_id': instance.serviceCategoryId,
+      'service_category_name': instance.serviceCategoryName,
+      'service_category_parent_id': instance.serviceCategoryParentId,
+      'service_category_parent_name': instance.serviceCategoryParentName,
+      'current_day_time': instance.currentDayTime,
     };
