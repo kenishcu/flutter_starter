@@ -13,11 +13,9 @@ class SelectionRoom extends GetView<SettingController> {
 
     return Padding(
       padding: const EdgeInsets.all(4.0),
-      child: Container(
-        child: ListTile(
-          contentPadding: EdgeInsets.all(0),
-          title: Text(selectedItem?.roomName ?? ''),
-        ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(0),
+        title: Text(selectedItem?.roomName ?? ''),
       ),
     );
   }
@@ -45,12 +43,12 @@ class SelectionRoom extends GetView<SettingController> {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: 80,
+      height: 60,
       width: double.infinity,
       child: Row(
         children: [
           const SizedBox(
-            height: 60,
+            height: 50,
             width: 200,
             child: Align(
               alignment: Alignment.center,
@@ -64,7 +62,7 @@ class SelectionRoom extends GetView<SettingController> {
             ),
           ),
           Obx(() =>  SizedBox(
-            height: 60,
+            height: 50,
             width: size.width - 500,
             child:  DropdownSearch<RoomModel>(
               mode: Mode.DIALOG,

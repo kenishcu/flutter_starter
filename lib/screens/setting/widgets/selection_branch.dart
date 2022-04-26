@@ -1,33 +1,32 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/setting_controller.dart';
+import 'package:flutter_stater/models/settings/branch_model.dart';
 import 'package:flutter_stater/models/settings/department_model.dart';
 import 'package:get/get.dart';
 
-class SelectionDepartment extends GetView<SettingController> {
+class SelectionBranch extends GetView<SettingController> {
 
-  const SelectionDepartment({Key? key,
+  const SelectionBranch({Key? key,
   }) : super(key: key);
 
 
   Widget _customDropDownExample(
-      BuildContext context, DepartmentModel? selectedItem) {
+      BuildContext context, BranchModel? selectedItem) {
 
     return Padding(
       padding: const EdgeInsets.all(4.0),
-      child: Container(
-        child: ListTile(
-          contentPadding: EdgeInsets.all(0),
-          title: Text(selectedItem?.roomName ?? ''),
-        ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(0),
+        title: Text(selectedItem?.branchName ?? ''),
       ),
     );
   }
 
   Widget _customPopupItemBuilderExample(
-      BuildContext context, DepartmentModel? item, bool isSelected) {
+      BuildContext context, BranchModel? item, bool isSelected) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: !isSelected
           ? null
           : BoxDecoration(
@@ -37,7 +36,7 @@ class SelectionDepartment extends GetView<SettingController> {
       ),
       child: ListTile(
         selected: isSelected,
-        title: Text(item?.roomName ?? ''),
+        title: Text(item?.branchName ?? ''),
       ),
     );
   }
@@ -56,7 +55,7 @@ class SelectionDepartment extends GetView<SettingController> {
             width: 200,
             child: Align(
               alignment: Alignment.center,
-              child: Text("Khoa",
+              child: Text("Chi nhánh ",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
@@ -68,25 +67,25 @@ class SelectionDepartment extends GetView<SettingController> {
           Obx(() => SizedBox(
               height: 50,
               width: size.width - 500,
-              child: DropdownSearch<DepartmentModel>(
+              child: DropdownSearch<BranchModel>(
                 mode: Mode.DIALOG,
-                items: controller.departments,
-                selectedItem: controller.selectedDepartment.value,
+                items: controller.branches,
+                selectedItem: controller.selectedBranch.value,
                 dropdownSearchDecoration: InputDecoration(
                   contentPadding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
                   filled: true,
                   fillColor: Theme.of(context).backgroundColor,
                   border: const OutlineInputBorder(),
                 ),
-                onChanged: (d) {
-                  controller.setDepartment(d!);
+                onChanged: (b) {
+                  controller.setBranch(b!);
                 },
                 showSearchBox: true,
                 searchFieldProps: TextFieldProps(
                   decoration: const InputDecoration(
                     border:  OutlineInputBorder(),
                     contentPadding: EdgeInsets.fromLTRB(12, 12, 8, 0),
-                    labelText: "Tìm kiếm khoa",
+                    labelText: "Tìm kiếm chi nhánh",
                   ),
                 ),
                 popupTitle: Container(
@@ -100,7 +99,7 @@ class SelectionDepartment extends GetView<SettingController> {
                   ),
                   child: const Center(
                     child: Text(
-                      'Khoa',
+                      'Chi nhánh',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

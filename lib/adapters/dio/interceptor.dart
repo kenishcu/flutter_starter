@@ -10,7 +10,7 @@ class InterWrapper extends InterceptorsWrapper {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
     print("Bearer ${token.toString()}");
-    if(token != null) {
+    if(token != null && token.isNotEmpty) {
       options.headers["Authorization"] = "Bearer " + token;
     }
     return handler.next(options);
