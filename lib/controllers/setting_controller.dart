@@ -39,9 +39,13 @@ class SettingController extends GetxController {
 
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
+  List<BranchModel> branches = <BranchModel>[].obs;
+
+  Rx<BranchModel> selectedBranch= BranchModel().obs;
+
   List<DepartmentModel> departments = <DepartmentModel>[].obs;
 
-  List<BranchModel> branches = <BranchModel>[].obs;
+  List<DepartmentModel> listDepartments = [];
 
   Rx<DepartmentModel> selectedDepartment = DepartmentModel().obs;
 
@@ -54,7 +58,6 @@ class SettingController extends GetxController {
   List<BedModel> beds = <BedModel>[].obs;
 
   Rx<BedModel> selectedBed = BedModel().obs;
-  Rx<BranchModel> selectedBranch = BranchModel().obs;
 
   Rx<TextEditingController> macAddress = TextEditingController().obs;
   Rx<TextEditingController> ipAddress = TextEditingController().obs;
@@ -93,6 +96,40 @@ class SettingController extends GetxController {
   /// params: branchModel
   ///
   void setBranch(BranchModel branchModel) {
+      rooms.clear();
+      beds.clear();
+      departments.clear();
+      print(branchModel.toString());
+      print(listDepartments.where((element) => element.branchId.toString() == branchModel.branchId.toString()).toList().toString());
+      List<DepartmentModel> deps = listDepartments.where((element) => element.branchId.toString() == branchModel.branchId.toString()).toList();
+
+      selectedBranch.value = branchModel;
+
+      for (var dep in deps) {
+        departments.add(dep);
+      }
+
+      selectedDepartment.value = DepartmentModel(
+          roomId: 0,
+          roomName: "",
+          roomTypeId: 0,
+          roomCode: "",
+          parentName: "",
+          parentId: 0,
+          branchId: 0,
+          companyId: 0
+      );
+      selectedRoom.value = RoomModel(
+          roomId: 0,
+          roomName: "",
+          parentName: "",
+          parentId: 0,
+          beds: []
+      );
+      selectedBed.value = BedModel(
+        bedId: 0,
+        bedName: ""
+      );
 
   }
 
@@ -107,9 +144,9 @@ class SettingController extends GetxController {
       res.results.forEach((e) => {
         dep.add(DepartmentModel.fromJson(e))
       });
-      departments = dep;
+      listDepartments = dep;
     } else {
-      departments.clear();
+      listDepartments.clear();
     }
   }
 
@@ -118,6 +155,7 @@ class SettingController extends GetxController {
   /// Get list departments of application
   void setDepartment(DepartmentModel departmentModel) {
     rooms.clear();
+    beds.clear();
     selectedDepartment.value = departmentModel;
     List<RoomModel> room = listRooms.where((element) => element.parentId == departmentModel.parentId).toList();
     selectedRoom.value = RoomModel(
@@ -127,6 +165,11 @@ class SettingController extends GetxController {
         parentId: 0,
         beds: []
     );
+    selectedBed.value = BedModel(
+        bedId: 0,
+        bedName: ""
+    );
+
     for (var element in room) {
       rooms.add(element);
     }
@@ -217,6 +260,8 @@ class SettingController extends GetxController {
 
   void submitSetting() async {
     SettingModel setting =  SettingModel(
+      branchId: selectedBranch.value.branchId,
+      branchName: selectedBranch.value.branchName,
       parentId: selectedDepartment.value.parentId,
       parentName: selectedDepartment.value.parentName,
       roomId: selectedRoom.value.roomId,

@@ -23,7 +23,7 @@ class _$BranchModelTearOff {
   const _$BranchModelTearOff();
 
   _BranchModel call(
-      {String? branchId, String? branchCode, String? branchName}) {
+      {int? branchId, String? branchCode, String? branchName}) {
     return _BranchModel(
       branchId: branchId,
       branchCode: branchCode,
@@ -41,7 +41,7 @@ const $BranchModel = _$BranchModelTearOff();
 
 /// @nodoc
 mixin _$BranchModel {
-  String? get branchId => throw _privateConstructorUsedError;
+  int? get branchId => throw _privateConstructorUsedError;
   String? get branchCode => throw _privateConstructorUsedError;
   String? get branchName => throw _privateConstructorUsedError;
 
@@ -56,7 +56,7 @@ abstract class $BranchModelCopyWith<$Res> {
   factory $BranchModelCopyWith(
       BranchModel value, $Res Function(BranchModel) then) =
   _$BranchModelCopyWithImpl<$Res>;
-  $Res call({String? branchId, String? branchCode, String? branchName});
+  $Res call({int? branchId, String? branchCode, String? branchName});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$BranchModelCopyWithImpl<$Res> implements $BranchModelCopyWith<$Res> {
       branchId: branchId == freezed
           ? _value.branchId
           : branchId // ignore: cast_nullable_to_non_nullable
-      as String?,
+      as int?,
       branchCode: branchCode == freezed
           ? _value.branchCode
           : branchCode // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$BranchModelCopyWith<$Res>
       _BranchModel value, $Res Function(_BranchModel) then) =
   __$BranchModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? branchId, String? branchCode, String? branchName});
+  $Res call({int? branchId, String? branchCode, String? branchName});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class __$BranchModelCopyWithImpl<$Res> extends _$BranchModelCopyWithImpl<$Res>
       branchId: branchId == freezed
           ? _value.branchId
           : branchId // ignore: cast_nullable_to_non_nullable
-      as String?,
+      as int?,
       branchCode: branchCode == freezed
           ? _value.branchCode
           : branchCode // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ class _$_BranchModel extends _BranchModel {
       _$$_BranchModelFromJson(json);
 
   @override
-  final String? branchId;
+  final int? branchId;
   @override
   final String? branchCode;
   @override
@@ -185,7 +185,7 @@ class _$_BranchModel extends _BranchModel {
 
 abstract class _BranchModel extends BranchModel {
   factory _BranchModel(
-      {String? branchId,
+      {int? branchId,
         String? branchCode,
         String? branchName}) = _$_BranchModel;
   _BranchModel._() : super._();
@@ -194,7 +194,7 @@ abstract class _BranchModel extends BranchModel {
   _$_BranchModel.fromJson;
 
   @override
-  String? get branchId;
+  int? get branchId;
   @override
   String? get branchCode;
   @override

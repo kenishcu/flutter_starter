@@ -23,19 +23,23 @@ class _$SettingModelTearOff {
   const _$SettingModelTearOff();
 
   _SettingModel call(
-      {int? bedId,
-      String? bedName,
-      int? roomId,
-      String? roomName,
-      int? parentId,
-      String? parentName,
-      String? macAddress,
-      String? ipAddress,
-      String? deviceToken,
-      String? hotLine,
-      String? authToken,
-      List<ContactModel>? contracts}) {
+      {int? branchId,
+        String? branchName,
+        int? bedId,
+        String? bedName,
+        int? roomId,
+        String? roomName,
+        int? parentId,
+        String? parentName,
+        String? macAddress,
+        String? ipAddress,
+        String? deviceToken,
+        String? hotLine,
+        String? authToken,
+        List<ContactModel>? contracts}) {
     return _SettingModel(
+      branchId: branchId,
+      branchName: branchName,
       bedId: bedId,
       bedName: bedName,
       roomId: roomId,
@@ -61,6 +65,8 @@ const $SettingModel = _$SettingModelTearOff();
 
 /// @nodoc
 mixin _$SettingModel {
+  int? get branchId => throw _privateConstructorUsedError;
+  String? get branchName => throw _privateConstructorUsedError;
   int? get bedId => throw _privateConstructorUsedError;
   String? get bedName => throw _privateConstructorUsedError;
   int? get roomId => throw _privateConstructorUsedError;
@@ -83,21 +89,23 @@ mixin _$SettingModel {
 /// @nodoc
 abstract class $SettingModelCopyWith<$Res> {
   factory $SettingModelCopyWith(
-          SettingModel value, $Res Function(SettingModel) then) =
-      _$SettingModelCopyWithImpl<$Res>;
+      SettingModel value, $Res Function(SettingModel) then) =
+  _$SettingModelCopyWithImpl<$Res>;
   $Res call(
-      {int? bedId,
-      String? bedName,
-      int? roomId,
-      String? roomName,
-      int? parentId,
-      String? parentName,
-      String? macAddress,
-      String? ipAddress,
-      String? deviceToken,
-      String? hotLine,
-      String? authToken,
-      List<ContactModel>? contracts});
+      {int? branchId,
+        String? branchName,
+        int? bedId,
+        String? bedName,
+        int? roomId,
+        String? roomName,
+        int? parentId,
+        String? parentName,
+        String? macAddress,
+        String? ipAddress,
+        String? deviceToken,
+        String? hotLine,
+        String? authToken,
+        List<ContactModel>? contracts});
 }
 
 /// @nodoc
@@ -110,6 +118,8 @@ class _$SettingModelCopyWithImpl<$Res> implements $SettingModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? branchId = freezed,
+    Object? branchName = freezed,
     Object? bedId = freezed,
     Object? bedName = freezed,
     Object? roomId = freezed,
@@ -124,54 +134,62 @@ class _$SettingModelCopyWithImpl<$Res> implements $SettingModelCopyWith<$Res> {
     Object? contracts = freezed,
   }) {
     return _then(_value.copyWith(
+      branchId: branchId == freezed
+          ? _value.branchId
+          : branchId // ignore: cast_nullable_to_non_nullable
+      as int?,
+      branchName: branchName == freezed
+          ? _value.branchName
+          : branchName // ignore: cast_nullable_to_non_nullable
+      as String?,
       bedId: bedId == freezed
           ? _value.bedId
           : bedId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       bedName: bedName == freezed
           ? _value.bedName
           : bedName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       roomId: roomId == freezed
           ? _value.roomId
           : roomId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       roomName: roomName == freezed
           ? _value.roomName
           : roomName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       parentId: parentId == freezed
           ? _value.parentId
           : parentId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       parentName: parentName == freezed
           ? _value.parentName
           : parentName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       macAddress: macAddress == freezed
           ? _value.macAddress
           : macAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       ipAddress: ipAddress == freezed
           ? _value.ipAddress
           : ipAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       deviceToken: deviceToken == freezed
           ? _value.deviceToken
           : deviceToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       hotLine: hotLine == freezed
           ? _value.hotLine
           : hotLine // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       authToken: authToken == freezed
           ? _value.authToken
           : authToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       contracts: contracts == freezed
           ? _value.contracts
           : contracts // ignore: cast_nullable_to_non_nullable
-              as List<ContactModel>?,
+      as List<ContactModel>?,
     ));
   }
 }
@@ -180,22 +198,24 @@ class _$SettingModelCopyWithImpl<$Res> implements $SettingModelCopyWith<$Res> {
 abstract class _$SettingModelCopyWith<$Res>
     implements $SettingModelCopyWith<$Res> {
   factory _$SettingModelCopyWith(
-          _SettingModel value, $Res Function(_SettingModel) then) =
-      __$SettingModelCopyWithImpl<$Res>;
+      _SettingModel value, $Res Function(_SettingModel) then) =
+  __$SettingModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? bedId,
-      String? bedName,
-      int? roomId,
-      String? roomName,
-      int? parentId,
-      String? parentName,
-      String? macAddress,
-      String? ipAddress,
-      String? deviceToken,
-      String? hotLine,
-      String? authToken,
-      List<ContactModel>? contracts});
+      {int? branchId,
+        String? branchName,
+        int? bedId,
+        String? bedName,
+        int? roomId,
+        String? roomName,
+        int? parentId,
+        String? parentName,
+        String? macAddress,
+        String? ipAddress,
+        String? deviceToken,
+        String? hotLine,
+        String? authToken,
+        List<ContactModel>? contracts});
 }
 
 /// @nodoc
@@ -210,6 +230,8 @@ class __$SettingModelCopyWithImpl<$Res> extends _$SettingModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? branchId = freezed,
+    Object? branchName = freezed,
     Object? bedId = freezed,
     Object? bedName = freezed,
     Object? roomId = freezed,
@@ -224,54 +246,62 @@ class __$SettingModelCopyWithImpl<$Res> extends _$SettingModelCopyWithImpl<$Res>
     Object? contracts = freezed,
   }) {
     return _then(_SettingModel(
+      branchId: branchId == freezed
+          ? _value.branchId
+          : branchId // ignore: cast_nullable_to_non_nullable
+      as int?,
+      branchName: branchName == freezed
+          ? _value.branchName
+          : branchName // ignore: cast_nullable_to_non_nullable
+      as String?,
       bedId: bedId == freezed
           ? _value.bedId
           : bedId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       bedName: bedName == freezed
           ? _value.bedName
           : bedName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       roomId: roomId == freezed
           ? _value.roomId
           : roomId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       roomName: roomName == freezed
           ? _value.roomName
           : roomName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       parentId: parentId == freezed
           ? _value.parentId
           : parentId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       parentName: parentName == freezed
           ? _value.parentName
           : parentName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       macAddress: macAddress == freezed
           ? _value.macAddress
           : macAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       ipAddress: ipAddress == freezed
           ? _value.ipAddress
           : ipAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       deviceToken: deviceToken == freezed
           ? _value.deviceToken
           : deviceToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       hotLine: hotLine == freezed
           ? _value.hotLine
           : hotLine // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       authToken: authToken == freezed
           ? _value.authToken
           : authToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       contracts: contracts == freezed
           ? _value.contracts
           : contracts // ignore: cast_nullable_to_non_nullable
-              as List<ContactModel>?,
+      as List<ContactModel>?,
     ));
   }
 }
@@ -280,23 +310,29 @@ class __$SettingModelCopyWithImpl<$Res> extends _$SettingModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SettingModel extends _SettingModel {
   _$_SettingModel(
-      {this.bedId,
-      this.bedName,
-      this.roomId,
-      this.roomName,
-      this.parentId,
-      this.parentName,
-      this.macAddress,
-      this.ipAddress,
-      this.deviceToken,
-      this.hotLine,
-      this.authToken,
-      this.contracts})
+      {this.branchId,
+        this.branchName,
+        this.bedId,
+        this.bedName,
+        this.roomId,
+        this.roomName,
+        this.parentId,
+        this.parentName,
+        this.macAddress,
+        this.ipAddress,
+        this.deviceToken,
+        this.hotLine,
+        this.authToken,
+        this.contracts})
       : super._();
 
   factory _$_SettingModel.fromJson(Map<String, dynamic> json) =>
       _$$_SettingModelFromJson(json);
 
+  @override
+  final int? branchId;
+  @override
+  final String? branchName;
   @override
   final int? bedId;
   @override
@@ -324,7 +360,7 @@ class _$_SettingModel extends _SettingModel {
 
   @override
   String toString() {
-    return 'SettingModel(bedId: $bedId, bedName: $bedName, roomId: $roomId, roomName: $roomName, parentId: $parentId, parentName: $parentName, macAddress: $macAddress, ipAddress: $ipAddress, deviceToken: $deviceToken, hotLine: $hotLine, authToken: $authToken, contracts: $contracts)';
+    return 'SettingModel(branchId: $branchId, branchName: $branchName, bedId: $bedId, bedName: $bedName, roomId: $roomId, roomName: $roomName, parentId: $parentId, parentName: $parentName, macAddress: $macAddress, ipAddress: $ipAddress, deviceToken: $deviceToken, hotLine: $hotLine, authToken: $authToken, contracts: $contracts)';
   }
 
   @override
@@ -332,6 +368,9 @@ class _$_SettingModel extends _SettingModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SettingModel &&
+            const DeepCollectionEquality().equals(other.branchId, branchId) &&
+            const DeepCollectionEquality()
+                .equals(other.branchName, branchName) &&
             const DeepCollectionEquality().equals(other.bedId, bedId) &&
             const DeepCollectionEquality().equals(other.bedName, bedName) &&
             const DeepCollectionEquality().equals(other.roomId, roomId) &&
@@ -352,6 +391,8 @@ class _$_SettingModel extends _SettingModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(branchId),
+      const DeepCollectionEquality().hash(branchName),
       const DeepCollectionEquality().hash(bedId),
       const DeepCollectionEquality().hash(bedName),
       const DeepCollectionEquality().hash(roomId),
@@ -378,23 +419,29 @@ class _$_SettingModel extends _SettingModel {
 
 abstract class _SettingModel extends SettingModel {
   factory _SettingModel(
-      {int? bedId,
-      String? bedName,
-      int? roomId,
-      String? roomName,
-      int? parentId,
-      String? parentName,
-      String? macAddress,
-      String? ipAddress,
-      String? deviceToken,
-      String? hotLine,
-      String? authToken,
-      List<ContactModel>? contracts}) = _$_SettingModel;
+      {int? branchId,
+        String? branchName,
+        int? bedId,
+        String? bedName,
+        int? roomId,
+        String? roomName,
+        int? parentId,
+        String? parentName,
+        String? macAddress,
+        String? ipAddress,
+        String? deviceToken,
+        String? hotLine,
+        String? authToken,
+        List<ContactModel>? contracts}) = _$_SettingModel;
   _SettingModel._() : super._();
 
   factory _SettingModel.fromJson(Map<String, dynamic> json) =
-      _$_SettingModel.fromJson;
+  _$_SettingModel.fromJson;
 
+  @override
+  int? get branchId;
+  @override
+  String? get branchName;
   @override
   int? get bedId;
   @override

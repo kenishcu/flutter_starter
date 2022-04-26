@@ -36,9 +36,9 @@ class BedTypeWidget extends GetView<HomeController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          child: const Text(
-                            "Loại giường VIP 1",
-                            style: TextStyle(
+                          child: Text(
+                            "Chi nhánh ${controller.deviceInfo.branchName.toString()}",
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16
                             ),

@@ -15,10 +15,10 @@ class SelectionBranch extends GetView<SettingController> {
       BuildContext context, BranchModel? selectedItem) {
 
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.only(bottom: 4.0),
       child: ListTile(
         contentPadding: const EdgeInsets.all(0),
-        title: Text(selectedItem?.branchName ?? ''),
+        title: Text((selectedItem?.branchName  ?? '')),
       ),
     );
   }

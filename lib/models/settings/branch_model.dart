@@ -9,7 +9,7 @@ class BranchModel with _$BranchModel {
   const BranchModel._();
 
   factory BranchModel({
-    String? branchId,
+    int? branchId,
     String? branchCode,
     String? branchName,
   }) = _BranchModel;
