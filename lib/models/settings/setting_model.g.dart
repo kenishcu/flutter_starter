@@ -8,6 +8,8 @@ part of 'setting_model.dart';
 
 _$_SettingModel _$$_SettingModelFromJson(Map<String, dynamic> json) =>
     _$_SettingModel(
+      branchId: json['branch_id'] as int?,
+      branchName: json['branch_name'] as String?,
       bedId: json['bed_id'] as int?,
       bedName: json['bed_name'] as String?,
       roomId: json['room_id'] as int?,
@@ -26,6 +28,8 @@ _$_SettingModel _$$_SettingModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_SettingModelToJson(_$_SettingModel instance) =>
     <String, dynamic>{
+      'branch_id': instance.branchId,
+      'branch_name': instance.branchName,
       'bed_id': instance.bedId,
       'bed_name': instance.bedName,
       'room_id': instance.roomId,

@@ -27,7 +27,6 @@ class ProductWidget extends GetView<LoanServiceController> {
                 height: 50,
                 child: GestureDetector(
                   onTap: () {
-                    controller.setSelectedTab(index);
                   },
                   child: Container(
                       decoration: BoxDecoration(

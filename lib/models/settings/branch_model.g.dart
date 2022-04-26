@@ -8,7 +8,7 @@ part of 'branch_model.dart';
 
 _$_BranchModel _$$_BranchModelFromJson(Map<String, dynamic> json) =>
     _$_BranchModel(
-      branchId: json['branch_id'] as String?,
+      branchId: json['branch_id'] as int?,
       branchCode: json['branch_code'] as String?,
       branchName: json['branch_name'] as String?,
     );
