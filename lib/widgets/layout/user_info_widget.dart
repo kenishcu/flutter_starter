@@ -21,7 +21,7 @@ class UserInfoWidget extends StatelessWidget {
           SizedBox(
             width: 60,
             height: 60,
-            child: Image.asset("assets/img/avatar.png"),
+            child: controller.patientInfo.sex == 1 ? Image.asset("assets/img/male.png") :  Image.asset("assets/img/fe-male.png"),
           ),
           SizedBox(
             child: Container(
