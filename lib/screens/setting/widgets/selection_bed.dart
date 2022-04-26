@@ -45,18 +45,18 @@ class SelectionBed extends GetView<SettingController> {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: 80,
+      height: 60,
       width: double.infinity,
       child: Row(
         children: [
          const SizedBox(
-           height: 60,
+           height: 50,
            width: 200,
            child: Align(
              alignment: Alignment.center,
              child: Text("Giường",
                textAlign: TextAlign.center,
-               style: const TextStyle(
+               style: TextStyle(
                    fontWeight: FontWeight.w600,
                    fontSize: 20
                ),
@@ -64,7 +64,7 @@ class SelectionBed extends GetView<SettingController> {
            ),
          ),
          Obx(() =>  SizedBox(
-           height: 60,
+           height: 50,
            width: size.width - 500,
            child:  DropdownSearch<BedModel>(
              mode: Mode.DIALOG,

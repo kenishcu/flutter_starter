@@ -5,6 +5,7 @@ import 'package:flutter_stater/layout/setting_layout.dart';
 import 'package:flutter_stater/models/settings/department_model.dart';
 import 'package:flutter_stater/models/settings/room_model.dart';
 import 'package:flutter_stater/screens/setting/widgets/selection_bed.dart';
+import 'package:flutter_stater/screens/setting/widgets/selection_branch.dart';
 import 'package:flutter_stater/screens/setting/widgets/selection_department.dart';
 import 'package:flutter_stater/screens/setting/widgets/selection_room.dart';
 import 'package:get/get.dart';
@@ -36,12 +37,12 @@ class SettingScreen extends GetView<SettingController> {
 
     Widget ipInput() {
       return SizedBox(
-        height: 80,
+        height: 60,
         width: double.infinity,
         child: Row(
           children: [
              const SizedBox(
-              height: 60,
+              height: 50,
               width: 200,
               child: Align(
                 alignment: Alignment.center,
@@ -55,7 +56,7 @@ class SettingScreen extends GetView<SettingController> {
               ),
             ),
              SizedBox(
-               height: 60,
+               height: 50,
                width: size.width - 500,
                child: TextFormField(
                  controller: controller.ipAddress.value,
@@ -80,12 +81,12 @@ class SettingScreen extends GetView<SettingController> {
 
     Widget macInput() {
       return SizedBox(
-        height: 80,
+        height: 60,
         width: double.infinity,
         child: Row(
           children: [
             const SizedBox(
-              height: 60,
+              height: 50,
               width: 200,
               child: Align(
                 alignment: Alignment.center,
@@ -99,7 +100,7 @@ class SettingScreen extends GetView<SettingController> {
               ),
             ),
             SizedBox(
-              height: 60,
+              height: 50,
               width: size.width - 500,
               child: TextFormField(
                 controller: controller.macAddress.value,
@@ -176,6 +177,7 @@ class SettingScreen extends GetView<SettingController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     settingTitle(),
+                    const SelectionBranch(),
                     const SelectionDepartment(),
                     const SelectionRoom(),
                     const SelectionBed(),

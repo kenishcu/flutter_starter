@@ -1,3 +1,4 @@
+import 'package:flutter_stater/adapters/repository/setting/branch_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/department_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/room_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/setting_repository.dart';
@@ -15,9 +16,11 @@ class SettingBinding extends Bindings {
   @override
   void dependencies() {
 
+    BranchRepository branchRepository = BranchRepository();
     DepartmentRepository departmentRepository = DepartmentRepository();
     RoomRepository roomRepository =  RoomRepository();
     SettingRepository settingRepository = SettingRepository();
+
 
     Get.put<SettingController>(
       SettingController(
@@ -25,6 +28,7 @@ class SettingBinding extends Bindings {
         departmentRepository: departmentRepository,
         roomRepository: roomRepository,
         settingRepository: settingRepository,
+        branchRepository: branchRepository,
       ),
     );
   }
