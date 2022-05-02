@@ -33,11 +33,11 @@ class UserInfoWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(controller.patientInfo.patientName.toString(), overflow: TextOverflow.ellipsis
-                      ,style: TextStyle(
+                      ,style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       )),
-                  Text("Mã y tế: ${controller.patientInfo.patientId.toString()}", style: TextStyle(
+                  Text("Mã y tế: ${controller.patientInfo.patientId.toString()}", style: const TextStyle(
                     fontSize: 14,
                   ))
                 ],

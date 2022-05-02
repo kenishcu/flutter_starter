@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:get/get.dart';
@@ -193,12 +194,32 @@ class BillServiceWidget extends GetView<HomeController> {
               child: Container(
                 height: 50,
                 width: double.infinity,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text("Tổng tạm tính: ${formatPrice(total)}" , style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600
-                  )),
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Tổng tạm ứng: ${formatPrice(controller.patientInfo.totalDepositPrice! - controller.patientInfo.totalReturnPrice!)}" , style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600
+                        )),
+                      ),
+                      ),
+                    Expanded(
+                      flex: 1,
+                      child: Align(
+                          alignment: Alignment.center,
+                          child: Text("Tổng tạm tính: ${formatPrice(total)}" , style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600
+                        )),
+                      )
+                    ),
+                  ],
                 ),
               ),
             )
