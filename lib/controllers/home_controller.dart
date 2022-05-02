@@ -16,7 +16,7 @@ import '../models/result/result_model.dart';
 import '../screens/home/widgets/calendar_info/animated_list_utils.dart';
 import '../utils/convert.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController with GetTickerProviderStateMixin {
 
   final GetStorage box;
   final ReceiptRepository receiptRepository;
@@ -26,9 +26,7 @@ class HomeController extends GetxController {
     required this.box,
     required this.receiptRepository,
     required this.calendarInfoRepository,
-  }) {
-    init();
-  }
+  });
 
   late UserModel patientInfo;
   late SettingModel deviceInfo;
@@ -42,7 +40,7 @@ class HomeController extends GetxController {
   /// meal
   late ListModel<ReceptionMealModel> listMeal;
   bool? shrinkMealList = false;
-  final GlobalKey<AnimatedListState> listKeyMeal = GlobalKey<AnimatedListState>();
+  GlobalKey<AnimatedListState> listKeyMeal = GlobalKey<AnimatedListState>(debugLabel: '_homeMeal');
 
   /// treatment
   // late ListModel<TreatmentInfoModel> listTreatment;
@@ -129,10 +127,19 @@ class HomeController extends GetxController {
     }
   ];
 
-
-  void init() {
+  @override
+  void onInit() {
+    super.onInit();
     addCalendarInfo();
   }
+
+  @override
+  void dispose(){
+    super.dispose();
+    // listKeyMeal.currentState!.dispose();
+  }
+
+
 
   // Used to build an item after it has been removed from the list. This
   // method is needed because a removed item remains visible until its
@@ -310,6 +317,7 @@ class HomeController extends GetxController {
   Future getRestaurantInfo() async {
     final ProductRestaurantController productRestaurantController = Get.find<ProductRestaurantController>();
     await productRestaurantController.initRestaurant();
+    await productRestaurantController.initScreenRestaurant();
   }
 
   Future getFoodTreatmentInfo() async {

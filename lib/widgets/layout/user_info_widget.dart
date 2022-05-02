@@ -21,7 +21,7 @@ class UserInfoWidget extends StatelessWidget {
           SizedBox(
             width: 60,
             height: 60,
-            child: Image.asset("assets/img/avatar.png"),
+            child: controller.patientInfo.sex == 1 ? Image.asset("assets/img/male.png") :  Image.asset("assets/img/fe-male.png"),
           ),
           SizedBox(
             child: Container(
@@ -33,11 +33,11 @@ class UserInfoWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(controller.patientInfo.patientName.toString(), overflow: TextOverflow.ellipsis
-                      ,style: TextStyle(
+                      ,style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       )),
-                  Text("Mã y tế: ${controller.patientInfo.patientId.toString()}", style: TextStyle(
+                  Text("Mã y tế: ${controller.patientInfo.patientId.toString()}", style: const TextStyle(
                     fontSize: 14,
                   ))
                 ],

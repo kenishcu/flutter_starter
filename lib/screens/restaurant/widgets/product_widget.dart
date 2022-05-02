@@ -71,7 +71,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                 ),
               )
           ),
-          child: Obx(() => ListView(
+          child: controller.myCategories[controller.selectedTab.value].isNotEmpty ? Obx(() => ListView(
             scrollDirection: Axis.horizontal,
             children: List<Widget>.generate(
               controller.myCategories[controller.selectedTab.value].length,
@@ -90,7 +90,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                 );
               },
             ).toList(),
-          )),
+          )): Container(),
         ));
   }
 
@@ -104,7 +104,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
-              flex: 2,
+              flex: 1,
               child: _daySelection(context),
             ),
             Expanded(
@@ -154,33 +154,33 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                 child: Container(
                   child: InkWell(
                     onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) => showCalendarDialog(context),
-                      );
+                      // showDialog(
+                      //   context: context,
+                      //   builder: (_) => showCalendarDialog(context),
+                      // );
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                          child: Text(_formatTime(controller.selectedDay) + ", Bữa phụ sáng", style: const TextStyle(
+                          child: Text(_formatTime(controller.selectedDay) + "", style: const TextStyle(
                               fontSize: 20
                           )),
                         ),
                         const SizedBox(
                           width: 20,
                         ),
-                        SizedBox(
-                          width: 30,
-                          child:  IconButton(
-                            padding: const EdgeInsets.all(0.0),
-                            icon: const Icon(Icons.arrow_drop_down, size: 30),
-                            tooltip: 'Increase',
-                            onPressed: () {
-                            },
-                          ),
-                        )
+                        // SizedBox(
+                        //   width: 30,
+                        //   child:  IconButton(
+                        //     padding: const EdgeInsets.all(0.0),
+                        //     icon: const Icon(Icons.arrow_drop_down, size: 30),
+                        //     tooltip: 'Increase',
+                        //     onPressed: () {
+                        //     },
+                        //   ),
+                        // )
                       ],
                     ),
                   ),
@@ -196,25 +196,25 @@ class ProductWidget extends GetView<ProductRestaurantController>{
     return Dialog(
       child: SizedBox(
           width: 400,
-          height: 550,
+          height: 300,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 40,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 5.0, left: 30.0),
-                  child: Text("Đặt cho ngày :" , style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
-                  )),
-                ),
-              ),
-              const Expanded(
-                  flex: 1,
-                  child: CustomizedDatePicker()
-              ),
+              // const SizedBox(
+              //   height: 40,
+              //   child: Padding(
+              //     padding: EdgeInsets.only(top: 5.0, left: 30.0),
+              //     child: Text("Đặt cho ngày :" , style: TextStyle(
+              //         fontSize: 20,
+              //         fontWeight: FontWeight.bold
+              //     )),
+              //   ),
+              // ),
+              // const Expanded(
+              //     flex: 1,
+              //     child: CustomizedDatePicker()
+              // ),
               const SizedBox(
                 height: 40,
                 child: Padding(
@@ -375,7 +375,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
   }
 
   Widget _products(BuildContext context) {
-    return SliverGrid(
+    return controller.products[controller.selectedTab.value].isNotEmpty ? SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         mainAxisSpacing: 15.0,
@@ -388,7 +388,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
         },
         childCount: controller.products[controller.selectedTab.value].length,
       ),
-    );
+    ): Container();
   }
 
   Widget _buildItemProduct(ProductModel productModel, BuildContext context) {
@@ -505,6 +505,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -526,7 +527,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                 ))
             ),
           ),
-          Expanded(
+          Obx(() => controller.initScreen.value ? Expanded(
               flex: 1,
               child: Container(
                 width: double.infinity,
@@ -555,14 +556,14 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                             children: [
                               _categoryBar(context),
                               _searchBar(context),
-                              Expanded(child: Obx(() => CustomScrollView(
+                              Expanded(child: CustomScrollView(
                                   slivers : <Widget>[
                                     SliverPadding(
                                       padding: const EdgeInsets.all(10.0),
                                       sliver: _products(context),
                                     )
                                   ]
-                              )))
+                              ))
                             ],
                           ),
                         )
@@ -570,7 +571,7 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                   ],
                 ),
               )
-          )
+          ): Container())
         ],
       ),
     );

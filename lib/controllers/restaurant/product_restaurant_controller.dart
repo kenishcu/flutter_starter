@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stater/adapters/repository/restaurant/restaurant_repository.dart';
 import 'package:flutter_stater/models/restaurant/category_model.dart';
 import 'package:flutter_stater/models/restaurant/item_product_model.dart';
+import 'package:flutter_stater/models/restaurant/payment_type_model.dart';
 import 'package:flutter_stater/models/restaurant/sub_category_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,7 +10,7 @@ import 'package:intl/intl.dart';
 
 import '../../models/restaurant/product_model.dart';
 
-class ProductRestaurantController extends GetxController with GetSingleTickerProviderStateMixin {
+class ProductRestaurantController extends GetxController with GetTickerProviderStateMixin {
 
   final GetStorage box;
 
@@ -21,11 +22,15 @@ class ProductRestaurantController extends GetxController with GetSingleTickerPro
 
   List<CategoryModel> myTabs = <CategoryModel>[].obs;
 
-  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>(debugLabel: '_restaurant');
+
+  late AnimationController controllerCircle;
 
   List<List<SubCategoryModel>> myCategories = <List<SubCategoryModel>>[].obs;
 
   List<List<ProductModel>> products = <List<ProductModel>>[].obs;
+
+  PaymentTypeModel payment = PaymentTypeModel(paymentTypeId: "1", paymentTypeCode: "CASH", paymentTypeName: "Tiền mặt");
 
   List<int> selectedCategories = <int>[].obs;
 
@@ -35,16 +40,25 @@ class ProductRestaurantController extends GetxController with GetSingleTickerPro
   DateTime selectedDay = DateTime.now();
   RxInt total = 0.obs;
 
+  RxBool initScreen = false.obs;
+
   @override
   void onInit() {
     super.onInit();
+    controllerCircle = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..addListener(() {
+    });
+    controllerCircle.repeat(reverse: true);
     tabController = TabController(length: myTabs.length, vsync: this);
   }
 
   @override
   void dispose(){
     tabController.dispose();
-    listKey.currentState!.dispose();
+    // listKey.currentState!.dispose();
+    controllerCircle.dispose();
     super.dispose();
   }
 
@@ -158,4 +172,8 @@ class ProductRestaurantController extends GetxController with GetSingleTickerPro
     }
   }
 
+  Future initScreenRestaurant() async {
+    await Future.delayed(const Duration(seconds: 2));
+    initScreen.value = true;
+  }
 }
