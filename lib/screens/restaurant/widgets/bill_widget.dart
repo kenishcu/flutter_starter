@@ -6,53 +6,54 @@ import 'package:money2/money2.dart';
 
 import '../../../controllers/restaurant/product_restaurant_controller.dart';
 import '../../../models/restaurant/product_model.dart';
+import '../../../utils/convert.dart';
 
-class BillWidget extends GetView<ProductRestaurantController> {
+class BillWidget extends StatefulWidget {
 
-  const BillWidget({Key? key}): super (key: key);
+  const BillWidget({Key? key, required this.listKey}): super (key: key);
 
-  String _formatPrice(int price) {
-    if(price == 0) {
-      return price.toString() + ' đ';
-    }
-    final vnd = Currency.create('VND', 3,
-        symbol: 'đ', invertSeparators: true, pattern: '#.##0,000 S');
-    return Money.fromIntWithCurrency(price, vnd, scale: 3).toString();
-  }
+  final GlobalKey<AnimatedListState> listKey;
 
+  @override
+  _BillWidgetState createState() => _BillWidgetState();
+}
 
+class _BillWidgetState extends State<BillWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    ProductRestaurantController controller = Get.find<ProductRestaurantController>();
+
     return SizedBox(
       child: Column(
         children: [
           Expanded(
-          flex: 1,
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-                color: Colors.white54,
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(20.0)
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                SizedBox(
-                  height: 40,
-                  child: Text('Chú ý'),
+              flex: 1,
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                    color: Colors.white54,
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(20.0)
                 ),
-                SizedBox(
-                  height: 50,
-                  child: Text('Không ăn rau muống.'),
-                )
-              ],
-            ),
-          )
-      ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    SizedBox(
+                      height: 40,
+                      child: Text('Chú ý'),
+                    ),
+                    SizedBox(
+                      height: 50,
+                      child: Text('Không ăn rau muống.'),
+                    )
+                  ],
+                ),
+              )
+          ),
           Expanded(
               flex: 4,
               child: SizedBox(
@@ -79,7 +80,7 @@ class BillWidget extends GetView<ProductRestaurantController> {
                             width: double.infinity,
                             child: Container(
                                 padding: const EdgeInsets.only(bottom: 20),
-                                child: const AnimatedItemWidget()
+                                child: AnimatedItemWidget(listKey: widget.listKey)
                             ),
                           )
                       ),
@@ -89,10 +90,10 @@ class BillWidget extends GetView<ProductRestaurantController> {
                         child: Row(
                           children: [
                             Expanded(
-                                flex: 1,
-                                child: Padding(
+                              flex: 1,
+                              child: Padding(
                                   padding: const EdgeInsets.only(left: 20, top: 10),
-                                  child: Text('Tổng :')),
+                                  child: Obx(() => Text('Tổng : ${formatPrice(controller.total.value)}'))),
                             ),
                             Expanded(
                                 flex: 1,
@@ -149,4 +150,6 @@ class BillWidget extends GetView<ProductRestaurantController> {
       ),
     );
   }
+
+
 }

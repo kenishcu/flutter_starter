@@ -17,36 +17,35 @@ class ProductWidget extends GetView<FoodTreatmentController>{
             topLeft: Radius.circular(20)
         ),
       ),
-      // child: Obx(() => Row(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     mainAxisAlignment: MainAxisAlignment.start,
-      //     children: List<Widget>.generate(controller.myTabs.length, (index) {
-      //       return SizedBox(
-      //           width: 150,
-      //           height: 50,
-      //           child: GestureDetector(
-      //             onTap: () {
-      //               controller.setSelectedTab(index);
-      //             },
-      //             child: Container(
-      //                 decoration: BoxDecoration(
-      //                   color: controller.selectedTab.value == index ? Colors.white : Theme.of(context).colorScheme.onPrimary,
-      //                   borderRadius: const BorderRadius.only(
-      //                       topRight: Radius.circular(20),
-      //                       topLeft: Radius.circular(20)
-      //                   ),
-      //                 ),
-      //                 child: Align(
-      //                     alignment: Alignment.center,
-      //                     child: Text(controller.myTabs[index].categoryName!, style: const TextStyle(
-      //                         color: Colors.black
-      //                     ))
-      //                 )
-      //             ),
-      //           )
-      //       );
-      //     })
-      // )),
+      child: Obx(() => Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: List<Widget>.generate(controller.myTabs.length, (index) {
+            return SizedBox(
+                width: 150,
+                height: 50,
+                child: GestureDetector(
+                  onTap: () {
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: controller.selectedTab.value == index ? Colors.white : Theme.of(context).colorScheme.onPrimary,
+                        borderRadius: const BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            topLeft: Radius.circular(20)
+                        ),
+                      ),
+                      child: Align(
+                          alignment: Alignment.center,
+                          child: Text(controller.myTabs[index].menuCalendarDailyName!, style: const TextStyle(
+                              color: Colors.black
+                          ))
+                      )
+                  ),
+                )
+            );
+          })
+      )),
     );
   }
 

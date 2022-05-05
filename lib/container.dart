@@ -1,4 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_stater/bindings/food_treatment_binding.dart';
 import 'package:flutter_stater/bindings/home_binding.dart';
 import 'package:flutter_stater/bindings/intro_binding.dart';

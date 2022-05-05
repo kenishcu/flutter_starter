@@ -21,6 +21,8 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
   late TabController tabController;
+  RxInt selectedTab = 0.obs;
+  int selectedCategory = 0;
 
   @override
   void onInit() {
@@ -38,7 +40,12 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
   Future initFoodTreatment() async {
     final res = await foodTreatmentRepository.findAllMenu();
     if (res.status ==  true) {
-
+      myTabs = [];
+      if(res.results != null && res.results.length > 0) {
+        res.results.forEach((e) async => {
+          myTabs.add(MenuModel.fromJson(e))
+        });
+      }
     } else {
 
     }

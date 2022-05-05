@@ -22,8 +22,6 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
 
   List<CategoryModel> myTabs = <CategoryModel>[].obs;
 
-  GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>(debugLabel: '_restaurant');
-
   late AnimationController controllerCircle;
 
   List<List<SubCategoryModel>> myCategories = <List<SubCategoryModel>>[].obs;
@@ -37,6 +35,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   late TabController tabController;
   RxInt selectedTab = 0.obs;
   int selectedCategory = 0;
+  late ScrollController scrollController;
   DateTime selectedDay = DateTime.now();
   RxInt total = 0.obs;
 
@@ -51,6 +50,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     )..addListener(() {
     });
     controllerCircle.repeat(reverse: true);
+    scrollController = ScrollController();
     tabController = TabController(length: myTabs.length, vsync: this);
   }
 
@@ -69,7 +69,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       if(response.results != null && response.results.length > 0) {
         response.results.forEach((e) async => {
           myTabs.add(CategoryModel.fromJson(e))
-      });
+        });
       }
 
       for (var element in myTabs) {
@@ -124,7 +124,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     }
   }
 
-  void addItem(ProductModel product) {
+  void addItem(ProductModel product,  GlobalKey<AnimatedListState> listKey) {
     ItemProductModel item = ItemProductModel(
         product: product,
         edit: "",
@@ -155,9 +155,10 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       listKey.currentState?.insertItem(0, duration: const Duration(milliseconds: 500));
       itemEs.add(item);
     }
+    countTotal();
   }
 
-  void subItem(int index){
+  void subItem(int index, GlobalKey<AnimatedListState> listKey) {
     if(itemEs[index].number! > 1) {
       ItemProductModel p = itemEs[index].copyWith(
           product: itemEs[index].product,
@@ -169,6 +170,41 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
+    }
+    countTotal();
+  }
+
+  void plusItem(int index) {
+    ItemProductModel p = itemEs[index].copyWith(
+        product: itemEs[index].product,
+        edit: itemEs[index].edit,
+        number: ( itemEs[index].number! + 1));
+    itemEs[index] = p;
+    countTotal();
+  }
+
+  Future search(String text) async {
+    print("search with text: ${text}");
+    var responseProduct = await restaurantRepository.findAllProduct(myCategories[selectedTab.value][selectedCategory].categoryId.toString(), text, myTabs[selectedTab.value].categoryId.toString(), 50, 0);
+    if(responseProduct.status == true) {
+      List<ProductModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(ProductModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
+  }
+
+  void countTotal() {
+    if(itemEs.isNotEmpty) {
+      var t = 0;
+      for (var element in itemEs) {
+        var price = element.product?.price;
+        t += (element.number! * price!);
+      }
+      total.value = t;
     }
   }
 
