@@ -5,6 +5,8 @@ import 'package:flutter_stater/screens/intro/widgets/youtube_player.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
+import '../../controllers/setting_controller.dart';
+
 class IntroScreen extends GetView<IntroController> {
 
   const IntroScreen({Key? key}) : super(key: key);

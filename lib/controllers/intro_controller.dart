@@ -1,6 +1,7 @@
 import 'package:flutter_stater/adapters/repository/home/user_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/setting_repository.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:flutter_stater/models/settings/itrmin_setting_model.dart';
 import 'package:flutter_stater/models/user/user_model.dart';
@@ -73,6 +74,8 @@ class IntroController extends GetxController {
       await homeController.getBillAndPaymentInfo(user.patientId!, user.receptionQueueId!);
       await homeController.getScheduleOfPatient();
       homeController.setList();
+      SettingController settingController = Get.find<SettingController>();
+      settingController.getSettingConfig();
       return true;
     } else {
       return false;
