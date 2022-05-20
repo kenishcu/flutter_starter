@@ -17,7 +17,7 @@ class ButtonServiceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return SizedBox(
       width: 90,
       height: 135,
       child: Column(

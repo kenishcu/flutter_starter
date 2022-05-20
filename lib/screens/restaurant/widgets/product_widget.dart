@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/models/restaurant/item_product_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
@@ -8,9 +7,19 @@ import '../../../controllers/restaurant/product_restaurant_controller.dart';
 import '../../../models/restaurant/product_model.dart';
 import '../../../widgets/calendar/customized_date_picker.dart';
 
-class ProductWidget extends GetView<ProductRestaurantController>{
+class ProductWidget extends StatefulWidget {
 
-  const ProductWidget({Key? key}): super(key: key);
+  const ProductWidget({Key? key, required this.listKey}): super(key: key);
+
+  final GlobalKey<AnimatedListState> listKey;
+
+  @override
+  _ProductWidgetState createState() => _ProductWidgetState();
+}
+
+class _ProductWidgetState extends State<ProductWidget> {
+
+  ProductRestaurantController controller = Get.find<ProductRestaurantController>();
 
   Widget _menuBar(BuildContext context) {
     return Container(
@@ -61,21 +70,21 @@ class ProductWidget extends GetView<ProductRestaurantController>{
         height: 50,
         width: double.infinity,
         child: Container(
-          height: 50,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.grey,
-                  width: 1.0,
-                ),
-              )
-          ),
-          child: controller.myCategories[controller.selectedTab.value].isNotEmpty ? Obx(() => ListView(
-            scrollDirection: Axis.horizontal,
-            children: List<Widget>.generate(
-              controller.myCategories[controller.selectedTab.value].length,
-                  (int index) {
+            height: 50,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey,
+                    width: 1.0,
+                  ),
+                )
+            ),
+            child: Obx(() => ListView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: controller.scrollController,
+              itemCount: controller.myCategories[controller.selectedTab.value].length,
+              itemBuilder: (BuildContext context, int index) {
                 return Container(
                   margin: const EdgeInsets.only(left: 10, right: 10),
                   child: ChoiceChip(
@@ -89,9 +98,8 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                   ),
                 );
               },
-            ).toList(),
-          )): Container(),
-        ));
+            )))
+    );
   }
 
   Widget _searchBar(BuildContext context) {
@@ -300,6 +308,9 @@ class ProductWidget extends GetView<ProductRestaurantController>{
             padding: const EdgeInsets.all(5.0),
             child: TextField(
               style: const TextStyle(fontSize: 15.0),
+              onChanged: (String text) {
+                controller.search(text);
+              },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                 prefixIcon: const Icon(Icons.search),
@@ -322,48 +333,53 @@ class ProductWidget extends GetView<ProductRestaurantController>{
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           SizedBox(
-            width: 30,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  icon: const Icon(Icons.filter_list_alt, size: 30),
-                  tooltip: 'Increase',
-                  onPressed: () {
-                  },
+              width: 30,
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      padding: const EdgeInsets.all(0.0),
+                      icon: const Icon(Icons.filter_list_alt, size: 30),
+                      tooltip: 'Increase',
+                      onPressed: () {
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                      child: Text("Lọc" , style: TextStyle(
+                          fontSize: 10
+                      )),
+                    )
+                  ],
                 ),
-                const SizedBox(
-                  height: 10,
-                  child: Text("Lọc" , style: TextStyle(
-                      fontSize: 10
-                  )),
-                )
-              ],
-            ),
+              )
           ),
           const SizedBox(
             width: 10,
           ),
           SizedBox(
             width: 40,
-            child: Column(
-              children: [
-                IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  icon: const Icon(Icons.sort, size: 30),
-                  tooltip: 'Increase',
-                  onPressed: () {
-                  },
-                ),
-                const SizedBox(
-                  height: 10,
-                  child: Text("Sắp xếp" , style: TextStyle(
-                      fontSize: 10
-                  )),
-                )
-              ],
+            child: Container(
+              padding: const EdgeInsets.only(top: 0),
+              child: Column(
+                children: [
+                  IconButton(
+                    padding: const EdgeInsets.all(0.0),
+                    icon: const Icon(Icons.sort, size: 30),
+                    tooltip: 'Increase',
+                    onPressed: () {
+                    },
+                  ),
+                  const SizedBox(
+                    height: 10,
+                    child: Text("Sắp xếp" , style: TextStyle(
+                        fontSize: 10
+                    )),
+                  )
+                ],
+              ),
             ),
           ),
           const SizedBox(
@@ -393,118 +409,117 @@ class ProductWidget extends GetView<ProductRestaurantController>{
 
   Widget _buildItemProduct(ProductModel productModel, BuildContext context) {
     return SizedBox(
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.6),
-                spreadRadius: 2,
-                blurRadius: 1.5,
-                offset: const Offset(0, 1),
-              ),
-            ]
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                margin: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Theme.of(context).colorScheme.secondary,
-                        width: 2
-                    )
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.6),
+                  spreadRadius: 2,
+                  blurRadius: 1.5,
+                  offset: const Offset(0, 1),
                 ),
-                width: double.infinity,
-                height: double.infinity,
-                child: Image.network("https://nhapi.hongngochospital.vn" + productModel.imageUrl!),
+              ]
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  margin: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.secondary,
+                          width: 2
+                      )
+                  ),
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Image.network("https://nhapi.hongngochospital.vn" + productModel.imageUrl!),
+                ),
               ),
-            ),
-            Expanded(
-                flex: 2,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                          child: Text(productModel.productName!,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                              style: const TextStyle(
-                                fontSize: 16,
-                              )),
-                        )
-                    ),
-                    Expanded(
-                        flex: 1,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text(_formatPrice(productModel.price!)),
+              Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
+                            child: Text(productModel.productName!,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                )),
+                          )
+                      ),
+                      Expanded(
+                          flex: 1,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(_formatPrice(productModel.price!)),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                                flex: 3,
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Container(
-                                    height: 40,
-                                    margin: const EdgeInsets.only(right: 5.0, bottom: 10, left: 5),
-                                    decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.secondaryVariant,
-                                        borderRadius: BorderRadius.circular(20.0)
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        controller.addItem(productModel);
-                                      },
-                                      child: Row(
-                                        children: const [
-                                          SizedBox(
-                                            child: Icon(
-                                              Icons.add_shopping_cart,
-                                              size: 20,
-                                              color: Colors.white,
+                              Expanded(
+                                  flex: 3,
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Container(
+                                      height: 40,
+                                      margin: const EdgeInsets.only(right: 5.0, bottom: 10, left: 5),
+                                      decoration: BoxDecoration(
+                                          color: Theme.of(context).colorScheme.secondaryVariant,
+                                          borderRadius: BorderRadius.circular(20.0)
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          controller.addItem(productModel, widget.listKey);
+                                        },
+                                        child: Row(
+                                          children: const [
+                                            SizedBox(
+                                              child: Icon(
+                                                Icons.add_shopping_cart,
+                                                size: 20,
+                                                color: Colors.white,
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          SizedBox(
-                                            child: Text("Thêm vào giỏ", style: TextStyle(
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            SizedBox(
+                                              child: Text("Thêm vào giỏ", style: TextStyle(
                                                 fontSize: 12,
-                                              color: Colors.white,
-                                            ),),
-                                          )
-                                        ],
+                                                color: Colors.white,
+                                              ),),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                )
-                            )
-                          ],
-                        )
-                    )
-                  ],
-                )
-            )
-          ],
-        ),
-      )
+                                  )
+                              )
+                            ],
+                          )
+                      )
+                    ],
+                  )
+              )
+            ],
+          ),
+        )
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -534,9 +549,11 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                 height: double.infinity,
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: _menuBar(context),
+                    SizedBox(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: _menuBar(context),
+                      ),
                     ),
                     Expanded(
                         flex: 1,
@@ -554,7 +571,13 @@ class ProductWidget extends GetView<ProductRestaurantController>{
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              _categoryBar(context),
+                              SizedBox(
+                                height: 50,
+                                width: double.infinity,
+                                child: SingleChildScrollView(
+                                  child: _categoryBar(context),
+                                ),
+                              ),
                               _searchBar(context),
                               Expanded(child: CustomScrollView(
                                   slivers : <Widget>[

@@ -27,7 +27,7 @@ class AnimatedMealListWidget extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return  Column(
       children: [
           SizedBox(
           height: 30,

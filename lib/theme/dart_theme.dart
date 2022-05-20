@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 ThemeData darkTheme(BuildContext context) {
 
   /// set up colors theme
-  const kBackgroundColor =  Color(0xFF363062);
-  const kPrimaryColor =  Color(0xFF363062);
-  const kPrimaryIconColor = Color(0xFF363062);
-  const kTextColor = Color(0xFF363062);
+  const kBackgroundColor =  Colors.white;
+  const kPrimaryColor =   Colors.white;
+  const kPrimaryIconColor = Colors.white;
+  const kTextColor = Colors.white;
 
-  const kSecondaryColor = Color(0xFF363062);
-  const kErrorColor = Color(0xFF363062);
-  const kCardColor = Color(0xFF363062);
-  const kButtonColor = Color(0xFF363062);
+  const kSecondaryColor =  Colors.white;
+  const kErrorColor =  Colors.white;
+  const kCardColor =  Colors.white;
+  const kButtonColor =  Colors.white;
 
   TextTheme _basicTextTheme(TextTheme base) {
     return base.copyWith(

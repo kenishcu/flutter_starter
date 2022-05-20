@@ -131,7 +131,7 @@ class CardItem extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: onTap,
           child: SizedBox(
-            height: 70.0,
+            height: 75.0,
             child: Container(
               decoration:  BoxDecoration(
                 boxShadow: [
@@ -140,7 +140,6 @@ class CardItem extends StatelessWidget {
                     offset: const Offset(20, 20),
                     spreadRadius: 5,
                     blurRadius: 7,
-
                   )
                 ],
               ),
@@ -154,16 +153,23 @@ class CardItem extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 10, bottom: 10),
                     child: Icon(iconData, color: iconColor, size: 35),
                   ),
-                  title: Text(title!),
-                  subtitle: Row(
+                  title: Text(title!,  overflow: TextOverflow.ellipsis,),
+                  subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        child: Text(subTitle!, style: const TextStyle()),
+                        width: 170,
+                        child: Text(subTitle!,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle()),
                       ),
                       SizedBox(
-                        child: Text(time!, style: const TextStyle()),
+                        width: 150,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(time!, overflow: TextOverflow.ellipsis, style: const TextStyle()),
+                        ),
                       )
                     ],
                   ),

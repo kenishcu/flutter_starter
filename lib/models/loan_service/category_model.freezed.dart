@@ -24,14 +24,16 @@ class _$CategoryModelTearOff {
 
   _CategoryModel call(
       {String? id,
-        String? categoryCode,
-        String? categoryName,
-        String? thumbnailUrl,
-        int? status}) {
+      String? categoryCode,
+      String? categoryName,
+      String? categoryId,
+      String? thumbnailUrl,
+      int? status}) {
     return _CategoryModel(
       id: id,
       categoryCode: categoryCode,
       categoryName: categoryName,
+      categoryId: categoryId,
       thumbnailUrl: thumbnailUrl,
       status: status,
     );
@@ -50,6 +52,7 @@ mixin _$CategoryModel {
   String? get id => throw _privateConstructorUsedError;
   String? get categoryCode => throw _privateConstructorUsedError;
   String? get categoryName => throw _privateConstructorUsedError;
+  String? get categoryId => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
 
@@ -62,14 +65,15 @@ mixin _$CategoryModel {
 /// @nodoc
 abstract class $CategoryModelCopyWith<$Res> {
   factory $CategoryModelCopyWith(
-      CategoryModel value, $Res Function(CategoryModel) then) =
-  _$CategoryModelCopyWithImpl<$Res>;
+          CategoryModel value, $Res Function(CategoryModel) then) =
+      _$CategoryModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-        String? categoryCode,
-        String? categoryName,
-        String? thumbnailUrl,
-        int? status});
+      String? categoryCode,
+      String? categoryName,
+      String? categoryId,
+      String? thumbnailUrl,
+      int? status});
 }
 
 /// @nodoc
@@ -86,6 +90,7 @@ class _$CategoryModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? categoryCode = freezed,
     Object? categoryName = freezed,
+    Object? categoryId = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
   }) {
@@ -93,23 +98,27 @@ class _$CategoryModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
     ));
   }
 }
@@ -118,15 +127,16 @@ class _$CategoryModelCopyWithImpl<$Res>
 abstract class _$CategoryModelCopyWith<$Res>
     implements $CategoryModelCopyWith<$Res> {
   factory _$CategoryModelCopyWith(
-      _CategoryModel value, $Res Function(_CategoryModel) then) =
-  __$CategoryModelCopyWithImpl<$Res>;
+          _CategoryModel value, $Res Function(_CategoryModel) then) =
+      __$CategoryModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
-        String? categoryCode,
-        String? categoryName,
-        String? thumbnailUrl,
-        int? status});
+      String? categoryCode,
+      String? categoryName,
+      String? categoryId,
+      String? thumbnailUrl,
+      int? status});
 }
 
 /// @nodoc
@@ -145,6 +155,7 @@ class __$CategoryModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? categoryCode = freezed,
     Object? categoryName = freezed,
+    Object? categoryId = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
   }) {
@@ -152,23 +163,27 @@ class __$CategoryModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
     ));
   }
 }
@@ -178,10 +193,11 @@ class __$CategoryModelCopyWithImpl<$Res>
 class _$_CategoryModel extends _CategoryModel {
   _$_CategoryModel(
       {this.id,
-        this.categoryCode,
-        this.categoryName,
-        this.thumbnailUrl,
-        this.status})
+      this.categoryCode,
+      this.categoryName,
+      this.categoryId,
+      this.thumbnailUrl,
+      this.status})
       : super._();
 
   factory _$_CategoryModel.fromJson(Map<String, dynamic> json) =>
@@ -194,13 +210,15 @@ class _$_CategoryModel extends _CategoryModel {
   @override
   final String? categoryName;
   @override
+  final String? categoryId;
+  @override
   final String? thumbnailUrl;
   @override
   final int? status;
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, categoryCode: $categoryCode, categoryName: $categoryName, thumbnailUrl: $thumbnailUrl, status: $status)';
+    return 'CategoryModel(id: $id, categoryCode: $categoryCode, categoryName: $categoryName, categoryId: $categoryId, thumbnailUrl: $thumbnailUrl, status: $status)';
   }
 
   @override
@@ -214,6 +232,8 @@ class _$_CategoryModel extends _CategoryModel {
             const DeepCollectionEquality()
                 .equals(other.categoryName, categoryName) &&
             const DeepCollectionEquality()
+                .equals(other.categoryId, categoryId) &&
+            const DeepCollectionEquality()
                 .equals(other.thumbnailUrl, thumbnailUrl) &&
             const DeepCollectionEquality().equals(other.status, status));
   }
@@ -224,6 +244,7 @@ class _$_CategoryModel extends _CategoryModel {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(categoryCode),
       const DeepCollectionEquality().hash(categoryName),
+      const DeepCollectionEquality().hash(categoryId),
       const DeepCollectionEquality().hash(thumbnailUrl),
       const DeepCollectionEquality().hash(status));
 
@@ -241,14 +262,15 @@ class _$_CategoryModel extends _CategoryModel {
 abstract class _CategoryModel extends CategoryModel {
   factory _CategoryModel(
       {String? id,
-        String? categoryCode,
-        String? categoryName,
-        String? thumbnailUrl,
-        int? status}) = _$_CategoryModel;
+      String? categoryCode,
+      String? categoryName,
+      String? categoryId,
+      String? thumbnailUrl,
+      int? status}) = _$_CategoryModel;
   _CategoryModel._() : super._();
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
-  _$_CategoryModel.fromJson;
+      _$_CategoryModel.fromJson;
 
   @override
   String? get id;
@@ -256,6 +278,8 @@ abstract class _CategoryModel extends CategoryModel {
   String? get categoryCode;
   @override
   String? get categoryName;
+  @override
+  String? get categoryId;
   @override
   String? get thumbnailUrl;
   @override

@@ -30,7 +30,7 @@ class LoanServiceRepository {
 
     try {
       var response = await client.dio.request(
-          baseUrl + '?category_id=${categoryId.toString()}&query=${query.toString()}',
+          baseUrl + '?category_id=${categoryId == "null" ? "": categoryId.toString()}&query=${query.toString()}',
           options: Options(method: 'GET')
       );
       return ResultModel.fromJson(response.data);

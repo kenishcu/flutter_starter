@@ -1,7 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_stater/adapters/dio/service_dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class InterWrapper extends InterceptorsWrapper {
+
+  late Dio dio;
+
+  late ServiceDio serviceDio;
+
+  InterWrapper(this.dio, this.serviceDio);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
@@ -28,10 +35,15 @@ class InterWrapper extends InterceptorsWrapper {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioError err, ErrorInterceptorHandler handler) async {
     print('ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
     print('ERROR[${err.toString()}]');
-    return super.onError(err, handler);
+    if(err.message == 'HttpException: Failed to parse header value') {
+      await serviceDio.reGetToken();
+      await serviceDio.retry(err.requestOptions);
+    } else {
+      return super.onError(err, handler);
+    }
   }
 
 }

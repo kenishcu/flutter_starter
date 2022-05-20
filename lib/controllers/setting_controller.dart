@@ -13,7 +13,7 @@ import 'package:flutter_stater/models/settings/room_model.dart';
 import 'package:flutter_stater/models/settings/setting_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mac_address/mac_address.dart';
+// import 'package:mac_address/mac_address.dart';
 
 import '../routes/app_pages.dart';
 
@@ -99,8 +99,6 @@ class SettingController extends GetxController {
       rooms.clear();
       beds.clear();
       departments.clear();
-      print(branchModel.toString());
-      print(listDepartments.where((element) => element.branchId.toString() == branchModel.branchId.toString()).toList().toString());
       List<DepartmentModel> deps = listDepartments.where((element) => element.branchId.toString() == branchModel.branchId.toString()).toList();
 
       selectedBranch.value = branchModel;
@@ -220,11 +218,11 @@ class SettingController extends GetxController {
     final ipv4 = await Ipify.ipv4();
     ipAddress.value.text = ipv4;
 
-    try {
-      macAddress.value.text = await GetMac.macAddress;
-    } on PlatformException {
-      print('Failed to get Device MAC Address.');
-    }
+    // try {
+    //   macAddress.value.text = await GetMac.macAddress;
+    // } on PlatformException {
+    //   print('Failed to get Device MAC Address.');
+    // }
   }
 
 
@@ -258,7 +256,16 @@ class SettingController extends GetxController {
     box.write("device_info", setting.toJson());
   }
 
-  void submitSetting() async {
+  void getSettingConfig() {
+    final map = box.read("device_info") ?? {};
+    if(map['bed_id'] != null){
+      selectedDepartment.value = listDepartments.where((element) => map['parent_id'] == element.parentId ).toList()[0];
+      selectedRoom.value = listRooms.where((element) => map['room_id'] == element.roomId).toList()[0];
+      selectedBed.value = selectedRoom.value.beds!.where((element) => element.bedId == map['bed_id']).toList()[0];
+    }
+  }
+
+  Future submitSetting() async {
     SettingModel setting =  SettingModel(
       branchId: selectedBranch.value.branchId,
       branchName: selectedBranch.value.branchName,

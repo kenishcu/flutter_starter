@@ -33,6 +33,8 @@ class _$TreatmentInfoModelTearOff {
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
+      String? roomNameToDo,
+      int? roomIdToDo,
       int? currentDayTime}) {
     return _TreatmentInfoModel(
       patientId: patientId,
@@ -45,6 +47,8 @@ class _$TreatmentInfoModelTearOff {
       serviceCategoryName: serviceCategoryName,
       serviceCategoryParentId: serviceCategoryParentId,
       serviceCategoryParentName: serviceCategoryParentName,
+      roomNameToDo: roomNameToDo,
+      roomIdToDo: roomIdToDo,
       currentDayTime: currentDayTime,
     );
   }
@@ -69,6 +73,8 @@ mixin _$TreatmentInfoModel {
   String? get serviceCategoryName => throw _privateConstructorUsedError;
   int? get serviceCategoryParentId => throw _privateConstructorUsedError;
   String? get serviceCategoryParentName => throw _privateConstructorUsedError;
+  String? get roomNameToDo => throw _privateConstructorUsedError;
+  int? get roomIdToDo => throw _privateConstructorUsedError;
   int? get currentDayTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -93,6 +99,8 @@ abstract class $TreatmentInfoModelCopyWith<$Res> {
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
+      String? roomNameToDo,
+      int? roomIdToDo,
       int? currentDayTime});
 }
 
@@ -117,6 +125,8 @@ class _$TreatmentInfoModelCopyWithImpl<$Res>
     Object? serviceCategoryName = freezed,
     Object? serviceCategoryParentId = freezed,
     Object? serviceCategoryParentName = freezed,
+    Object? roomNameToDo = freezed,
+    Object? roomIdToDo = freezed,
     Object? currentDayTime = freezed,
   }) {
     return _then(_value.copyWith(
@@ -160,6 +170,14 @@ class _$TreatmentInfoModelCopyWithImpl<$Res>
           ? _value.serviceCategoryParentName
           : serviceCategoryParentName // ignore: cast_nullable_to_non_nullable
               as String?,
+      roomNameToDo: roomNameToDo == freezed
+          ? _value.roomNameToDo
+          : roomNameToDo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      roomIdToDo: roomIdToDo == freezed
+          ? _value.roomIdToDo
+          : roomIdToDo // ignore: cast_nullable_to_non_nullable
+              as int?,
       currentDayTime: currentDayTime == freezed
           ? _value.currentDayTime
           : currentDayTime // ignore: cast_nullable_to_non_nullable
@@ -186,6 +204,8 @@ abstract class _$TreatmentInfoModelCopyWith<$Res>
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
+      String? roomNameToDo,
+      int? roomIdToDo,
       int? currentDayTime});
 }
 
@@ -212,6 +232,8 @@ class __$TreatmentInfoModelCopyWithImpl<$Res>
     Object? serviceCategoryName = freezed,
     Object? serviceCategoryParentId = freezed,
     Object? serviceCategoryParentName = freezed,
+    Object? roomNameToDo = freezed,
+    Object? roomIdToDo = freezed,
     Object? currentDayTime = freezed,
   }) {
     return _then(_TreatmentInfoModel(
@@ -255,6 +277,14 @@ class __$TreatmentInfoModelCopyWithImpl<$Res>
           ? _value.serviceCategoryParentName
           : serviceCategoryParentName // ignore: cast_nullable_to_non_nullable
               as String?,
+      roomNameToDo: roomNameToDo == freezed
+          ? _value.roomNameToDo
+          : roomNameToDo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      roomIdToDo: roomIdToDo == freezed
+          ? _value.roomIdToDo
+          : roomIdToDo // ignore: cast_nullable_to_non_nullable
+              as int?,
       currentDayTime: currentDayTime == freezed
           ? _value.currentDayTime
           : currentDayTime // ignore: cast_nullable_to_non_nullable
@@ -277,6 +307,8 @@ class _$_TreatmentInfoModel extends _TreatmentInfoModel {
       this.serviceCategoryName,
       this.serviceCategoryParentId,
       this.serviceCategoryParentName,
+      this.roomNameToDo,
+      this.roomIdToDo,
       this.currentDayTime})
       : super._();
 
@@ -304,11 +336,15 @@ class _$_TreatmentInfoModel extends _TreatmentInfoModel {
   @override
   final String? serviceCategoryParentName;
   @override
+  final String? roomNameToDo;
+  @override
+  final int? roomIdToDo;
+  @override
   final int? currentDayTime;
 
   @override
   String toString() {
-    return 'TreatmentInfoModel(patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, serviceId: $serviceId, serviceCode: $serviceCode, serviceName: $serviceName, serviceCategoryId: $serviceCategoryId, serviceCategoryName: $serviceCategoryName, serviceCategoryParentId: $serviceCategoryParentId, serviceCategoryParentName: $serviceCategoryParentName, currentDayTime: $currentDayTime)';
+    return 'TreatmentInfoModel(patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, serviceId: $serviceId, serviceCode: $serviceCode, serviceName: $serviceName, serviceCategoryId: $serviceCategoryId, serviceCategoryName: $serviceCategoryName, serviceCategoryParentId: $serviceCategoryParentId, serviceCategoryParentName: $serviceCategoryParentName, roomNameToDo: $roomNameToDo, roomIdToDo: $roomIdToDo, currentDayTime: $currentDayTime)';
   }
 
   @override
@@ -335,6 +371,10 @@ class _$_TreatmentInfoModel extends _TreatmentInfoModel {
             const DeepCollectionEquality().equals(
                 other.serviceCategoryParentName, serviceCategoryParentName) &&
             const DeepCollectionEquality()
+                .equals(other.roomNameToDo, roomNameToDo) &&
+            const DeepCollectionEquality()
+                .equals(other.roomIdToDo, roomIdToDo) &&
+            const DeepCollectionEquality()
                 .equals(other.currentDayTime, currentDayTime));
   }
 
@@ -351,6 +391,8 @@ class _$_TreatmentInfoModel extends _TreatmentInfoModel {
       const DeepCollectionEquality().hash(serviceCategoryName),
       const DeepCollectionEquality().hash(serviceCategoryParentId),
       const DeepCollectionEquality().hash(serviceCategoryParentName),
+      const DeepCollectionEquality().hash(roomNameToDo),
+      const DeepCollectionEquality().hash(roomIdToDo),
       const DeepCollectionEquality().hash(currentDayTime));
 
   @JsonKey(ignore: true)
@@ -376,6 +418,8 @@ abstract class _TreatmentInfoModel extends TreatmentInfoModel {
       String? serviceCategoryName,
       int? serviceCategoryParentId,
       String? serviceCategoryParentName,
+      String? roomNameToDo,
+      int? roomIdToDo,
       int? currentDayTime}) = _$_TreatmentInfoModel;
   _TreatmentInfoModel._() : super._();
 
@@ -402,6 +446,10 @@ abstract class _TreatmentInfoModel extends TreatmentInfoModel {
   int? get serviceCategoryParentId;
   @override
   String? get serviceCategoryParentName;
+  @override
+  String? get roomNameToDo;
+  @override
+  int? get roomIdToDo;
   @override
   int? get currentDayTime;
   @override
