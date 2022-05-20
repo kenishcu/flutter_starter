@@ -9,6 +9,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
 import '../../models/restaurant/product_model.dart';
+import '../../models/result/result_model.dart';
 import '../../utils/convert.dart';
 import '../home_controller.dart';
 import '../setting_controller.dart';
@@ -184,7 +185,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     countTotal();
   }
 
-  Future order() async {
+  Future<bool> order() async {
     if (itemEs.isNotEmpty) {
       List<Map<String, dynamic>> list = [];
       for (var element in itemEs) {
@@ -238,8 +239,14 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       };
 
       print('product order: $products');
+      ResultModel res = await restaurantRepository.orderProducts(products);
+      if(res.status == true) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-
+      return false;
     }
   }
 

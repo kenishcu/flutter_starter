@@ -203,8 +203,9 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     var now = DateTime.now();
     var d = DateTime(now.year, now.month, now.day);
     var weekDay = d.weekday;
-    selectedDay.value = d.weekday;
-    var firstDayOfWeek = d.subtract(Duration(days: weekDay));
+    selectedDay.value = d.weekday - 1;
+    print('day week ${d.weekday.toString()}');
+    var firstDayOfWeek = d.subtract(Duration(days: weekDay - 1));
     for(int i = 0; i < 7; i++ ) {
       var day = firstDayOfWeek.add(Duration(days: i));
       calendarInfo[i].update('dayOfMonth', (value) => day.day);

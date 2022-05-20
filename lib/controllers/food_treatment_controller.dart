@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/models/food_treatment/meal_type_model.dart';
 import 'package:flutter_stater/models/food_treatment/menu_model.dart';
+import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -234,8 +235,12 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
         "products": list,
       };
 
-      print('product order: $products');
-      return true;
+      ResultModel res = await foodTreatmentRepository.orderProducts(products);
+      if(res.status == true) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }

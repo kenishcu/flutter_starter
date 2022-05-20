@@ -18,7 +18,7 @@ class CalendarWidget extends GetView<HomeController>  {
           itemBuilder: (BuildContext context, int index) {
             var d = DateTime.now();
             var weekDay = d.weekday;
-            return weekDay == index ? SizedBox(
+            return weekDay == index + 1 ? SizedBox(
               width: 43,
               child: GestureDetector(
                 onTap: () {

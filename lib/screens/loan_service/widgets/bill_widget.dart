@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../controllers/restaurant/product_restaurant_controller.dart';
 import '../../../utils/convert.dart';
@@ -17,10 +19,141 @@ class BillWidget extends StatefulWidget {
 
 class _BillWidgetState extends State<BillWidget> {
 
+  ProductRestaurantController controller = Get.find<ProductRestaurantController>();
+
+  late FToast fToast;
+
+  late String _timeString;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+    _timeString = _formatDateTime(DateTime.now());
+  }
+
+  _showToastSuccess() {
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Theme.of(context).colorScheme.secondaryContainer,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Icon(Icons.checkroom_outlined, size: 28, color: Theme.of(context).colorScheme.secondary),
+          ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Đặt đồ thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Nhà hàng đã nhận order", style: TextStyle(
+                          fontSize: 12
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString),
+          )
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: Duration(seconds: 4),
+    );
+  }
+
+  _showToastError() {
+
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.red,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Icon(Icons.checkroom_outlined, size: 28, color: Colors.white),
+          ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: Colors.white
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Trung tâm chưa nhận được order", style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString, style: const TextStyle(
+                color: Colors.white
+            ),),
+          )
+          ,
+        ],
+      ),
+    );
+
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: Duration(seconds: 4),
+    );
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('hh:mm').format(dateTime);
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    ProductRestaurantController controller = Get.find<ProductRestaurantController>();
 
     return SizedBox(
       child: Column(
@@ -101,7 +234,13 @@ class _BillWidgetState extends State<BillWidget> {
                                           borderRadius: BorderRadius.circular(10.0)
                                       ),
                                       child: TextButton(
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          bool res = await controller.order();
+                                          if(res) {
+                                            _showToastSuccess();
+                                          } else {
+                                            _showToastError();
+                                          }
                                         },
                                         child: Row(
                                           children: const [

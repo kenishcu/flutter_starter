@@ -139,44 +139,53 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
   }
 
   Future order() async {
-    List<Map<String, dynamic>> list = [];
-    for (var element in itemEs) {
-      LoanServiceModel pro =
-      LoanServiceModel(
-          id: element.product?.id,
-          serviceCode: element.product?.serviceCode,
-          serviceName: element.product?.serviceName,
-          categoryId: element.product?.categoryId,
-          categoryCode: element.product?.categoryCode,
-          categoryName: element.product?.categoryName,
-          defaultQuantity: element.product?.defaultQuantity,
-          imageUrl: element.product?.imageUrl,
-          status: element.product?.status,
-          price: element.product?.price,
-          quantity: element.number,
-          note: element.edit
-      );
-      list.add(pro.toJson());
-    }
+    if(itemEs.isNotEmpty) {
+      List<Map<String, dynamic>> list = [];
+      for (var element in itemEs) {
+        LoanServiceModel pro =
+        LoanServiceModel(
+            id: element.product?.id,
+            serviceCode: element.product?.serviceCode,
+            serviceName: element.product?.serviceName,
+            categoryId: element.product?.categoryId,
+            categoryCode: element.product?.categoryCode,
+            categoryName: element.product?.categoryName,
+            defaultQuantity: element.product?.defaultQuantity,
+            imageUrl: element.product?.imageUrl,
+            status: element.product?.status,
+            price: element.product?.price,
+            quantity: element.number,
+            note: element.edit
+        );
+        list.add(pro.toJson());
+      }
 
-    HomeController homeController = Get.find<HomeController>();
-    SettingController settingController = Get.find<SettingController>();
-    String? receptionQueueId = homeController.patientInfo.receptionQueueId;
-    int timeOrder = timeToTimeStamp(selectedDay);
-    Map<String, dynamic> products = {
-      "patient_id": homeController.patientInfo.patientId,
-      "patient_fullname": homeController.patientInfo.patientName,
-      "bed_id": settingController.selectedBed.value.bedId,
-      "bed_name": settingController.selectedBed.value.bedName,
-      "room_id": settingController.selectedRoom.value.roomId,
-      "room_name":  settingController.selectedRoom.value.roomName,
-      "reception_queue_id": receptionQueueId,
-      "status": "TODO",
-      "status_name": "Chưa xử lý",
-      "used_at": timeOrder,
-      "services": list,
-    };
-    print('product : ${products}');
+      HomeController homeController = Get.find<HomeController>();
+      SettingController settingController = Get.find<SettingController>();
+      String? receptionQueueId = homeController.patientInfo.receptionQueueId;
+      int timeOrder = timeToTimeStamp(selectedDay);
+      Map<String, dynamic> products = {
+        "patient_id": homeController.patientInfo.patientId,
+        "patient_fullname": homeController.patientInfo.patientName,
+        "bed_id": settingController.selectedBed.value.bedId,
+        "bed_name": settingController.selectedBed.value.bedName,
+        "room_id": settingController.selectedRoom.value.roomId,
+        "room_name":  settingController.selectedRoom.value.roomName,
+        "reception_queue_id": receptionQueueId,
+        "status": "TODO",
+        "status_name": "Chưa xử lý",
+        "used_at": timeOrder,
+        "services": list,
+      };
+      ResultModel res = await loanServiceRepository.order(products);
+      if(res.status == true) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 
   void plusItem(int index) {
