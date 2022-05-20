@@ -29,7 +29,7 @@ ThemeData lightTheme(BuildContext context) {
   const kSubTitleColor = Color(0xFF0E0F0E);
   const kListSubColor = Color(0xFFD9FFD6);
   const kErrorColor = Color(0xFF363062);
-  const kCardColor = Color(0xFF363062);
+  const kCardColor = Colors.white;
   const kButtonColor = Color(0xFF363062);
 
   TextTheme _basicTextTheme(TextTheme base) {

@@ -1,10 +1,12 @@
 import 'package:flutter_stater/adapters/repository/home/calendar_info_repository.dart';
 import 'package:flutter_stater/adapters/repository/home/receipt_repositiry.dart';
 import 'package:flutter_stater/controllers/index.dart';
+import 'package:flutter_stater/controllers/loan_service_controller.dart';
 import 'package:flutter_stater/controllers/restaurant/product_restaurant_controller.dart';
 import 'package:flutter_stater/models/home/bill_and_payment/bill_and_payment_model.dart';
 import 'package:flutter_stater/models/home/meal/reception_meal_model.dart';
 import 'package:flutter_stater/models/home/pharma/reception_pharma_model.dart';
+import 'package:flutter_stater/models/home/treatment/reception_treatment_model.dart';
 import 'package:flutter_stater/models/home/treatment/treatment_info_model.dart';
 import 'package:flutter_stater/models/settings/setting_model.dart';
 import 'package:flutter_stater/models/user/user_model.dart';
@@ -43,9 +45,9 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   GlobalKey<AnimatedListState> listKeyMeal = GlobalKey<AnimatedListState>(debugLabel: '_homeMeal');
 
   /// treatment
-  // late ListModel<TreatmentInfoModel> listTreatment;
-  // bool? shrinkTreatmentList = false;
-  // final GlobalKey<AnimatedListState> listKeyTreatment = GlobalKey<AnimatedListState>();
+  late ListModel<ReceptionTreatmentModel> listTreatment;
+  bool? shrinkTreatmentList = false;
+  final GlobalKey<AnimatedListState> listKeyTreatment = GlobalKey<AnimatedListState>();
 
   /// pharma
   // late ListModel<ReceptionPharmaModel> listPharma;
@@ -163,13 +165,40 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   }
 
 
+  // Used to build an item after it has been removed from the list. This
+  // method is needed because a removed item remains visible until its
+  // animation has completed (even though it's gone as far this ListModel is
+  // concerned). The widget will be used by the
+  // [AnimatedListState.removeItem] method's
+  // [AnimatedListRemovedItemBuilder] parameter.
+  Widget _buildRemovedItemTreatment(ReceptionTreatmentModel item, BuildContext context, Animation<double> animation) {
+    return CardItem(
+      animation: animation,
+      title: "Phục vụ ăn trưa",
+      subTitle: "Tại phòng",
+      iconData: Icons.restaurant,
+      iconColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.onSurface,
+      shadowColor: Theme.of(context).colorScheme.secondaryContainer,
+      time: "12:00-13:00",
+      onTap: () {
+      },
+    );
+  }
+
 
   void addCalendarInfo () {
+
     listMeal = ListModel<ReceptionMealModel>(
       listKey: listKeyMeal,
       initialItems: <ReceptionMealModel>[],
       removedItemBuilder: _buildRemovedItem
     );
+
+    listTreatment = ListModel<ReceptionTreatmentModel>(
+        listKey: listKeyTreatment,
+        initialItems: <ReceptionTreatmentModel>[],
+        removedItemBuilder: _buildRemovedItemTreatment);
 
     var now = DateTime.now();
     var d = DateTime(now.year, now.month, now.day);
@@ -304,14 +333,14 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     listMeal.setNewList(listE);
 
     // set list treatment
-    // List<TreatmentInfoModel> listETreatment = [];
-    // var dataTreatment = calendarInfo[selectedDay.value]['data']['treatment'];
-    // if(dataTreatment != null && dataTreatment.length > 0) {
-    //   dataTreatment.forEach((e) => {
-    //     listETreatment.add(TreatmentInfoModel.fromJson(e))
-    //   });
-    // }
-    // listTreatment.setNewList(listETreatment);
+    List<ReceptionTreatmentModel> listETreatment = [];
+    var dataTreatment = calendarInfo[selectedDay.value]['data']['treatment'];
+    if(dataTreatment != null && dataTreatment.length > 0) {
+      dataTreatment.forEach((e) => {
+        listETreatment.add(ReceptionTreatmentModel.fromJson(e))
+      });
+    }
+    listTreatment.setNewList(listETreatment);
   }
 
   Future getRestaurantInfo() async {
@@ -326,6 +355,12 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   }
 
   Future getLoanServiceInfo() async {
+    final LoanServiceController loanServiceController = Get.find<LoanServiceController>();
+    await loanServiceController.initLoanServiceInfo();
+  }
 
+  Future getMedicalHistory() async {
+    final MedicalHistoryController medicalHistoryController = Get.find<MedicalHistoryController>();
+    await medicalHistoryController.initMedicalHistory();
   }
 }

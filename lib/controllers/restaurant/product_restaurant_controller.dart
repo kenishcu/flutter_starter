@@ -9,6 +9,9 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
 import '../../models/restaurant/product_model.dart';
+import '../../utils/convert.dart';
+import '../home_controller.dart';
+import '../setting_controller.dart';
 
 class ProductRestaurantController extends GetxController with GetTickerProviderStateMixin {
 
@@ -148,8 +151,6 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
         ItemProductModel p = itemEs[cnt].copyWith(product: item.product, edit: itemEs[cnt].edit,
             number: (itemEs[cnt].number! + 1));
         itemEs[cnt] = p;
-        // controller.items = [...controller.items];
-        // print(controller.items.toString());
       }
     } else {
       listKey.currentState?.insertItem(0, duration: const Duration(milliseconds: 500));
@@ -183,8 +184,66 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     countTotal();
   }
 
+  Future order() async {
+    if (itemEs.isNotEmpty) {
+      List<Map<String, dynamic>> list = [];
+      for (var element in itemEs) {
+        ProductModel pro =
+        ProductModel(
+            id: element.product?.id,
+            productCode: element.product?.productCode,
+            productName: element.product?.productName,
+            categoryDailyParentId: element.product?.categoryDailyParentId,
+            categoryDailyParentCode: element.product?.categoryDailyParentCode,
+            categoryDailyParentName: element.product?.categoryDailyParentName,
+            categoryDailyId: element.product?.categoryDailyId,
+            categoryDailyCode: element.product?.categoryDailyCode,
+            categoryDailyName: element.product?.categoryDailyName,
+            categoryParentId: element.product?.categoryParentId,
+            categoryParentCode: element.product?.categoryParentCode,
+            categoryParentName: element.product?.categoryParentName,
+            categoryId: element.product?.categoryId,
+            categoryCode: element.product?.categoryCode,
+            categoryName: element.product?.categoryName,
+            status: 'BOOKED',
+            price: element.product?.price,
+            quantity: element.number,
+            discount: element.product?.discount,
+            discountRate: element.product?.discountRate,
+            note: element.edit
+        );
+        list.add(pro.toJson());
+      }
+
+      HomeController homeController = Get.find<HomeController>();
+      SettingController settingController = Get.find<SettingController>();
+      String? receptionQueueId = homeController.patientInfo.receptionQueueId;
+      int timeOrder = timeToTimeStamp(selectedDay);
+      Map<String, dynamic> products = {
+        "patient_id": homeController.patientInfo.patientId,
+        "patient_fullname": homeController.patientInfo.patientName,
+        "bed_id": settingController.selectedBed.value.bedId,
+        "bed_name": settingController.selectedBed.value.bedName,
+        "room_id": settingController.selectedRoom.value.roomId,
+        "room_name":  settingController.selectedRoom.value.roomName,
+        "parent_id": settingController.selectedDepartment.value.parentId,
+        "parent_name": settingController.selectedDepartment.value.parentName,
+        "reception_queue_id": receptionQueueId,
+        "status": "BOOKED",
+        "used_at": timeOrder,
+        "payment_result": payment.paymentTypeCode,
+        // "meal_type": selectedMealType.value.toJson(),
+        "order_type" : "DOANNHAHANG",
+        "products": list,
+      };
+
+      print('product order: $products');
+    } else {
+
+    }
+  }
+
   Future search(String text) async {
-    print("search with text: ${text}");
     var responseProduct = await restaurantRepository.findAllProduct(myCategories[selectedTab.value][selectedCategory].categoryId.toString(), text, myTabs[selectedTab.value].categoryId.toString(), 50, 0);
     if(responseProduct.status == true) {
       List<ProductModel> ps = [];
@@ -206,6 +265,14 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       }
       total.value = t;
     }
+  }
+
+  void editProduct(ItemProductModel item, String edit, int index) {
+    ItemProductModel p = itemEs[index].copyWith(
+        product: itemEs[index].product,
+        edit: edit,
+        number: (itemEs[index].number!));
+    itemEs[index] = p;
   }
 
   Future initScreenRestaurant() async {

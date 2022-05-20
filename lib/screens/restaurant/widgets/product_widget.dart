@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/models/restaurant/item_product_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
@@ -521,7 +520,6 @@ class _ProductWidgetState extends State<ProductWidget> {
         )
     );
   }
-
 
   @override
   Widget build(BuildContext context) {

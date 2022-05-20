@@ -12,6 +12,7 @@ class CategoryModel with _$CategoryModel {
     String? id,
     String? categoryCode,
     String? categoryName,
+    String? categoryId,
     String? thumbnailUrl,
     int? status,
   }) = _CategoryModel;

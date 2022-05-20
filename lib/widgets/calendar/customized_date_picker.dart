@@ -7,12 +7,16 @@ import 'package:flutter/material.dart';
 ///Date picker imports
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+import '../../controllers/food_treatment_controller.dart';
+import 'package:get/get.dart';
 
 /// Render datepicker widget with customized options
 class CustomizedDatePicker extends StatefulWidget {
 
   /// Creates datepicker widget with customized options
   const CustomizedDatePicker({Key? key}) : super(key: key);
+
+  // final VoidCallback? onTap;
 
   @override
   _CustomizedDatePickerState createState() => _CustomizedDatePickerState();
@@ -23,6 +27,7 @@ class _CustomizedDatePickerState extends State<CustomizedDatePicker> {
 
   late List<DateTime> _specialDates;
   late Orientation _deviceOrientation;
+  FoodTreatmentController controller = Get.find<FoodTreatmentController>();
 
   @override
   void initState() {
@@ -94,16 +99,16 @@ class _CustomizedDatePickerState extends State<CustomizedDatePicker> {
     final Color indicatorColor =
     isDark ? const Color(0xFF5CFFB7) : const Color(0xFF1AC4C7);
     final Color highlightColor =
-    isDark ? const Color(0xFF5CFFB7) : Colors.deepPurpleAccent;
+    isDark ? const Color(0xFF5CFFB7) : Theme.of(context).colorScheme.secondary;
     final Color cellTextColor =
-    isDark ? const Color(0xFFDFD4FF) : const Color(0xFF130438);
+    isDark ? Colors.white : const Color(0xFF130438);
 
     return SfDateRangePicker(
       selectionShape: DateRangePickerSelectionShape.rectangle,
       selectionColor: highlightColor,
       selectionTextStyle:
       TextStyle(color: isDark ? Colors.black : Colors.white, fontSize: 14),
-      minDate: DateTime.now().add(const Duration(days: -200)),
+      minDate: DateTime.now().add(const Duration(days: -100)),
       maxDate: DateTime.now().add(const Duration(days: 500)),
       headerStyle: DateRangePickerHeaderStyle(
           textAlign: TextAlign.center,
@@ -145,7 +150,24 @@ class _CustomizedDatePickerState extends State<CustomizedDatePicker> {
         TextStyle(color: cellTextColor.withOpacity(0.5), fontSize: 14),
       ),
       showNavigationArrow: true,
+      backgroundColor: Colors.white,
       todayHighlightColor: highlightColor,
+      onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+        if (args.value is PickerDateRange) {
+          final DateTime rangeStartDate = args.value.startDate;
+          final DateTime rangeEndDate = args.value.endDate;
+        } else if (args.value is DateTime) {
+          final DateTime selectedDate = args.value;
+          print("selected date: ${selectedDate.toString()}");
+          controller.setSelectedDate(selectedDate);
+        } else if (args.value is List<DateTime>) {
+          final List<DateTime> selectedDates = args.value;
+          print("selected date: ${selectedDates.toString()}");
+        } else {
+          final List<PickerDateRange> selectedRanges = args.value;
+          print("selected date: ${selectedRanges.toString()}");
+        }
+      },
       monthViewSettings: DateRangePickerMonthViewSettings(
         firstDayOfWeek: 1,
         viewHeaderStyle: DateRangePickerViewHeaderStyle(

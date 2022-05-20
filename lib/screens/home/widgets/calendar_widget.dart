@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:flutter_stater/screens/home/widgets/calendar_info/animated_meal_list_widget.dart';
+import 'package:flutter_stater/screens/home/widgets/calendar_info/animated_treatment_list_widget.dart';
 import 'package:get/get.dart';
 
 class CalendarWidget extends GetView<HomeController>  {
@@ -26,7 +27,7 @@ class CalendarWidget extends GetView<HomeController>  {
                 child: Container(
                   margin: const EdgeInsets.only(right: 2, left: 2),
                   decoration: controller.selectedDay.value == index ? BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondaryVariant,
+                      color: Theme.of(context).colorScheme.secondaryContainer,
                       borderRadius: BorderRadius.circular(15.0),
                       border: Border.all(
                           color: Colors.black
@@ -71,7 +72,7 @@ class CalendarWidget extends GetView<HomeController>  {
                 onTap: (){
                   controller.setSelectedDayCalendar(index);
                 },
-                child: Obx(()=> Container(
+                child: Obx(() => Container(
                   decoration: controller.selectedDay.value == index ? BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
                       border:  Border.all(
@@ -120,7 +121,6 @@ class CalendarWidget extends GetView<HomeController>  {
         width: double.infinity,
         padding: const EdgeInsets.only(top: 20.0),
         decoration: BoxDecoration(
-            border: Border.all()
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,11 +134,15 @@ class CalendarWidget extends GetView<HomeController>  {
             ),
             Expanded(
                 child: Column(
-                  children: const [
-                    Expanded(
+                  children: [
+                    controller.calendarInfo[controller.selectedDay.value]['data']!['meals'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meals'] > 0 ? const Expanded(
                       flex: 1,
                       child: AnimatedMealListWidget(),
-                    )
+                    ) : Container(),
+                    controller.calendarInfo[controller.selectedDay.value]['data']['treatment'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['treatment'].length > 0 ? const Expanded(
+                      flex: 1,
+                      child: AnimatedTreatmentListWidget(),
+                    ): Container()
                   ],
                 )
             )

@@ -99,8 +99,6 @@ class SettingController extends GetxController {
       rooms.clear();
       beds.clear();
       departments.clear();
-      print(branchModel.toString());
-      print(listDepartments.where((element) => element.branchId.toString() == branchModel.branchId.toString()).toList().toString());
       List<DepartmentModel> deps = listDepartments.where((element) => element.branchId.toString() == branchModel.branchId.toString()).toList();
 
       selectedBranch.value = branchModel;
@@ -258,7 +256,16 @@ class SettingController extends GetxController {
     box.write("device_info", setting.toJson());
   }
 
-  void submitSetting() async {
+  void getSettingConfig() {
+    final map = box.read("device_info") ?? {};
+    if(map['bed_id'] != null){
+      selectedDepartment.value = listDepartments.where((element) => map['parent_id'] == element.parentId ).toList()[0];
+      selectedRoom.value = listRooms.where((element) => map['room_id'] == element.roomId).toList()[0];
+      selectedBed.value = selectedRoom.value.beds!.where((element) => element.bedId == map['bed_id']).toList()[0];
+    }
+  }
+
+  Future submitSetting() async {
     SettingModel setting =  SettingModel(
       branchId: selectedBranch.value.branchId,
       branchName: selectedBranch.value.branchName,

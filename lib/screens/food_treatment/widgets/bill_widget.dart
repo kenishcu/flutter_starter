@@ -1,188 +1,150 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/food_treatment_controller.dart';
-import 'package:flutter_stater/models/restaurant/item_product_model.dart';
+import 'package:flutter_stater/screens/food_treatment/widgets/animated_item_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:money2/money2.dart';
 
+import '../../../models/food_treatment/item_product_model.dart';
 import '../../../utils/convert.dart';
 
 
-class BillWidget extends GetView<FoodTreatmentController> {
+class BillWidget extends StatefulWidget {
 
-  const BillWidget({Key? key}): super (key: key);
+  const BillWidget({Key? key, required this.listKey}): super (key: key);
 
-  Widget _buildItem(BuildContext context, int index, animation) {
+  final GlobalKey<AnimatedListState> listKey;
 
-    ItemProductModel item = controller.itemEs[index];
+  @override
+  _BillWidgetState createState() => _BillWidgetState();
+}
 
-    return SlideTransition(
-      position: Tween<Offset>(
-        begin: const Offset(0, 0),
-        end: Offset.zero,
-      ).animate(animation),
-      child: SizedBox(
-        width: double.infinity,
-        height: 90,
-        child: Container(
-          margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
-          padding: const EdgeInsets.all(5.0),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.6),
-                  spreadRadius: 2,
-                  blurRadius: 1.5,
-                  offset: const Offset(0, 1),
-                ),
-              ]
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  margin: const EdgeInsets.only(right: 10, left: 5, top: 5, bottom: 5),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Theme.of(context).colorScheme.secondary,
-                          width: 2
-                      )
-                  ),
-                  width: 50,
-                  height: double.infinity,
-                  child: Image.network("https://nhapi.hongngochospital.vn" + item.product!.imageUrl!),
-                ),
-              ),
-              Expanded(
-                  flex: 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                          flex: 1,
-                          child: Row(
-                            children : [
-                              Expanded(
-                                  flex: 3,
-                                  child: Text(item.product!.productName!,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                      ))),
-                              Expanded(
-                                flex: 2,
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 20,
-                                      height: 20,
-                                      child: Container(
-                                        child: Align(
-                                          alignment: Alignment.center,
-                                          child: IconButton(
-                                            padding: const EdgeInsets.all(0.0),
-                                            icon: const Icon(Icons.remove, size: 20),
-                                            tooltip: 'Remove Item',
-                                            onPressed: () {
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                        width: 30,
-                                        child: Align(
-                                            alignment: Alignment.center,
-                                            child: Text(item.number.toString())
-                                        )
-                                    ),
-                                    SizedBox(
-                                      width: 20,
-                                      height: 20,
-                                      child: Container(
-                                        child: Align(
-                                          alignment: Alignment.center,
-                                          child: IconButton(
-                                            padding: const EdgeInsets.all(0.0),
-                                            icon: const Icon(Icons.add, size: 20),
-                                            tooltip: 'Increase',
-                                            onPressed: () {
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          )
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Padding(
-                                    padding: const EdgeInsets.all(0.0),
-                                    child: Text(formatPrice(item.product!.price!))
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Theme.of(context).colorScheme.secondaryVariant,
-                                          borderRadius: BorderRadius.circular(20.0)
-                                      ),
-                                      child: TextButton(
-                                        onPressed: () { },
-                                        child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: const [
-                                            SizedBox(
-                                              child: Text("Ghi chú", style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Colors.white
-                                              )
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            SizedBox(
-                                              height: double.infinity,
-                                              child: Icon(
-                                                Icons.edit,
-                                                size: 15,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                              )
-                            ],
-                          )
-                      )
-                    ],
-                  )
-              )
-            ],
-          ),
-        ),
+class _BillWidgetState extends State<BillWidget> {
+
+  FoodTreatmentController controller = Get.find<FoodTreatmentController>();
+
+
+  late FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
+
+  _showToastSuccess() {
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Theme.of(context).colorScheme.secondaryContainer,
       ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Icon(Icons.restaurant, size: 28, color: Theme.of(context).colorScheme.secondary),
+          ),
+          Expanded(
+            flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Đặt đồ thành công", style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Nhà hàng đã nhận order", style: TextStyle(
+                        fontSize: 12
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+         const Expanded(
+           flex: 1,
+           child: Text("8:08"),
+         )
+         ,
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: Duration(seconds: 4),
+    );
+  }
+
+  _showToastError() {
+
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.red,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Icon(Icons.restaurant, size: 28, color: Colors.white),
+          ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        color: Colors.white
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Nhà hàng chưa nhận order", style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+          const Expanded(
+            flex: 1,
+            child: Text("8:08", style: TextStyle(
+                color: Colors.white
+            ),),
+          )
+          ,
+        ],
+      ),
+    );
+
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: Duration(seconds: 4),
     );
   }
 
@@ -243,13 +205,7 @@ class BillWidget extends GetView<FoodTreatmentController> {
                             width: double.infinity,
                             child: Container(
                                 padding: const EdgeInsets.only(bottom: 20),
-                                child:  Obx(() => AnimatedList(
-                                  key: controller.listKey,
-                                  initialItemCount: controller.itemEs.length,
-                                  itemBuilder: (BuildContext context, int index, Animation<double> animation) {
-                                    return _buildItem(context, index, animation);
-                                  },
-                                ))
+                                child: AnimatedItemWidget(listKey: widget.listKey)
                             ),
                           )
                       ),
@@ -262,7 +218,7 @@ class BillWidget extends GetView<FoodTreatmentController> {
                               flex: 1,
                               child: Padding(
                                   padding: const EdgeInsets.only(left: 20, top: 10),
-                                  child: Text('Tổng :')),
+                                  child: Obx(() => Text('Tổng : ${formatPrice(controller.total.value)}'))),
                             ),
                             Expanded(
                                 flex: 1,
@@ -277,7 +233,14 @@ class BillWidget extends GetView<FoodTreatmentController> {
                                           borderRadius: BorderRadius.circular(10.0)
                                       ),
                                       child: TextButton(
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          bool res = await controller.order();
+                                          if(res) {
+                                            print('123');
+                                            _showToastSuccess();
+                                          } else {
+                                            _showToastError();
+                                          }
                                         },
                                         child: Row(
                                           children: const [

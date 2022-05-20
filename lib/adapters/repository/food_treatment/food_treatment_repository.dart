@@ -9,12 +9,12 @@ class FoodTreatmentRepository {
 
   final baseUrl = "/restaurant";
 
-  final menuUrl = "/menu";
+  final menuUrl = "/restaurant/menu-calendar-daily";
 
 
   Future<ResultModel> findAllMenu() async {
     try {
-      var response = await client.dio.request(menuUrl + '?sort=position', options: Options(method: 'GET'));
+      var response = await client.dio.request(menuUrl , options: Options(method: 'GET'));
       return ResultModel.fromJson(response.data);
     } on DioError catch (e) {
       print("error: $e");
@@ -57,6 +57,25 @@ class FoodTreatmentRepository {
           baseUrl + '/order',
           data: products,
           options: Options(method: 'POST')
+      );
+      return ResultModel.fromJson(response.data);
+    } on DioError catch (e) {
+      print("error: $e");
+      return ResultModel(
+          status: false,
+          error: e.error,
+          results: null,
+          appVersion: ''
+      );
+    }
+  }
+
+
+  Future<ResultModel> getAllMealType() async {
+    try {
+      var response = await client.dio.request(
+          baseUrl + '/meals',
+          options: Options(method: 'GET')
       );
       return ResultModel.fromJson(response.data);
     } on DioError catch (e) {

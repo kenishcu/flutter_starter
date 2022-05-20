@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,8 @@ class _SplashScreenState extends State<SplashScreen> {
         appController.ready();
         if (Get.currentRoute == Routes.SPLASH) {
           if(appController.isSettingDeviceInfo()){
+            SettingController settingController = Get.find<SettingController>();
+            settingController.getSettingConfig();
             Get.offAndToNamed(Routes.INTRO);
           } else {
             Get.offAndToNamed(Routes.SETTING);

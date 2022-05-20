@@ -78,7 +78,10 @@ class ServiceWidget extends GetView<HomeController> {
                       ButtonServiceWidget(
                         iconData: Icons.medical_services_outlined,
                         buttonTitle: 'Bệnh sử',
-                        onPressed: () {  },
+                        onPressed: () {
+                          controller.getMedicalHistory();
+                          Get.offAndToNamed(Routes.MEDICAL_HISTORY);
+                        },
                       ),
                     ]
                 ),

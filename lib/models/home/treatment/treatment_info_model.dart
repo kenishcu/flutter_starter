@@ -19,6 +19,8 @@ class TreatmentInfoModel with _$TreatmentInfoModel {
     String? serviceCategoryName,
     int? serviceCategoryParentId,
     String? serviceCategoryParentName,
+    String? roomNameToDo,
+    int? roomIdToDo,
     int? currentDayTime,
   }) = _TreatmentInfoModel;
 
