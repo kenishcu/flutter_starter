@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
+import '../../models/restaurant/meal_type_model.dart';
 import '../../models/restaurant/product_model.dart';
 import '../../models/result/result_model.dart';
 import '../../utils/convert.dart';
@@ -35,6 +36,10 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   PaymentTypeModel payment = PaymentTypeModel(paymentTypeId: "1", paymentTypeCode: "CASH", paymentTypeName: "Tiền mặt");
 
   List<int> selectedCategories = <int>[].obs;
+
+  List<MealTypeModel> mealTypes = <MealTypeModel>[].obs;
+
+  late Rx<MealTypeModel> selectedMealType = MealTypeModel().obs;
 
   late TabController tabController;
   RxInt selectedTab = 0.obs;
@@ -67,6 +72,9 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   }
 
   Future initRestaurant() async {
+
+    await initMealTypes();
+
     var response = await restaurantRepository.findAllRestaurantCate();
     if(response.status == true) {
       myTabs = [];
@@ -108,8 +116,25 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     }
   }
 
+  Future initMealTypes() async {
+
+    final res = await restaurantRepository.getAllMealType();
+
+    mealTypes = [];
+    if(res.status == true) {
+      for (var element in res.results) {
+        mealTypes.add(MealTypeModel.fromJson(element));
+      }
+    }
+    selectedMealType.value = mealTypes.last;
+  }
+
   void setSelectedTab(int tab) {
     selectedTab.value = tab;
+  }
+
+  void setSelectedMealType (MealTypeModel mealType) {
+    selectedMealType.value = mealType;
   }
 
   void setSelectedCategory(int selectedCategory) async {

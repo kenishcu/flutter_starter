@@ -4,7 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
 
 import '../../../controllers/restaurant/product_restaurant_controller.dart';
+import '../../../models/restaurant/meal_type_model.dart';
 import '../../../models/restaurant/product_model.dart';
+import '../../../utils/convert.dart';
 import '../../../widgets/calendar/customized_date_picker.dart';
 
 class ProductWidget extends StatefulWidget {
@@ -112,7 +114,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
-              flex: 1,
+              flex: 2,
               child: _daySelection(context),
             ),
             Expanded(
@@ -159,38 +161,41 @@ class _ProductWidgetState extends State<ProductWidget> {
             ),
             SizedBox(
                 height: 30,
-                child: Container(
-                  child: InkWell(
-                    onTap: () {
-                      // showDialog(
-                      //   context: context,
-                      //   builder: (_) => showCalendarDialog(context),
-                      // );
-                    },
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          child: Text(_formatTime(controller.selectedDay) + "", style: const TextStyle(
-                              fontSize: 20
-                          )),
+                child: GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => showCalendarDialog(context),
+                    );
+                  },
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        child: Text(formatTime(controller.selectedDay) + "", style: const TextStyle(
+                            fontSize: 20
+                        )),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Obx(() => SizedBox(
+                        child: Text(controller.selectedMealType.value.mealTypeName.toString() + "", style: const TextStyle(
+                            fontSize: 20
+                        )),
+                      )),
+                      SizedBox(
+                        width: 30,
+                        child:  IconButton(
+                          padding: const EdgeInsets.all(0.0),
+                          icon: const Icon(Icons.arrow_drop_down, size: 30),
+                          tooltip: 'Increase',
+                          onPressed: () {
+                          },
                         ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        // SizedBox(
-                        //   width: 30,
-                        //   child:  IconButton(
-                        //     padding: const EdgeInsets.all(0.0),
-                        //     icon: const Icon(Icons.arrow_drop_down, size: 30),
-                        //     tooltip: 'Increase',
-                        //     onPressed: () {
-                        //     },
-                        //   ),
-                        // )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 )
             )
@@ -209,32 +214,21 @@ class _ProductWidgetState extends State<ProductWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // const SizedBox(
-              //   height: 40,
-              //   child: Padding(
-              //     padding: EdgeInsets.only(top: 5.0, left: 30.0),
-              //     child: Text("Đặt cho ngày :" , style: TextStyle(
-              //         fontSize: 20,
-              //         fontWeight: FontWeight.bold
-              //     )),
-              //   ),
-              // ),
-              // const Expanded(
-              //     flex: 1,
-              //     child: CustomizedDatePicker()
-              // ),
-              const SizedBox(
-                height: 40,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 5.0, left: 30.0),
-                  child: Text("Đặt cho ca :" , style: TextStyle(
+              SizedBox(
+                height: 70,
+                child: Container(
+                  margin: const EdgeInsets.only(top: 30.0, left: 30.0),
+                  child: const Text("Đặt cho ca :" , style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
                   )),
                 ),
               ),
+              const SizedBox(
+                height: 50,
+              ),
               _mealTypeSelection(),
-              _submitMealInfo(),
+              _submitMealInfo()
             ],
           )
       ),
@@ -252,21 +246,26 @@ class _ProductWidgetState extends State<ProductWidget> {
             borderRadius: BorderRadius.circular(7),
             border: Border.all()
         ),
-        child: DropdownButtonHideUnderline(
-          child:  DropdownButton<String>(
+        child: Obx(() => DropdownButtonHideUnderline(
+          child:  DropdownButton<MealTypeModel>(
               icon: const Icon(Icons.arrow_drop_down),
+              value: controller.selectedMealType.value,
               iconSize: 24,
               elevation: 16,
               style: const TextStyle(color: Colors.black87),
-              onChanged: (String? mealType) async {
+              onChanged: (MealTypeModel? mealType) {
+                controller.setSelectedMealType(mealType!);
               },
-              items: <String>['Sáng', 'Trưa', 'Chiều', 'Tối'].map((String meal) {
-                return DropdownMenuItem <String>(
+              items: controller.mealTypes.map((MealTypeModel meal) {
+                return DropdownMenuItem <MealTypeModel>(
                     value: meal,
-                    child: Text(meal));
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text(meal.mealTypeName.toString()),
+                    ));
               }).toList()
           ),
-        ),
+        )),
       ),
     );
   }
@@ -282,6 +281,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           Container(
             margin: const EdgeInsets.only(right: 30.0, bottom: 10),
             decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.secondaryContainer,
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(10.0)
             ),
@@ -289,7 +289,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             width: 150,
             child: TextButton(
                 onPressed: () {},
-                child: const Text("OK", style: TextStyle(
+                child: const Text("Đóng", style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold
                 ))
