@@ -15,7 +15,7 @@ class _DateSelectionWidget extends State<DateSelectionWidget> {
     return Column(
       children: [
         Expanded(
-          flex: 1,
+          flex: 2,
             child: SizedBox(
               width: double.infinity,
               child: Container(
@@ -58,20 +58,23 @@ class _DateSelectionWidget extends State<DateSelectionWidget> {
                             )
                         )),
                     SizedBox(
-                      height: 70,
+                      height: 100,
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Container(
-                          width: 150,
+                          width: 120,
                           height: 60,
-                          margin: const EdgeInsets.all(10.0),
+                          margin: const EdgeInsets.all(20.0),
                           decoration: BoxDecoration(
                             color: Colors.grey,
                             borderRadius: BorderRadius.circular(10.0)
                           ),
                           child: TextButton(
                             onPressed: () {  },
-                            child: Text("Kiểm tra"),
+                            child: const Text("Kiểm tra", style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16
+                            ),),
                           ),
                         ),
                       ),

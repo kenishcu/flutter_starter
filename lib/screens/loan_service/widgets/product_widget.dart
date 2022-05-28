@@ -185,7 +185,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             child: TextField(
               style: const TextStyle(fontSize: 15.0),
               onChanged: (String text) {
-                // controller.search(text);
+                controller.search(text);
               },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),

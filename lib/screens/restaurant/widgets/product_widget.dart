@@ -228,7 +228,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 height: 50,
               ),
               _mealTypeSelection(),
-              _submitMealInfo()
+              _submitMealInfo(context)
             ],
           )
       ),
@@ -270,7 +270,7 @@ class _ProductWidgetState extends State<ProductWidget> {
     );
   }
 
-  Widget _submitMealInfo() {
+  Widget _submitMealInfo(BuildContext context) {
     return SizedBox(
       height: 50,
       width: double.infinity,
@@ -288,7 +288,9 @@ class _ProductWidgetState extends State<ProductWidget> {
             height: 50,
             width: 150,
             child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 child: const Text("Đóng", style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold
@@ -391,7 +393,7 @@ class _ProductWidgetState extends State<ProductWidget> {
   }
 
   Widget _products(BuildContext context) {
-    return controller.products[controller.selectedTab.value].isNotEmpty ? SliverGrid(
+    return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         mainAxisSpacing: 15.0,
@@ -404,7 +406,7 @@ class _ProductWidgetState extends State<ProductWidget> {
         },
         childCount: controller.products[controller.selectedTab.value].length,
       ),
-    ): Container();
+    );
   }
 
   Widget _buildItemProduct(ProductModel productModel, BuildContext context) {

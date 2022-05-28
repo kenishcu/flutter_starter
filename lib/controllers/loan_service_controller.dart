@@ -24,6 +24,8 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
       }
   );
 
+  RxInt total = 0.obs;
+
   late ScrollController scrollController;
 
   DateTime selectedDay = DateTime.now();
@@ -127,6 +129,7 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
+      itemEs = [];
     }
   }
 
@@ -138,7 +141,7 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
     itemEs[index] = p;
   }
 
-  Future order() async {
+  Future order(GlobalKey<AnimatedListState> listKey) async {
     if(itemEs.isNotEmpty) {
       List<Map<String, dynamic>> list = [];
       for (var element in itemEs) {
@@ -179,12 +182,33 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
       };
       ResultModel res = await loanServiceRepository.order(products);
       if(res.status == true) {
+        for (var i = 0; i <= itemEs.length - 1; i++) {
+          listKey.currentState?.removeItem(0,
+                  (BuildContext context, Animation<double> animation) {
+                return Container();
+              });
+        }
+        itemEs.clear();
+        countTotal();
         return true;
       } else {
         return false;
       }
     } else {
       return false;
+    }
+  }
+
+  void countTotal() {
+    if(itemEs.isNotEmpty) {
+      var t = 0;
+      for (var element in itemEs) {
+        var price = element.product?.price;
+        t += (element.number! * price!);
+      }
+      total.value = t;
+    } else {
+      total.value = 0;
     }
   }
 
@@ -200,4 +224,16 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
     selectedTab.value = tab;
   }
 
+  Future search(String text) async {
+    var responseProduct = await loanServiceRepository.getAllItem(myTabs[selectedTab.value].id!, text);
+    if(responseProduct.status == true) {
+      List<LoanServiceModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(LoanServiceModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
+  }
 }

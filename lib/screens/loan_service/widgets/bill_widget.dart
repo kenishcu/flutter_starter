@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/loan_service_controller.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -19,7 +20,7 @@ class BillWidget extends StatefulWidget {
 
 class _BillWidgetState extends State<BillWidget> {
 
-  ProductRestaurantController controller = Get.find<ProductRestaurantController>();
+  LoanServiceController controller = Get.find<LoanServiceController>();
 
   late FToast fToast;
 
@@ -83,7 +84,7 @@ class _BillWidgetState extends State<BillWidget> {
     fToast.showToast(
       child: toast,
       gravity: ToastGravity.TOP_LEFT,
-      toastDuration: Duration(seconds: 4),
+      toastDuration: const Duration(seconds: 4),
     );
   }
 
@@ -235,7 +236,7 @@ class _BillWidgetState extends State<BillWidget> {
                                       ),
                                       child: TextButton(
                                         onPressed: () async {
-                                          bool res = await controller.order();
+                                          bool res = await controller.order(widget.listKey);
                                           if(res) {
                                             _showToastSuccess();
                                           } else {

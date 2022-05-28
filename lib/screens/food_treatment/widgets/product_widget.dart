@@ -141,6 +141,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                           icon: const Icon(Icons.arrow_drop_down, size: 30),
                           tooltip: 'Increase',
                           onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (_) => showCalendarDialog(context),
+                            );
                           },
                         ),
                       )
@@ -352,7 +356,7 @@ class _ProductWidgetState extends State<ProductWidget> {
   }
 
   Widget _products(BuildContext context) {
-    return controller.products[controller.selectedTab.value].isNotEmpty ? SliverGrid(
+    return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         mainAxisSpacing: 15.0,
@@ -365,7 +369,7 @@ class _ProductWidgetState extends State<ProductWidget> {
         },
         childCount: controller.products[controller.selectedTab.value].length,
       ),
-    ): Container();
+    );
   }
 
   Widget _buildItemProduct(ProductModel productModel, BuildContext context) {
@@ -505,7 +509,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           ),
           Obx(() => controller.initScreen.value ? Expanded(
               flex: 1,
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: Column(

@@ -65,7 +65,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
         mealTypes.add(MealTypeModel.fromJson(element));
       }
     }
-    selectedMealType.value = mealTypes.last;
+    selectedMealType.value = mealTypes[2];
   }
 
   Future initFoodTreatment() async {
@@ -85,7 +85,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
       }
 
       for (var element in myTabs) {
-        var responseProduct= await foodTreatmentRepository.getProductByDay(day, mealTypes.first.mealTypeId.toString(), element.id!, "");
+        var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), element.id!, "");
         if(responseProduct.status == true) {
           List<ProductModel> ps = [];
           for (var p in responseProduct.results) {
@@ -150,6 +150,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
+      itemEs.removeAt(index);
     }
     countTotal();
   }
@@ -171,6 +172,8 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
         t += (element.number! * price!);
       }
       total.value = t;
+    } else {
+      total.value = 0;
     }
   }
 
@@ -182,7 +185,20 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
     itemEs[index] = p;
   }
 
-  Future<bool> order() async {
+  Future search(String text) async {
+    // var responseProduct = await foodTreatmentRepository.getProductByDay();
+    // if(responseProduct.status == true) {
+    //   List<ProductModel> ps = [];
+    //   for (var p in responseProduct.results) {
+    //     ps.add(ProductModel.fromJson(p));
+    //   }
+    //   products[selectedTab.value] = ps;
+    // } else {
+    //   products[selectedTab.value] = [];
+    // }
+  }
+
+  Future<bool> order(GlobalKey<AnimatedListState> listKey) async {
     if (itemEs.isNotEmpty) {
       List<Map<String, dynamic>> list = [];
       for (var element in itemEs) {
@@ -237,6 +253,14 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
 
       ResultModel res = await foodTreatmentRepository.orderProducts(products);
       if(res.status == true) {
+        for (var i = 0; i <= itemEs.length - 1; i++) {
+          listKey.currentState?.removeItem(0,
+                  (BuildContext context, Animation<double> animation) {
+                return Container();
+              });
+        }
+        itemEs.clear();
+        countTotal();
         return true;
       } else {
         return false;
@@ -246,11 +270,33 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
     }
   }
 
-  void setSelectedMealType (MealTypeModel mealType) {
+  Future setSelectedMealType (MealTypeModel mealType) async {
     selectedMealType.value = mealType;
+    day = DateTime.parse(selectedDay.toString()).weekday;
+    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "");
+    if(responseProduct.status == true) {
+      List<ProductModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(ProductModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
   }
 
-  void setSelectedDate(DateTime date) {
+  Future setSelectedDate(DateTime date) async {
     selectedDay.value = date;
+    day = DateTime.parse(selectedDay.toString()).weekday;
+    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "");
+    if(responseProduct.status == true) {
+      List<ProductModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(ProductModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
   }
 }

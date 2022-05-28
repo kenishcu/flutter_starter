@@ -197,6 +197,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
+      itemEs.removeAt(index);
     }
     countTotal();
   }
@@ -210,7 +211,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     countTotal();
   }
 
-  Future<bool> order() async {
+  Future<bool> order(GlobalKey<AnimatedListState> listKey) async {
     if (itemEs.isNotEmpty) {
       List<Map<String, dynamic>> list = [];
       for (var element in itemEs) {
@@ -263,9 +264,16 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
         "products": list,
       };
 
-      print('product order: $products');
       ResultModel res = await restaurantRepository.orderProducts(products);
       if(res.status == true) {
+        for (var i = 0; i <= itemEs.length - 1; i++) {
+          listKey.currentState?.removeItem(0,
+                  (BuildContext context, Animation<double> animation) {
+                return Container();
+              });
+        }
+        itemEs.clear();
+        countTotal();
         return true;
       } else {
         return false;
@@ -296,6 +304,8 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
         t += (element.number! * price!);
       }
       total.value = t;
+    } else {
+      total.value = 0;
     }
   }
 

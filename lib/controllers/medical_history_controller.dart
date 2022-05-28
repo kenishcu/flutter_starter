@@ -22,7 +22,7 @@ class MedicalHistoryController extends GetxController {
 
   Future initMedicalHistory() async {
 
-    DateTime fromConvert = DateTime(from.year, from.month, from.day);
+    DateTime fromConvert = DateTime(from.year, from.month - 3, from.day);
     DateTime toConvert = DateTime(to.year, to.month, to.day);
     int _from = (fromConvert.millisecondsSinceEpoch / 1000).round();
     int _to = (toConvert.millisecondsSinceEpoch / 1000).round();
