@@ -8,6 +8,8 @@ class LoanServiceRepository {
 
   final baseUrl = "/services";
 
+  final serviceUrl = "/room-service";
+
   final categoryUrl = "/categories";
 
   Future<ResultModel> getAllCategories() async {
@@ -48,7 +50,7 @@ class LoanServiceRepository {
   Future<ResultModel> order(Map<String, dynamic> products) async {
     try {
       var response = await client.dio.request(
-          baseUrl + '/room-service/order',
+          serviceUrl + '/order',
           data: products,
           options: Options(method: 'POST')
       );
