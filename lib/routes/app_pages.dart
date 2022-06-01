@@ -1,3 +1,4 @@
+import 'package:flutter_stater/screens/bill_and_payment/bill_and_payment_screen.dart';
 import 'package:flutter_stater/screens/food_treatment/food_treatment_screen.dart';
 import 'package:flutter_stater/screens/home/home_screen.dart';
 import 'package:flutter_stater/screens/intro/intro_screen.dart';
@@ -45,6 +46,10 @@ abstract class AppPages {
     GetPage(
         name: Routes.MEDICAL_HISTORY,
         page: () => const MedicalHistoryScreen()
+    ),
+    GetPage(
+        name: Routes.BILL_AND_PAYMENT,
+        page: () => const BillAndPaymentScreen()
     )
   ];
 }

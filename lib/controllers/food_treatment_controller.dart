@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/models/food_treatment/meal_type_model.dart';
 import 'package:flutter_stater/models/food_treatment/menu_model.dart';
+import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -29,6 +30,8 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
   List<int> selectedCategories = <int>[].obs;
 
   List<MealTypeModel> mealTypes = <MealTypeModel>[].obs;
+
+  List<TextEditingController> textSearch = <TextEditingController>[].obs;
 
   late TabController tabController;
   Rx<DateTime> selectedDay = DateTime.now().obs;
@@ -64,7 +67,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
         mealTypes.add(MealTypeModel.fromJson(element));
       }
     }
-    selectedMealType.value = mealTypes.last;
+    selectedMealType.value = mealTypes[2];
   }
 
   Future initFoodTreatment() async {
@@ -84,7 +87,9 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
       }
 
       for (var element in myTabs) {
-        var responseProduct= await foodTreatmentRepository.getProductByDay(day, mealTypes.first.mealTypeId.toString(), element.id!, "");
+        TextEditingController textEdit = TextEditingController();
+        textSearch.add(textEdit);
+        var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), element.id!, "", "");
         if(responseProduct.status == true) {
           List<ProductModel> ps = [];
           for (var p in responseProduct.results) {
@@ -149,6 +154,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
+      itemEs.removeAt(index);
     }
     countTotal();
   }
@@ -170,6 +176,8 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
         t += (element.number! * price!);
       }
       total.value = t;
+    } else {
+      total.value = 0;
     }
   }
 
@@ -181,7 +189,21 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
     itemEs[index] = p;
   }
 
-  Future<bool> order() async {
+  Future search(String text) async {
+    day = DateTime.parse(selectedDay.toString()).weekday;
+    var responseProduct = await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(),  myTabs[selectedTab.value].id!, "", text);
+    if(responseProduct.status == true) {
+      List<ProductModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(ProductModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
+  }
+
+  Future<bool> order(GlobalKey<AnimatedListState> listKey) async {
     if (itemEs.isNotEmpty) {
       List<Map<String, dynamic>> list = [];
       for (var element in itemEs) {
@@ -234,18 +256,52 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
         "products": list,
       };
 
-      print('product order: $products');
-      return true;
+      ResultModel res = await foodTreatmentRepository.orderProducts(products);
+      if(res.status == true) {
+        for (var i = 0; i <= itemEs.length - 1; i++) {
+          listKey.currentState?.removeItem(0,
+                  (BuildContext context, Animation<double> animation) {
+                return Container();
+              });
+        }
+        itemEs.clear();
+        countTotal();
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
   }
 
-  void setSelectedMealType (MealTypeModel mealType) {
+  Future setSelectedMealType (MealTypeModel mealType) async {
     selectedMealType.value = mealType;
+    day = DateTime.parse(selectedDay.toString()).weekday;
+    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "", "");
+    if(responseProduct.status == true) {
+      List<ProductModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(ProductModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
   }
 
-  void setSelectedDate(DateTime date) {
+  Future setSelectedDate(DateTime date) async {
     selectedDay.value = date;
+    day = DateTime.parse(selectedDay.toString()).weekday;
+    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "", "");
+    if(responseProduct.status == true) {
+      List<ProductModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(ProductModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
   }
 }

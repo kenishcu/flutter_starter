@@ -182,10 +182,11 @@ class _ProductWidgetState extends State<ProductWidget> {
         width: double.infinity,
         child: Container(
             padding: const EdgeInsets.all(5.0),
-            child: TextField(
+            child: TextFormField(
+              controller: controller.textSearch[controller.selectedTab.value],
               style: const TextStyle(fontSize: 15.0),
               onChanged: (String text) {
-                // controller.search(text);
+                controller.search(text);
               },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -448,7 +449,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               _searchBar(context),
-                              Expanded(child: CustomScrollView(
+                              Expanded(
+                                  child: CustomScrollView(
                                   slivers : <Widget>[
                                     SliverPadding(
                                       padding: const EdgeInsets.all(10.0),

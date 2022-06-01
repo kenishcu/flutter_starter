@@ -8,7 +8,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
+import '../../models/restaurant/meal_type_model.dart';
 import '../../models/restaurant/product_model.dart';
+import '../../models/result/result_model.dart';
 import '../../utils/convert.dart';
 import '../home_controller.dart';
 import '../setting_controller.dart';
@@ -34,6 +36,12 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   PaymentTypeModel payment = PaymentTypeModel(paymentTypeId: "1", paymentTypeCode: "CASH", paymentTypeName: "Tiền mặt");
 
   List<int> selectedCategories = <int>[].obs;
+
+  List<MealTypeModel> mealTypes = <MealTypeModel>[].obs;
+
+  List<TextEditingController> textSearch = <TextEditingController>[].obs;
+
+  late Rx<MealTypeModel> selectedMealType = MealTypeModel().obs;
 
   late TabController tabController;
   RxInt selectedTab = 0.obs;
@@ -66,6 +74,9 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   }
 
   Future initRestaurant() async {
+
+    await initMealTypes();
+
     var response = await restaurantRepository.findAllRestaurantCate();
     if(response.status == true) {
       myTabs = [];
@@ -76,6 +87,8 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       }
 
       for (var element in myTabs) {
+        TextEditingController textEdit = TextEditingController();
+        textSearch.add(textEdit);
         var responseSubCate = await restaurantRepository.findAllRestaurantSubCate(element.categoryId!);
         if(responseSubCate.status == true) {
           List<SubCategoryModel> subs = [
@@ -107,8 +120,25 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     }
   }
 
+  Future initMealTypes() async {
+
+    final res = await restaurantRepository.getAllMealType();
+
+    mealTypes = [];
+    if(res.status == true) {
+      for (var element in res.results) {
+        mealTypes.add(MealTypeModel.fromJson(element));
+      }
+    }
+    selectedMealType.value = mealTypes.last;
+  }
+
   void setSelectedTab(int tab) {
     selectedTab.value = tab;
+  }
+
+  void setSelectedMealType (MealTypeModel mealType) {
+    selectedMealType.value = mealType;
   }
 
   void setSelectedCategory(int selectedCategory) async {
@@ -171,6 +201,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
+      itemEs.removeAt(index);
     }
     countTotal();
   }
@@ -184,7 +215,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     countTotal();
   }
 
-  Future order() async {
+  Future<bool> order(GlobalKey<AnimatedListState> listKey) async {
     if (itemEs.isNotEmpty) {
       List<Map<String, dynamic>> list = [];
       for (var element in itemEs) {
@@ -237,9 +268,22 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
         "products": list,
       };
 
-      print('product order: $products');
+      ResultModel res = await restaurantRepository.orderProducts(products);
+      if(res.status == true) {
+        for (var i = 0; i <= itemEs.length - 1; i++) {
+          listKey.currentState?.removeItem(0,
+                  (BuildContext context, Animation<double> animation) {
+                return Container();
+              });
+        }
+        itemEs.clear();
+        countTotal();
+        return true;
+      } else {
+        return false;
+      }
     } else {
-
+      return false;
     }
   }
 
@@ -264,6 +308,8 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
         t += (element.number! * price!);
       }
       total.value = t;
+    } else {
+      total.value = 0;
     }
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter_stater/controllers/food_treatment_controller.dart';
 import 'package:flutter_stater/screens/food_treatment/widgets/animated_item_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../models/food_treatment/item_product_model.dart';
 import '../../../utils/convert.dart';
@@ -22,6 +23,7 @@ class _BillWidgetState extends State<BillWidget> {
 
   FoodTreatmentController controller = Get.find<FoodTreatmentController>();
 
+  late String _timeString;
 
   late FToast fToast;
 
@@ -30,6 +32,11 @@ class _BillWidgetState extends State<BillWidget> {
     super.initState();
     fToast = FToast();
     fToast.init(context);
+    _timeString = _formatDateTime(DateTime.now());
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('hh:mm').format(dateTime);
   }
 
   _showToastSuccess() {
@@ -71,9 +78,9 @@ class _BillWidgetState extends State<BillWidget> {
                 ),
               )
           ),
-         const Expanded(
+          Expanded(
            flex: 1,
-           child: Text("8:08"),
+           child: Text(_timeString),
          )
          ,
         ],
@@ -99,7 +106,7 @@ class _BillWidgetState extends State<BillWidget> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
+          const Expanded(
             flex: 1,
             child: Icon(Icons.restaurant, size: 28, color: Colors.white),
           ),
@@ -129,9 +136,9 @@ class _BillWidgetState extends State<BillWidget> {
                 ),
               )
           ),
-          const Expanded(
+          Expanded(
             flex: 1,
-            child: Text("8:08", style: TextStyle(
+            child: Text(_timeString, style: const TextStyle(
                 color: Colors.white
             ),),
           )
@@ -234,9 +241,8 @@ class _BillWidgetState extends State<BillWidget> {
                                       ),
                                       child: TextButton(
                                         onPressed: () async {
-                                          bool res = await controller.order();
+                                          bool res = await controller.order(widget.listKey);
                                           if(res) {
-                                            print('123');
                                             _showToastSuccess();
                                           } else {
                                             _showToastError();

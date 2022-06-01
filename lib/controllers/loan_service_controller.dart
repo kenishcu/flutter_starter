@@ -24,6 +24,8 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
       }
   );
 
+  RxInt total = 0.obs;
+
   late ScrollController scrollController;
 
   DateTime selectedDay = DateTime.now();
@@ -33,6 +35,8 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
   List<CategoryModel> myTabs = <CategoryModel>[].obs;
 
   List<List<LoanServiceModel>> products = <List<LoanServiceModel>>[].obs;
+
+  List<TextEditingController> textSearch = <TextEditingController>[].obs;
 
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
@@ -70,6 +74,8 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
     }
 
     for (var element in myTabs) {
+      TextEditingController textEdit = TextEditingController();
+      textSearch.add(textEdit);
       var responseProduct = await loanServiceRepository.getAllItem(element.id!, "");
       if(responseProduct.status == true) {
         List<LoanServiceModel> ps = [];
@@ -127,6 +133,7 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
+      itemEs = [];
     }
   }
 
@@ -138,45 +145,75 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
     itemEs[index] = p;
   }
 
-  Future order() async {
-    List<Map<String, dynamic>> list = [];
-    for (var element in itemEs) {
-      LoanServiceModel pro =
-      LoanServiceModel(
-          id: element.product?.id,
-          serviceCode: element.product?.serviceCode,
-          serviceName: element.product?.serviceName,
-          categoryId: element.product?.categoryId,
-          categoryCode: element.product?.categoryCode,
-          categoryName: element.product?.categoryName,
-          defaultQuantity: element.product?.defaultQuantity,
-          imageUrl: element.product?.imageUrl,
-          status: element.product?.status,
-          price: element.product?.price,
-          quantity: element.number,
-          note: element.edit
-      );
-      list.add(pro.toJson());
-    }
+  Future order(GlobalKey<AnimatedListState> listKey) async {
+    if(itemEs.isNotEmpty) {
+      List<Map<String, dynamic>> list = [];
+      for (var element in itemEs) {
+        LoanServiceModel pro =
+        LoanServiceModel(
+            id: element.product?.id,
+            serviceCode: element.product?.serviceCode,
+            serviceName: element.product?.serviceName,
+            categoryId: element.product?.categoryId,
+            categoryCode: element.product?.categoryCode,
+            categoryName: element.product?.categoryName,
+            defaultQuantity: element.product?.defaultQuantity,
+            imageUrl: element.product?.imageUrl,
+            status: element.product?.status,
+            price: element.product?.price,
+            quantity: element.number,
+            note: element.edit
+        );
+        list.add(pro.toJson());
+      }
 
-    HomeController homeController = Get.find<HomeController>();
-    SettingController settingController = Get.find<SettingController>();
-    String? receptionQueueId = homeController.patientInfo.receptionQueueId;
-    int timeOrder = timeToTimeStamp(selectedDay);
-    Map<String, dynamic> products = {
-      "patient_id": homeController.patientInfo.patientId,
-      "patient_fullname": homeController.patientInfo.patientName,
-      "bed_id": settingController.selectedBed.value.bedId,
-      "bed_name": settingController.selectedBed.value.bedName,
-      "room_id": settingController.selectedRoom.value.roomId,
-      "room_name":  settingController.selectedRoom.value.roomName,
-      "reception_queue_id": receptionQueueId,
-      "status": "TODO",
-      "status_name": "Chưa xử lý",
-      "used_at": timeOrder,
-      "services": list,
-    };
-    print('product : ${products}');
+      HomeController homeController = Get.find<HomeController>();
+      SettingController settingController = Get.find<SettingController>();
+      String? receptionQueueId = homeController.patientInfo.receptionQueueId;
+      int timeOrder = timeToTimeStamp(selectedDay);
+      Map<String, dynamic> products = {
+        "patient_id": homeController.patientInfo.patientId,
+        "patient_fullname": homeController.patientInfo.patientName,
+        "bed_id": settingController.selectedBed.value.bedId,
+        "bed_name": settingController.selectedBed.value.bedName,
+        "room_id": settingController.selectedRoom.value.roomId,
+        "room_name":  settingController.selectedRoom.value.roomName,
+        "reception_queue_id": receptionQueueId,
+        "status": "TODO",
+        "status_name": "Chưa xử lý",
+        "used_at": timeOrder,
+        "services": list,
+      };
+      ResultModel res = await loanServiceRepository.order(products);
+      if(res.status == true) {
+        for (var i = 0; i <= itemEs.length - 1; i++) {
+          listKey.currentState?.removeItem(0,
+                  (BuildContext context, Animation<double> animation) {
+                return Container();
+              });
+        }
+        itemEs.clear();
+        countTotal();
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  void countTotal() {
+    if(itemEs.isNotEmpty) {
+      var t = 0;
+      for (var element in itemEs) {
+        var price = element.product?.price;
+        t += (element.number! * price!);
+      }
+      total.value = t;
+    } else {
+      total.value = 0;
+    }
   }
 
   void plusItem(int index) {
@@ -191,4 +228,16 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
     selectedTab.value = tab;
   }
 
+  Future search(String text) async {
+    var responseProduct = await loanServiceRepository.getAllItem(myTabs[selectedTab.value].id!, text);
+    if(responseProduct.status == true) {
+      List<LoanServiceModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(LoanServiceModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
+  }
 }

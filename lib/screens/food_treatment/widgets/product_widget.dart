@@ -1,5 +1,6 @@
 import 'package:flutter_stater/controllers/food_treatment_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/models/food_treatment/category_model.dart';
 import 'package:flutter_stater/models/food_treatment/meal_type_model.dart';
 import 'package:get/get.dart';
 
@@ -141,6 +142,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                           icon: const Icon(Icons.arrow_drop_down, size: 30),
                           tooltip: 'Increase',
                           onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (_) => showCalendarDialog(context),
+                            );
                           },
                         ),
                       )
@@ -268,9 +273,11 @@ class _ProductWidgetState extends State<ProductWidget> {
         width: double.infinity,
         child: Container(
             padding: const EdgeInsets.all(5.0),
-            child: TextField(
+            child: TextFormField(
+              controller: controller.textSearch[controller.selectedTab.value],
               style: const TextStyle(fontSize: 15.0),
               onChanged: (String text) {
+                controller.search(text);
               },
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -351,8 +358,39 @@ class _ProductWidgetState extends State<ProductWidget> {
     );
   }
 
+
   Widget _products(BuildContext context) {
-    return controller.products[controller.selectedTab.value].isNotEmpty ? SliverGrid(
+
+    List<ProductModel> productMonChinh = controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'mon_chinh').toList();
+    List<ProductModel> productTieuDuong = controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'tieu_duong').toList();
+    List<ProductModel> productMonCom =  controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'set_com').toList();
+    List<ProductModel> productMonKhac =  controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == '').toList();
+
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: CustomScrollView(
+        slivers: [
+          // Set - Com
+          productMonCom.isNotEmpty ? SliverToBoxAdapter(
+            child: Container(
+              padding: const EdgeInsets.only(left: 10),
+              child: const Text('Set Cơm', style: TextStyle(
+                  fontSize: 20
+              )),
+            ),
+          ): const SliverToBoxAdapter(),
+          productMonCom.isNotEmpty ? SliverPadding(
+            padding: const EdgeInsets.all(10),
+            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'set_com').toList()),
+          ) : const SliverToBoxAdapter(),
+        ],
+      ),
+    );
+  }
+
+  SliverGrid _buildProducts(List<ProductModel> items) {
+    return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         mainAxisSpacing: 15.0,
@@ -361,11 +399,11 @@ class _ProductWidgetState extends State<ProductWidget> {
       ),
       delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-          return _buildItemProduct(controller.products[controller.selectedTab.value][index], context);
+          return _buildItemProduct(items[index], context);
         },
-        childCount: controller.products[controller.selectedTab.value].length,
+        childCount: items.length,
       ),
-    ): Container();
+    );
   }
 
   Widget _buildItemProduct(ProductModel productModel, BuildContext context) {
@@ -484,6 +522,7 @@ class _ProductWidgetState extends State<ProductWidget> {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -505,7 +544,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           ),
           Obx(() => controller.initScreen.value ? Expanded(
               flex: 1,
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: Column(
@@ -533,14 +572,13 @@ class _ProductWidgetState extends State<ProductWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               _searchBar(context),
-                              Expanded(child: CustomScrollView(
-                                  slivers : <Widget>[
-                                    SliverPadding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      sliver: _products(context),
-                                    )
-                                  ]
-                              ))
+                              Expanded(
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    child: _products(context)
+                                  )
+                              )
                             ],
                           ),
                         )
