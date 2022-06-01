@@ -98,7 +98,7 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
                    ),
                    Expanded(
                        flex: 1,
-                       child: Container(
+                       child: Obx(() => controller.selectedTab.value == 0 ? Container(
                          width: double.infinity,
                          height: double.infinity,
                          decoration: const BoxDecoration(
@@ -108,7 +108,35 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
                                bottomRight: Radius.circular(20)
                            ),
                          ),
-                       )
+                         child: ListView.builder(
+                           itemCount: controller.outpatient.length,
+                           itemBuilder: (BuildContext context, int index) {
+                             return SizedBox(
+                               height: 50,
+                               child: Text(controller.outpatient[index].id!.receptionQueueId.toString()),
+                             );
+                           }
+                         ),
+                       ): Container(
+                         width: double.infinity,
+                         height: double.infinity,
+                         decoration: const BoxDecoration(
+                           color: Colors.white,
+                           borderRadius: BorderRadius.only(
+                               bottomLeft: Radius.circular(20),
+                               bottomRight: Radius.circular(20)
+                           ),
+                         ),
+                         child: ListView.builder(
+                             itemCount: controller.inpatient.length,
+                             itemBuilder: (BuildContext context, int index) {
+                               return SizedBox(
+                                 height: 50,
+                                 child: Text(controller.inpatient[index].id!.receptionQueueId.toString()),
+                               );
+                             }
+                         ),
+                       ))
                    )
                  ],
                ),
