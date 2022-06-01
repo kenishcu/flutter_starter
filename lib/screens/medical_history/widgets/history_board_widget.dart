@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/index.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/convert.dart';
+
 class HistoryBoardWidget extends StatefulWidget {
 
   const HistoryBoardWidget({Key? key}): super(key: key);
@@ -38,7 +40,7 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                        color: controller.selectedTab.value == index ? Colors.white : Theme.of(context).colorScheme.onPrimary,
+                        color: controller.selectedTab.value == index ? Theme.of(context).colorScheme.surfaceVariant : Theme.of(context).colorScheme.onPrimary,
                         borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(20),
                             topLeft: Radius.circular(20)
@@ -96,6 +98,9 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
                        child: _menuBar(context),
                      ),
                    ),
+                   const SizedBox(
+                     height: 10,
+                   ),
                    Expanded(
                        flex: 1,
                        child: Obx(() => controller.selectedTab.value == 0 ? Container(
@@ -112,8 +117,47 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
                            itemCount: controller.outpatient.length,
                            itemBuilder: (BuildContext context, int index) {
                              return SizedBox(
-                               height: 50,
-                               child: Text(controller.outpatient[index].id!.receptionQueueId.toString()),
+                               height: 55,
+                               child: Container(
+                                 margin: const EdgeInsets.only(left: 20, right: 20),
+                                 padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+                                 decoration: const BoxDecoration(
+                                     border: Border(
+                                         bottom: BorderSide(
+                                             color: Colors.grey,
+                                             width: 0.8
+                                         )
+                                     )
+                                 ),
+                                 child: Column(
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   mainAxisAlignment: MainAxisAlignment.start,
+                                   children: [
+                                     SizedBox(
+                                       height: 25,
+                                       child: Text(
+                                           controller.outpatient[index].datas!.first.datas!.first.serviceName.toString(),
+                                           textAlign: TextAlign.center,
+                                           style: const TextStyle(
+                                               fontSize: 14,
+                                               fontWeight: FontWeight.w500,
+                                               color: Colors.black
+                                           )
+                                       ),
+                                     ),
+                                     SizedBox(
+                                       height: 20,
+                                       child: Text(convertFromUnixToDatetime(controller.outpatient[index].id!.currentDayTime!),
+                                           style: TextStyle(
+                                               fontSize: 11,
+                                               fontWeight: FontWeight.w400,
+                                               color: Theme.of(context).colorScheme.secondary
+                                           )
+                                       ),
+                                     )
+                                   ],
+                                 ),
+                               ),
                              );
                            }
                          ),
@@ -131,13 +175,55 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
                              itemCount: controller.inpatient.length,
                              itemBuilder: (BuildContext context, int index) {
                                return SizedBox(
-                                 height: 50,
-                                 child: Text(controller.inpatient[index].id!.receptionQueueId.toString()),
+                                 height: 55,
+                                 child: Container(
+                                   margin: const EdgeInsets.only(left: 20, right: 20),
+                                   padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+                                   decoration: const BoxDecoration(
+                                       border: Border(
+                                           bottom: BorderSide(
+                                               color: Colors.grey,
+                                               width: 0.8
+                                           )
+                                       )
+                                   ),
+                                   child: Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     mainAxisAlignment: MainAxisAlignment.center,
+                                     children: [
+                                       SizedBox(
+                                         height: 25,
+                                         child: Text(
+                                             controller.inpatient[index].datas!.first.datas!.first.serviceName.toString(),
+                                             textAlign: TextAlign.center,
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black
+                                              )
+                                         ),
+                                       ),
+                                       SizedBox(
+                                         height: 20,
+                                         child: Text(convertFromUnixToDatetime(controller.inpatient[index].id!.currentDayTime!),
+                                             style: TextStyle(
+                                                 fontSize: 11,
+                                                 fontWeight: FontWeight.w400,
+                                                 color: Theme.of(context).colorScheme.secondary
+                                             )
+                                         ),
+                                       )
+                                     ],
+                                   ),
+                                 ),
                                );
                              }
                          ),
                        ))
-                   )
+                   ),
+                   const SizedBox(
+                     height: 10,
+                   ),
                  ],
                ),
              ): Container()

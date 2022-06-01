@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/index.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class DateSelectionWidget extends StatefulWidget {
 
@@ -10,12 +13,14 @@ class DateSelectionWidget extends StatefulWidget {
 
 class _DateSelectionWidget extends State<DateSelectionWidget> {
 
+  MedicalHistoryController controller = Get.find<MedicalHistoryController>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Expanded(
-          flex: 2,
+          flex: 1,
             child: SizedBox(
               width: double.infinity,
               child: Container(
@@ -31,54 +36,30 @@ class _DateSelectionWidget extends State<DateSelectionWidget> {
                       height: 70,
                       child: Padding(
                         padding: EdgeInsets.only(left: 30, top: 30),
-                        child: Text("Từ ngày", style: TextStyle(
+                        child: Text("Từ ngày - Đến ngày", style: TextStyle(
+                          fontSize: 18
                         )),
                       ),
                     ),
                     SizedBox(
-                        height: 60,
+                        height: 40,
                         width: double.infinity,
                         child: Container(
-                            padding: const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0, left: 20.0),
-                            child: TextField(
-                              style: const TextStyle(fontSize: 15.0),
-                              onChanged: (String text) {
-                                // controller.search(text);
-                              },
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                prefixIcon: const Icon(Icons.search),
-                                hintText: "",
-                                border: OutlineInputBorder(
-                                    borderSide: const BorderSide(color: Colors.black12, width: 20.0),
-                                    borderRadius: BorderRadius.circular(25.0)
-                                ),
-                                fillColor: Colors.white
-                              ),
+                          height: 40,
+                            margin: const EdgeInsets.only(left: 20, right: 20),
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: Colors.white
+                            ),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text( DateFormat('dd/MM/yyyy').format(controller.from) + "  -  " + DateFormat('dd/MM/yyyy').format(controller.from),
+                                  style: const TextStyle(
+                                      fontSize: 18
+                                  )),
                             )
                         )),
-                    SizedBox(
-                      height: 100,
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Container(
-                          width: 120,
-                          height: 60,
-                          margin: const EdgeInsets.all(20.0),
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10.0)
-                          ),
-                          child: TextButton(
-                            onPressed: () {  },
-                            child: const Text("Kiểm tra", style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16
-                            ),),
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),

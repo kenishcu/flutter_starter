@@ -83,6 +83,7 @@ ThemeData lightTheme(BuildContext context) {
       onBackground: kOnBackgroundColor,
       onSurface: kSurfaceVariantColor,
       surface: kSurfaceColor,
+      surfaceVariant: kListSubColor,
       error: kErrorColor,
     ),
     toggleableActiveColor: kPrimaryColor,
