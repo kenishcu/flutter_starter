@@ -36,6 +36,8 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
 
   List<List<LoanServiceModel>> products = <List<LoanServiceModel>>[].obs;
 
+  List<TextEditingController> textSearch = <TextEditingController>[].obs;
+
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
   late TabController tabController;
@@ -72,6 +74,8 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
     }
 
     for (var element in myTabs) {
+      TextEditingController textEdit = TextEditingController();
+      textSearch.add(textEdit);
       var responseProduct = await loanServiceRepository.getAllItem(element.id!, "");
       if(responseProduct.status == true) {
         List<LoanServiceModel> ps = [];

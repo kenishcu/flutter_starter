@@ -73,7 +73,10 @@ class ServiceWidget extends GetView<HomeController> {
                       ButtonServiceWidget(
                         iconData: Icons.payments_outlined,
                         buttonTitle: 'Xem bảng kê & thanh toán',
-                        onPressed: () {  },
+                        onPressed: () {
+                          controller.getBillAndPayment();
+                          Get.offAndToNamed(Routes.BILL_AND_PAYMENT);
+                        },
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.medical_services_outlined,

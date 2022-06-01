@@ -55,13 +55,14 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
       onEnd: () {
         appController.ready();
-        if (Get.currentRoute == Routes.SPLASH) {
-          if(appController.isSettingDeviceInfo()){
-            Get.offAndToNamed(Routes.INTRO);
-          } else {
-            Get.offAndToNamed(Routes.SETTING);
-          }
-        }
+        Get.offAndToNamed(Routes.BILL_AND_PAYMENT);
+        // if (Get.currentRoute == Routes.SPLASH) {
+        //   if(appController.isSettingDeviceInfo()){
+        //     Get.offAndToNamed(Routes.INTRO);
+        //   } else {
+        //     Get.offAndToNamed(Routes.SETTING);
+        //   }
+        // }
       },
     );
 

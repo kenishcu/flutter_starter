@@ -31,6 +31,8 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
 
   List<MealTypeModel> mealTypes = <MealTypeModel>[].obs;
 
+  List<TextEditingController> textSearch = <TextEditingController>[].obs;
+
   late TabController tabController;
   Rx<DateTime> selectedDay = DateTime.now().obs;
   RxInt selectedTab = 0.obs;
@@ -85,7 +87,9 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
       }
 
       for (var element in myTabs) {
-        var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), element.id!, "");
+        TextEditingController textEdit = TextEditingController();
+        textSearch.add(textEdit);
+        var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), element.id!, "", "");
         if(responseProduct.status == true) {
           List<ProductModel> ps = [];
           for (var p in responseProduct.results) {
@@ -186,16 +190,17 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
   }
 
   Future search(String text) async {
-    // var responseProduct = await foodTreatmentRepository.getProductByDay();
-    // if(responseProduct.status == true) {
-    //   List<ProductModel> ps = [];
-    //   for (var p in responseProduct.results) {
-    //     ps.add(ProductModel.fromJson(p));
-    //   }
-    //   products[selectedTab.value] = ps;
-    // } else {
-    //   products[selectedTab.value] = [];
-    // }
+    day = DateTime.parse(selectedDay.toString()).weekday;
+    var responseProduct = await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(),  myTabs[selectedTab.value].id!, "", text);
+    if(responseProduct.status == true) {
+      List<ProductModel> ps = [];
+      for (var p in responseProduct.results) {
+        ps.add(ProductModel.fromJson(p));
+      }
+      products[selectedTab.value] = ps;
+    } else {
+      products[selectedTab.value] = [];
+    }
   }
 
   Future<bool> order(GlobalKey<AnimatedListState> listKey) async {
@@ -273,7 +278,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
   Future setSelectedMealType (MealTypeModel mealType) async {
     selectedMealType.value = mealType;
     day = DateTime.parse(selectedDay.toString()).weekday;
-    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "");
+    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "", "");
     if(responseProduct.status == true) {
       List<ProductModel> ps = [];
       for (var p in responseProduct.results) {
@@ -288,7 +293,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
   Future setSelectedDate(DateTime date) async {
     selectedDay.value = date;
     day = DateTime.parse(selectedDay.toString()).weekday;
-    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "");
+    var responseProduct= await foodTreatmentRepository.getProductByDay(day, selectedMealType.value.mealTypeId.toString(), myTabs[selectedTab.value].id!, "", "");
     if(responseProduct.status == true) {
       List<ProductModel> ps = [];
       for (var p in responseProduct.results) {

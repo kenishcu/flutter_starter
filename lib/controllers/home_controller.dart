@@ -364,4 +364,9 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     final MedicalHistoryController medicalHistoryController = Get.find<MedicalHistoryController>();
     await medicalHistoryController.initMedicalHistory();
   }
+
+  Future getBillAndPayment() async {
+    final BillAndPaymentController billAndPaymentController = Get.find<BillAndPaymentController>();
+    await billAndPaymentController.initBillAndPayment();
+  }
 }

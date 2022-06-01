@@ -308,7 +308,8 @@ class _ProductWidgetState extends State<ProductWidget> {
         width: double.infinity,
         child: Container(
             padding: const EdgeInsets.all(5.0),
-            child: TextField(
+            child: TextFormField(
+              controller: controller.textSearch[controller.selectedTab.value],
               style: const TextStyle(fontSize: 15.0),
               onChanged: (String text) {
                 controller.search(text);

@@ -39,6 +39,8 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
 
   List<MealTypeModel> mealTypes = <MealTypeModel>[].obs;
 
+  List<TextEditingController> textSearch = <TextEditingController>[].obs;
+
   late Rx<MealTypeModel> selectedMealType = MealTypeModel().obs;
 
   late TabController tabController;
@@ -85,6 +87,8 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       }
 
       for (var element in myTabs) {
+        TextEditingController textEdit = TextEditingController();
+        textSearch.add(textEdit);
         var responseSubCate = await restaurantRepository.findAllRestaurantSubCate(element.categoryId!);
         if(responseSubCate.status == true) {
           List<SubCategoryModel> subs = [

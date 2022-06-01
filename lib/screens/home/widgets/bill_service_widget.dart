@@ -35,7 +35,7 @@ class BillServiceWidget extends GetView<HomeController> {
                 children: [
                   Container(
                     padding: const EdgeInsets.only(left: 20.0, top: 15.0),
-                    child: const Text("Theo dõi bản kê", style: TextStyle(
+                    child: const Text("Theo dõi bảng kê", style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600
                     )),
@@ -127,7 +127,7 @@ class BillServiceWidget extends GetView<HomeController> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                       color: (index.isOdd) ? Theme.of(context).colorScheme.background : Colors.white,
-                                      border: Border(
+                                      border: const Border(
                                           bottom: BorderSide(
                                               color: Colors.grey,
                                               width: 1.0

@@ -27,7 +27,7 @@ class FoodTreatmentRepository {
     }
   }
 
-  Future<ResultModel> getProductByDay(int id, String mealTypeId, String menuId, String categoryId) async {
+  Future<ResultModel> getProductByDay(int id, String mealTypeId, String menuId, String categoryId, String query) async {
     try {
       if(mealTypeId == '7') {
         mealTypeId = '';
@@ -36,7 +36,8 @@ class FoodTreatmentRepository {
           baseUrl + '/products?calendar_daily_id=${id.toString()}'
               '&meal_type_id=${mealTypeId.toString()}'
               '&menu_calendar_daily_id=${menuId.toString()}'
-              '&category_id=${categoryId.toString()}',
+              '&category_id=${categoryId.toString()}'
+              '&query=${query.toString()}',
           options: Options(method: 'GET')
       );
       return ResultModel.fromJson(response.data);

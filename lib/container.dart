@@ -1,4 +1,5 @@
 // import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_stater/bindings/bill_and_payment_binding.dart';
 import 'package:flutter_stater/bindings/food_treatment_binding.dart';
 import 'package:flutter_stater/bindings/home_binding.dart';
 import 'package:flutter_stater/bindings/intro_binding.dart';
@@ -36,5 +37,6 @@ Future<void> setup() async {
     FoodTreatmentBinding(box: GetStorage(AppStorages.APP)).dependencies();
     LoanServiceBinding(box: GetStorage(AppStorages.APP)).dependencies();
     MedicalHistoryBinding(box: GetStorage(AppStorages.APP)).dependencies();
+    BillAndPaymentBinding(box: GetStorage(AppStorages.APP)).dependencies();
 
 }

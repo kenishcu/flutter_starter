@@ -18,12 +18,16 @@ class MedicalHistoryController extends GetxController {
   DateTime from = DateTime.now();
   DateTime to = DateTime.now();
 
-
+  @override
+  void onInit() {
+    super.onInit();
+    initMedicalHistory();
+  }
 
   Future initMedicalHistory() async {
 
-    DateTime fromConvert = DateTime(from.year, from.month - 3, from.day);
-    DateTime toConvert = DateTime(to.year, to.month, to.day);
+    DateTime fromConvert = DateTime(from.year, from.month - 2, from.day);
+    DateTime toConvert = DateTime(to.year, to.month, to.day - 6);
     int _from = (fromConvert.millisecondsSinceEpoch / 1000).round();
     int _to = (toConvert.millisecondsSinceEpoch / 1000).round();
 

@@ -15,6 +15,7 @@ class MedicalHistoryRepository {
           baseUrl + "?patient_id=" + patientId.toString() +
               "&from=" + from.toString() + "&to="+ to.toString() + "&n=100&p=1",
           options: Options(method: 'GET'));
+
       return ResultModel.fromJson(response.data);
     } on DioError catch (e) {
       print("error: $e");
