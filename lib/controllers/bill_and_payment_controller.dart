@@ -41,7 +41,6 @@ class BillAndPaymentController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initBillAndPayment();
   }
 
 
