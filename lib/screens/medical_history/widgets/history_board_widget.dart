@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/index.dart';
+import 'package:get/get.dart';
 
 class HistoryBoardWidget extends StatefulWidget {
 
@@ -9,6 +11,53 @@ class HistoryBoardWidget extends StatefulWidget {
 }
 
 class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
+
+  MedicalHistoryController controller = Get.find<MedicalHistoryController>();
+
+  Widget _menuBar(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onPrimary,
+        borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(20),
+            topLeft: Radius.circular(20)
+        ),
+      ),
+      child: Obx(() => Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: List<Widget>.generate(controller.myTabs.length, (index) {
+            return SizedBox(
+                width: 150,
+                height: 50,
+                child: GestureDetector(
+                  onTap: () {
+                    controller.setSelectedTab(index);
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: controller.selectedTab.value == index ? Colors.white : Theme.of(context).colorScheme.onPrimary,
+                        borderRadius: const BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            topLeft: Radius.circular(20)
+                        ),
+                      ),
+                      child: Align(
+                          alignment: Alignment.center,
+                          child: Text(controller.myTabs[index], style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight:  FontWeight.bold
+                          ))
+                      )
+                  ),
+                )
+            );
+          })
+      )),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,47 +85,34 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
           ),
           Expanded(
              flex: 1,
-             child: SizedBox(
-                height: double.infinity,
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 60,
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              topLeft: Radius.circular(20)
-                          ),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 40, top: 20),
-                          child: Text(
-                            "Bệnh sử",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            )
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(20),
-                              bottomLeft: Radius.circular(20),
-                            ),
-                          ),
-                        )
-                    )
-                  ],
-                )
+             child:  Obx(() => controller.initScreen.value ? SizedBox(
+               width: double.infinity,
+               height: double.infinity,
+               child: Column(
+                 children: [
+                   SizedBox(
+                     child: Padding(
+                       padding: const EdgeInsets.only(top: 20.0),
+                       child: _menuBar(context),
+                     ),
+                   ),
+                   Expanded(
+                       flex: 1,
+                       child: Container(
+                         width: double.infinity,
+                         height: double.infinity,
+                         decoration: const BoxDecoration(
+                           color: Colors.white,
+                           borderRadius: BorderRadius.only(
+                               bottomLeft: Radius.circular(20),
+                               bottomRight: Radius.circular(20)
+                           ),
+                         ),
+                       )
+                   )
+                 ],
+               ),
+             ): Container()
              )
           )
         ],

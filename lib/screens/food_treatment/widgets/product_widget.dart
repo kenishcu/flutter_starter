@@ -371,6 +371,10 @@ class _ProductWidgetState extends State<ProductWidget> {
       height: double.infinity,
       child: CustomScrollView(
         slivers: [
+          productMonKhac.isNotEmpty ? SliverPadding(
+            padding: const EdgeInsets.all(10),
+            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == '').toList()),
+          ) : const SliverToBoxAdapter(),
           // Set - Com
           productMonCom.isNotEmpty ? SliverToBoxAdapter(
             child: Container(
@@ -383,6 +387,31 @@ class _ProductWidgetState extends State<ProductWidget> {
           productMonCom.isNotEmpty ? SliverPadding(
             padding: const EdgeInsets.all(10),
             sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'set_com').toList()),
+          ) : const SliverToBoxAdapter(),
+          // Mon chinh
+          productMonChinh.isNotEmpty ? SliverToBoxAdapter(
+            child: Container(
+              padding: const EdgeInsets.only(left: 10),
+              child: const Text('Mon chinh', style: TextStyle(
+                  fontSize: 20
+              )),
+            ),
+          ): const SliverToBoxAdapter(),
+          productMonChinh.isNotEmpty ? SliverPadding(
+            padding: const EdgeInsets.all(10),
+            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'mon_chinh').toList()),
+          ) : const SliverToBoxAdapter(),
+          productTieuDuong.isNotEmpty ? SliverToBoxAdapter(
+            child: Container(
+              padding: const EdgeInsets.only(left: 10),
+              child: const Text('Tieu duong', style: TextStyle(
+                  fontSize: 20
+              )),
+            ),
+          ): const SliverToBoxAdapter(),
+          productTieuDuong.isNotEmpty ? SliverPadding(
+            padding: const EdgeInsets.all(10),
+            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'tieu_duong').toList()),
           ) : const SliverToBoxAdapter(),
         ],
       ),
