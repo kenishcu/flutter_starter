@@ -8,6 +8,12 @@ String convertFromUnixToTimeString(int timeUnix) {
   return formattedDate.toString();
 }
 
+String convertFromUnixToDatetime(int timeUnix) {
+  DateTime date = DateTime.fromMillisecondsSinceEpoch(timeUnix * 1000);
+  String formattedDate = DateFormat('HH:mm , dd-MM-yyyy').format(date);
+  return formattedDate.toString();
+}
+
 bool isSameDay(int timeUnixFromMillisecond, int timeUnixFromSecond) {
   DateTime date1 = DateTime.fromMillisecondsSinceEpoch(timeUnixFromSecond * 1000);
   DateTime date2 = DateTime.fromMillisecondsSinceEpoch(timeUnixFromMillisecond);

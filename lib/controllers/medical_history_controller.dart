@@ -17,8 +17,8 @@ class MedicalHistoryController extends GetxController {
     required this.box
   });
 
-  DateTime from = DateTime.now();
-  DateTime to = DateTime.now();
+  late DateTime from;
+  late DateTime to;
 
   List<String> myTabs = <String>[].obs;
   RxBool initScreen = false.obs;
@@ -33,10 +33,11 @@ class MedicalHistoryController extends GetxController {
   Future initMedicalHistory() async {
     myTabs = ['Ngoại trú', 'Nội trú'];
 
-    DateTime fromConvert = DateTime(from.year, from.month - 2, from.day);
-    DateTime toConvert = DateTime(to.year, to.month, to.day - 6);
-    int _from = (fromConvert.millisecondsSinceEpoch / 1000).round();
-    int _to = (toConvert.millisecondsSinceEpoch / 1000).round();
+    DateTime now = DateTime.now();
+    from = DateTime(now.year, now.month - 2, now.day);
+    to = DateTime(from.year, now.month, now.day - 6);
+    int _from = (from.millisecondsSinceEpoch / 1000).round();
+    int _to = (to.millisecondsSinceEpoch / 1000).round();
 
     final HomeController homeController = Get.find<HomeController>();
     int? _patientId = homeController.patientInfo.patientId;
