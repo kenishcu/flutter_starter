@@ -1,9 +1,11 @@
 import 'package:flutter_stater/adapters/repository/bill_and_payment/bill_and_payment_repository.dart';
+import 'package:flutter_stater/models/bill_and_payment/bill_model.dart';
 import 'package:flutter_stater/models/bill_and_payment/payment_type_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../adapters/repository/home/receipt_repositiry.dart';
+import 'home_controller.dart';
 
 class BillAndPaymentController extends GetxController {
 
@@ -18,6 +20,7 @@ class BillAndPaymentController extends GetxController {
   RxBool initScreen = false.obs;
   RxInt selectedTab = 0.obs;
   RxInt selectedDigitalWallet = 0.obs;
+  RxInt totalPrice = 0.obs;
   Rx<PaymentTypeModel> selectedPayment = PaymentTypeModel().obs;
 
   List<PaymentTypeModel> payments = [
@@ -44,12 +47,29 @@ class BillAndPaymentController extends GetxController {
   }
 
 
-  List<String> myTabs = <String>[].obs;
+  List<BillModel> myTabs = <BillModel>[].obs;
 
   Future initBillAndPayment() async {
 
-    myTabs = ['Hoá đơn 1', 'Hoá đơn 2'];
+    final controller = Get.find<HomeController>();
 
+    final res = await billAndPaymentRepository.getBills(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
+    if (res.status == true) {
+      myTabs = [];
+      if(res.results!.length > 0) {
+        for(var element in res.results) {
+          myTabs.add(BillModel.fromJson(element));
+        }
+      }
+      int total = 0;
+      for(var e in myTabs) {
+        total = total + e.finalPrice!;
+      }
+      totalPrice.value = total;
+    } else {
+      myTabs = [];
+      totalPrice.value = 0;
+    }
     initScreen.value = true;
   }
 

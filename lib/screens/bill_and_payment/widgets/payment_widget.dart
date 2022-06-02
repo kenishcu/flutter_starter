@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../controllers/bill_and_payment_controller.dart';
+import '../../../utils/convert.dart';
 
 class PaymentWidget extends StatefulWidget {
 
@@ -37,13 +38,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
             ),
           ),
           Expanded(
-              child: Container(
+              child: Obx(() => Container(
                 width: double.infinity,
                 height: double.infinity,
                 padding: const EdgeInsets.only(top: 20.0, left: 20.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Theme.of(context).colorScheme.onSurface
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Theme.of(context).colorScheme.onSurface
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,40 +52,40 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   children: [
                     Expanded(
                         child: ListView.builder(
-                            itemCount: controller.myTabs.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return SizedBox(
-                                height: 30,
-                                width: double.infinity,
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text('${controller.myTabs[index]} : 15,000,000 đ', style: const TextStyle(
-                                      fontWeight: FontWeight.w600
-                                  )),
-                                ),
-                              );
+                          itemCount: controller.myTabs.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return SizedBox(
+                              height: 30,
+                              width: double.infinity,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text("Tổng hoá đơn ${controller.selectedTab.value + 1}  : ${formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].finalPrice!)}", style: const TextStyle(
+                                    fontWeight: FontWeight.w600
+                                )),
+                              ),
+                            );
                           },
-                      )
+                        )
                     ),
                     SizedBox(
                       height: 40,
                       width: double.infinity,
                       child: RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           text: 'Tổng tất cả hoá đơn: ',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.black
                           ),
                           children: <TextSpan>[
-                            TextSpan(text: '30,000,000 đ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                            TextSpan(text: formatPriceNoSymbol(controller.totalPrice.value), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                           ],
                         ),
                       ),
                     )
                   ],
                 ),
-              )
+              ))
           )
         ],
       ),

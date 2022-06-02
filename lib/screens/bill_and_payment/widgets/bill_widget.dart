@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/bill_and_payment_controller.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../../../utils/convert.dart';
 
 class BillWidget extends StatefulWidget {
 
@@ -46,7 +49,7 @@ class _BillWidgetState extends State<BillWidget> {
                       ),
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text(controller.myTabs[index], style: const TextStyle(
+                          child: Text("Hoá đơn ${index + 1}", style: const TextStyle(
                               color: Colors.black,
                               fontWeight:  FontWeight.bold
                           ))
@@ -145,14 +148,6 @@ class _BillWidgetState extends State<BillWidget> {
                                               flex: 1,
                                               child: Center(
                                                 child: Text(
-                                                    "ĐVT"
-                                                ),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: Center(
-                                                child: Text(
                                                     "SL"
                                                 ),
                                               ),
@@ -208,6 +203,98 @@ class _BillWidgetState extends State<BillWidget> {
                                           ],
                                         ),
                                       ),
+                                      Expanded(
+                                          child: ListView.builder(
+                                              itemCount: controller.myTabs[controller.selectedTab.value].receipts!.length,
+                                              itemBuilder: (BuildContext context, int index) {
+                                                return SizedBox(
+                                                  height: 50,
+                                                  width: double.infinity,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: (index.isOdd) ? Theme.of(context).colorScheme.background : Colors.white,
+                                                        border: const Border(
+                                                            bottom: BorderSide(
+                                                                color: Colors.grey,
+                                                                width: 1.0
+                                                            )
+                                                        )
+                                                    ),
+                                                    child: Row(
+                                                      children: [
+                                                        Expanded(
+                                                          flex: 3,
+                                                          child: Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                                controller.myTabs[controller.selectedTab.value].receipts![index].serviceName.toString()
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Center(
+                                                            child: Text(
+                                                                controller.myTabs[controller.selectedTab.value].receipts![index].quantity.toString()
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Center(
+                                                            child: Text(
+                                                                formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].receipts![index].servicePrice!).toString()
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Center(
+                                                            child: Text(
+                                                                formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].receipts![index].servicePrice! *
+                                                                    controller.myTabs[controller.selectedTab.value].receipts![index].quantity!).toString()
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Center(
+                                                            child: Text(
+                                                                formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].receipts![index].healthInsuranceServicePrice!).toString()
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Center(
+                                                            child: Text(
+                                                                formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].receipts![index].companyInsurancePrice!).toString()
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Center(
+                                                            child: Text(
+                                                                formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].receipts![index].reductionPrice!).toString()
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Center(
+                                                            child: Text(
+                                                                formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].receipts![index].finalPrice!).toString()
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                          )
+                                      )
                                     ],
                                   ),
                                 ),
@@ -234,7 +321,7 @@ class _BillWidgetState extends State<BillWidget> {
                                           flex: 1,
                                           child: Align(
                                             alignment: Alignment.centerRight,
-                                            child: Text("Tổng ${controller.myTabs[controller.selectedTab.value]} : 15,000,000" , style: const TextStyle(
+                                            child: Text("Tổng hoá đơn ${controller.selectedTab.value + 1}  : ${formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].finalPrice!)}" , style: const TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w600
                                             )),
