@@ -1,3 +1,4 @@
+import 'package:flutter_stater/adapters/repository/bill_and_payment/bill_and_payment_repository.dart';
 import 'package:flutter_stater/models/bill_and_payment/bill_and_payment_model.dart';
 import 'package:flutter_stater/models/bill_and_payment/payment_type_model.dart';
 import 'package:get/get.dart';
@@ -8,11 +9,11 @@ import '../adapters/repository/home/receipt_repositiry.dart';
 class BillAndPaymentController extends GetxController {
 
   final GetStorage box;
-  final ReceiptRepository receiptRepository;
+  final BillAndPaymentRepository billAndPaymentRepository;
 
   BillAndPaymentController({
     required this.box,
-    required this.receiptRepository
+    required this.billAndPaymentRepository
   });
 
   RxBool initScreen = false.obs;

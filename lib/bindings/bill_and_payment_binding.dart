@@ -1,4 +1,4 @@
-import 'package:flutter_stater/adapters/repository/home/receipt_repositiry.dart';
+import 'package:flutter_stater/adapters/repository/bill_and_payment/bill_and_payment_repository.dart';
 import 'package:flutter_stater/controllers/bill_and_payment_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -14,12 +14,12 @@ class BillAndPaymentBinding extends Bindings {
   @override
   void dependencies() {
 
-    final ReceiptRepository receiptRepository = ReceiptRepository();
+    final BillAndPaymentRepository billAndPaymentRepository = BillAndPaymentRepository();
 
     Get.put<BillAndPaymentController>(
       BillAndPaymentController(
         box: GetStorage(AppStorages.APP),
-        receiptRepository: receiptRepository,
+        billAndPaymentRepository: billAndPaymentRepository,
       ),
     );
   }
