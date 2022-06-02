@@ -16,7 +16,7 @@ class ReceiptModel with _$ReceiptModel {
     int? finalPrice,
     int? reductionPrice,
     int? healthInsuranceServicePrice,
-    int? healthInsurancePrice,
+    int? companyInsurancePrice,
     int? serviceCategoryId,
     String? serviceCategoryName
   }) = _ReceiptModel;

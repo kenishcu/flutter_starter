@@ -30,7 +30,7 @@ class _$ReceiptModelTearOff {
       int? finalPrice,
       int? reductionPrice,
       int? healthInsuranceServicePrice,
-      int? healthInsurancePrice,
+      int? companyInsurancePrice,
       int? serviceCategoryId,
       String? serviceCategoryName}) {
     return _ReceiptModel(
@@ -41,7 +41,7 @@ class _$ReceiptModelTearOff {
       finalPrice: finalPrice,
       reductionPrice: reductionPrice,
       healthInsuranceServicePrice: healthInsuranceServicePrice,
-      healthInsurancePrice: healthInsurancePrice,
+      companyInsurancePrice: companyInsurancePrice,
       serviceCategoryId: serviceCategoryId,
       serviceCategoryName: serviceCategoryName,
     );
@@ -64,7 +64,7 @@ mixin _$ReceiptModel {
   int? get finalPrice => throw _privateConstructorUsedError;
   int? get reductionPrice => throw _privateConstructorUsedError;
   int? get healthInsuranceServicePrice => throw _privateConstructorUsedError;
-  int? get healthInsurancePrice => throw _privateConstructorUsedError;
+  int? get companyInsurancePrice => throw _privateConstructorUsedError;
   int? get serviceCategoryId => throw _privateConstructorUsedError;
   String? get serviceCategoryName => throw _privateConstructorUsedError;
 
@@ -87,7 +87,7 @@ abstract class $ReceiptModelCopyWith<$Res> {
       int? finalPrice,
       int? reductionPrice,
       int? healthInsuranceServicePrice,
-      int? healthInsurancePrice,
+      int? companyInsurancePrice,
       int? serviceCategoryId,
       String? serviceCategoryName});
 }
@@ -109,7 +109,7 @@ class _$ReceiptModelCopyWithImpl<$Res> implements $ReceiptModelCopyWith<$Res> {
     Object? finalPrice = freezed,
     Object? reductionPrice = freezed,
     Object? healthInsuranceServicePrice = freezed,
-    Object? healthInsurancePrice = freezed,
+    Object? companyInsurancePrice = freezed,
     Object? serviceCategoryId = freezed,
     Object? serviceCategoryName = freezed,
   }) {
@@ -142,9 +142,9 @@ class _$ReceiptModelCopyWithImpl<$Res> implements $ReceiptModelCopyWith<$Res> {
           ? _value.healthInsuranceServicePrice
           : healthInsuranceServicePrice // ignore: cast_nullable_to_non_nullable
               as int?,
-      healthInsurancePrice: healthInsurancePrice == freezed
-          ? _value.healthInsurancePrice
-          : healthInsurancePrice // ignore: cast_nullable_to_non_nullable
+      companyInsurancePrice: companyInsurancePrice == freezed
+          ? _value.companyInsurancePrice
+          : companyInsurancePrice // ignore: cast_nullable_to_non_nullable
               as int?,
       serviceCategoryId: serviceCategoryId == freezed
           ? _value.serviceCategoryId
@@ -173,7 +173,7 @@ abstract class _$ReceiptModelCopyWith<$Res>
       int? finalPrice,
       int? reductionPrice,
       int? healthInsuranceServicePrice,
-      int? healthInsurancePrice,
+      int? companyInsurancePrice,
       int? serviceCategoryId,
       String? serviceCategoryName});
 }
@@ -197,7 +197,7 @@ class __$ReceiptModelCopyWithImpl<$Res> extends _$ReceiptModelCopyWithImpl<$Res>
     Object? finalPrice = freezed,
     Object? reductionPrice = freezed,
     Object? healthInsuranceServicePrice = freezed,
-    Object? healthInsurancePrice = freezed,
+    Object? companyInsurancePrice = freezed,
     Object? serviceCategoryId = freezed,
     Object? serviceCategoryName = freezed,
   }) {
@@ -230,9 +230,9 @@ class __$ReceiptModelCopyWithImpl<$Res> extends _$ReceiptModelCopyWithImpl<$Res>
           ? _value.healthInsuranceServicePrice
           : healthInsuranceServicePrice // ignore: cast_nullable_to_non_nullable
               as int?,
-      healthInsurancePrice: healthInsurancePrice == freezed
-          ? _value.healthInsurancePrice
-          : healthInsurancePrice // ignore: cast_nullable_to_non_nullable
+      companyInsurancePrice: companyInsurancePrice == freezed
+          ? _value.companyInsurancePrice
+          : companyInsurancePrice // ignore: cast_nullable_to_non_nullable
               as int?,
       serviceCategoryId: serviceCategoryId == freezed
           ? _value.serviceCategoryId
@@ -257,7 +257,7 @@ class _$_ReceiptModel extends _ReceiptModel {
       this.finalPrice,
       this.reductionPrice,
       this.healthInsuranceServicePrice,
-      this.healthInsurancePrice,
+      this.companyInsurancePrice,
       this.serviceCategoryId,
       this.serviceCategoryName})
       : super._();
@@ -280,7 +280,7 @@ class _$_ReceiptModel extends _ReceiptModel {
   @override
   final int? healthInsuranceServicePrice;
   @override
-  final int? healthInsurancePrice;
+  final int? companyInsurancePrice;
   @override
   final int? serviceCategoryId;
   @override
@@ -288,7 +288,7 @@ class _$_ReceiptModel extends _ReceiptModel {
 
   @override
   String toString() {
-    return 'ReceiptModel(serviceId: $serviceId, serviceName: $serviceName, quantity: $quantity, servicePrice: $servicePrice, finalPrice: $finalPrice, reductionPrice: $reductionPrice, healthInsuranceServicePrice: $healthInsuranceServicePrice, healthInsurancePrice: $healthInsurancePrice, serviceCategoryId: $serviceCategoryId, serviceCategoryName: $serviceCategoryName)';
+    return 'ReceiptModel(serviceId: $serviceId, serviceName: $serviceName, quantity: $quantity, servicePrice: $servicePrice, finalPrice: $finalPrice, reductionPrice: $reductionPrice, healthInsuranceServicePrice: $healthInsuranceServicePrice, companyInsurancePrice: $companyInsurancePrice, serviceCategoryId: $serviceCategoryId, serviceCategoryName: $serviceCategoryName)';
   }
 
   @override
@@ -310,7 +310,7 @@ class _$_ReceiptModel extends _ReceiptModel {
                 other.healthInsuranceServicePrice,
                 healthInsuranceServicePrice) &&
             const DeepCollectionEquality()
-                .equals(other.healthInsurancePrice, healthInsurancePrice) &&
+                .equals(other.companyInsurancePrice, companyInsurancePrice) &&
             const DeepCollectionEquality()
                 .equals(other.serviceCategoryId, serviceCategoryId) &&
             const DeepCollectionEquality()
@@ -327,7 +327,7 @@ class _$_ReceiptModel extends _ReceiptModel {
       const DeepCollectionEquality().hash(finalPrice),
       const DeepCollectionEquality().hash(reductionPrice),
       const DeepCollectionEquality().hash(healthInsuranceServicePrice),
-      const DeepCollectionEquality().hash(healthInsurancePrice),
+      const DeepCollectionEquality().hash(companyInsurancePrice),
       const DeepCollectionEquality().hash(serviceCategoryId),
       const DeepCollectionEquality().hash(serviceCategoryName));
 
@@ -351,7 +351,7 @@ abstract class _ReceiptModel extends ReceiptModel {
       int? finalPrice,
       int? reductionPrice,
       int? healthInsuranceServicePrice,
-      int? healthInsurancePrice,
+      int? companyInsurancePrice,
       int? serviceCategoryId,
       String? serviceCategoryName}) = _$_ReceiptModel;
   _ReceiptModel._() : super._();
@@ -374,7 +374,7 @@ abstract class _ReceiptModel extends ReceiptModel {
   @override
   int? get healthInsuranceServicePrice;
   @override
-  int? get healthInsurancePrice;
+  int? get companyInsurancePrice;
   @override
   int? get serviceCategoryId;
   @override
