@@ -3,6 +3,9 @@ import 'package:money2/money2.dart';
 
 
 String convertFromUnixToTimeString(int timeUnix) {
+  if(timeUnix == 0) {
+    return '0';
+  }
   DateTime date = DateTime.fromMillisecondsSinceEpoch(timeUnix * 1000);
   String formattedDate = DateFormat('dd/MM/yyyy').format(date);
   return formattedDate.toString();
@@ -29,6 +32,15 @@ String formatPrice(int price) {
   }
   final vnd = Currency.create('VND', 3,
       symbol: 'đ', invertSeparators: true, pattern: '#.##0,000 S');
+  return Money.fromIntWithCurrency(price, vnd, scale: 3).toString();
+}
+
+String formatPriceNoSymbol(int price) {
+  if(price == 0) {
+    return price.toString();
+  }
+  final vnd = Currency.create('VND', 3,
+      symbol: 'đ', invertSeparators: true, pattern: '#.##0,000');
   return Money.fromIntWithCurrency(price, vnd, scale: 3).toString();
 }
 

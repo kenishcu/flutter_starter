@@ -157,7 +157,7 @@ class BillServiceWidget extends GetView<HomeController> {
                                         flex: 1,
                                         child: Center(
                                           child: Text(
-                                              formatPrice(controller.billAndPaymentInfo[index].servicePrice!).toString()
+                                              formatPriceNoSymbol(controller.billAndPaymentInfo[index].servicePrice!).toString()
                                           ),
                                         ),
                                       ),
@@ -165,7 +165,7 @@ class BillServiceWidget extends GetView<HomeController> {
                                         flex: 1,
                                         child: Center(
                                           child: Text(
-                                              formatPrice(controller.billAndPaymentInfo[index].finalPrice! * (controller.billAndPaymentInfo[index].quantity!)).toString()
+                                              formatPriceNoSymbol(controller.billAndPaymentInfo[index].finalPrice! * (controller.billAndPaymentInfo[index].quantity!)).toString()
                                           ),
                                         ),
                                       ),
@@ -203,7 +203,7 @@ class BillServiceWidget extends GetView<HomeController> {
                       flex: 1,
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Tổng tạm ứng: ${(controller.patientInfo.totalDepositPrice! - controller.patientInfo.totalReturnPrice!)}" , style: const TextStyle(
+                        child: Text("Tổng tạm ứng: ${formatPriceNoSymbol(controller.patientInfo.totalDepositPrice!)}" , style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600
                         )),
@@ -213,7 +213,7 @@ class BillServiceWidget extends GetView<HomeController> {
                       flex: 1,
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text("Tổng tạm tính: ${(total)}" , style: const TextStyle(
+                          child: Text("Tổng tạm tính: ${formatPriceNoSymbol(total)}" , style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600
                         )),
