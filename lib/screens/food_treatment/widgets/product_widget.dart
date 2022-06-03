@@ -392,7 +392,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           productMonChinh.isNotEmpty ? SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.only(left: 10),
-              child: const Text('Mon chinh', style: TextStyle(
+              child: const Text('Món chính', style: TextStyle(
                   fontSize: 20
               )),
             ),
@@ -404,7 +404,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           productTieuDuong.isNotEmpty ? SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.only(left: 10),
-              child: const Text('Tieu duong', style: TextStyle(
+              child: const Text('Tiểu đường', style: TextStyle(
                   fontSize: 20
               )),
             ),
