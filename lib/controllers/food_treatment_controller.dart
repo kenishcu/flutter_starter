@@ -50,6 +50,8 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
 
   RxBool initScreen = false.obs;
 
+  RxBool disabledOrder = false.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -310,5 +312,17 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
     } else {
       products[selectedTab.value] = [];
     }
+  }
+
+  void checkPassword (value) {
+    if(value == password) {
+      disabledOrder.value = true;
+    } else {
+      disabledOrder.value = false;
+    }
+  }
+
+  setDisabledOrder() {
+    disabledOrder.value = false;
   }
 }

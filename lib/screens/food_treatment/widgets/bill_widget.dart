@@ -90,7 +90,7 @@ class _BillWidgetState extends State<BillWidget> {
     fToast.showToast(
       child: toast,
       gravity: ToastGravity.TOP_LEFT,
-      toastDuration: Duration(seconds: 4),
+      toastDuration: const Duration(seconds: 4),
     );
   }
 
@@ -151,7 +151,7 @@ class _BillWidgetState extends State<BillWidget> {
     fToast.showToast(
       child: toast,
       gravity: ToastGravity.TOP_LEFT,
-      toastDuration: Duration(seconds: 4),
+      toastDuration: const Duration(seconds: 4),
     );
   }
 
@@ -159,7 +159,8 @@ class _BillWidgetState extends State<BillWidget> {
     return AlertDialog(
       title: const Text("Xác nhận đặt món"),
       content: SizedBox(
-        height: 150,
+        height: 200,
+        width: 500,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -169,7 +170,7 @@ class _BillWidgetState extends State<BillWidget> {
               child: Text("Vui lòng nhập mật khẩu :"),
             ),
             SizedBox(
-              height: 50,
+              height: 80,
               child: Row(
                 children: [
                   Container(
@@ -187,43 +188,70 @@ class _BillWidgetState extends State<BillWidget> {
                         hintText: 'Mật khẩu ...',
                         border: InputBorder.none,
                         hintStyle: TextStyle(
+                            color: Colors.black,
                             fontSize: 15, decoration: TextDecoration.none, fontFamily: 'Roboto', fontWeight: FontWeight.w100
                         ),
                       ),
                       onChanged: (value) {
+                        controller.checkPassword(value);
                       },
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 250),
-                    height: 60,
+                ],
+              ),
+            ),
+            Obx(() => SizedBox(
+              height: 60,
+              width: double.infinity,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
                     width: 120,
-                    child: TextButton(
-                      child: const Text("Đóng", style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white
-                      ),),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.secondary,
+                          borderRadius: BorderRadius.circular(20.0)
+                      ),
+                      child: TextButton(
+                        child: const Text("Đóng", style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white
+                        ),),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 20),
-                    height: 60,
-                    width: 120,
-                    child: TextButton(
-                      child: const Text("Đặt", style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white
-                      )),
-                      onPressed: () {
-                      },
+                  SizedBox(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      decoration: BoxDecoration(
+                          color: controller.disabledOrder.value ? Theme.of(context).colorScheme.secondaryVariant : Colors.grey,
+                          borderRadius: BorderRadius.circular(20.0)
+                      ),
+                      width: 120,
+                      child: TextButton(
+                          child: const Text("Đặt", style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white
+                          )),
+                          onPressed: controller.disabledOrder.value == false ? null : () async {
+                            bool res = await controller.order(widget.listKey);
+                            if(res) {
+                              _showToastSuccess();
+                            } else {
+                              _showToastError();
+                            }
+                          }
+                      ),
                     ),
                   )
                 ],
               ),
-            )
+            ))
           ],
         ),
       ),
@@ -316,18 +344,13 @@ class _BillWidgetState extends State<BillWidget> {
                                       ),
                                       child: TextButton(
                                         onPressed: () async {
+                                          controller.setDisabledOrder();
                                           showDialog(
                                               context: context,
                                               builder: (BuildContext context){
                                                 return _alertDialogOrder();
                                               }
                                           );
-                                          // bool res = await controller.order(widget.listKey);
-                                          // if(res) {
-                                          //   _showToastSuccess();
-                                          // } else {
-                                          //   _showToastError();
-                                          // }
                                         },
                                         child: Row(
                                           children: const [
