@@ -1,3 +1,4 @@
+import 'package:flutter_stater/adapters/repository/app/app_repository.dart';
 import 'package:flutter_stater/controllers/app_controller.dart';
 import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/storages/app_storages.dart';
@@ -14,8 +15,14 @@ class AppBinding implements Bindings {
 
   @override
   void dependencies() {
+
+    AppRepository appRepository = AppRepository();
+
     Get.put<AppController>(
-      AppController(GetStorage(AppStorages.APP)),
+      AppController(
+          box: GetStorage(AppStorages.APP),
+          appRepository: appRepository
+      ),
     );
   }
 
