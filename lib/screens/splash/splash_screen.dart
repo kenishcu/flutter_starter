@@ -53,10 +53,11 @@ class _SplashScreenState extends State<SplashScreen> {
           child: const Center(),
         ),
       ),
-      onEnd: () {
+      onEnd: () async {
         appController.ready();
         if (Get.currentRoute == Routes.SPLASH) {
           if(appController.isSettingDeviceInfo()){
+            await appController.initAppSetting();
             Get.offAndToNamed(Routes.INTRO);
           } else {
             Get.offAndToNamed(Routes.SETTING);

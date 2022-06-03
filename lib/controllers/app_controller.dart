@@ -26,6 +26,12 @@ class AppController extends GetxController {
     required this.appRepository
   });
 
+  Rx<ItrminConfigModel> itrminConfigModel = ItrminConfigModel().obs;
+
+  Rx<PaymentConfigModel> momoConfig = PaymentConfigModel().obs;
+
+  Rx<PaymentConfigModel> vnpayConfig = PaymentConfigModel().obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -37,14 +43,20 @@ class AppController extends GetxController {
       SettingResultModel res = await appRepository.getItrminSetting(map['branch_id'] );
       if(res.status ==  true) {
         print('itrmin setting : ${res.results}');
-        print('payment setting : ${res.payment}');
         // store setting itrmin
+        ItrminConfigModel itrmin = ItrminConfigModel.fromJson(res.results);
+        itrminConfigModel.value = itrmin;
+        storeSettingItrminConfig(itrmin);
 
+        print('payment setting : ${res.payment}');
         // store momo config
-
+        PaymentConfigModel paymentMoMo = PaymentConfigModel.fromJson(res.payment!.momo!.toJson());
+        momoConfig.value = paymentMoMo;
+        storeSettingMoMoConfig(paymentMoMo);
         // store vnpay config
-        
-      } else {
+        PaymentConfigModel paymentVNPay = PaymentConfigModel.fromJson(res.payment!.vnpay!.toJson());
+        vnpayConfig.value = paymentVNPay;
+        storeSettingMoMoConfig(paymentVNPay);
       }
     }
   }
