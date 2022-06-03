@@ -9,7 +9,7 @@ class AppRepository {
 
   final baseUrl = "/setting";
 
-  Future<SettingResultModel> getItrminSetting(String branchId) async {
+  Future<SettingResultModel> getItrminSetting(int branchId) async {
     try {
       var res = await client.dio.request(baseUrl + '?branch_id=${branchId.toString()}', options: Options(method: 'GET'));
       return SettingResultModel.fromJson(res.data);
