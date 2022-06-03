@@ -5,6 +5,7 @@ import 'package:flutter_stater/adapters/repository/setting/branch_repository.dar
 import 'package:flutter_stater/adapters/repository/setting/department_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/room_repository.dart';
 import 'package:flutter_stater/adapters/repository/setting/setting_repository.dart';
+import 'package:flutter_stater/controllers/app_controller.dart';
 import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:flutter_stater/models/settings/bed_model.dart';
 import 'package:flutter_stater/models/settings/branch_model.dart';
@@ -282,17 +283,17 @@ class SettingController extends GetxController {
       authToken: "",
       contracts: []
     );
-    print('save setting: ' + setting.toString());
     ResultModel res = await settingRepository.sendSetting(setting.toJson());
     if(res.status == true) {
       storeSettingConfig(setting);
       final map = box.read("device_info") ?? {};
       print('map save : ' + map.toString());
+      AppController appController = Get.find<AppController>();
+      appController.initAppSetting();
       Get.offAndToNamed(Routes.INTRO);
     } else {
       print("error");
     }
-
   }
 
 }

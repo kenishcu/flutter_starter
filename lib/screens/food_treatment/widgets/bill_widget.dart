@@ -155,6 +155,81 @@ class _BillWidgetState extends State<BillWidget> {
     );
   }
 
+  AlertDialog _alertDialogOrder () {
+    return AlertDialog(
+      title: const Text("Xác nhận đặt món"),
+      content: SizedBox(
+        height: 150,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 60,
+              child: Text("Vui lòng nhập mật khẩu :"),
+            ),
+            SizedBox(
+              height: 50,
+              child: Row(
+                children: [
+                  Container(
+                    height: 40,
+                    width: 250,
+                    margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextFormField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        filled: true,
+                        hintText: 'Mật khẩu ...',
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(
+                            fontSize: 15, decoration: TextDecoration.none, fontFamily: 'Roboto', fontWeight: FontWeight.w100
+                        ),
+                      ),
+                      onChanged: (value) {
+                      },
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 250),
+                    height: 60,
+                    width: 120,
+                    child: TextButton(
+                      child: const Text("Đóng", style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white
+                      ),),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20),
+                    height: 60,
+                    width: 120,
+                    child: TextButton(
+                      child: const Text("Đặt", style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white
+                      )),
+                      onPressed: () {
+                      },
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -241,12 +316,18 @@ class _BillWidgetState extends State<BillWidget> {
                                       ),
                                       child: TextButton(
                                         onPressed: () async {
-                                          bool res = await controller.order(widget.listKey);
-                                          if(res) {
-                                            _showToastSuccess();
-                                          } else {
-                                            _showToastError();
-                                          }
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context){
+                                                return _alertDialogOrder();
+                                              }
+                                          );
+                                          // bool res = await controller.order(widget.listKey);
+                                          // if(res) {
+                                          //   _showToastSuccess();
+                                          // } else {
+                                          //   _showToastError();
+                                          // }
                                         },
                                         child: Row(
                                           children: const [

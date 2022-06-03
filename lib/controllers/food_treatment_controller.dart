@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/app_controller.dart';
 import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/models/food_treatment/meal_type_model.dart';
 import 'package:flutter_stater/models/food_treatment/menu_model.dart';
@@ -33,7 +34,9 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
 
   List<TextEditingController> textSearch = <TextEditingController>[].obs;
 
+  late String password = "";
   late TabController tabController;
+
   Rx<DateTime> selectedDay = DateTime.now().obs;
   RxInt selectedTab = 0.obs;
   int selectedCategory = 0;
@@ -73,6 +76,10 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
   Future initFoodTreatment() async {
 
     await initMealTypes();
+
+    AppController appController = Get.find<AppController>();
+
+    password = appController.itrminConfigModel.value.lockOrder!;
 
     day = DateTime.parse(selectedDay.toString()).weekday;
 
