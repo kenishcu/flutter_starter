@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/app_controller.dart';
+import 'package:flutter_stater/utils/convert.dart';
 import 'package:flutter_stater/widgets/layout/header_widget.dart';
 import 'package:flutter_stater/widgets/layout/user_info_widget.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,7 @@ class _WideLayoutState extends State<WideLayout> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-              height: 120,
+              height: 100,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,66 +63,93 @@ class _WideLayoutState extends State<WideLayout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 50,
-                      child: Text(
-                        "Xác nhận",
-                        style: TextStyle(),
-                      ),
-                    ),
                     Expanded(
                         child: ListView.builder(
                             itemCount: controller.notifications.length,
                             itemBuilder: (BuildContext context, int index) {
-                                return SizedBox(
+                              return SizedBox(
+                                height: 80,
+                                child: Container(
                                   height: 80,
-                                  child: Container(
-                                    height: 80,
-                                    width: 280,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      color: Theme.of(context).colorScheme.secondaryContainer,
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Icon(Icons.restaurant, size: 28, color: Theme.of(context).colorScheme.secondary),
-                                        ),
-                                        Expanded(
-                                            flex: 3,
-                                            child: SizedBox(
-                                              child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: const [
-                                                  SizedBox(
-                                                    height: 20,
-                                                    child: Text("Đặt đồ thành công", style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 14
-                                                    )),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 20,
-                                                    child: Text("Nhà hàng đã nhận order", style: TextStyle(
-                                                        fontSize: 12
-                                                    )),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text('Time'),
-                                        )
-                                        ,
-                                      ],
-                                    ),
+                                  width: 280,
+                                  margin: const EdgeInsets.only(bottom: 10.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    color: Theme.of(context).colorScheme.secondaryContainer,
                                   ),
-                                );
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Icon(Icons.notifications, size: 28, color: Theme.of(context).colorScheme.secondary),
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: SizedBox(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                const SizedBox(
+                                                  height: 25,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(top: 5),
+                                                    child: Text("Đặt thành công",
+                                                        overflow: TextOverflow.ellipsis,
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.bold,
+                                                            fontSize: 16
+                                                        )),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 40,
+                                                  child: Container(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text(controller.notifications[index].title!,
+                                                        maxLines: 3,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        style: const TextStyle(
+                                                            fontSize: 12
+                                                        )),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                             Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(top: 20),
+                                                  child: Text(convertFromUnixToHourString(controller.notifications[index].createdAt!), style: TextStyle(
+                                                      color: Theme.of(context).colorScheme.secondary,
+                                                      fontSize: 15
+                                                  )),
+                                                )
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                  padding: const EdgeInsets.only(top: 10),
+                                                  child: Text(convertFromUnixToTimeString(controller.notifications[index].createdAt!), style: const TextStyle(
+                                                      fontSize: 8
+                                                  ))
+                                              )
+                                            )
+                                          ],
+                                        )
+                                      )
+                                      ,
+                                    ],
+                                  ),
+                                ),
+                              );
                             }
                         )
                     )

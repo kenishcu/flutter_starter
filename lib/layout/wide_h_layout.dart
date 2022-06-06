@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stater/routes/app_pages.dart';
 import 'package:get/get.dart';
 
+import '../controllers/app_controller.dart';
+import '../utils/convert.dart';
 import '../widgets/layout/header_widget.dart';
 import '../widgets/layout/user_info_widget.dart';
 
@@ -20,21 +22,16 @@ class _WidgetHLayoutState extends State<WideHLayout> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-  @override
-  Widget build(BuildContext context) {
+  AppController controller = Get.find<AppController>();
 
-    Size size = MediaQuery
-        .of(context)
-        .size;
-
-    Drawer _drawer(BuildContext context) {
-      return Drawer(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 120,
+  Drawer _drawer(BuildContext context) {
+    return Drawer(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+              height: 100,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,29 +56,119 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                   )
                 ],
               )
-            ),
-            Expanded(
-                child: Container(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      SizedBox(
-                        height: 50,
-                        child: Text(
-                          "Xác nhận",
-                          style: TextStyle(),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-            )
-          ],
-        ),
-      );
-    }
+          ),
+          Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                        child: ListView.builder(
+                            itemCount: controller.notifications.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return SizedBox(
+                                height: 80,
+                                child: Container(
+                                  height: 80,
+                                  width: 280,
+                                  margin: const EdgeInsets.only(bottom: 10.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    color: Theme.of(context).colorScheme.secondaryContainer,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Icon(Icons.notifications, size: 28, color: Theme.of(context).colorScheme.secondary),
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: SizedBox(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                const SizedBox(
+                                                  height: 25,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(top: 5),
+                                                    child: Text("Đặt thành công",
+                                                        overflow: TextOverflow.ellipsis,
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.bold,
+                                                            fontSize: 16
+                                                        )),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 40,
+                                                  child: Container(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text(controller.notifications[index].title!,
+                                                        maxLines: 3,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        style: const TextStyle(
+                                                            fontSize: 12
+                                                        )),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                      ),
+                                      Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Expanded(
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(top: 20),
+                                                    child: Text(convertFromUnixToHourString(controller.notifications[index].createdAt!), style: TextStyle(
+                                                        color: Theme.of(context).colorScheme.secondary,
+                                                        fontSize: 15
+                                                    )),
+                                                  )
+                                              ),
+                                              Expanded(
+                                                  child: Padding(
+                                                      padding: const EdgeInsets.only(top: 10),
+                                                      child: Text(convertFromUnixToTimeString(controller.notifications[index].createdAt!), style: const TextStyle(
+                                                          fontSize: 8
+                                                      ))
+                                                  )
+                                              )
+                                            ],
+                                          )
+                                      )
+                                      ,
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }
+                        )
+                    )
+                  ],
+                ),
+              )
+          )
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    Size size = MediaQuery
+        .of(context)
+        .size;
 
     return Scaffold(
       key: _key,
