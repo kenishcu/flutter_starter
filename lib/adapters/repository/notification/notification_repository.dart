@@ -8,7 +8,7 @@ class NotificationRepository {
 
   final baseUrl = "/notifications";
 
-  Future<ResultModel> getItrminSetting(int num, int page) async {
+  Future<ResultModel> getNotification(int num, int page) async {
     try {
       var res = await client.dio.request(baseUrl + '?n=${num.toString()}&p=${page.toString()}', options: Options(method: 'GET'));
       return ResultModel.fromJson(res.data);

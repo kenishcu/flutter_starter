@@ -7,7 +7,9 @@ import 'package:flutter_stater/models/settings/itrmin_setting_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../adapters/repository/notification/notification_repository.dart';
 import '../models/app/payment_config_model.dart';
+import '../models/notification/notification_model.dart';
 import '../routes/app_pages.dart';
 
 enum AppState {
@@ -18,12 +20,14 @@ class AppController extends GetxController {
 
   final GetStorage box;
   final AppRepository appRepository;
+  final NotificationRepository notificationRepository;
   final _state = AppState.loading.obs;
   final _settings = AppSetting().obs;
 
   AppController({
     required this.box,
-    required this.appRepository
+    required this.appRepository,
+    required this.notificationRepository,
   });
 
   Rx<ItrminConfigModel> itrminConfigModel = ItrminConfigModel().obs;
@@ -32,15 +36,33 @@ class AppController extends GetxController {
 
   Rx<PaymentConfigModel> vnpayConfig = PaymentConfigModel().obs;
 
+  List<NotificationModel> notifications  = <NotificationModel>[].obs;
+
   @override
   void onInit() {
     super.onInit();
   }
 
   Future initAppSetting () async {
+
+    // init notification
+    final response = await notificationRepository.getNotification(10, 0);
+    if(response.status == true) {
+      List<NotificationModel> list = [];
+      if (response.results != null && response.results.length > 0 ) {
+        for (var element in response.results) {
+          list.add(NotificationModel.fromJson(element));
+        }
+      }
+      notifications = list;
+    }
+
     final map = box.read("device_info") ?? {};
+
     if(map['branch_id'] != null && map['branch_id'] != '') {
+
       SettingResultModel res = await appRepository.getItrminSetting(map['branch_id'] );
+
       if(res.status ==  true) {
         print('itrmin setting : ${res.results}');
         // store setting itrmin
