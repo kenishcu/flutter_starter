@@ -26,7 +26,7 @@ class RestaurantRepository {
 
   Future<ResultModel> findAllRestaurantSubCate(String id) async {
     try {
-      var response = await client.dio.request(baseUrl + '/sub-categories?parent_id=${id.toString()}', options: Options(method: 'GET'));
+      var response = await client.dio.request(baseUrl + '/sub-categories?parent_id=${id.toString()}&n=50&p=0', options: Options(method: 'GET'));
       return ResultModel.fromJson(response.data);
     } on DioError catch (e) {
       print("error: ${e}");

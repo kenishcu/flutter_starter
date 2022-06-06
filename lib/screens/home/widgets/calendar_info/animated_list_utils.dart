@@ -49,13 +49,16 @@ class ListModel<E> {
 
   /// Function [ setNewList ]: create new list Items
   void setNewList(List<E> listE) {
-    for (var i = 0; i <= _items.length - 1; i++) {
-      _animatedList!.removeItem(0,
-              (BuildContext context, Animation<double> animation) {
-            return Container();
-          });
+    if(_items.isNotEmpty) {
+      for (var i = 0; i <= _items.length - 1; i++) {
+        _animatedList!.removeItem(0,
+                (BuildContext context, Animation<double> animation) {
+              return Container();
+            });
+      }
+      _items.clear();
     }
-    _items.clear();
+
     for(int i = 0; i < listE.length; i++) {
       _items.insert(i, listE[i]);
       if(_animatedList != null) {

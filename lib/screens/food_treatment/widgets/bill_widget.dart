@@ -245,6 +245,7 @@ class _BillWidgetState extends State<BillWidget> {
                             } else {
                               _showToastError();
                             }
+                            Navigator.pop(context);
                           }
                       ),
                     ),
@@ -283,7 +284,6 @@ class _BillWidgetState extends State<BillWidget> {
                     ),
                     SizedBox(
                       height: 50,
-                      child: Text('Không ăn rau muống.'),
                     )
                   ],
                 ),

@@ -4,7 +4,7 @@ import 'package:money2/money2.dart';
 
 String convertFromUnixToTimeString(int timeUnix) {
   if(timeUnix == 0) {
-    return '0';
+    return '';
   }
   DateTime date = DateTime.fromMillisecondsSinceEpoch(timeUnix * 1000);
   String formattedDate = DateFormat('dd/MM/yyyy').format(date);
@@ -13,7 +13,7 @@ String convertFromUnixToTimeString(int timeUnix) {
 
 String convertFromUnixToHourString(int timeUnix) {
   if(timeUnix == 0) {
-    return '0';
+    return '';
   }
   DateTime date = DateTime.fromMillisecondsSinceEpoch(timeUnix * 1000);
   String formattedDate = DateFormat('HH:mm').format(date);

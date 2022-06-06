@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/routes/app_pages.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/app_controller.dart';
 import '../utils/convert.dart';
@@ -23,6 +25,138 @@ class _WidgetHLayoutState extends State<WideHLayout> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   AppController controller = Get.find<AppController>();
+
+  late String _timeString;
+
+  late FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+    _timeString = _formatDateTime(DateTime.now());
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('hh:mm').format(dateTime);
+  }
+
+  _showToastSuccess() {
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Theme.of(context).colorScheme.secondaryContainer,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Icon(Icons.restaurant, size: 28, color: Theme.of(context).colorScheme.secondary),
+          ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Đặt đồ thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Lễ tân đã nhận order", style: TextStyle(
+                          fontSize: 12
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString),
+          )
+          ,
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: const Duration(seconds: 4),
+    );
+  }
+
+  _showToastError() {
+
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.red,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Expanded(
+            flex: 1,
+            child: Icon(Icons.restaurant, size: 28, color: Colors.white),
+          ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: Colors.white
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Lễ tân chưa nhận order", style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString, style: const TextStyle(
+                color: Colors.white
+            ),),
+          )
+          ,
+        ],
+      ),
+    );
+
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: const Duration(seconds: 4),
+    );
+  }
 
   Drawer _drawer(BuildContext context) {
     return Drawer(
@@ -195,6 +329,14 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                               child: HeaderWidget(
                                 onOpenDraw: () {
                                   _key.currentState!.openDrawer();
+                                },
+                                onCallCleanService: () async {
+                                  final res = await controller.callCleanService();
+                                  if(res) {
+                                    _showToastSuccess();
+                                  } else {
+                                    _showToastError();
+                                  }
                                 },
                               ),
                               flex: 1,
