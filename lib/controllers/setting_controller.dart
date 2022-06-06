@@ -1,4 +1,5 @@
 import 'package:dart_ipify/dart_ipify.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stater/adapters/repository/setting/branch_repository.dart';
@@ -68,6 +69,7 @@ class SettingController extends GetxController {
     getDepartments();
     getRooms();
     getDeviceInfo();
+    getFirebaseToken();
   }
 
   @override
@@ -173,6 +175,7 @@ class SettingController extends GetxController {
       rooms.add(element);
     }
   }
+
   /// Function setRoom: when department has been selected, list room will be changed
   /// params: Null
   /// set list room selected
@@ -296,4 +299,11 @@ class SettingController extends GetxController {
     }
   }
 
+  Future getFirebaseToken() async {
+    await FirebaseMessaging.instance.getToken().then(
+            (token) => {
+              print('token firebase ${token.toString()}')
+            }
+    );
+  }
 }

@@ -1,4 +1,5 @@
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_stater/bindings/bill_and_payment_binding.dart';
 import 'package:flutter_stater/bindings/food_treatment_binding.dart';
 import 'package:flutter_stater/bindings/home_binding.dart';
@@ -18,13 +19,9 @@ final configurations = Configurations();
 Future<void> setup() async {
 
     /// set up firebase
-    // await Firebase.initializeApp(
-    //     options: FirebaseOptions(
-    //         apiKey: configurations.apiKey,
-    //         appId: configurations.appId,
-    //         messagingSenderId: configurations.messagingSenderId,
-    //         projectId: configurations.projectId),
-    // );
+    await Firebase.initializeApp();
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
     /// set up app storage
     await AppStorages.init();
 
@@ -39,4 +36,11 @@ Future<void> setup() async {
     MedicalHistoryBinding(box: GetStorage(AppStorages.APP)).dependencies();
     BillAndPaymentBinding(box: GetStorage(AppStorages.APP)).dependencies();
 
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    // If you're going to use other Firebase services in the background, such as Firestore,
+    // make sure you call `initializeApp` before using other Firebase services.
+    await Firebase.initializeApp();
+    print('Handling a background message ${message.messageId}');
 }
