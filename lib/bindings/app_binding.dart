@@ -5,6 +5,8 @@ import 'package:flutter_stater/storages/app_storages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../adapters/repository/notification/notification_repository.dart';
+
 class AppBinding implements Bindings {
 
   final GetStorage box;
@@ -18,10 +20,13 @@ class AppBinding implements Bindings {
 
     AppRepository appRepository = AppRepository();
 
+    NotificationRepository notificationRepository = NotificationRepository();
+
     Get.put<AppController>(
       AppController(
           box: GetStorage(AppStorages.APP),
-          appRepository: appRepository
+          appRepository: appRepository,
+          notificationRepository: notificationRepository
       ),
     );
   }
