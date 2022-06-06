@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "565497593101",
+    "firebase_url": "https://itrapp-hong-ngoc.firebaseio.com",
+    "project_id": "itrapp-hong-ngoc",
+    "storage_bucket": "itrapp-hong-ngoc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565497593101:android:2a4fe8d6f07a4f56880444",
+        "android_client_info": {
+          "package_name": "com.hongngoc.itrapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565497593101-kirp20dujbhqb4scgkkcdscp76g67i84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ZBd-N4Yzw-H5YDb3pJ7PAPmRkWujEQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565497593101-kirp20dujbhqb4scgkkcdscp76g67i84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
