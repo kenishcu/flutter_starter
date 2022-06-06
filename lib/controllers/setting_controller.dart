@@ -63,6 +63,7 @@ class SettingController extends GetxController {
 
   Rx<TextEditingController> macAddress = TextEditingController().obs;
   Rx<TextEditingController> ipAddress = TextEditingController().obs;
+  RxString tokenFirebase = "".obs;
 
   void init() {
     getBranches();
@@ -281,7 +282,7 @@ class SettingController extends GetxController {
       bedName: selectedBed.value.bedName,
       ipAddress: ipAddress.value.text,
       macAddress: macAddress.value.text,
-      deviceToken: "",
+      deviceToken: tokenFirebase.value,
       hotLine: "",
       authToken: "",
       contracts: []
@@ -302,7 +303,8 @@ class SettingController extends GetxController {
   Future getFirebaseToken() async {
     await FirebaseMessaging.instance.getToken().then(
             (token) => {
-              print('token firebase ${token.toString()}')
+              print('token firebase ${token.toString()}'),
+              tokenFirebase.value = token!
             }
     );
   }

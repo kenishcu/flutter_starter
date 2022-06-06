@@ -112,7 +112,7 @@ class AppController extends GetxController {
 
   bool isSettingDeviceInfo() {
     final map = box.read("device_info") ?? {};
-    if(map['bed_id'] != null){
+    if(map['bed_id'] != null && map['bed_id'] != 'null'){
       print('device_info: ${map.toString()}');
       return true;
     }
