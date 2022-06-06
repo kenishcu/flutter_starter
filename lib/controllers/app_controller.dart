@@ -55,6 +55,7 @@ class AppController extends GetxController {
         }
       }
       notifications = list;
+      print('notifications: ${list.toString()}');
     }
 
     final map = box.read("device_info") ?? {};

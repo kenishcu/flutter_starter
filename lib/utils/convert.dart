@@ -11,6 +11,15 @@ String convertFromUnixToTimeString(int timeUnix) {
   return formattedDate.toString();
 }
 
+String convertFromUnixToHourString(int timeUnix) {
+  if(timeUnix == 0) {
+    return '0';
+  }
+  DateTime date = DateTime.fromMillisecondsSinceEpoch(timeUnix * 1000);
+  String formattedDate = DateFormat('HH:mm').format(date);
+  return formattedDate.toString();
+}
+
 String convertFromUnixToDatetime(int timeUnix) {
   DateTime date = DateTime.fromMillisecondsSinceEpoch(timeUnix * 1000);
   String formattedDate = DateFormat('HH:mm , dd-MM-yyyy').format(date);
