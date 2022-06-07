@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:flutter_stater/controllers/index.dart';
 import 'package:flutter/material.dart';
 
-
 import 'container.dart';
 
 class App extends GetView<AppController> {

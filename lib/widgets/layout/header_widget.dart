@@ -6,9 +6,12 @@ import '../../routes/app_pages.dart';
 
 class HeaderWidget extends StatelessWidget {
 
-  const HeaderWidget({Key? key, required this.onOpenDraw}) : super(key: key);
+  const HeaderWidget({Key? key, required this.onOpenDraw, required this.onCallCleanService}) : super(key: key);
 
   final VoidCallback onOpenDraw;
+
+  final VoidCallback onCallCleanService;
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +74,7 @@ class HeaderWidget extends StatelessWidget {
                 ButtonHeaderWidget(
                   iconData: Icons.cleaning_services,
                   buttonTitle: 'Dọn phòng',
-                  onPressed: () {
-                  },
+                  onPressed: onCallCleanService
                 )
               ],
             )

@@ -328,7 +328,7 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                                       flex: 1,
                                       child: Padding(
                                           padding: const EdgeInsets.all(0.0),
-                                          child: Text(formatPrice(controller.itemEs[index].product!.price! * controller.itemEs[index].number!))
+                                          child: Text(formatPrice(0))
                                       ),
                                     ),
                                     Expanded(

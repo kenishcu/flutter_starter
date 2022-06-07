@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/adapters/repository/app/app_repository.dart';
+import 'package:flutter_stater/adapters/repository/loan_service/loan_service_repository.dart';
 import 'package:flutter_stater/models/app/app_setting.dart';
 import 'package:flutter_stater/models/app/itrmin_config_model.dart';
 import 'package:flutter_stater/models/app/setting_result_model.dart';
@@ -21,6 +22,7 @@ class AppController extends GetxController {
   final GetStorage box;
   final AppRepository appRepository;
   final NotificationRepository notificationRepository;
+  final LoanServiceRepository loanServiceRepository;
   final _state = AppState.loading.obs;
   final _settings = AppSetting().obs;
 
@@ -28,6 +30,7 @@ class AppController extends GetxController {
     required this.box,
     required this.appRepository,
     required this.notificationRepository,
+    required this.loanServiceRepository
   });
 
   Rx<ItrminConfigModel> itrminConfigModel = ItrminConfigModel().obs;
@@ -46,17 +49,7 @@ class AppController extends GetxController {
   Future initAppSetting () async {
 
     // init notification
-    final response = await notificationRepository.getNotification(10, 0);
-    if(response.status == true) {
-      List<NotificationModel> list = [];
-      if (response.results != null && response.results.length > 0 ) {
-        for (var element in response.results) {
-          list.add(NotificationModel.fromJson(element));
-        }
-      }
-      notifications = list;
-      print('notifications: ${list.toString()}');
-    }
+    await getNotification();
 
     final map = box.read("device_info") ?? {};
 
@@ -84,6 +77,21 @@ class AppController extends GetxController {
     }
   }
 
+  Future getNotification() async {
+    final response = await notificationRepository.getNotification(10, 0);
+    if(response.status == true) {
+      List<NotificationModel> list = [];
+      if (response.results != null && response.results.length > 0 ) {
+        for (var element in response.results) {
+          list.add(NotificationModel.fromJson(element));
+        }
+      }
+      notifications = list;
+      print('notifications: ${list.toString()}');
+    }
+  }
+
+  /// *
   ///
   void storeSettingItrminConfig(ItrminConfigModel setting) {
     print("write itrmin config: ${setting.toJson()}");
@@ -121,6 +129,15 @@ class AppController extends GetxController {
 
   ThemeMode getThemeMode() {
     return ThemeMode.light;
+  }
+
+  Future<bool> callCleanService() async {
+      final res  = await loanServiceRepository.orderCleaningService();
+      if(res.status == true) {
+        return true;
+      } else {
+        return false;
+      }
   }
 
 }

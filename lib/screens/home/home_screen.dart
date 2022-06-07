@@ -15,41 +15,39 @@ class HomeScreen extends GetView<HomeController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   Widget childLeftContent() {
-    return Container(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 4,
-              child: Row(
-                children: const [
-                  Expanded(
-                      flex: 4,
-                      child: BedTypeWidget()
+    return Column(
+      children: [
+        Expanded(
+          flex: 4,
+            child: Row(
+              children: const [
+                Expanded(
+                    flex: 4,
+                    child: BedTypeWidget()
+                ),
+                Expanded(
+                  child: SizedBox(
+                    child: DiagnosisWidget(),
                   ),
-                  Expanded(
-                    child: SizedBox(
-                      child: DiagnosisWidget(),
-                    ),
-                    flex: 6,
-                  )
-                ],
-              )),
-          Expanded(
-              flex: 7,
-              child: Row(
-                children: const [
-                  Expanded(
-                      child: ServiceWidget(),
-                      flex: 2,
-                  ),
-                  Expanded(
-                    child: BillServiceWidget(),
-                    flex: 3,
-                  ),
-                ],
-              )),
-        ],
-      ),
+                  flex: 6,
+                )
+              ],
+            )),
+        Expanded(
+            flex: 7,
+            child: Row(
+              children: const [
+                Expanded(
+                    child: ServiceWidget(),
+                    flex: 2,
+                ),
+                Expanded(
+                  child: BillServiceWidget(),
+                  flex: 3,
+                ),
+              ],
+            )),
+      ],
     );
   }
 

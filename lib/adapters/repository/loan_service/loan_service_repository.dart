@@ -67,4 +67,24 @@ class LoanServiceRepository {
     }
   }
 
+  Future<ResultModel> orderCleaningService() async {
+
+    try {
+      var response = await client.dio.request(
+          baseUrl + "?cleaning=1&status=1",
+          options: Options(method: 'GET')
+      );
+      return ResultModel.fromJson(response.data);
+    } on DioError catch (e) {
+      print("error: ");
+      print (e.message);
+      return ResultModel(
+          status: false,
+          error: e.error,
+          results: null,
+          appVersion: ''
+      );
+    }
+  }
+
 }

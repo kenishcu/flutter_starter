@@ -99,7 +99,7 @@ class _BillWidgetState extends State<BillWidget> {
               child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
-                child: Column(
+                child: controller.myTabs.isNotEmpty ? Column(
                   children: [
                     SizedBox(
                       child: Padding(
@@ -336,9 +336,18 @@ class _BillWidgetState extends State<BillWidget> {
                         )
                     )
                   ],
+                ) : Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
               )
-          ): Container())
+          ): Container(
+          ))
         ],
       ),
     );

@@ -133,7 +133,7 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
               (BuildContext context, Animation<double> animation) {
             return Container();
           });
-      itemEs = [];
+      itemEs.removeAt(index);
     }
   }
 

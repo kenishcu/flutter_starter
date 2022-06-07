@@ -15,7 +15,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../models/result/result_model.dart';
-import '../screens/home/widgets/calendar_info/animated_list_utils.dart';
 import '../utils/convert.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin {
@@ -40,14 +39,10 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   var selectedDay = 0.obs;
 
   /// meal
-  late ListModel<ReceptionMealModel> listMeal;
-  bool? shrinkMealList = false;
-  GlobalKey<AnimatedListState> listKeyMeal = GlobalKey<AnimatedListState>(debugLabel: '_homeMeal');
+  late List<ReceptionMealModel> listMeal;
 
   /// treatment
-  late ListModel<ReceptionTreatmentModel> listTreatment;
-  bool? shrinkTreatmentList = false;
-  final GlobalKey<AnimatedListState> listKeyTreatment = GlobalKey<AnimatedListState>();
+  late List<ReceptionTreatmentModel> listTreatment;
 
   /// pharma
   // late ListModel<ReceptionPharmaModel> listPharma;
@@ -143,62 +138,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
 
 
 
-  // Used to build an item after it has been removed from the list. This
-  // method is needed because a removed item remains visible until its
-  // animation has completed (even though it's gone as far this ListModel is
-  // concerned). The widget will be used by the
-  // [AnimatedListState.removeItem] method's
-  // [AnimatedListRemovedItemBuilder] parameter.
-  Widget _buildRemovedItem(ReceptionMealModel item, BuildContext context, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      title: "Phục vụ ăn trưa",
-      subTitle: "Tại phòng",
-      iconData: Icons.restaurant,
-      iconColor: Theme.of(context).colorScheme.secondary,
-      backgroundColor: Theme.of(context).colorScheme.onSurface,
-      shadowColor: Theme.of(context).colorScheme.secondaryContainer,
-      time: "12:00-13:00",
-      onTap: () {
-      },
-    );
-  }
-
-
-  // Used to build an item after it has been removed from the list. This
-  // method is needed because a removed item remains visible until its
-  // animation has completed (even though it's gone as far this ListModel is
-  // concerned). The widget will be used by the
-  // [AnimatedListState.removeItem] method's
-  // [AnimatedListRemovedItemBuilder] parameter.
-  Widget _buildRemovedItemTreatment(ReceptionTreatmentModel item, BuildContext context, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      title: "Phục vụ ăn trưa",
-      subTitle: "Tại phòng",
-      iconData: Icons.restaurant,
-      iconColor: Theme.of(context).colorScheme.secondary,
-      backgroundColor: Theme.of(context).colorScheme.onSurface,
-      shadowColor: Theme.of(context).colorScheme.secondaryContainer,
-      time: "12:00-13:00",
-      onTap: () {
-      },
-    );
-  }
-
-
   void addCalendarInfo () {
-
-    listMeal = ListModel<ReceptionMealModel>(
-      listKey: listKeyMeal,
-      initialItems: <ReceptionMealModel>[],
-      removedItemBuilder: _buildRemovedItem
-    );
-
-    listTreatment = ListModel<ReceptionTreatmentModel>(
-        listKey: listKeyTreatment,
-        initialItems: <ReceptionTreatmentModel>[],
-        removedItemBuilder: _buildRemovedItemTreatment);
 
     var now = DateTime.now();
     var d = DateTime(now.year, now.month, now.day);
@@ -299,29 +239,6 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     print('meal: ${calendarInfo[_selectedDay]['data'].toString()}');
   }
 
-  /// List controller
-  ///
-  void showListMeal() {
-    List<ReceptionMealModel> listE = [];
-    var data = calendarInfo[selectedDay.value]['data']['meal'];
-    if(data != null && data.length > 0) {
-      data.forEach((e) => {
-        listE.add(ReceptionMealModel.fromJson(e))
-      });
-    }
-    shrinkMealList = false;
-    listMeal.setNewList(listE);
-  }
-
-  void shrinkListMeal() {
-    shrinkMealList = false;
-    listMeal.shrinkInOne();
-  }
-
-  void showListTreatment() {}
-
-  void shrinkListTreatment() {}
-
   void setList() {
     // set list meal
     List<ReceptionMealModel> listE = [];
@@ -331,7 +248,8 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
         listE.add(ReceptionMealModel.fromJson(e))
       });
     }
-    listMeal.setNewList(listE);
+
+    listMeal = listE;
 
     // set list treatment
     List<ReceptionTreatmentModel> listETreatment = [];
@@ -341,7 +259,8 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
         listETreatment.add(ReceptionTreatmentModel.fromJson(e))
       });
     }
-    listTreatment.setNewList(listETreatment);
+
+    listTreatment = listETreatment;
   }
 
   Future getRestaurantInfo() async {

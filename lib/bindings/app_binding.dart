@@ -1,4 +1,5 @@
 import 'package:flutter_stater/adapters/repository/app/app_repository.dart';
+import 'package:flutter_stater/adapters/repository/loan_service/loan_service_repository.dart';
 import 'package:flutter_stater/controllers/app_controller.dart';
 import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/storages/app_storages.dart';
@@ -22,11 +23,14 @@ class AppBinding implements Bindings {
 
     NotificationRepository notificationRepository = NotificationRepository();
 
+    LoanServiceRepository loanServiceRepository = LoanServiceRepository();
+
     Get.put<AppController>(
       AppController(
           box: GetStorage(AppStorages.APP),
           appRepository: appRepository,
-          notificationRepository: notificationRepository
+          notificationRepository: notificationRepository,
+          loanServiceRepository: loanServiceRepository
       ),
     );
   }
