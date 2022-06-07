@@ -14,6 +14,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter/material.dart';
 
+import '../models/home/pharma/pharma_info_model.dart';
 import '../models/result/result_model.dart';
 import '../utils/convert.dart';
 
@@ -42,12 +43,10 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   late List<ReceptionMealModel> listMeal;
 
   /// treatment
-  late List<ReceptionTreatmentModel> listTreatment;
+  late List<TreatmentInfoModel> listTreatment;
 
   /// pharma
-  // late ListModel<ReceptionPharmaModel> listPharma;
-  // bool? shrinkPharmaList = false;
-  // final GlobalKey<AnimatedListState> listKeyPharma = GlobalKey<AnimatedListState>();
+  late List<PharmaInfoModel> listPharma;
 
 
   final List<Map<String, dynamic>> calendarInfo =
@@ -204,6 +203,14 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
       for (var pharma in res2.results) {
         ReceptionPharmaModel rec = ReceptionPharmaModel.fromJson(pharma);
         _pharmas.add(rec);
+        var calendar = calendarInfo;
+        for(int i = 0; i < calendar.length; i++) {
+          if(rec.currentDayTime != null && isSameDay(calendar[i]['dayUnix'], rec.currentDayTime!)) {
+              for(var element in rec.pharmas!) {
+                calendarInfo[i]['data']['pharma'].add(element.toJson());
+              }
+          }
+        }
       }
       pharmas = _pharmas;
     }
@@ -236,7 +243,9 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     selectedDay.value = _selectedDay;
     setList();
     print('selected day Info: ');
-    print('meal: ${calendarInfo[_selectedDay]['data'].toString()}');
+    print('meal: ${calendarInfo[_selectedDay]['data']['meal'].toString()}');
+    print('service: ${calendarInfo[selectedDay.value]['data']['treatment'].toString()}');
+    print('pharma: ${calendarInfo[selectedDay.value]['data']['pharma'].toString()}');
   }
 
   void setList() {
@@ -252,15 +261,25 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     listMeal = listE;
 
     // set list treatment
-    List<ReceptionTreatmentModel> listETreatment = [];
+    List<TreatmentInfoModel> listETreatment = [];
     var dataTreatment = calendarInfo[selectedDay.value]['data']['treatment'];
     if(dataTreatment != null && dataTreatment.length > 0) {
       dataTreatment.forEach((e) => {
-        listETreatment.add(ReceptionTreatmentModel.fromJson(e))
+        listETreatment.add(TreatmentInfoModel.fromJson(e))
       });
     }
 
     listTreatment = listETreatment;
+
+    // set list pharma
+    List<PharmaInfoModel> listEPharma = [];
+    var dataPharma = calendarInfo[selectedDay.value]['data']['pharma'];
+    if(dataPharma != null && dataPharma.length > 0) {
+      dataPharma.forEach((e) => {
+        listEPharma.add(PharmaInfoModel.fromJson(e))
+      });
+    }
+    listPharma = listEPharma;
   }
 
   Future getRestaurantInfo() async {
