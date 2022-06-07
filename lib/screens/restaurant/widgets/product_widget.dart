@@ -7,7 +7,6 @@ import '../../../controllers/restaurant/product_restaurant_controller.dart';
 import '../../../models/restaurant/meal_type_model.dart';
 import '../../../models/restaurant/product_model.dart';
 import '../../../utils/convert.dart';
-import '../../../widgets/calendar/customized_date_picker.dart';
 
 class ProductWidget extends StatefulWidget {
 

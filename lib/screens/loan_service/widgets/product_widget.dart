@@ -344,7 +344,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                 flex: 2,
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
-                                  child: Text(formatPrice(0)),
+                                  child: Text(formatPrice(productModel.price!)),
                                 ),
                               ),
                               Expanded(

@@ -119,6 +119,7 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
       listKey.currentState?.insertItem(0, duration: const Duration(milliseconds: 500));
       itemEs.add(item);
     }
+    countTotal();
   }
 
   void subItem(int index, GlobalKey<AnimatedListState> listKey) {
@@ -135,6 +136,7 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
           });
       itemEs.removeAt(index);
     }
+    countTotal();
   }
 
   void editProduct(ItemProductModel item, String edit, int index) {
@@ -222,6 +224,8 @@ class LoanServiceController extends GetxController with GetSingleTickerProviderS
         edit: itemEs[index].edit,
         number: ( itemEs[index].number! + 1));
     itemEs[index] = p;
+    countTotal();
+
   }
 
   void setSelectedTab(int tab) {
