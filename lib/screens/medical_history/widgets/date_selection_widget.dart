@@ -54,7 +54,7 @@ class _DateSelectionWidget extends State<DateSelectionWidget> {
                             ),
                             child: Align(
                               alignment: Alignment.centerLeft,
-                              child: Text( DateFormat('dd/MM/yyyy').format(controller.from) + "  -  " + DateFormat('dd/MM/yyyy').format(controller.from),
+                              child: Text( DateFormat('dd/MM/yyyy').format(controller.from) + "  -  " + DateFormat('dd/MM/yyyy').format(controller.to),
                                   style: const TextStyle(
                                       fontSize: 18
                                   )),
