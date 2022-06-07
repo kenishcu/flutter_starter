@@ -80,7 +80,7 @@ class _ExpandableTreatmentWidgetState extends State<ExpandableTreatmentWidget> {
                           children: [
                             Expanded(
                               flex: 1,
-                              child: Icon(Icons.medical_services, size: 28, color: Theme.of(context).colorScheme.secondary),
+                              child: Icon(Icons.medical_services, size: 40, color: Theme.of(context).colorScheme.secondary),
                             ),
                             Expanded(
                                 flex: 3,
@@ -90,7 +90,7 @@ class _ExpandableTreatmentWidgetState extends State<ExpandableTreatmentWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        height: 25,
+                                        height: 30,
                                         child: Padding(
                                           padding: const EdgeInsets.only(top: 10),
                                           child: Text("${widget.listTreatment[index].serviceName}",

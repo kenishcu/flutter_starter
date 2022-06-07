@@ -64,70 +64,67 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
               child: ListView.builder(
                   itemCount: widget.listMeal.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return SizedBox(
+                    return Container(
                       height: 70,
-                      child: Container(
-                        height: 70,
-                        margin: const EdgeInsets.only(bottom: 5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Theme.of(context).colorScheme.secondaryContainer,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Icon(Icons.restaurant, size: 28, color: Theme.of(context).colorScheme.secondary),
-                            ),
-                            Expanded(
-                                flex: 3,
-                                child: SizedBox(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 25,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(top: 10),
-                                          child: Text("Phục vụ ăn ${widget.listMeal[index].mealTypeName}",
-                                              overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16
-                                              )),
-                                        ),
+                      margin: const EdgeInsets.only(bottom: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Theme.of(context).colorScheme.secondaryContainer,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Icon(Icons.restaurant, size: 40, color: Theme.of(context).colorScheme.secondary),
+                          ),
+                          Expanded(
+                              flex: 3,
+                              child: SizedBox(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 30,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: Text("Phục vụ ăn ${widget.listMeal[index].mealTypeName}",
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16
+                                            )),
                                       ),
-                                      SizedBox(
-                                        height: 30,
-                                        child: Container(
-                                          padding: const EdgeInsets.only(top: 5),
-                                          child: const Text("Tại phòng",
-                                              maxLines: 3,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  fontSize: 12
-                                              )),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )
-                            ),
-                            Expanded(
-                                flex: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Text(convertFromUnixToHourString(widget.listMeal[index].usedAt!), style: TextStyle(
-                                      color: Theme.of(context).colorScheme.secondary,
-                                      fontSize: 15
-                                  )),
-                                )
-                            )
-                            ,
-                          ],
-                        ),
+                                    ),
+                                    SizedBox(
+                                      height: 30,
+                                      child: Container(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        child: const Text("Tại phòng",
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontSize: 12
+                                            )),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                          ),
+                          Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: Text(convertFromUnixToHourString(widget.listMeal[index].usedAt!), style: TextStyle(
+                                    color: Theme.of(context).colorScheme.secondary,
+                                    fontSize: 15
+                                )),
+                              )
+                          )
+                          ,
+                        ],
                       ),
                     );
                   }

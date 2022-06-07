@@ -78,7 +78,7 @@ class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
                           children: [
                             Expanded(
                               flex: 1,
-                              child: Icon(Icons.restaurant, size: 28, color: Theme.of(context).colorScheme.secondary),
+                              child: Icon(Icons.vaccines, size: 40, color: Theme.of(context).colorScheme.secondary),
                             ),
                             Expanded(
                                 flex: 3,
@@ -88,7 +88,7 @@ class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        height: 25,
+                                        height: 30,
                                         child: Padding(
                                           padding: const EdgeInsets.only(top: 10),
                                           child: Text("${widget.listPharma[index].quantity} ${widget.listPharma[index].pharmaName}",
@@ -110,10 +110,10 @@ class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
                                 flex: 1,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 20),
-                                  child: Text(convertFromUnixToHourString(widget.listPharma[index].currentDayTime!), style: TextStyle(
-                                      color: Theme.of(context).colorScheme.secondary,
-                                      fontSize: 15
-                                  )),
+                                  // child: Text(convertFromUnixToHourString(widget.listPharma[index].), style: TextStyle(
+                                  //     color: Theme.of(context).colorScheme.secondary,
+                                  //     fontSize: 15
+                                  // )),
                                 )
                             )
                             ,

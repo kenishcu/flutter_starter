@@ -2,6 +2,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_meal_widget.dart';
+import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_pharma_widget.dart';
 import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_treatment_widget.dart';
 import 'package:get/get.dart';
 
@@ -146,11 +147,16 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                     children: <Widget>[
                       controller.calendarInfo[controller.selectedDay.value]['data']!['meal'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meal'].length > 0 ? SizedBox(
                         child: ExpandableMealWidget(listMeal: controller.listMeal),
-                      ) : Container(),
+                      ) : const SizedBox(),
 
                       controller.calendarInfo[controller.selectedDay.value]['data']['treatment'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['treatment'].length > 0 ? Expanded(
                         flex: 1,
                         child: ExpandableTreatmentWidget(listTreatment: controller.listTreatment),
+                      ): const SizedBox(),
+
+                      controller.calendarInfo[controller.selectedDay.value]['data']['pharma'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['pharma'].length > 0 ? Expanded(
+                        flex: 1,
+                        child: ExpandablePharmaWidget(listPharma: controller.listPharma),
                       ): Container()
                     ],
                   ))

@@ -16,7 +16,7 @@ _$_ReceptionPharmaModel _$$_ReceptionPharmaModelFromJson(
           inPatientRoomName: json['in_patient_room_name'] as String?,
           bedId: json['bed_id'] as int?,
           bedName: json['bed_name'] as String?,
-          currentDayTime: json['currentDayTime'] as int?,
+          currentDayTime: json['current_day_time'] as int?,
           pharmas: (json['pharmas'] as List<dynamic>?)
               ?.map((e) => PharmaInfoModel.fromJson(e as Map<String, dynamic>))
               .toList(),
