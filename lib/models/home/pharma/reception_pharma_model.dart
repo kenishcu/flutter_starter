@@ -17,6 +17,7 @@ class ReceptionPharmaModel with _$ReceptionPharmaModel {
     String? inPatientRoomName,
     int? bedId,
     String? bedName,
+    int? currentDayTime,
     List<PharmaInfoModel>? pharmas,
   }) = _ReceptionPharmaModel;
 
