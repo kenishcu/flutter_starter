@@ -24,13 +24,14 @@ class _$ReceptionPharmaModelTearOff {
 
   _ReceptionPharmaModel call(
       {int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? inPatientRoomId,
-      String? inPatientRoomName,
-      int? bedId,
-      String? bedName,
-      List<PharmaInfoModel>? pharmas}) {
+        String? patientFullname,
+        String? receptionQueueId,
+        int? inPatientRoomId,
+        String? inPatientRoomName,
+        int? bedId,
+        String? bedName,
+        int? currentDayTime,
+        List<PharmaInfoModel>? pharmas}) {
     return _ReceptionPharmaModel(
       patientId: patientId,
       patientFullname: patientFullname,
@@ -39,6 +40,7 @@ class _$ReceptionPharmaModelTearOff {
       inPatientRoomName: inPatientRoomName,
       bedId: bedId,
       bedName: bedName,
+      currentDayTime: currentDayTime,
       pharmas: pharmas,
     );
   }
@@ -60,6 +62,7 @@ mixin _$ReceptionPharmaModel {
   String? get inPatientRoomName => throw _privateConstructorUsedError;
   int? get bedId => throw _privateConstructorUsedError;
   String? get bedName => throw _privateConstructorUsedError;
+  int? get currentDayTime => throw _privateConstructorUsedError;
   List<PharmaInfoModel>? get pharmas => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -71,17 +74,18 @@ mixin _$ReceptionPharmaModel {
 /// @nodoc
 abstract class $ReceptionPharmaModelCopyWith<$Res> {
   factory $ReceptionPharmaModelCopyWith(ReceptionPharmaModel value,
-          $Res Function(ReceptionPharmaModel) then) =
-      _$ReceptionPharmaModelCopyWithImpl<$Res>;
+      $Res Function(ReceptionPharmaModel) then) =
+  _$ReceptionPharmaModelCopyWithImpl<$Res>;
   $Res call(
       {int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? inPatientRoomId,
-      String? inPatientRoomName,
-      int? bedId,
-      String? bedName,
-      List<PharmaInfoModel>? pharmas});
+        String? patientFullname,
+        String? receptionQueueId,
+        int? inPatientRoomId,
+        String? inPatientRoomName,
+        int? bedId,
+        String? bedName,
+        int? currentDayTime,
+        List<PharmaInfoModel>? pharmas});
 }
 
 /// @nodoc
@@ -102,41 +106,46 @@ class _$ReceptionPharmaModelCopyWithImpl<$Res>
     Object? inPatientRoomName = freezed,
     Object? bedId = freezed,
     Object? bedName = freezed,
+    Object? currentDayTime = freezed,
     Object? pharmas = freezed,
   }) {
     return _then(_value.copyWith(
       patientId: patientId == freezed
           ? _value.patientId
           : patientId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       patientFullname: patientFullname == freezed
           ? _value.patientFullname
           : patientFullname // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       receptionQueueId: receptionQueueId == freezed
           ? _value.receptionQueueId
           : receptionQueueId // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       inPatientRoomId: inPatientRoomId == freezed
           ? _value.inPatientRoomId
           : inPatientRoomId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       inPatientRoomName: inPatientRoomName == freezed
           ? _value.inPatientRoomName
           : inPatientRoomName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       bedId: bedId == freezed
           ? _value.bedId
           : bedId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       bedName: bedName == freezed
           ? _value.bedName
           : bedName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
+      currentDayTime: currentDayTime == freezed
+          ? _value.currentDayTime
+          : currentDayTime // ignore: cast_nullable_to_non_nullable
+      as int?,
       pharmas: pharmas == freezed
           ? _value.pharmas
           : pharmas // ignore: cast_nullable_to_non_nullable
-              as List<PharmaInfoModel>?,
+      as List<PharmaInfoModel>?,
     ));
   }
 }
@@ -145,18 +154,19 @@ class _$ReceptionPharmaModelCopyWithImpl<$Res>
 abstract class _$ReceptionPharmaModelCopyWith<$Res>
     implements $ReceptionPharmaModelCopyWith<$Res> {
   factory _$ReceptionPharmaModelCopyWith(_ReceptionPharmaModel value,
-          $Res Function(_ReceptionPharmaModel) then) =
-      __$ReceptionPharmaModelCopyWithImpl<$Res>;
+      $Res Function(_ReceptionPharmaModel) then) =
+  __$ReceptionPharmaModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? inPatientRoomId,
-      String? inPatientRoomName,
-      int? bedId,
-      String? bedName,
-      List<PharmaInfoModel>? pharmas});
+        String? patientFullname,
+        String? receptionQueueId,
+        int? inPatientRoomId,
+        String? inPatientRoomName,
+        int? bedId,
+        String? bedName,
+        int? currentDayTime,
+        List<PharmaInfoModel>? pharmas});
 }
 
 /// @nodoc
@@ -179,41 +189,46 @@ class __$ReceptionPharmaModelCopyWithImpl<$Res>
     Object? inPatientRoomName = freezed,
     Object? bedId = freezed,
     Object? bedName = freezed,
+    Object? currentDayTime = freezed,
     Object? pharmas = freezed,
   }) {
     return _then(_ReceptionPharmaModel(
       patientId: patientId == freezed
           ? _value.patientId
           : patientId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       patientFullname: patientFullname == freezed
           ? _value.patientFullname
           : patientFullname // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       receptionQueueId: receptionQueueId == freezed
           ? _value.receptionQueueId
           : receptionQueueId // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       inPatientRoomId: inPatientRoomId == freezed
           ? _value.inPatientRoomId
           : inPatientRoomId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       inPatientRoomName: inPatientRoomName == freezed
           ? _value.inPatientRoomName
           : inPatientRoomName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
       bedId: bedId == freezed
           ? _value.bedId
           : bedId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      as int?,
       bedName: bedName == freezed
           ? _value.bedName
           : bedName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      as String?,
+      currentDayTime: currentDayTime == freezed
+          ? _value.currentDayTime
+          : currentDayTime // ignore: cast_nullable_to_non_nullable
+      as int?,
       pharmas: pharmas == freezed
           ? _value.pharmas
           : pharmas // ignore: cast_nullable_to_non_nullable
-              as List<PharmaInfoModel>?,
+      as List<PharmaInfoModel>?,
     ));
   }
 }
@@ -223,13 +238,14 @@ class __$ReceptionPharmaModelCopyWithImpl<$Res>
 class _$_ReceptionPharmaModel extends _ReceptionPharmaModel {
   _$_ReceptionPharmaModel(
       {this.patientId,
-      this.patientFullname,
-      this.receptionQueueId,
-      this.inPatientRoomId,
-      this.inPatientRoomName,
-      this.bedId,
-      this.bedName,
-      this.pharmas})
+        this.patientFullname,
+        this.receptionQueueId,
+        this.inPatientRoomId,
+        this.inPatientRoomName,
+        this.bedId,
+        this.bedName,
+        this.currentDayTime,
+        this.pharmas})
       : super._();
 
   factory _$_ReceptionPharmaModel.fromJson(Map<String, dynamic> json) =>
@@ -250,11 +266,13 @@ class _$_ReceptionPharmaModel extends _ReceptionPharmaModel {
   @override
   final String? bedName;
   @override
+  final int? currentDayTime;
+  @override
   final List<PharmaInfoModel>? pharmas;
 
   @override
   String toString() {
-    return 'ReceptionPharmaModel(patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, inPatientRoomId: $inPatientRoomId, inPatientRoomName: $inPatientRoomName, bedId: $bedId, bedName: $bedName, pharmas: $pharmas)';
+    return 'ReceptionPharmaModel(patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, inPatientRoomId: $inPatientRoomId, inPatientRoomName: $inPatientRoomName, bedId: $bedId, bedName: $bedName, currentDayTime: $currentDayTime, pharmas: $pharmas)';
   }
 
   @override
@@ -273,6 +291,8 @@ class _$_ReceptionPharmaModel extends _ReceptionPharmaModel {
                 .equals(other.inPatientRoomName, inPatientRoomName) &&
             const DeepCollectionEquality().equals(other.bedId, bedId) &&
             const DeepCollectionEquality().equals(other.bedName, bedName) &&
+            const DeepCollectionEquality()
+                .equals(other.currentDayTime, currentDayTime) &&
             const DeepCollectionEquality().equals(other.pharmas, pharmas));
   }
 
@@ -286,6 +306,7 @@ class _$_ReceptionPharmaModel extends _ReceptionPharmaModel {
       const DeepCollectionEquality().hash(inPatientRoomName),
       const DeepCollectionEquality().hash(bedId),
       const DeepCollectionEquality().hash(bedName),
+      const DeepCollectionEquality().hash(currentDayTime),
       const DeepCollectionEquality().hash(pharmas));
 
   @JsonKey(ignore: true)
@@ -303,17 +324,18 @@ class _$_ReceptionPharmaModel extends _ReceptionPharmaModel {
 abstract class _ReceptionPharmaModel extends ReceptionPharmaModel {
   factory _ReceptionPharmaModel(
       {int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? inPatientRoomId,
-      String? inPatientRoomName,
-      int? bedId,
-      String? bedName,
-      List<PharmaInfoModel>? pharmas}) = _$_ReceptionPharmaModel;
+        String? patientFullname,
+        String? receptionQueueId,
+        int? inPatientRoomId,
+        String? inPatientRoomName,
+        int? bedId,
+        String? bedName,
+        int? currentDayTime,
+        List<PharmaInfoModel>? pharmas}) = _$_ReceptionPharmaModel;
   _ReceptionPharmaModel._() : super._();
 
   factory _ReceptionPharmaModel.fromJson(Map<String, dynamic> json) =
-      _$_ReceptionPharmaModel.fromJson;
+  _$_ReceptionPharmaModel.fromJson;
 
   @override
   int? get patientId;
@@ -329,6 +351,8 @@ abstract class _ReceptionPharmaModel extends ReceptionPharmaModel {
   int? get bedId;
   @override
   String? get bedName;
+  @override
+  int? get currentDayTime;
   @override
   List<PharmaInfoModel>? get pharmas;
   @override
