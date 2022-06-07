@@ -2,20 +2,22 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:flutter_stater/models/home/meal/reception_meal_model.dart';
 import 'package:flutter_stater/utils/convert.dart';
 
-class ExpandableMealWidget extends StatefulWidget {
+import '../../../../models/home/treatment/reception_treatment_model.dart';
+import '../../../../models/home/treatment/treatment_info_model.dart';
 
-  const ExpandableMealWidget({Key? key, required this.listMeal}) : super(key: key);
+class ExpandableTreatmentWidget extends StatefulWidget {
 
-  final List<ReceptionMealModel> listMeal;
+  const ExpandableTreatmentWidget({Key? key, required this.listTreatment}) : super(key: key);
+
+  final List<TreatmentInfoModel> listTreatment;
 
   @override
-  _ExpandableMealWidgetState createState() => _ExpandableMealWidgetState();
+  _ExpandableTreatmentWidgetState createState() => _ExpandableTreatmentWidgetState();
 }
 
-class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
+class _ExpandableTreatmentWidgetState extends State<ExpandableTreatmentWidget> {
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                   children: [
                     const Expanded(
                       child: Text(
-                        "Lịch ăn", style: TextStyle(
+                        "Lịch điều trị", style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600
                       ),
@@ -58,11 +60,11 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
             ),
             collapsed: Container(),
             expanded: Container(
-              height: widget.listMeal.length * 70,
+              height: widget.listTreatment.length * 70,
               width: double.infinity,
               padding: const EdgeInsets.all(0.0),
               child: ListView.builder(
-                  itemCount: widget.listMeal.length,
+                  itemCount: widget.listTreatment.length,
                   itemBuilder: (BuildContext context, int index) {
                     return SizedBox(
                       height: 70,
@@ -78,7 +80,7 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                           children: [
                             Expanded(
                               flex: 1,
-                              child: Icon(Icons.restaurant, size: 28, color: Theme.of(context).colorScheme.secondary),
+                              child: Icon(Icons.medical_services, size: 28, color: Theme.of(context).colorScheme.secondary),
                             ),
                             Expanded(
                                 flex: 3,
@@ -91,7 +93,7 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                                         height: 25,
                                         child: Padding(
                                           padding: const EdgeInsets.only(top: 10),
-                                          child: Text("Phục vụ ăn ${widget.listMeal[index].mealTypeName}",
+                                          child: Text("${widget.listTreatment[index].serviceName}",
                                               overflow: TextOverflow.ellipsis,
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
@@ -103,10 +105,9 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                                         height: 30,
                                         child: Container(
                                           padding: const EdgeInsets.only(top: 5),
-                                          child: const Text("Tại phòng",
-                                              maxLines: 3,
+                                          child: Text("Tại ${widget.listTreatment[index].roomNameToDo}",
                                               overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontSize: 12
                                               )),
                                         ),
@@ -119,7 +120,7 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                                 flex: 1,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 20),
-                                  child: Text(convertFromUnixToHourString(widget.listMeal[index].usedAt!), style: TextStyle(
+                                  child: Text(convertFromUnixToHourString(widget.listTreatment[index].currentDayTime!), style: TextStyle(
                                       color: Theme.of(context).colorScheme.secondary,
                                       fontSize: 15
                                   )),

@@ -9,7 +9,7 @@ class CalendarInfoRepository {
 
   final treatmentUrl = "/recommendation-services";
   final mealUrl = "/food";
-  final pharmaUrl = "/pharma";
+  final pharmaUrl = "/pharmas";
 
   Future<ResultModel> getTreatmentInfo() async {
     try {

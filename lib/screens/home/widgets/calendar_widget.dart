@@ -1,6 +1,8 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_meal_widget.dart';
+import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_treatment_widget.dart';
 import 'package:get/get.dart';
 
 class CalendarWidget extends StatefulWidget {
@@ -123,35 +125,38 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Container(
-        height: 420,
-        width: double.infinity,
-        padding: const EdgeInsets.only(top: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-                height: 80,
-                child: timeline()
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-                child: Column(
-                  children: [
-                    controller.calendarInfo[controller.selectedDay.value]['data']!['meal'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meal'].length > 0 ? SizedBox(
-                      height: 200,
-                      child: ExpandableMealWidget(listMeal: controller.listMeal),
-                    ) : Container(),
-                    // controller.calendarInfo[controller.selectedDay.value]['data']['treatment'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['treatment'].length > 0 ? const Expanded(
-                    //   flex: 1,
-                    //   child: AnimatedTreatmentListWidget(),
-                    // ): Container()
-                  ],
-                )
-            )
-          ],
+      child: SingleChildScrollView(
+        child: Container(
+          height: 420,
+          width: double.infinity,
+          padding: const EdgeInsets.only(top: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                  height: 80,
+                  child: timeline()
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                  child: Obx(() => ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: <Widget>[
+                      controller.calendarInfo[controller.selectedDay.value]['data']!['meal'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meal'].length > 0 ? SizedBox(
+                        child: ExpandableMealWidget(listMeal: controller.listMeal),
+                      ) : Container(),
+
+                      controller.calendarInfo[controller.selectedDay.value]['data']['treatment'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['treatment'].length > 0 ? Expanded(
+                        flex: 1,
+                        child: ExpandableTreatmentWidget(listTreatment: controller.listTreatment),
+                      ): Container()
+                    ],
+                  ))
+              )
+            ],
+          ),
         ),
       ),
     );
