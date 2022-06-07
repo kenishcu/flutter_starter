@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 
 import '../models/home/pharma/pharma_info_model.dart';
 import '../models/result/result_model.dart';
+import '../routes/app_pages.dart';
 import '../utils/convert.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin {
@@ -280,6 +281,12 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
       });
     }
     listPharma = listEPharma;
+  }
+
+  Future goToBill() async {
+    final BillAndPaymentController billAndPaymentController = Get.find<BillAndPaymentController>();
+    await billAndPaymentController.initBillAndPayment();
+    Get.offAndToNamed(Routes.BILL_AND_PAYMENT);
   }
 
   Future getRestaurantInfo() async {

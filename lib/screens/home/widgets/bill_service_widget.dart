@@ -48,7 +48,9 @@ class BillServiceWidget extends GetView<HomeController> {
                         color: Theme.of(context).colorScheme.secondary
                     ),
                     child: TextButton(
-                      onPressed: () {  },
+                      onPressed: () async {
+                        await controller.goToBill();
+                      },
                       child: Text(
                         "Xem chi tiết".toUpperCase(),
                         style: const TextStyle(
