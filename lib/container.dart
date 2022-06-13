@@ -14,9 +14,6 @@ import 'package:get/get.dart';
 
 import 'bindings/app_binding.dart';
 import 'bindings/setting_binding.dart';
-import 'config/config.dart';
-
-final configurations = Configurations();
 
 Future<void> setup() async {
 

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/adapters/repository/app/app_repository.dart';
 import 'package:flutter_stater/adapters/repository/loan_service/loan_service_repository.dart';
@@ -44,6 +46,9 @@ class AppController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    Timer timer = Timer(const Duration(seconds: 300), () async {
+      await reGetPatientInformation();
+    });
   }
 
   Future initAppSetting () async {
@@ -89,6 +94,10 @@ class AppController extends GetxController {
       notifications = list;
       print('notifications: ${list.toString()}');
     }
+  }
+
+  Future reGetPatientInformation() async {
+    debugPrint("Print after 300 seconds");
   }
 
   /// *

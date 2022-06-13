@@ -111,8 +111,75 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 ))
             ),
           ),
+          SizedBox(
+            height: 40,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 140,
+                  height: 40,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: controller.selectedPaymentType.value == 0 ? Border.all(
+                          color: Theme.of(context).colorScheme.secondaryContainer,
+                          width: 4
+                      ): Border.all(
+                          color: Colors.white,
+                          width: 4
+                      )
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        controller.setSelectedPayment(0);
+                      },
+                      onDoubleTap: () {
+                        controller.setSelectedPayment(0);
+                      },
+                      child: const Center(
+                        child: Text("Tại giường", style: TextStyle(
+                            color: Colors.white
+                        )),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 140,
+                  height: 40,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: controller.selectedPaymentType.value == 1 ? Border.all(
+                          color: Theme.of(context).colorScheme.secondaryContainer,
+                          width: 4
+                      ): Border.all(
+                          color: Colors.grey,
+                          width: 1
+                      ),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        controller.setSelectedPayment(1);
+                      },
+                      onDoubleTap: () {
+                        controller.setSelectedPayment(1);
+                      },
+                      child: const Center(
+                        child: Text("Tại quầy lễ tân", style: TextStyle(
+                        )),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ),
           Expanded(
-              child: ListView.builder(
+              child: Obx(()=> controller.selectedPaymentType.value == 0 ? ListView.builder(
                   itemCount: controller.payments.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
@@ -153,7 +220,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               ),
                               SizedBox(
                                 child: Text(
-                                  controller.payments[index].paymentTypeName!
+                                    controller.payments[index].paymentTypeName!
                                 ),
                               )
                             ],
@@ -161,7 +228,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                         ),
                       ),
                     );
-                  })
+                  }): Container())
           ),
           SizedBox(
             height: 50,
