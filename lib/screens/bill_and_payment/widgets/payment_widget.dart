@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/screens/bill_and_payment/widgets/waiting_payment_widget.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -610,7 +611,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
           Expanded(
             flex: 2,
             child: Obx(() => controller.selectedPayment.value.paymentTypeId == "1" ? _paymentByMoney(context) :
-                controller.selectedPayment.value.paymentTypeId == '2' ? _paymentByCredit(context) :
+                controller.selectedPayment.value.paymentTypeId == '2' ? const WaitingPaymentWidget() :
                 controller.selectedPayment.value.paymentTypeId == '3' ? _paymentByDigitalWallet(context) :
                 _payment(context)
             )
