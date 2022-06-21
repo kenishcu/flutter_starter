@@ -17,7 +17,7 @@ _$_BillTypeModel _$$_BillTypeModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_BillTypeModelToJson(_$_BillTypeModel instance) =>
     <String, dynamic>{
       'patient_id': instance.patientId,
-      'reception_queue_id': instance.receptionQueueId,
+      'reception_queue_id': instance.receptionQueueId.toString(),
       'payment_type_requested_in_room': instance.paymentTypeRequestedInRoom,
       'payment_requested_in_room': instance.paymentRequestedInRoom,
     };

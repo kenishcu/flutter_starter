@@ -334,8 +334,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       final res = await controller.sendRequestPayment();
                       if (res) {
                         // toast success
+                        _showToastSuccess();
                       } else {
                         // toast error
+                        _showToastError();
                       }
                     },
                     child: const SizedBox(
