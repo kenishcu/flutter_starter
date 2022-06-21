@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stater/controllers/bill_and_payment_controller.dart';
+import 'package:get/get.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class WaitingPaymentWidget extends StatefulWidget {
 
-  const WaitingPaymentWidget({Key? key}) : super(key: key);
+  const WaitingPaymentWidget({Key? key, required this.title}) : super(key: key);
 
+  final String? title;
   @override
   _WaitingPaymentWidgetState createState() => _WaitingPaymentWidgetState();
 }
@@ -30,7 +34,6 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,11 +46,11 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               height: 40,
               child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text("Chọn hình thức thanh toán",  style: TextStyle(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text("Bạn đã yêu cầu thanh toán ${widget.title}",  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))
@@ -57,7 +60,7 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
               height: 120,
               child: Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: Text("Xin quý khách chờ tại phòng. Nhân viên Hồng Ngọc sẽ qua phòng và thanh toán cho quý khách trong giây lát.",  style: TextStyle(
+                  child: Text("Chúng tôi đã nhận được yêu cầu thanh toán của bạn, vui lòng chờ hệ thống kiểm tra và tiến hành thanh toán",  style: TextStyle(
                     fontSize: 16,
                   ))
               ),
@@ -65,15 +68,15 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
             Expanded(child: Align(
               alignment: Alignment.topCenter,
               child: SizedBox(
-              height: 80,
-              width: 80,
-              child: CircularProgressIndicator(
-                value: controller.value,
-                strokeWidth: 10.0,
-                color: Theme.of(context).colorScheme.onPrimary,
-                semanticsLabel: 'Linear progress indicator',
-              ),
-            ),))
+                height: 80,
+                width: 80,
+                child: CircularProgressIndicator(
+                  value: controller.value,
+                  strokeWidth: 10.0,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  semanticsLabel: 'Linear progress indicator',
+                ),
+              ),))
           ],
         ),
       ),
