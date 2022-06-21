@@ -30,7 +30,7 @@ class _$BillModelTearOff {
       String? patientFullname,
       int? finalPrice,
       String? receiptId,
-      List<ReceiptModel>? receipts}) {
+      int? paymentStatus}) {
     return _BillModel(
       branchId: branchId,
       branchName: branchName,
@@ -39,7 +39,7 @@ class _$BillModelTearOff {
       patientFullname: patientFullname,
       finalPrice: finalPrice,
       receiptId: receiptId,
-      receipts: receipts,
+      paymentStatus: paymentStatus,
     );
   }
 
@@ -60,7 +60,7 @@ mixin _$BillModel {
   String? get patientFullname => throw _privateConstructorUsedError;
   int? get finalPrice => throw _privateConstructorUsedError;
   String? get receiptId => throw _privateConstructorUsedError;
-  List<ReceiptModel>? get receipts => throw _privateConstructorUsedError;
+  int? get paymentStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -80,7 +80,7 @@ abstract class $BillModelCopyWith<$Res> {
       String? patientFullname,
       int? finalPrice,
       String? receiptId,
-      List<ReceiptModel>? receipts});
+      int? paymentStatus});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class _$BillModelCopyWithImpl<$Res> implements $BillModelCopyWith<$Res> {
     Object? patientFullname = freezed,
     Object? finalPrice = freezed,
     Object? receiptId = freezed,
-    Object? receipts = freezed,
+    Object? paymentStatus = freezed,
   }) {
     return _then(_value.copyWith(
       branchId: branchId == freezed
@@ -131,10 +131,10 @@ class _$BillModelCopyWithImpl<$Res> implements $BillModelCopyWith<$Res> {
           ? _value.receiptId
           : receiptId // ignore: cast_nullable_to_non_nullable
               as String?,
-      receipts: receipts == freezed
-          ? _value.receipts
-          : receipts // ignore: cast_nullable_to_non_nullable
-              as List<ReceiptModel>?,
+      paymentStatus: paymentStatus == freezed
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -153,7 +153,7 @@ abstract class _$BillModelCopyWith<$Res> implements $BillModelCopyWith<$Res> {
       String? patientFullname,
       int? finalPrice,
       String? receiptId,
-      List<ReceiptModel>? receipts});
+      int? paymentStatus});
 }
 
 /// @nodoc
@@ -174,7 +174,7 @@ class __$BillModelCopyWithImpl<$Res> extends _$BillModelCopyWithImpl<$Res>
     Object? patientFullname = freezed,
     Object? finalPrice = freezed,
     Object? receiptId = freezed,
-    Object? receipts = freezed,
+    Object? paymentStatus = freezed,
   }) {
     return _then(_BillModel(
       branchId: branchId == freezed
@@ -205,10 +205,10 @@ class __$BillModelCopyWithImpl<$Res> extends _$BillModelCopyWithImpl<$Res>
           ? _value.receiptId
           : receiptId // ignore: cast_nullable_to_non_nullable
               as String?,
-      receipts: receipts == freezed
-          ? _value.receipts
-          : receipts // ignore: cast_nullable_to_non_nullable
-              as List<ReceiptModel>?,
+      paymentStatus: paymentStatus == freezed
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -224,7 +224,7 @@ class _$_BillModel extends _BillModel {
       this.patientFullname,
       this.finalPrice,
       this.receiptId,
-      this.receipts})
+      this.paymentStatus})
       : super._();
 
   factory _$_BillModel.fromJson(Map<String, dynamic> json) =>
@@ -245,11 +245,11 @@ class _$_BillModel extends _BillModel {
   @override
   final String? receiptId;
   @override
-  final List<ReceiptModel>? receipts;
+  final int? paymentStatus;
 
   @override
   String toString() {
-    return 'BillModel(branchId: $branchId, branchName: $branchName, patientId: $patientId, receptionQueueId: $receptionQueueId, patientFullname: $patientFullname, finalPrice: $finalPrice, receiptId: $receiptId, receipts: $receipts)';
+    return 'BillModel(branchId: $branchId, branchName: $branchName, patientId: $patientId, receptionQueueId: $receptionQueueId, patientFullname: $patientFullname, finalPrice: $finalPrice, receiptId: $receiptId, paymentStatus: $paymentStatus)';
   }
 
   @override
@@ -268,7 +268,8 @@ class _$_BillModel extends _BillModel {
             const DeepCollectionEquality()
                 .equals(other.finalPrice, finalPrice) &&
             const DeepCollectionEquality().equals(other.receiptId, receiptId) &&
-            const DeepCollectionEquality().equals(other.receipts, receipts));
+            const DeepCollectionEquality()
+                .equals(other.paymentStatus, paymentStatus));
   }
 
   @override
@@ -281,7 +282,7 @@ class _$_BillModel extends _BillModel {
       const DeepCollectionEquality().hash(patientFullname),
       const DeepCollectionEquality().hash(finalPrice),
       const DeepCollectionEquality().hash(receiptId),
-      const DeepCollectionEquality().hash(receipts));
+      const DeepCollectionEquality().hash(paymentStatus));
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +304,7 @@ abstract class _BillModel extends BillModel {
       String? patientFullname,
       int? finalPrice,
       String? receiptId,
-      List<ReceiptModel>? receipts}) = _$_BillModel;
+      int? paymentStatus}) = _$_BillModel;
   _BillModel._() : super._();
 
   factory _BillModel.fromJson(Map<String, dynamic> json) =
@@ -324,7 +325,7 @@ abstract class _BillModel extends BillModel {
   @override
   String? get receiptId;
   @override
-  List<ReceiptModel>? get receipts;
+  int? get paymentStatus;
   @override
   @JsonKey(ignore: true)
   _$BillModelCopyWith<_BillModel> get copyWith =>

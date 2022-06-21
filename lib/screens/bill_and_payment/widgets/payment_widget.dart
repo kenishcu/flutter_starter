@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/waiting_payment_widget.dart';
+import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payment_in_room.dart';
+import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payment_selection.dart';
+import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payment_success_widget.dart';
+import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payments_in_reception.dart';
+import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/waiting_payment_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../controllers/bill_and_payment_controller.dart';
@@ -16,9 +22,138 @@ class PaymentWidget extends StatefulWidget {
 
 class _PaymentWidgetState extends State<PaymentWidget> {
 
-  int? _value = 1;
-
   BillAndPaymentController controller = Get.find<BillAndPaymentController>();
+
+  late FToast fToast;
+
+  late String _timeString;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+    _timeString = _formatDateTime(DateTime.now());
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('hh:mm').format(dateTime);
+  }
+
+  _showToastSuccess() {
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Theme.of(context).colorScheme.secondaryContainer,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Icon(Icons.payment, size: 28, color: Theme.of(context).colorScheme.secondary),
+          ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Yêu cầu thanh toán thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Hệ thống đá nhận được yêu cầu", style: TextStyle(
+                          fontSize: 12
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString),
+          )
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: const Duration(seconds: 4),
+    );
+  }
+
+  _showToastError() {
+
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.red,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Expanded(
+            flex: 1,
+            child: Icon(Icons.payment, size: 28, color: Colors.white),
+          ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Yêu cầu thanh toán không thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: Colors.white
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Lỗi hệ thống", style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white
+                      )),
+                    )
+                  ],
+                ),
+              )
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString, style: const TextStyle(
+                color: Colors.white
+            ),),
+          )
+          ,
+        ],
+      ),
+    );
+
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: const Duration(seconds: 4),
+    );
+  }
 
   Widget _totalBill(BuildContext context) {
     return SizedBox(
@@ -180,56 +315,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
             )
           ),
           Expanded(
-              child: Obx(()=> controller.selectedPaymentType.value == 0 ? ListView.builder(
-                  itemCount: controller.payments.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      margin: const EdgeInsets.only(top: 15.0),
-                      height: 60,
-                      width: double.infinity,
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _value = index;
-                          });
-                        },
-                        child: Container(
-                          height: 60,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              color: Theme.of(context).colorScheme.onSurface
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 40,
-                                child: Radio(
-                                  value: index,
-                                  groupValue: _value,
-                                  fillColor:
-                                  MaterialStateProperty.resolveWith<Color>(
-                                          (Set<MaterialState> states) {
-                                        return Theme.of(context).colorScheme.secondary;
-                                      }),
-                                  onChanged: (int? value) {
-                                    setState(() {
-                                      _value = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                child: Text(
-                                    controller.payments[index].paymentTypeName!
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }): Container())
+              child: Container()
           ),
           SizedBox(
             height: 50,
@@ -244,340 +330,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
-                    onPressed: () {
-                      controller.setSelectedPaymentType(_value!);
-                    },
-                    child: const SizedBox(
-                      height: 40,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("Tiếp", style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white
-                        )),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _paymentByMoney(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const <Widget>[
-          SizedBox(
-            height: 40,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Thanh toán bằng tiền mặt",  style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ))
-            ),
-          ),
-          SizedBox(
-            height: 120,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Xin quý khách chờ tại phòng. Nhân viên Hồng Ngọc sẽ qua"
-                    " phòng và thanh toán cho quý khách trong giây lát.",  style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                ))
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _paymentByCredit(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const <Widget>[
-          SizedBox(
-            height: 40,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Chọn hình thức thanh toán",  style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ))
-            ),
-          ),
-          SizedBox(
-            height: 120,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Xin quý khách chờ tại phòng. Nhân viên Hồng Ngọc sẽ qua"
-                    " phòng và thanh toán cho quý khách trong giây lát.",  style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                ))
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _paymentByDigitalWallet(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(
-            height: 40,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Thanh toán bằng ví điện tử",  style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ))
-            ),
-          ),
-          SizedBox(
-            height: 70,
-            width: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  height: 55,
-                  width: 150,
-                  child: InkWell(
-                    onTap: () {
-                      controller.setSelectedDigitalWallet(0);
-                    },
-                    child: Container(
-                      decoration: controller.selectedDigitalWallet.value == 0 ? BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Theme.of(context).colorScheme.secondary,
-                          border: Border.all(
-                            color: Theme.of(context).colorScheme.secondaryVariant,
-                            width: 4
-                          )
-                      ) : BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      child: Image.asset("assets/img/momo_logo.png"),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 55,
-                  width: 150,
-                  child: InkWell(
-                    onTap: () {
-                      controller.setSelectedDigitalWallet(1);
-                    },
-                    child: Container(
-                      height: 55,
-                      width: 150,
-                      decoration: controller.selectedDigitalWallet.value == 1 ? BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white,
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.secondaryVariant,
-                              width: 4
-                          )
-                      ): BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white
-                      ),
-                      child: SizedBox(
-                        height: 40,
-                        width: 80,
-                        child: Container(
-                          height: double.infinity,
-                          alignment: Alignment.center,
-                          child: Image.asset("assets/img/vnpay.png",
-                              fit: BoxFit.contain,
-                              width: 100),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-              child: SizedBox(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: controller.selectedDigitalWallet.value == 0 ? Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Theme.of(context).colorScheme.secondary
-                      ),
-                      width: 180,
-                      height: 600,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 50,
-                            width: 120,
-                            child: Image.asset("assets/img/momo_logo.png"),
-                          ),
-                          Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 22.0, right: 22.0, bottom: 15.0),
-                                padding: const EdgeInsets.only(left: 5),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.0)
-                                ),
-                                child: QrImage(
-                                  data: 'This QR code has an embedded image as well',
-                                  version: QrVersions.auto,
-                                  size: 320,
-                                  gapless: false,
-                                  embeddedImage: const AssetImage('assets/images/my_embedded_image.png'),
-                                  embeddedImageStyle: QrEmbeddedImageStyle(
-                                    size: const Size(80, 80),
-                                  ),
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                  ) : Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          border: Border.all(
-                            color: Colors.grey
-                          )
-                      ),
-                      width: 180,
-                      height: 600,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 50,
-                            width: 120,
-                            child: SizedBox(
-                              height: 40,
-                              width: 80,
-                              child: Container(
-                                height: double.infinity,
-                                alignment: Alignment.center,
-                                child: Image.asset("assets/img/vnpay.png",
-                                    fit: BoxFit.contain,
-                                    width: 100),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 22.0, right: 22.0, bottom: 15.0),
-                                padding: const EdgeInsets.only(left: 5),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.0)
-                                ),
-                                child: QrImage(
-                                  data: 'This QR code has an embedded image as well',
-                                  version: QrVersions.auto,
-                                  size: 320,
-                                  gapless: false,
-                                  embeddedImage: const AssetImage('assets/images/my_embedded_image.png'),
-                                  embeddedImageStyle: QrEmbeddedImageStyle(
-                                    size: const Size(80, 80),
-                                  ),
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                  ),
-              )
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 50,
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 140,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      controller.setSelectedPaymentType(3);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                            child: IconButton(
-                              padding: const EdgeInsets.all(0.0),
-                              icon: const Icon(Icons.arrow_back_ios, size: 30, color: Colors.black),
-                              tooltip: 'Increase',
-                              onPressed: () {
-                                controller.setSelectedPaymentType(3);
-                              },
-                            )
-                        ),
-                        const SizedBox(
-                          height: 40,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text("Quay lại", style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black
-                            )),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 120,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      controller.setSelectedPaymentType(_value!);
+                    onPressed: () async {
+                      final res = await controller.sendRequestPayment();
+                      if (res) {
+                        // toast success
+                      } else {
+                        // toast error
+                      }
                     },
                     child: const SizedBox(
                       height: 40,
@@ -601,23 +360,19 @@ class _PaymentWidgetState extends State<PaymentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: _totalBill(context)
-          ),
-          Expanded(
-            flex: 2,
-            child: Obx(() => controller.selectedPayment.value.paymentTypeId == "1" ? _paymentByMoney(context) :
-                controller.selectedPayment.value.paymentTypeId == '2' ? const WaitingPaymentWidget() :
-                controller.selectedPayment.value.paymentTypeId == '3' ? _paymentByDigitalWallet(context) :
-                _payment(context)
-            )
+    return Column(
+      children: [
+        Expanded(
+          flex: 1,
+          child: _totalBill(context)
+        ),
+        Expanded(
+          flex: 2,
+          child: Obx(() => controller.myTabs.isEmpty ? _payment(context) :
+              controller.myTabs[0].paymentStatus == 1 ? const PaymentSuccessWidget() : const PaymentSelection()
           )
-        ],
-      ),
+        )
+      ],
     );
   }
 
