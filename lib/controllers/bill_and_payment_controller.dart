@@ -24,27 +24,28 @@ class BillAndPaymentController extends GetxController {
   RxInt selectedDigitalWallet = 0.obs;
   RxInt totalPrice = 0.obs;
   RxInt selectedPaymentType = 0.obs;
-  RxBool isBillPayment = false.obs;
 
-  Rx<PaymentTypeModel> selectedPayment = PaymentTypeModel().obs;
+  RxInt selectedPaymentInRoomType = 0.obs;
+
+  RxBool isBillPayment = false.obs;
 
   List<BillAndPaymentModel> billAndPaymentInfo = <BillAndPaymentModel>[].obs;
 
-
+  Rx<BillTypeModel> orderBillStatus = BillTypeModel().obs;
 
   List<PaymentTypeModel> payments = [
     PaymentTypeModel(
-      paymentTypeId: '1',
+      paymentTypeId: '0',
       paymentTypeCode: "CASH",
       paymentTypeName: "Thanh toán bằng tiền mặt"
     ),
     PaymentTypeModel(
-        paymentTypeId: '2',
+        paymentTypeId: '1',
         paymentTypeCode: "DEBIT",
         paymentTypeName: "Thanh toán bằng thẻ tín dụng"
     ),
     PaymentTypeModel(
-        paymentTypeId: '3',
+        paymentTypeId: '2',
         paymentTypeCode: "DIGITAL_WALLET",
         paymentTypeName: "Thanh toán bằng ví điện tử"
     )
@@ -62,7 +63,9 @@ class BillAndPaymentController extends GetxController {
 
     final controller = Get.find<HomeController>();
 
+    // get bills
     final res = await billAndPaymentRepository.getBills(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
+
     if (res.status == true) {
       myTabs = [];
       if(res.results!.length > 0) {
@@ -80,10 +83,10 @@ class BillAndPaymentController extends GetxController {
       totalPrice.value = 0;
     }
 
+    // get services
     final resData = await billAndPaymentRepository.getBillAndPayment(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
     if(resData.status ==  true) {
       billAndPaymentInfo.clear();
-      print('res : ${resData.results}');
       resData.results.forEach(
               (e) => {
                 billAndPaymentInfo.add(BillAndPaymentModel.fromJson(e))
@@ -91,6 +94,11 @@ class BillAndPaymentController extends GetxController {
       );
     }
 
+    // get current order payment state
+    final resPaymentStatus = await billAndPaymentRepository.getBillAndPaymentStatus(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
+    if (resPaymentStatus.status == true) {
+      orderBillStatus.value = BillTypeModel.fromJson(resPaymentStatus.results);
+    }
     initScreen.value = true;
   }
 
@@ -102,6 +110,10 @@ class BillAndPaymentController extends GetxController {
     selectedPaymentType.value = i;
   }
 
+  void setSelectedPaymentInRoomType(int i) {
+    selectedPaymentInRoomType.value = i;
+  }
+
   void setSelectedDigitalWallet (int index) {
       selectedDigitalWallet.value = index;
   }
@@ -111,29 +123,19 @@ class BillAndPaymentController extends GetxController {
     final controller = Get.find<HomeController>();
 
     BillTypeModel billType;
-    if(selectedPaymentType == 0) {
-      billType = BillTypeModel(
-        patientId: controller.patientInfo.patientId,
-        receptionQueueId:  controller.patientInfo.receptionQueueId,
-        paymentRequestedInRoom: 0,
-        paymentTypeRequestedInRoom: "",
-      );
-    } else {
-      var paymentType = "";
-      if (selectedPayment.value.paymentTypeId == '1' || selectedPayment.value.paymentTypeId == '2') {
-        paymentType = selectedPayment.value.paymentTypeCode!;
-      } else if (selectedPayment.value.paymentTypeId == '3') {
-        if(selectedDigitalWallet.value == 0) {
-          paymentType = "MOMO";
-        } else {
-          paymentType = "VNPAY";
-        }
-      }
+    if(selectedPaymentType.value == 0) {
       billType = BillTypeModel(
         patientId: controller.patientInfo.patientId,
         receptionQueueId:  controller.patientInfo.receptionQueueId,
         paymentRequestedInRoom: 1,
-        paymentTypeRequestedInRoom: paymentType,
+        paymentTypeRequestedInRoom: "Tại phòng",
+      );
+    } else {
+      billType = BillTypeModel(
+        patientId: controller.patientInfo.patientId,
+        receptionQueueId:  controller.patientInfo.receptionQueueId,
+        paymentRequestedInRoom: 2,
+        paymentTypeRequestedInRoom: "Tại quầy",
       );
     }
     final res = await billAndPaymentRepository.sendBillAndPayment(billType.toJson());
@@ -141,17 +143,6 @@ class BillAndPaymentController extends GetxController {
       return true;
     } else {
       return false;
-    }
-  }
-  void setSelectedPaymentType(int index) {
-    if(index != 3) {
-      selectedPayment.value = payments[index];
-    } else {
-      selectedPayment.value = PaymentTypeModel(
-          paymentTypeId: '',
-          paymentTypeCode: "",
-          paymentTypeName: ""
-      );
     }
   }
 }

@@ -14,9 +14,7 @@ _$_BillModel _$$_BillModelFromJson(Map<String, dynamic> json) => _$_BillModel(
       patientFullname: json['patient_fullname'] as String?,
       finalPrice: json['final_price'] as int?,
       receiptId: json['receipt_id'] as String?,
-      receipts: (json['receipts'] as List<dynamic>?)
-          ?.map((e) => ReceiptModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      paymentStatus: json['payment_status'] as int?,
     );
 
 Map<String, dynamic> _$$_BillModelToJson(_$_BillModel instance) =>
@@ -28,5 +26,5 @@ Map<String, dynamic> _$$_BillModelToJson(_$_BillModel instance) =>
       'patient_fullname': instance.patientFullname,
       'final_price': instance.finalPrice,
       'receipt_id': instance.receiptId,
-      'receipts': instance.receipts,
+      'payment_status': instance.paymentStatus,
     };

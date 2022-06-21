@@ -45,10 +45,11 @@ class BillAndPaymentRepository {
     }
   }
 
-  Future<ResultModel> getBillAndPaymentStatus () async {
+  Future<ResultModel> getBillAndPaymentStatus (int? patientId, String? receptionQueueId) async {
     try {
       var response = await client.dio.request(
-          baseUrl + '/pay-in-room',
+          baseUrl + '/pay-in-room?patient_id=${patientId
+              .toString()}&reception_queue_id=${receptionQueueId.toString()}',
           options: Options(method: 'GET')
       );
       return ResultModel.fromJson(response.data);
