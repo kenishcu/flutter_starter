@@ -72,7 +72,7 @@ class BillAndPaymentController extends GetxController {
     final appController = Get.find<AppController>();
 
     print('momo config: ${appController.momoConfig.value}');
-    print('momo config: ${appController.vnpayConfig.value}');
+    print('vnpay config: ${appController.vnpayConfig.value}');
 
     // get bills
     final res = await billAndPaymentRepository.getBills(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
