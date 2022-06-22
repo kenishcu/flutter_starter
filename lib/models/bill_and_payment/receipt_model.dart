@@ -9,6 +9,7 @@ class ReceiptModel with _$ReceiptModel {
   const ReceiptModel._();
 
   factory ReceiptModel({
+    int? id,
     int? serviceId,
     String? serviceName,
     int? quantity,
