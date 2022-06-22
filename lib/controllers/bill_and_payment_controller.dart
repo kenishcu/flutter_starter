@@ -1,4 +1,5 @@
 import 'package:flutter_stater/adapters/repository/bill_and_payment/bill_and_payment_repository.dart';
+import 'package:flutter_stater/controllers/app_controller.dart';
 import 'package:flutter_stater/models/bill_and_payment/bill_model.dart';
 import 'package:flutter_stater/models/bill_and_payment/bill_type_model.dart';
 import 'package:flutter_stater/models/bill_and_payment/payment_type_model.dart';
@@ -67,6 +68,11 @@ class BillAndPaymentController extends GetxController {
   Future initBillAndPayment() async {
 
     final controller = Get.find<HomeController>();
+
+    final appController = Get.find<AppController>();
+
+    print('momo config: ${appController.momoConfig.value}');
+    print('momo config: ${appController.vnpayConfig.value}');
 
     // get bills
     final res = await billAndPaymentRepository.getBills(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
