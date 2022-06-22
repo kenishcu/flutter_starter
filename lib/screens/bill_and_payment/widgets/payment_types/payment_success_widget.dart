@@ -7,7 +7,7 @@ class PaymentSuccessWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
+    return Container (
       width: double.infinity,
       height: double.infinity,
       margin: const EdgeInsets.only(top: 20.0, bottom: 10.0),

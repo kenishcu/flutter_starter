@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/waiting_payment_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../controllers/bill_and_payment_controller.dart';
+import '../../../../routes/app_pages.dart';
 
 class PaymentInRoom extends StatefulWidget {
 
@@ -19,73 +22,134 @@ class _PaymentInRoomState extends State<PaymentInRoom> {
 
   BillAndPaymentController controller = Get.find<BillAndPaymentController>();
 
-  Widget _paymentByMoney (BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const <Widget>[
-          SizedBox(
-            height: 40,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Thanh toán bằng tiền mặt",  style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ))
-            ),
+  late FToast fToast;
+
+  late String _timeString;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+    _timeString = _formatDateTime(DateTime.now());
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('hh:mm').format(dateTime);
+  }
+
+  _showToastSuccess() {
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Theme.of(context).colorScheme.secondaryContainer,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Icon(Icons.payment, size: 28, color: Theme.of(context).colorScheme.secondary),
           ),
-          SizedBox(
-            height: 120,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Xin quý khách chờ tại phòng. Nhân viên Hồng Ngọc sẽ qua"
-                    " phòng và thanh toán cho quý khách trong giây lát.",  style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                ))
-            ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Yêu cầu thanh toán thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Hệ thống đá nhận được yêu cầu", style: TextStyle(
+                          fontSize: 12
+                      )),
+                    )
+                  ],
+                ),
+              )
           ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString),
+          )
         ],
       ),
     );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: const Duration(seconds: 4),
+    );
   }
 
-  Widget _paymentByCredit (BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const <Widget>[
-          SizedBox(
-            height: 40,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Chọn hình thức thanh toán",  style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ))
-            ),
+  _showToastError() {
+
+    Widget toast = Container(
+      height: 80,
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.red,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Expanded(
+            flex: 1,
+            child: Icon(Icons.payment, size: 28, color: Colors.white),
           ),
-          SizedBox(
-            height: 120,
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Xin quý khách chờ tại phòng. Nhân viên Hồng Ngọc sẽ qua"
-                    " phòng và thanh toán cho quý khách trong giây lát.",  style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                ))
-            ),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      height: 20,
+                      child: Text("Yêu cầu thanh toán không thành công", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: Colors.white
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text("Lỗi hệ thống", style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white
+                      )),
+                    )
+                  ],
+                ),
+              )
           ),
+          Expanded(
+            flex: 1,
+            child: Text(_timeString, style: const TextStyle(
+                color: Colors.white
+            ),),
+          )
+          ,
         ],
       ),
+    );
+
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP_LEFT,
+      toastDuration: const Duration(seconds: 4),
     );
   }
 
@@ -347,10 +411,11 @@ class _PaymentInRoomState extends State<PaymentInRoom> {
       ),
     );
   }
-  
-  Widget _paymentSelection () {
+
+  Widget _paymentSelectionType() {
     return SizedBox(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 40,
@@ -363,7 +428,7 @@ class _PaymentInRoomState extends State<PaymentInRoom> {
               ),
             ),
             Expanded(
-                child: Obx(() => ListView.builder(
+                child: ListView.builder(
                     itemCount: controller.payments.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
@@ -414,7 +479,7 @@ class _PaymentInRoomState extends State<PaymentInRoom> {
                           ),
                         ),
                       );
-                    }))
+                    })
             ),
             SizedBox(
               height: 50,
@@ -430,6 +495,17 @@ class _PaymentInRoomState extends State<PaymentInRoom> {
                     ),
                     child: TextButton(
                       onPressed: () async {
+                        controller.setSelectedPaymentInRoomType(_value!);
+                        final res = await controller.sendPayment();
+                        if (res) {
+                          // toast success
+                          _showToastSuccess();
+                          controller.initBillAndPayment();
+                          Get.off(Routes.HOME);
+                        } else {
+                          // toast error
+                          _showToastError();
+                        }
                       },
                       child: const SizedBox(
                         height: 40,
@@ -450,13 +526,20 @@ class _PaymentInRoomState extends State<PaymentInRoom> {
         )
     );
   }
+  
+  Widget _paymentSelection (BuildContext context) {
+    return controller.selectedPaymentInRoomType.value == 4 ? _paymentSelectionType() :
+    controller.selectedPaymentInRoomType.value == 0 ? const WaitingPaymentWidget(title: 'tiền mặt') :
+    controller.selectedPaymentInRoomType.value == 1 ?  const WaitingPaymentWidget(title: 'thẻ') :
+    _paymentByDigitalWallet(context);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => controller.orderBillStatus.value.paymentTypeRequestedInRoom == "Tại phòng" ? _paymentSelection() :
-    controller.orderBillStatus.value.paymentTypeRequestedInRoom == "CASH" ? const WaitingPaymentWidget(title: 'tiền mặt',) :
+    return controller.orderBillStatus.value.paymentTypeRequestedInRoom == "Tại phòng" ? _paymentSelection(context) :
+    controller.orderBillStatus.value.paymentTypeRequestedInRoom == "CASH" ? const WaitingPaymentWidget(title: 'tiền mặt') :
     controller.orderBillStatus.value.paymentTypeRequestedInRoom == "CREDIT" ? const WaitingPaymentWidget(title: 'thẻ') :
     controller.orderBillStatus.value.paymentTypeRequestedInRoom == "MOMO" ? const WaitingPaymentWidget(title: 'Ví điện tử MoMo') :
-    const WaitingPaymentWidget(title: 'Ví điện tử VnPay'));
+    const WaitingPaymentWidget(title: 'Ví điện tử VnPay');
   }
 }
