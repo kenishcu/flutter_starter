@@ -95,7 +95,8 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await billAndPaymentController.resetPayment();
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -106,8 +107,8 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
                                 padding: const EdgeInsets.all(0.0),
                                 icon: const Icon(Icons.arrow_back_ios, size: 30, color: Colors.black),
                                 tooltip: 'Increase',
-                                onPressed: () {
-                                  billAndPaymentController.resetPayment();
+                                onPressed: () async {
+                                  await billAndPaymentController.resetPayment();
                                 },
                               )
                           ),

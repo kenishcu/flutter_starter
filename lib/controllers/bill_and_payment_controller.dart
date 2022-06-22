@@ -217,9 +217,10 @@ class BillAndPaymentController extends GetxController {
       patientId: controller.patientInfo.patientId,
       receptionQueueId:  controller.patientInfo.receptionQueueId,
       paymentRequestedInRoom: 1,
-      paymentTypeRequestedInRoom: "Tại quầy",
+      paymentTypeRequestedInRoom: "Tại phòng",
     );
     final res = await billAndPaymentRepository.sendBillAndPayment(billType.toJson());
     selectedPaymentInRoomType.value = 4;
+    await initBillAndPayment();
   }
 }
