@@ -46,8 +46,13 @@ class BillAndPaymentController extends GetxController {
     ),
     PaymentTypeModel(
         paymentTypeId: '2',
-        paymentTypeCode: "DIGITAL_WALLET",
-        paymentTypeName: "Thanh toán bằng ví điện tử"
+        paymentTypeCode: "MOMO",
+        paymentTypeName: "Thanh toán bằng ví điện tử (MoMo)"
+    ),
+    PaymentTypeModel(
+        paymentTypeId: '4',
+        paymentTypeCode: "VNPAY",
+        paymentTypeName: "Thanh toán bằng ví điện tử (VnPay)"
     )
   ];
 
@@ -99,6 +104,17 @@ class BillAndPaymentController extends GetxController {
     if (resPaymentStatus.status == true) {
       orderBillStatus.value = BillTypeModel.fromJson(resPaymentStatus.results);
     }
+    if (orderBillStatus.value.paymentTypeRequestedInRoom == "Tại phòng") {
+      selectedPaymentInRoomType.value = 4;
+    } else if (orderBillStatus.value.paymentTypeRequestedInRoom == "CASH") {
+      selectedPaymentInRoomType.value = 0;
+    } else if (orderBillStatus.value.paymentTypeRequestedInRoom == "CREDIT") {
+      selectedPaymentInRoomType.value = 1;
+    } else if (orderBillStatus.value.paymentTypeRequestedInRoom == "MOMO") {
+      selectedPaymentInRoomType.value = 2;
+    } else if (orderBillStatus.value.paymentTypeRequestedInRoom == "VNPAY") {
+      selectedPaymentInRoomType.value = 3;
+    }
     initScreen.value = true;
   }
 
@@ -116,6 +132,51 @@ class BillAndPaymentController extends GetxController {
 
   void setSelectedDigitalWallet (int index) {
       selectedDigitalWallet.value = index;
+  }
+
+  Future<bool> sendPayment() async {
+
+    final controller = Get.find<HomeController>();
+
+    BillTypeModel billType;
+
+    if(selectedPaymentInRoomType.value == 0) {
+      billType = BillTypeModel(
+        patientId: controller.patientInfo.patientId,
+        receptionQueueId:  controller.patientInfo.receptionQueueId,
+        paymentRequestedInRoom: 1,
+        paymentTypeRequestedInRoom: "CASH",
+      );
+    } else if (selectedPaymentInRoomType.value == 1) {
+      billType = BillTypeModel(
+        patientId: controller.patientInfo.patientId,
+        receptionQueueId:  controller.patientInfo.receptionQueueId,
+        paymentRequestedInRoom: 1,
+        paymentTypeRequestedInRoom: "CREDIT",
+      );
+    } else if (selectedPaymentInRoomType.value == 2) {
+      billType = BillTypeModel(
+        patientId: controller.patientInfo.patientId,
+        receptionQueueId:  controller.patientInfo.receptionQueueId,
+        paymentRequestedInRoom: 1,
+        paymentTypeRequestedInRoom: "MOMO",
+      );
+    } else {
+      billType = BillTypeModel(
+        patientId: controller.patientInfo.patientId,
+        receptionQueueId:  controller.patientInfo.receptionQueueId,
+        paymentRequestedInRoom: 1,
+        paymentTypeRequestedInRoom: "VNPAY",
+      );
+    }
+
+    final res = await billAndPaymentRepository.sendBillAndPayment(billType.toJson());
+    if(res.status == true) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 
   Future<bool> sendRequestPayment() async {
@@ -144,5 +205,21 @@ class BillAndPaymentController extends GetxController {
     } else {
       return false;
     }
+  }
+
+  Future resetPayment () async {
+
+    final controller = Get.find<HomeController>();
+
+    BillTypeModel billType;
+
+    billType = BillTypeModel(
+      patientId: controller.patientInfo.patientId,
+      receptionQueueId:  controller.patientInfo.receptionQueueId,
+      paymentRequestedInRoom: 1,
+      paymentTypeRequestedInRoom: "Tại quầy",
+    );
+    final res = await billAndPaymentRepository.sendBillAndPayment(billType.toJson());
+    selectedPaymentInRoomType.value = 4;
   }
 }

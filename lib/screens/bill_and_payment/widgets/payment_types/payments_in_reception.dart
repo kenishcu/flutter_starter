@@ -30,7 +30,7 @@ class _PaymentInReceptionState extends State<PaymentInReception>  {
               height: 40,
               child: Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: Text("Chọn hình thức thanh toán",  style: TextStyle(
+                  child: Text("Thanh toán tại quầy",  style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))
@@ -53,6 +53,6 @@ class _PaymentInReceptionState extends State<PaymentInReception>  {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => controller.billAndPaymentInfo.isNotEmpty ? _payment() :  const WaitingPaymentWidget(title: "Tại quầy",));
+    return _payment();
   }
 }

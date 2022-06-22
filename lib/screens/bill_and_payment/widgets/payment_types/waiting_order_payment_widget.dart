@@ -5,7 +5,9 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 class WaitingOrderPaymentWidget extends StatefulWidget {
 
-  const WaitingOrderPaymentWidget({Key? key}) : super(key: key);
+  const WaitingOrderPaymentWidget({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   _WaitingOrderPaymentWidgetState createState() => _WaitingOrderPaymentWidgetState();
@@ -45,11 +47,11 @@ class _WaitingOrderPaymentWidgetState extends State<WaitingOrderPaymentWidget> w
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               height: 40,
               child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text("Yêu cầu thanh toán của bạn đang được kiểm tra",  style: TextStyle(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text("Thanh toán ${widget.title}",  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))
@@ -59,7 +61,7 @@ class _WaitingOrderPaymentWidgetState extends State<WaitingOrderPaymentWidget> w
               height: 120,
               child: Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: Text("Chúng tôi đã nhận được yêu cầu thanh toán của bạn, vui lòng chờ hệ thống kiểm tra và tiến hành thanh toán",  style: TextStyle(
+                  child: Text("Yêu cầu của quý khách đang được xử lý. Quý khách vui lòng đợi trong giây lát",  style: TextStyle(
                     fontSize: 16,
                   ))
               ),

@@ -19,8 +19,6 @@ class _PaymentSelectionState extends State<PaymentSelection> {
 
   @override
   Widget build(BuildContext context) {
-
-    return Obx(() => controller.orderBillStatus.value.paymentRequestedInRoom == 0 ? const WaitingOrderPaymentWidget() :
-    controller.orderBillStatus.value.paymentRequestedInRoom == 1 ?  const PaymentInRoom() : const PaymentInReception());
+    return controller.orderBillStatus.value.paymentRequestedInRoom == 1 ? const PaymentInRoom() : const PaymentInReception();
   }
 }
