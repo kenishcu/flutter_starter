@@ -9,6 +9,8 @@ class BillModel with _$BillModel {
   const BillModel._();
 
   factory BillModel({
+      int? id,
+      int? receiptIndex,
       int? branchId,
       String? branchName,
       int? patientId,
