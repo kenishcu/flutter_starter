@@ -23,7 +23,7 @@ _$_ReceiptModel _$$_ReceiptModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ReceiptModelToJson(_$_ReceiptModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'service_id': instance.serviceId,
       'service_name': instance.serviceName,
       'quantity': instance.quantity,
