@@ -23,7 +23,8 @@ class _$ReceiptModelTearOff {
   const _$ReceiptModelTearOff();
 
   _ReceiptModel call(
-      {int? serviceId,
+      {int? id,
+      int? serviceId,
       String? serviceName,
       int? quantity,
       int? servicePrice,
@@ -34,6 +35,7 @@ class _$ReceiptModelTearOff {
       int? serviceCategoryId,
       String? serviceCategoryName}) {
     return _ReceiptModel(
+      id: id,
       serviceId: serviceId,
       serviceName: serviceName,
       quantity: quantity,
@@ -57,6 +59,7 @@ const $ReceiptModel = _$ReceiptModelTearOff();
 
 /// @nodoc
 mixin _$ReceiptModel {
+  int? get id => throw _privateConstructorUsedError;
   int? get serviceId => throw _privateConstructorUsedError;
   String? get serviceName => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
@@ -80,7 +83,8 @@ abstract class $ReceiptModelCopyWith<$Res> {
           ReceiptModel value, $Res Function(ReceiptModel) then) =
       _$ReceiptModelCopyWithImpl<$Res>;
   $Res call(
-      {int? serviceId,
+      {int? id,
+      int? serviceId,
       String? serviceName,
       int? quantity,
       int? servicePrice,
@@ -102,6 +106,7 @@ class _$ReceiptModelCopyWithImpl<$Res> implements $ReceiptModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? serviceId = freezed,
     Object? serviceName = freezed,
     Object? quantity = freezed,
@@ -114,6 +119,10 @@ class _$ReceiptModelCopyWithImpl<$Res> implements $ReceiptModelCopyWith<$Res> {
     Object? serviceCategoryName = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       serviceId: serviceId == freezed
           ? _value.serviceId
           : serviceId // ignore: cast_nullable_to_non_nullable
@@ -166,7 +175,8 @@ abstract class _$ReceiptModelCopyWith<$Res>
       __$ReceiptModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? serviceId,
+      {int? id,
+      int? serviceId,
       String? serviceName,
       int? quantity,
       int? servicePrice,
@@ -190,6 +200,7 @@ class __$ReceiptModelCopyWithImpl<$Res> extends _$ReceiptModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? serviceId = freezed,
     Object? serviceName = freezed,
     Object? quantity = freezed,
@@ -202,6 +213,10 @@ class __$ReceiptModelCopyWithImpl<$Res> extends _$ReceiptModelCopyWithImpl<$Res>
     Object? serviceCategoryName = freezed,
   }) {
     return _then(_ReceiptModel(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       serviceId: serviceId == freezed
           ? _value.serviceId
           : serviceId // ignore: cast_nullable_to_non_nullable
@@ -250,7 +265,8 @@ class __$ReceiptModelCopyWithImpl<$Res> extends _$ReceiptModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ReceiptModel extends _ReceiptModel {
   _$_ReceiptModel(
-      {this.serviceId,
+      {this.id,
+      this.serviceId,
       this.serviceName,
       this.quantity,
       this.servicePrice,
@@ -265,6 +281,8 @@ class _$_ReceiptModel extends _ReceiptModel {
   factory _$_ReceiptModel.fromJson(Map<String, dynamic> json) =>
       _$$_ReceiptModelFromJson(json);
 
+  @override
+  final int? id;
   @override
   final int? serviceId;
   @override
@@ -288,7 +306,7 @@ class _$_ReceiptModel extends _ReceiptModel {
 
   @override
   String toString() {
-    return 'ReceiptModel(serviceId: $serviceId, serviceName: $serviceName, quantity: $quantity, servicePrice: $servicePrice, finalPrice: $finalPrice, reductionPrice: $reductionPrice, healthInsuranceServicePrice: $healthInsuranceServicePrice, companyInsurancePrice: $companyInsurancePrice, serviceCategoryId: $serviceCategoryId, serviceCategoryName: $serviceCategoryName)';
+    return 'ReceiptModel(id: $id, serviceId: $serviceId, serviceName: $serviceName, quantity: $quantity, servicePrice: $servicePrice, finalPrice: $finalPrice, reductionPrice: $reductionPrice, healthInsuranceServicePrice: $healthInsuranceServicePrice, companyInsurancePrice: $companyInsurancePrice, serviceCategoryId: $serviceCategoryId, serviceCategoryName: $serviceCategoryName)';
   }
 
   @override
@@ -296,6 +314,7 @@ class _$_ReceiptModel extends _ReceiptModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ReceiptModel &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.serviceId, serviceId) &&
             const DeepCollectionEquality()
                 .equals(other.serviceName, serviceName) &&
@@ -320,6 +339,7 @@ class _$_ReceiptModel extends _ReceiptModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(serviceId),
       const DeepCollectionEquality().hash(serviceName),
       const DeepCollectionEquality().hash(quantity),
@@ -344,7 +364,8 @@ class _$_ReceiptModel extends _ReceiptModel {
 
 abstract class _ReceiptModel extends ReceiptModel {
   factory _ReceiptModel(
-      {int? serviceId,
+      {int? id,
+      int? serviceId,
       String? serviceName,
       int? quantity,
       int? servicePrice,
@@ -359,6 +380,8 @@ abstract class _ReceiptModel extends ReceiptModel {
   factory _ReceiptModel.fromJson(Map<String, dynamic> json) =
       _$_ReceiptModel.fromJson;
 
+  @override
+  int? get id;
   @override
   int? get serviceId;
   @override

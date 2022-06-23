@@ -23,7 +23,9 @@ class _$BillModelTearOff {
   const _$BillModelTearOff();
 
   _BillModel call(
-      {int? branchId,
+      {int? id,
+      int? receiptIndex,
+      int? branchId,
       String? branchName,
       int? patientId,
       String? receptionQueueId,
@@ -32,6 +34,8 @@ class _$BillModelTearOff {
       String? receiptId,
       int? paymentStatus}) {
     return _BillModel(
+      id: id,
+      receiptIndex: receiptIndex,
       branchId: branchId,
       branchName: branchName,
       patientId: patientId,
@@ -53,6 +57,8 @@ const $BillModel = _$BillModelTearOff();
 
 /// @nodoc
 mixin _$BillModel {
+  int? get id => throw _privateConstructorUsedError;
+  int? get receiptIndex => throw _privateConstructorUsedError;
   int? get branchId => throw _privateConstructorUsedError;
   String? get branchName => throw _privateConstructorUsedError;
   int? get patientId => throw _privateConstructorUsedError;
@@ -73,7 +79,9 @@ abstract class $BillModelCopyWith<$Res> {
   factory $BillModelCopyWith(BillModel value, $Res Function(BillModel) then) =
       _$BillModelCopyWithImpl<$Res>;
   $Res call(
-      {int? branchId,
+      {int? id,
+      int? receiptIndex,
+      int? branchId,
       String? branchName,
       int? patientId,
       String? receptionQueueId,
@@ -93,6 +101,8 @@ class _$BillModelCopyWithImpl<$Res> implements $BillModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? receiptIndex = freezed,
     Object? branchId = freezed,
     Object? branchName = freezed,
     Object? patientId = freezed,
@@ -103,6 +113,14 @@ class _$BillModelCopyWithImpl<$Res> implements $BillModelCopyWith<$Res> {
     Object? paymentStatus = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      receiptIndex: receiptIndex == freezed
+          ? _value.receiptIndex
+          : receiptIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
       branchId: branchId == freezed
           ? _value.branchId
           : branchId // ignore: cast_nullable_to_non_nullable
@@ -146,7 +164,9 @@ abstract class _$BillModelCopyWith<$Res> implements $BillModelCopyWith<$Res> {
       __$BillModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? branchId,
+      {int? id,
+      int? receiptIndex,
+      int? branchId,
       String? branchName,
       int? patientId,
       String? receptionQueueId,
@@ -167,6 +187,8 @@ class __$BillModelCopyWithImpl<$Res> extends _$BillModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? receiptIndex = freezed,
     Object? branchId = freezed,
     Object? branchName = freezed,
     Object? patientId = freezed,
@@ -177,6 +199,14 @@ class __$BillModelCopyWithImpl<$Res> extends _$BillModelCopyWithImpl<$Res>
     Object? paymentStatus = freezed,
   }) {
     return _then(_BillModel(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      receiptIndex: receiptIndex == freezed
+          ? _value.receiptIndex
+          : receiptIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
       branchId: branchId == freezed
           ? _value.branchId
           : branchId // ignore: cast_nullable_to_non_nullable
@@ -217,7 +247,9 @@ class __$BillModelCopyWithImpl<$Res> extends _$BillModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BillModel extends _BillModel {
   _$_BillModel(
-      {this.branchId,
+      {this.id,
+      this.receiptIndex,
+      this.branchId,
       this.branchName,
       this.patientId,
       this.receptionQueueId,
@@ -230,6 +262,10 @@ class _$_BillModel extends _BillModel {
   factory _$_BillModel.fromJson(Map<String, dynamic> json) =>
       _$$_BillModelFromJson(json);
 
+  @override
+  final int? id;
+  @override
+  final int? receiptIndex;
   @override
   final int? branchId;
   @override
@@ -249,7 +285,7 @@ class _$_BillModel extends _BillModel {
 
   @override
   String toString() {
-    return 'BillModel(branchId: $branchId, branchName: $branchName, patientId: $patientId, receptionQueueId: $receptionQueueId, patientFullname: $patientFullname, finalPrice: $finalPrice, receiptId: $receiptId, paymentStatus: $paymentStatus)';
+    return 'BillModel(id: $id, receiptIndex: $receiptIndex, branchId: $branchId, branchName: $branchName, patientId: $patientId, receptionQueueId: $receptionQueueId, patientFullname: $patientFullname, finalPrice: $finalPrice, receiptId: $receiptId, paymentStatus: $paymentStatus)';
   }
 
   @override
@@ -257,6 +293,9 @@ class _$_BillModel extends _BillModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BillModel &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.receiptIndex, receiptIndex) &&
             const DeepCollectionEquality().equals(other.branchId, branchId) &&
             const DeepCollectionEquality()
                 .equals(other.branchName, branchName) &&
@@ -275,6 +314,8 @@ class _$_BillModel extends _BillModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(receiptIndex),
       const DeepCollectionEquality().hash(branchId),
       const DeepCollectionEquality().hash(branchName),
       const DeepCollectionEquality().hash(patientId),
@@ -297,7 +338,9 @@ class _$_BillModel extends _BillModel {
 
 abstract class _BillModel extends BillModel {
   factory _BillModel(
-      {int? branchId,
+      {int? id,
+      int? receiptIndex,
+      int? branchId,
       String? branchName,
       int? patientId,
       String? receptionQueueId,
@@ -310,6 +353,10 @@ abstract class _BillModel extends BillModel {
   factory _BillModel.fromJson(Map<String, dynamic> json) =
       _$_BillModel.fromJson;
 
+  @override
+  int? get id;
+  @override
+  int? get receiptIndex;
   @override
   int? get branchId;
   @override

@@ -8,6 +8,7 @@ part of 'receipt_model.dart';
 
 _$_ReceiptModel _$$_ReceiptModelFromJson(Map<String, dynamic> json) =>
     _$_ReceiptModel(
+      id: json['_id'] as int?,
       serviceId: json['service_id'] as int?,
       serviceName: json['service_name'] as String?,
       quantity: json['quantity'] as int?,
@@ -22,6 +23,7 @@ _$_ReceiptModel _$$_ReceiptModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ReceiptModelToJson(_$_ReceiptModel instance) =>
     <String, dynamic>{
+      '_id': instance.id,
       'service_id': instance.serviceId,
       'service_name': instance.serviceName,
       'quantity': instance.quantity,

@@ -62,6 +62,8 @@ class AppController extends GetxController {
 
       SettingResultModel res = await appRepository.getItrminSetting(map['branch_id'] );
 
+      print('setting result model : ${res.toJson()}');
+
       if(res.status ==  true) {
         print('itrmin setting : ${res.results}');
         // store setting itrmin
@@ -71,11 +73,11 @@ class AppController extends GetxController {
 
         print('payment setting : ${res.payment}');
         // store momo config
-        PaymentConfigModel paymentMoMo = PaymentConfigModel.fromJson(res.payment!.momo!.toJson());
+        PaymentConfigModel paymentMoMo = res.payment!.momo!;
         momoConfig.value = paymentMoMo;
         storeSettingMoMoConfig(paymentMoMo);
         // store vnpay config
-        PaymentConfigModel paymentVNPay = PaymentConfigModel.fromJson(res.payment!.vnpay!.toJson());
+        PaymentConfigModel paymentVNPay = res.payment!.vnpay!;
         vnpayConfig.value = paymentVNPay;
         storeSettingMoMoConfig(paymentVNPay);
       }

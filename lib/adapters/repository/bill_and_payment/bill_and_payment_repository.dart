@@ -2,10 +2,13 @@ import 'package:dio/dio.dart';
 
 import '../../../models/result/result_model.dart';
 import '../../dio/api_dio.dart';
+import '../../dio/api_payment_dio.dart';
 
 class BillAndPaymentRepository {
 
   ApiDio client = ApiDio();
+
+  ApiPaymentDio clientPayment = ApiPaymentDio();
 
   final baseUrl = "/receipt";
 
