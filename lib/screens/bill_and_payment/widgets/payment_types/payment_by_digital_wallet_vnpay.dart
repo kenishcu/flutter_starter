@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -15,6 +17,23 @@ class PaymentByDigitalWalletVnPay extends StatefulWidget {
 class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPay> {
 
   BillAndPaymentController controller = Get.find<BillAndPaymentController>();
+
+  late String _base64;
+
+  @override
+  void initState() async {
+    _base64 = await controller.getVnPayQr();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Image imageFromBase64String(String base64String) {
+    return Image.memory(base64Decode(base64String));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,16 +134,7 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: QrImage(
-                                data: 'This QR code has an embedded image as well',
-                                version: QrVersions.auto,
-                                size: 320,
-                                gapless: false,
-                                embeddedImage: const AssetImage('assets/images/my_embedded_image.png'),
-                                embeddedImageStyle: QrEmbeddedImageStyle(
-                                  size: const Size(80, 80),
-                                ),
-                              ),
+                              child: imageFromBase64String(_base64),
                             ))
                       ],
                     ),

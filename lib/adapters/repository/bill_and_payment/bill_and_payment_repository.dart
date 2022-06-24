@@ -12,6 +12,8 @@ class BillAndPaymentRepository {
 
   final baseUrl = "/receipt";
 
+  final basePayment = "/payment-gate/1/create-qr-code?fromClient=yes&v=20220324";
+
   Future<ResultModel> getBills(int? patientId, String? receptionQueueId) async {
     try {
       var response = await client.dio.request(
@@ -71,6 +73,28 @@ class BillAndPaymentRepository {
       var response = await client.dio.request(
           baseUrl + '/pay-in-room',
           data: data,
+          options: Options(method: 'POST')
+      );
+      return ResultModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return ResultModel(
+          status: false,
+          error: e.error,
+          results: null,
+          appVersion: ''
+      );
+    }
+  }
+
+  Future<ResultModel> getImageQrVnPay(Map<String, dynamic> data) async {
+
+    Map<String, dynamic> dataQr = {
+      'results': data
+    };
+    try {
+      var response = await clientPayment.dio.request(
+          basePayment,
+          data: dataQr,
           options: Options(method: 'POST')
       );
       return ResultModel.fromJson(response.data);

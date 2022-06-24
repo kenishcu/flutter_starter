@@ -3,6 +3,7 @@ import 'package:flutter_stater/controllers/app_controller.dart';
 import 'package:flutter_stater/models/bill_and_payment/bill_model.dart';
 import 'package:flutter_stater/models/bill_and_payment/bill_type_model.dart';
 import 'package:flutter_stater/models/bill_and_payment/payment_type_model.dart';
+import 'package:flutter_stater/models/bill_and_payment/vnpay_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -228,5 +229,24 @@ class BillAndPaymentController extends GetxController {
     final res = await billAndPaymentRepository.sendBillAndPayment(billType.toJson());
     selectedPaymentInRoomType.value = 4;
     await initBillAndPayment();
+  }
+
+  Future<String> getVnPayQr () async {
+    BillModel bill = myTabs[0];
+    VnPayModel vnPayModel = VnPayModel(
+      partnerCode: "",
+      partnerRefId: bill.receiptId,
+      ipAddress: "",
+      vendor: "VNPAY",
+      amount: bill.finalPrice.toString(),
+      partnerRefCode: bill.receiptIndex
+    );
+    final res = await billAndPaymentRepository.getImageQrVnPay(vnPayModel.toJson());
+
+    if(res.status == true) {
+        return res.results;
+    } else {
+      return '';
+    }
   }
 }
