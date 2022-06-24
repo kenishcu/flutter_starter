@@ -23,7 +23,7 @@ class _$BillModelTearOff {
   const _$BillModelTearOff();
 
   _BillModel call(
-      {int? id,
+      {String? id,
       int? receiptIndex,
       int? branchId,
       String? branchName,
@@ -57,7 +57,7 @@ const $BillModel = _$BillModelTearOff();
 
 /// @nodoc
 mixin _$BillModel {
-  int? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   int? get receiptIndex => throw _privateConstructorUsedError;
   int? get branchId => throw _privateConstructorUsedError;
   String? get branchName => throw _privateConstructorUsedError;
@@ -79,7 +79,7 @@ abstract class $BillModelCopyWith<$Res> {
   factory $BillModelCopyWith(BillModel value, $Res Function(BillModel) then) =
       _$BillModelCopyWithImpl<$Res>;
   $Res call(
-      {int? id,
+      {String? id,
       int? receiptIndex,
       int? branchId,
       String? branchName,
@@ -116,7 +116,7 @@ class _$BillModelCopyWithImpl<$Res> implements $BillModelCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       receiptIndex: receiptIndex == freezed
           ? _value.receiptIndex
           : receiptIndex // ignore: cast_nullable_to_non_nullable
@@ -164,7 +164,7 @@ abstract class _$BillModelCopyWith<$Res> implements $BillModelCopyWith<$Res> {
       __$BillModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? id,
+      {String? id,
       int? receiptIndex,
       int? branchId,
       String? branchName,
@@ -202,7 +202,7 @@ class __$BillModelCopyWithImpl<$Res> extends _$BillModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       receiptIndex: receiptIndex == freezed
           ? _value.receiptIndex
           : receiptIndex // ignore: cast_nullable_to_non_nullable
@@ -263,7 +263,7 @@ class _$_BillModel extends _BillModel {
       _$$_BillModelFromJson(json);
 
   @override
-  final int? id;
+  final String? id;
   @override
   final int? receiptIndex;
   @override
@@ -338,7 +338,7 @@ class _$_BillModel extends _BillModel {
 
 abstract class _BillModel extends BillModel {
   factory _BillModel(
-      {int? id,
+      {String? id,
       int? receiptIndex,
       int? branchId,
       String? branchName,
@@ -354,7 +354,7 @@ abstract class _BillModel extends BillModel {
       _$_BillModel.fromJson;
 
   @override
-  int? get id;
+  String? get id;
   @override
   int? get receiptIndex;
   @override
