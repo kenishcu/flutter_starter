@@ -467,13 +467,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     ),
                     child: TextButton(
                       onPressed: () async {
-                        controller.setSelectedPaymentInRoomType(_value!);
+                        await controller.setSelectedPaymentInRoomType(_value!);
                         final res = await controller.sendPayment();
                         if (res) {
                           // toast success
                           _showToastSuccess();
                           controller.initBillAndPayment();
-                          Get.off(Routes.HOME);
                         } else {
                           // toast error
                           _showToastError();

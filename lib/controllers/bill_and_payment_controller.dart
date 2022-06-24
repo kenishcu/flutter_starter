@@ -31,6 +31,8 @@ class BillAndPaymentController extends GetxController {
 
   RxBool isBillPayment = false.obs;
 
+  RxString base64VnPay = ''.obs;
+
   List<BillAndPaymentModel> billAndPaymentInfo = <BillAndPaymentModel>[].obs;
 
   Rx<BillTypeModel> orderBillStatus = BillTypeModel().obs;
@@ -133,8 +135,11 @@ class BillAndPaymentController extends GetxController {
     selectedPaymentType.value = i;
   }
 
-  void setSelectedPaymentInRoomType(int i) {
+  Future setSelectedPaymentInRoomType(int i) async {
     selectedPaymentInRoomType.value = i;
+    if(i == 3) {
+      await getVnPayQr();
+    }
   }
 
   void setSelectedDigitalWallet (int index) {
@@ -231,22 +236,25 @@ class BillAndPaymentController extends GetxController {
     await initBillAndPayment();
   }
 
-  Future<String> getVnPayQr () async {
+  Future getVnPayQr () async {
+
+    AppController appController = Get.find<AppController>();
     BillModel bill = myTabs[0];
     VnPayModel vnPayModel = VnPayModel(
       partnerCode: "",
-      partnerRefId: bill.receiptId,
-      ipAddress: "",
+      partnerRefId: bill.id,
+      ipAddress: appController.vnpayConfig.value.ipAddress,
       vendor: "VNPAY",
       amount: bill.finalPrice.toString(),
       partnerRefCode: bill.receiptIndex
     );
+    print('qr vnpay info ${vnPayModel.toJson()}');
     final res = await billAndPaymentRepository.getImageQrVnPay(vnPayModel.toJson());
 
     if(res.status == true) {
-        return res.results;
+        base64VnPay.value = res.results;
     } else {
-      return '';
+        base64VnPay.value = '';
     }
   }
 }
