@@ -6,6 +6,8 @@ import 'package:flutter_stater/models/bill_and_payment/payment_type_model.dart';
 import 'package:flutter_stater/models/bill_and_payment/vnpay_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 
 import '../adapters/repository/home/receipt_repositiry.dart';
 import '../models/home/bill_and_payment/bill_and_payment_model.dart';
@@ -32,6 +34,8 @@ class BillAndPaymentController extends GetxController {
   RxBool isBillPayment = false.obs;
 
   RxString base64VnPay = ''.obs;
+
+  RxString linkMoMo = ''.obs;
 
   List<BillAndPaymentModel> billAndPaymentInfo = <BillAndPaymentModel>[].obs;
 
@@ -139,6 +143,8 @@ class BillAndPaymentController extends GetxController {
     selectedPaymentInRoomType.value = i;
     if(i == 3) {
       await getVnPayQr();
+    } else if(i == 4) {
+      await getLinkMoMo();
     }
   }
 
@@ -237,7 +243,6 @@ class BillAndPaymentController extends GetxController {
   }
 
   Future getVnPayQr () async {
-
     AppController appController = Get.find<AppController>();
     BillModel bill = myTabs[0];
     VnPayModel vnPayModel = VnPayModel(
@@ -256,5 +261,19 @@ class BillAndPaymentController extends GetxController {
     } else {
         base64VnPay.value = '';
     }
+  }
+
+  Future getLinkMoMo () async {
+    AppController appController = Get.find<AppController>();
+    BillModel bill = myTabs[0];
+    var hash = "storeSlug=" + appController.momoConfig.value.merchantCode! + "-" + appController.momoConfig.value.merchantName!
+    +"&amount=" + bill.finalPrice.toString() + "&billId=" + bill.receiptIndex.toString();
+    final keyBytes = const Utf8Encoder().convert(appController.momoConfig.value.key!);
+    final dataBytes = const  Utf8Encoder().convert(hash);
+    final hmacBytes =  Hmac(sha256, keyBytes).convert(dataBytes).bytes;
+    final hmacBase64 = base64Encode(hmacBytes);
+    linkMoMo.value = appController.momoConfig.value.ipAddress! + '/pay/store/' +  appController.momoConfig.value.merchantCode! + "-" + appController.momoConfig.value.merchantName!  + '?a=' + bill.finalPrice.toString() + '&b=' +  bill.receiptIndex.toString() + '&s=' + hmacBase64;
+
+    print('link momo ${linkMoMo.value}');
   }
 }
