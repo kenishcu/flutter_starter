@@ -90,16 +90,15 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: QrImage(
-                                data: 'This QR code has an embedded image as well',
+                              child: controller.linkMoMo.value.isNotEmpty ? QrImage(
+                                data: controller.linkMoMo.value,
                                 version: QrVersions.auto,
                                 size: 320,
                                 gapless: false,
-                                embeddedImage: const AssetImage('assets/images/my_embedded_image.png'),
                                 embeddedImageStyle: QrEmbeddedImageStyle(
                                   size: const Size(80, 80),
                                 ),
-                              ),
+                              ) : Container(),
                             ))
                       ],
                     ),
