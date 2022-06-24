@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../controllers/bill_and_payment_controller.dart';
@@ -17,19 +18,6 @@ class PaymentByDigitalWalletVnPay extends StatefulWidget {
 class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPay> {
 
   BillAndPaymentController controller = Get.find<BillAndPaymentController>();
-
-  late String _base64;
-
-  @override
-  void initState() async {
-    _base64 = await controller.getVnPayQr();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   Image imageFromBase64String(String base64String) {
     return Image.memory(base64Decode(base64String));
@@ -134,7 +122,7 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: imageFromBase64String(_base64),
+                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : Container(),
                             ))
                       ],
                     ),
