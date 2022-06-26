@@ -125,8 +125,10 @@ class BillAndPaymentController extends GetxController {
       selectedPaymentInRoomType.value = 1;
     } else if (orderBillStatus.value.paymentTypeRequestedInRoom == "MOMO") {
       selectedPaymentInRoomType.value = 2;
+      await getLinkMoMo();
     } else if (orderBillStatus.value.paymentTypeRequestedInRoom == "VNPAY") {
       selectedPaymentInRoomType.value = 3;
+      await getVnPayQr();
     }
     initScreen.value = true;
   }
