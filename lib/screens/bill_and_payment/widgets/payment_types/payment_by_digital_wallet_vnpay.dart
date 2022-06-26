@@ -24,6 +24,16 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
   }
 
   @override
+  void initState() {
+    initPaymentVnPay();
+    super.initState();
+  }
+
+  Future initPaymentVnPay() async {
+    await controller.getVnPayQr();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
