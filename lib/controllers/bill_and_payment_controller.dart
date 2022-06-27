@@ -269,14 +269,11 @@ class BillAndPaymentController extends GetxController {
     AppController appController = Get.find<AppController>();
     BillModel bill = myTabs[0];
     var hash = "storeSlug=" + appController.momoConfig.value.merchantCode! + "-" + appController.momoConfig.value.merchantName!
-    +"&amount=" + bill.finalPrice.toString() + "&billId=" + bill.receiptIndex.toString();
-    final keyBytes = const Utf8Encoder().convert(appController.momoConfig.value.key!);
-    final dataBytes = const  Utf8Encoder().convert(hash);
-    final hmacBytes =  Hmac(sha256, keyBytes).convert(dataBytes).bytes;
-    final hmacBase64 = base64Encode(hmacBytes);
-    print('hmac bytes ${hmacBytes.toString()}');
-    print('hmacBase64 bytes ${hmacBase64.toString()}');
-    linkMoMo.value = appController.momoConfig.value.ipAddress! + '/pay/store/' +  appController.momoConfig.value.merchantCode! + "-" + appController.momoConfig.value.merchantName!  + '?a=' + bill.finalPrice.toString() + '&b=' +  bill.id.toString() + '&s=' + hmacBase64;
+        +"&amount=" + bill.finalPrice.toString() + "&billId=" + bill.id.toString();
+    final keyBytes = utf8.encode(appController.momoConfig.value.key!);
+    final bytes = utf8.encode(hash);
+    final hmac =  Hmac(sha256, keyBytes).convert(bytes);
+    linkMoMo.value = appController.momoConfig.value.ipAddress! + '/pay/store/' +  appController.momoConfig.value.merchantCode! + "-" + appController.momoConfig.value.merchantName!  + '?a=' + bill.finalPrice.toString() + '&b=' +  bill.id.toString() + '&s=' + hmac.toString();
 
     print('link momo ${linkMoMo.value}');
   }
