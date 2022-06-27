@@ -42,9 +42,8 @@ dependencies:
   youtube_player_flutter: ^8.0.0
   shared_preferences: ^2.0.13
   loading_overlay_pro: ^2.1.1
+  syncfusion_flutter_datepicker: ^20.1.61
   dart_ipify: ^1.1.1
-  syncfusion_flutter_calendar: ^20.1.47
-  syncfusion_flutter_datepicker: ^20.1.47
   money2: ^3.1.2
   fluttertoast: ^8.0.9
   qr_flutter: ^4.0.0

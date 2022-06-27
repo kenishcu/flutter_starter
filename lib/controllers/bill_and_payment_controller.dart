@@ -274,7 +274,9 @@ class BillAndPaymentController extends GetxController {
     final dataBytes = const  Utf8Encoder().convert(hash);
     final hmacBytes =  Hmac(sha256, keyBytes).convert(dataBytes).bytes;
     final hmacBase64 = base64Encode(hmacBytes);
-    linkMoMo.value = appController.momoConfig.value.ipAddress! + '/pay/store/' +  appController.momoConfig.value.merchantCode! + "-" + appController.momoConfig.value.merchantName!  + '?a=' + bill.finalPrice.toString() + '&b=' +  bill.receiptIndex.toString() + '&s=' + hmacBase64;
+    print('hmac bytes ${hmacBytes.toString()}');
+    print('hmacBase64 bytes ${hmacBase64.toString()}');
+    linkMoMo.value = appController.momoConfig.value.ipAddress! + '/pay/store/' +  appController.momoConfig.value.merchantCode! + "-" + appController.momoConfig.value.merchantName!  + '?a=' + bill.finalPrice.toString() + '&b=' +  bill.id.toString() + '&s=' + hmacBase64;
 
     print('link momo ${linkMoMo.value}');
   }

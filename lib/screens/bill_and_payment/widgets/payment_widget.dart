@@ -51,7 +51,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
 
   _showToastSuccess() {
     Widget toast = Container(
-      height: 80,
+      height: 90,
       width: 280,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -79,7 +79,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       )),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                       child: Text("Hệ thống đá nhận được yêu cầu", style: TextStyle(
                           fontSize: 12
                       )),
@@ -106,7 +106,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
   _showToastError() {
 
     Widget toast = Container(
-      height: 80,
+      height: 90,
       width: 280,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -135,7 +135,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       )),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                       child: Text("Lỗi hệ thống", style: TextStyle(
                           fontSize: 12,
                           color: Colors.white
