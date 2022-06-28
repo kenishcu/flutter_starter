@@ -46,7 +46,7 @@ class AppController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    Timer timer = Timer(const Duration(seconds: 300), () async {
+    Timer timer = Timer(const Duration(seconds: 50), () async {
       await reGetPatientInformation();
     });
   }
@@ -99,7 +99,7 @@ class AppController extends GetxController {
   }
 
   Future reGetPatientInformation() async {
-    debugPrint("Print after 300 seconds");
+    debugPrint("Print after 50 seconds");
   }
 
   /// *
