@@ -38,8 +38,8 @@ dependencies:
   get_storage: ^2.0.2
   dio: ^4.0.4
   intl: ^0.17.0
-  dropdown_search: ^2.0.1
-  youtube_player_flutter: ^8.0.0
+  dropdown_search: ^3.0.1
+  youtube_player_flutter: ^8.1.0
   shared_preferences: ^2.0.13
   loading_overlay_pro: ^2.1.1
   syncfusion_flutter_datepicker: ^20.1.61
