@@ -91,7 +91,7 @@ class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
                                         height: 30,
                                         child: Padding(
                                           padding: const EdgeInsets.only(top: 10),
-                                          child: Text("${widget.listPharma[index].quantity} ${widget.listPharma[index].pharmaName}",
+                                          child: Text("${widget.listPharma[index].quantity} ${widget.listPharma[index].unitName} ${widget.listPharma[index].pharmaName}",
                                               overflow: TextOverflow.ellipsis,
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
