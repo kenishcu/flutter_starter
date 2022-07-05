@@ -145,19 +145,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   child: Obx(() => ListView(
                     physics: const BouncingScrollPhysics(),
                     children: <Widget>[
-                      controller.calendarInfo[controller.selectedDay.value]['data']!['meal'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meal'].length > 0 ? SizedBox(
-                        child: ExpandableMealWidget(listMeal: controller.listMeal),
-                      ) : const SizedBox(),
+                      controller.calendarInfo[controller.selectedDay.value]['data']!['meal'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meal'].length > 0 ? ExpandableMealWidget(listMeal: controller.listMeal) : Container(),
 
-                      controller.calendarInfo[controller.selectedDay.value]['data']['treatment'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['treatment'].length > 0 ? Expanded(
-                        flex: 1,
-                        child: ExpandableTreatmentWidget(listTreatment: controller.listTreatment),
-                      ): const SizedBox(),
+                      controller.calendarInfo[controller.selectedDay.value]['data']['treatment'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['treatment'].length > 0 ? ExpandableTreatmentWidget(listTreatment: controller.listTreatment) : Container(),
 
-                      controller.calendarInfo[controller.selectedDay.value]['data']['pharma'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['pharma'].length > 0 ? Expanded(
-                        flex: 1,
-                        child: ExpandablePharmaWidget(listPharma: controller.listPharma),
-                      ): Container()
+                      controller.calendarInfo[controller.selectedDay.value]['data']['pharma'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['pharma'].length > 0 ? ExpandablePharmaWidget(listPharma: controller.listPharma) : Container()
                     ],
                   ))
               )

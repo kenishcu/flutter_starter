@@ -205,7 +205,7 @@ class BillServiceWidget extends GetView<HomeController> {
                       flex: 1,
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Tổng tạm ứng: ${formatPriceNoSymbol(controller.patientInfo.totalDepositPrice!)}" , style: const TextStyle(
+                        child: Text("Tổng tạm ứng: ${formatPriceNoSymbol(controller.patientInfo.totalDepositPrice! - controller.patientInfo.totalReturnPrice!)}" , style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600
                         )),

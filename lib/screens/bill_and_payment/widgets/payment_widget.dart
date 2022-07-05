@@ -217,7 +217,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       width: double.infinity,
                       child: RichText(
                         text: TextSpan(
-                          text: 'Tổng tất cả hoá đơn: ${controller.orderBillStatus.value.paymentRequestedInRoom} | ${controller.orderBillStatus.value.paymentTypeRequestedInRoom}  |',
+                          text: 'Tổng tất cả hoá đơn: ',
                           style: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.black
@@ -266,13 +266,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     height: 40,
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.secondary,
+                          color: controller.selectedPaymentType.value == 0 ? Theme.of(context).colorScheme.secondary : Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
                           border: controller.selectedPaymentType.value == 0 ? Border.all(
                               color: Theme.of(context).colorScheme.secondaryContainer,
                               width: 4
                           ): Border.all(
-                              color: Colors.white,
+                              color: Colors.grey,
                               width: 4
                           )
                       ),
@@ -283,9 +283,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                         onDoubleTap: () {
                           controller.setSelectedPayment(0);
                         },
-                        child: const Center(
+                        child: Center(
                           child: Text("Tại giường", style: TextStyle(
-                              color: Colors.white
+                              color: controller.selectedPaymentType.value == 0 ? Colors.white : Colors.black
                           )),
                         ),
                       ),
@@ -297,6 +297,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
+                        color: controller.selectedPaymentType.value == 1 ? Theme.of(context).colorScheme.secondary : Colors.white,
                         border: controller.selectedPaymentType.value == 1 ? Border.all(
                             color: Theme.of(context).colorScheme.secondaryContainer,
                             width: 4
@@ -312,8 +313,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                         onDoubleTap: () {
                           controller.setSelectedPayment(1);
                         },
-                        child: const Center(
+                        child: Center(
                           child: Text("Tại quầy lễ tân", style: TextStyle(
+                            color: controller.selectedPaymentType.value == 1 ? Colors.white : Colors.black,
                           )),
                         ),
                       ),

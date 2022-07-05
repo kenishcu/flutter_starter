@@ -35,7 +35,7 @@ class MedicalHistoryController extends GetxController {
 
     DateTime now = DateTime.now();
     from = DateTime(now.year, now.month - 2, now.day);
-    to = DateTime(from.year, now.month, now.day - 6);
+    to = DateTime(from.year, now.month, now.day);
     int _from = (from.millisecondsSinceEpoch / 1000).round();
     int _to = (to.millisecondsSinceEpoch / 1000).round();
 
