@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/layout/adaptive_layout.dart';
 import 'package:flutter_stater/screens/home/widgets/bed_type_widget.dart';
@@ -10,15 +12,35 @@ import 'package:flutter_stater/screens/home/widgets/service_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter_stater/controllers/index.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends StatefulWidget {
 
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  final AppController appController = Get.find<AppController>();
+
+  @override
+  void initState() {
+    super.initState();
+    reGetPatientInfo();
+  }
+
+  reGetPatientInfo() {
+    Timer.periodic(const Duration(seconds: 300), (timer) async {
+      await appController.reGetPatientInformation();
+    });
+  }
 
   Widget childLeftContent() {
     return Column(
       children: [
         Expanded(
-          flex: 4,
+            flex: 4,
             child: Row(
               children: const [
                 Expanded(
@@ -38,8 +60,8 @@ class HomeScreen extends GetView<HomeController> {
             child: Row(
               children: const [
                 Expanded(
-                    child: ServiceWidget(),
-                    flex: 2,
+                  child: ServiceWidget(),
+                  flex: 2,
                 ),
                 Expanded(
                   child: BillServiceWidget(),
