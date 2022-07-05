@@ -3,10 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_stater/adapters/repository/app/app_repository.dart';
 import 'package:flutter_stater/adapters/repository/loan_service/loan_service_repository.dart';
+import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:flutter_stater/controllers/index.dart';
 import 'package:flutter_stater/models/app/app_setting.dart';
 import 'package:flutter_stater/models/app/itrmin_config_model.dart';
 import 'package:flutter_stater/models/app/setting_result_model.dart';
+import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:flutter_stater/models/settings/itrmin_setting_model.dart';
+import 'package:flutter_stater/models/user/bed_info_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -99,7 +103,20 @@ class AppController extends GetxController {
   }
 
   Future reGetPatientInformation() async {
-    debugPrint("Print after 50 seconds");
+    print("Print after 50 seconds");
+    final HomeController homeController = Get.find<HomeController>();
+    final IntroController introController = Get.find<IntroController>();
+    if(homeController.patientInfo.patientId != null) {
+        ResultModel res = await introController.userRepository.getBedPatientInfo();
+        if(res.status == true) {
+          BedInfoModel bedInfo = BedInfoModel.fromJson(res.results);
+          print('bed patient Info: ${bedInfo.patientId}');
+          print('current patient Info: ${homeController.patientInfo.patientId}');
+          if(bedInfo.patientId != homeController.patientInfo.patientId) {
+            Get.off(Routes.INTRO);
+          }
+        }
+    }
   }
 
   /// *
