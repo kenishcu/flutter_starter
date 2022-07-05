@@ -50,9 +50,6 @@ class AppController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    Timer timer = Timer(const Duration(seconds: 50), () async {
-      await reGetPatientInformation();
-    });
   }
 
   Future initAppSetting () async {
@@ -98,12 +95,12 @@ class AppController extends GetxController {
         }
       }
       notifications = list;
-      print('notifications: ${list.toString()}');
+      debugPrint('notifications: ${list.toString()}');
     }
   }
 
   Future reGetPatientInformation() async {
-    print("Print after 50 seconds");
+    debugPrint("Print after 300 seconds");
     final HomeController homeController = Get.find<HomeController>();
     final IntroController introController = Get.find<IntroController>();
     if(homeController.patientInfo.patientId != null) {
