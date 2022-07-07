@@ -17,8 +17,8 @@ class ExpandableMealWidget extends StatefulWidget {
 
 class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
 
-  var _controller = ScrollController();
-  ScrollPhysics _physics = ClampingScrollPhysics();
+  final _controller = ScrollController();
+  final ScrollPhysics _physics = ClampingScrollPhysics();
 
   @override
   Widget build(BuildContext context) {

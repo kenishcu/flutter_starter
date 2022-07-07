@@ -11,9 +11,30 @@ class PaymentByDigitalWalletMoMo extends StatefulWidget {
   _PaymentByDigitalWalletMoMoState createState() => _PaymentByDigitalWalletMoMoState();
 }
 
-class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo> {
+class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo> with TickerProviderStateMixin  {
 
   BillAndPaymentController controller = Get.find<BillAndPaymentController>();
+
+  late AnimationController controllerAnimation;
+
+  @override
+  void initState() {
+    controllerAnimation = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    )..addListener(() {
+      setState(() {});
+    });
+    controllerAnimation.repeat(reverse: true);
+    super.initState();
+  }
+
+
+  @override
+  void dispose() {
+    controllerAnimation.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +119,18 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
                                 embeddedImageStyle: QrEmbeddedImageStyle(
                                   size: const Size(80, 80),
                                 ),
-                              ) : Container(),
+                              ) : Align(
+                                alignment: Alignment.topCenter,
+                                child: SizedBox(
+                                  height: 80,
+                                  width: 80,
+                                  child: CircularProgressIndicator(
+                                    value: controllerAnimation.value,
+                                    strokeWidth: 10.0,
+                                    color: Theme.of(context).colorScheme.onPrimary,
+                                    semanticsLabel: 'Linear progress indicator',
+                                  ),
+                                ),),
                             ))
                       ],
                     ),

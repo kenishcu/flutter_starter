@@ -17,8 +17,8 @@ class ExpandablePharmaWidget extends StatefulWidget {
 
 class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
 
-  var _controller = ScrollController();
-  ScrollPhysics _physics = ClampingScrollPhysics();
+  final _controller = ScrollController();
+  final ScrollPhysics _physics = ClampingScrollPhysics();
 
   @override
   Widget build(BuildContext context) {

@@ -19,8 +19,8 @@ class ExpandableTreatmentWidget extends StatefulWidget {
 
 class _ExpandableTreatmentWidgetState extends State<ExpandableTreatmentWidget> {
 
-  var _controller = ScrollController();
-  ScrollPhysics _physics = ClampingScrollPhysics();
+  final _controller = ScrollController();
+  final ScrollPhysics _physics = ClampingScrollPhysics();
 
   @override
   Widget build(BuildContext context) {
