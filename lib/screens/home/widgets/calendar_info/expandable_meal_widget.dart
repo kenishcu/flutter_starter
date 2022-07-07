@@ -17,6 +17,9 @@ class ExpandableMealWidget extends StatefulWidget {
 
 class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
 
+  var _controller = ScrollController();
+  ScrollPhysics _physics = ClampingScrollPhysics();
+
   @override
   Widget build(BuildContext context) {
     return  ExpandableNotifier(
@@ -24,8 +27,8 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
           child: ExpandablePanel(
             theme: const ExpandableThemeData(
               headerAlignment: ExpandablePanelHeaderAlignment.center,
-              tapBodyToExpand: true,
-              tapBodyToCollapse: true,
+              tapBodyToExpand: false,
+              tapBodyToCollapse: false,
               hasIcon: false,
             ),
             header: SizedBox(
@@ -62,6 +65,8 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
               width: double.infinity,
               padding: const EdgeInsets.all(0.0),
               child: ListView.builder(
+                  controller: _controller,
+                  physics: _physics,
                   itemCount: widget.listMeal.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
