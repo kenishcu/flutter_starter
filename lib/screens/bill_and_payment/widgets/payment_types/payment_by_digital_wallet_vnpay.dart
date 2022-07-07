@@ -15,12 +15,33 @@ class PaymentByDigitalWalletVnPay extends StatefulWidget {
   _PaymentByDigitalWalletVnPayState createState() => _PaymentByDigitalWalletVnPayState();
 }
 
-class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPay> {
+class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPay> with TickerProviderStateMixin {
 
   BillAndPaymentController controller = Get.find<BillAndPaymentController>();
 
   Image imageFromBase64String(String base64String) {
     return Image.memory(base64Decode(base64String));
+  }
+
+  late AnimationController controllerAnimation;
+
+  @override
+  void initState() {
+    controllerAnimation = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    )..addListener(() {
+      setState(() {});
+    });
+    controllerAnimation.repeat(reverse: true);
+    super.initState();
+  }
+
+
+  @override
+  void dispose() {
+    controllerAnimation.dispose();
+    super.dispose();
   }
 
   @override
@@ -122,7 +143,18 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : Container(),
+                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : Align(
+                                alignment: Alignment.topCenter,
+                                child: SizedBox(
+                                  height: 80,
+                                  width: 80,
+                                  child: CircularProgressIndicator(
+                                    value: controllerAnimation.value,
+                                    strokeWidth: 10.0,
+                                    color: Theme.of(context).colorScheme.onPrimary,
+                                    semanticsLabel: 'Linear progress indicator',
+                                  ),
+                                ),),
                             ))
                       ],
                     ),
