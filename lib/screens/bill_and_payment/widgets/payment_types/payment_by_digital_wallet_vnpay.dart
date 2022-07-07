@@ -143,18 +143,21 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : Align(
-                                alignment: Alignment.topCenter,
-                                child: SizedBox(
-                                  height: 80,
-                                  width: 80,
-                                  child: CircularProgressIndicator(
-                                    value: controllerAnimation.value,
-                                    strokeWidth: 10.0,
-                                    color: Theme.of(context).colorScheme.onPrimary,
-                                    semanticsLabel: 'Linear progress indicator',
-                                  ),
-                                ),),
+                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : Padding(
+                                  padding: const  EdgeInsets.only(top: 20),
+                                   child: Align(
+                                  alignment: Alignment.topCenter,
+                                  child: SizedBox(
+                                    height: 80,
+                                    width: 80,
+                                    child: CircularProgressIndicator(
+                                      value: controllerAnimation.value,
+                                      strokeWidth: 10.0,
+                                      color: Theme.of(context).colorScheme.onPrimary,
+                                      semanticsLabel: 'Linear progress indicator',
+                                    ),
+                                  ),),
+                              ),
                             ))
                       ],
                     ),

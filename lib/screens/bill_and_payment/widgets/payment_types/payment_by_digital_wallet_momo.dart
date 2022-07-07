@@ -85,7 +85,7 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
               child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
-                child: controller.selectedDigitalWallet.value == 0 ? Align(
+                child: Align(
                   alignment: Alignment.center,
                   child: Container(
                     decoration: BoxDecoration(
@@ -119,7 +119,8 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
                                 embeddedImageStyle: QrEmbeddedImageStyle(
                                   size: const Size(80, 80),
                                 ),
-                              ) : Align(
+                              ) : Padding(padding: const EdgeInsets.only(top: 20),
+                              child: Align(
                                 alignment: Alignment.topCenter,
                                 child: SizedBox(
                                   height: 80,
@@ -131,58 +132,8 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
                                     semanticsLabel: 'Linear progress indicator',
                                   ),
                                 ),),
-                            ))
-                      ],
-                    ),
-                  ),
-                ) : Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(
-                            color: Colors.grey
-                        )
-                    ),
-                    width: 180,
-                    height: 600,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 50,
-                          width: 120,
-                          child: SizedBox(
-                            height: 40,
-                            width: 80,
-                            child: Container(
-                              height: double.infinity,
-                              alignment: Alignment.center,
-                              child: Image.asset("assets/img/vnpay.png",
-                                  fit: BoxFit.contain,
-                                  width: 100),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 22.0, right: 22.0, bottom: 15.0),
-                              padding: const EdgeInsets.only(left: 5),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: controller.linkMoMo.value.isNotEmpty ? QrImage(
-                                data: controller.linkMoMo.value,
-                                version: QrVersions.auto,
-                                size: 320,
-                                gapless: false,
-                                embeddedImageStyle: QrEmbeddedImageStyle(
-                                  size: const Size(80, 80),
-                                ),
-                              ) : Container()
-                            ))
+                              ))
                       ],
                     ),
                   ),
