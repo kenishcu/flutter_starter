@@ -54,7 +54,7 @@ class _WideLayoutState extends State<WideLayout> {
         children: [
           Expanded(
             flex: 1,
-            child: Icon(Icons.restaurant, size: 28, color: Theme.of(context).colorScheme.secondary),
+            child: Icon(Icons.notifications, size: 28, color: Theme.of(context).colorScheme.secondary),
           ),
           Expanded(
               flex: 3,
@@ -110,7 +110,7 @@ class _WideLayoutState extends State<WideLayout> {
         children: [
           const Expanded(
             flex: 1,
-            child: Icon(Icons.restaurant, size: 28, color: Colors.white),
+            child: Icon(Icons.notifications, size: 28, color: Colors.white),
           ),
           Expanded(
               flex: 3,

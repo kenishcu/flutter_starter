@@ -30,6 +30,30 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
 
+    Future.delayed(const Duration(milliseconds: 3000), () {
+      initApp();
+    });
+
+  }
+
+  initApp() async {
+    appController.ready();
+    print('ready to go ........');
+    if (Get.currentRoute == Routes.SPLASH) {
+      if(appController.isSettingDeviceInfo() == true){
+        await appController.initAppSetting();
+        Get.offAndToNamed(Routes.INTRO);
+      } else {
+        Get.offAndToNamed(Routes.SETTING);
+      }
+    } else {
+      if(appController.isSettingDeviceInfo() == true){
+        await appController.initAppSetting();
+        Get.offAndToNamed(Routes.INTRO);
+      } else {
+        Get.offAndToNamed(Routes.SETTING);
+      }
+    }
   }
 
   @override
@@ -53,17 +77,6 @@ class _SplashScreenState extends State<SplashScreen> {
           child: const Center(),
         ),
       ),
-      onEnd: () async {
-        appController.ready();
-        if (Get.currentRoute == Routes.SPLASH) {
-          if(appController.isSettingDeviceInfo()){
-            await appController.initAppSetting();
-            Get.offAndToNamed(Routes.INTRO);
-          } else {
-            Get.offAndToNamed(Routes.SETTING);
-          }
-        }
-      },
     );
 
     return Scaffold(
