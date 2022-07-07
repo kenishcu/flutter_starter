@@ -17,6 +17,9 @@ class ExpandablePharmaWidget extends StatefulWidget {
 
 class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
 
+  var _controller = ScrollController();
+  ScrollPhysics _physics = ClampingScrollPhysics();
+
   @override
   Widget build(BuildContext context) {
     return  ExpandableNotifier(
@@ -24,8 +27,8 @@ class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
           child: ExpandablePanel(
             theme: const ExpandableThemeData(
               headerAlignment: ExpandablePanelHeaderAlignment.center,
-              tapBodyToExpand: true,
-              tapBodyToCollapse: true,
+              tapBodyToExpand: false,
+              tapBodyToCollapse: false,
               hasIcon: false,
             ),
             header: SizedBox(
@@ -62,6 +65,8 @@ class _ExpandablePharmaWidgetState extends State<ExpandablePharmaWidget> {
               width: double.infinity,
               padding: const EdgeInsets.all(0.0),
               child: ListView.builder(
+                  controller: _controller,
+                  physics: _physics,
                   itemCount: widget.listPharma.length,
                   itemBuilder: (BuildContext context, int index) {
                     return SizedBox(

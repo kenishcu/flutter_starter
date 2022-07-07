@@ -143,7 +143,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               ),
               Expanded(
                   child: Obx(() => ListView(
-                    physics: const BouncingScrollPhysics(),
                     children: <Widget>[
                       controller.calendarInfo[controller.selectedDay.value]['data']!['meal'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meal'].length > 0 ? ExpandableMealWidget(listMeal: controller.listMeal) : Container(),
 
