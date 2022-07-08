@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../controllers/bill_and_payment_controller.dart';
+import 'in_processing.dart';
 
 class PaymentByDigitalWalletVnPay extends StatefulWidget {
 
@@ -15,7 +16,7 @@ class PaymentByDigitalWalletVnPay extends StatefulWidget {
   _PaymentByDigitalWalletVnPayState createState() => _PaymentByDigitalWalletVnPayState();
 }
 
-class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPay> with TickerProviderStateMixin {
+class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPay> {
 
   BillAndPaymentController controller = Get.find<BillAndPaymentController>();
 
@@ -23,24 +24,14 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
     return Image.memory(base64Decode(base64String));
   }
 
-  late AnimationController controllerAnimation;
-
   @override
   void initState() {
-    controllerAnimation = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 3),
-    )..addListener(() {
-      setState(() {});
-    });
-    controllerAnimation.repeat(reverse: true);
     super.initState();
   }
 
 
   @override
   void dispose() {
-    controllerAnimation.dispose();
     super.dispose();
   }
 
@@ -143,20 +134,9 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : Padding(
-                                  padding: const  EdgeInsets.only(top: 20),
-                                   child: Align(
-                                  alignment: Alignment.topCenter,
-                                  child: SizedBox(
-                                    height: 80,
-                                    width: 80,
-                                    child: CircularProgressIndicator(
-                                      value: controllerAnimation.value,
-                                      strokeWidth: 10.0,
-                                      color: Theme.of(context).colorScheme.onPrimary,
-                                      semanticsLabel: 'Linear progress indicator',
-                                    ),
-                                  ),),
+                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : const Padding(
+                                  padding: EdgeInsets.only(top: 20),
+                                   child: InProcessing(),
                               ),
                             ))
                       ],
