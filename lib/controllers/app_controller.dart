@@ -5,6 +5,7 @@ import 'package:flutter_stater/adapters/repository/app/app_repository.dart';
 import 'package:flutter_stater/adapters/repository/loan_service/loan_service_repository.dart';
 import 'package:flutter_stater/controllers/home_controller.dart';
 import 'package:flutter_stater/controllers/index.dart';
+import 'package:flutter_stater/controllers/setting_controller.dart';
 import 'package:flutter_stater/models/app/app_setting.dart';
 import 'package:flutter_stater/models/app/itrmin_config_model.dart';
 import 'package:flutter_stater/models/app/setting_result_model.dart';
@@ -16,8 +17,10 @@ import 'package:get_storage/get_storage.dart';
 
 import '../adapters/repository/notification/notification_repository.dart';
 import '../models/app/payment_config_model.dart';
+import '../models/loan_service/loan_service_model.dart';
 import '../models/notification/notification_model.dart';
 import '../routes/app_pages.dart';
+import '../utils/convert.dart';
 
 enum AppState {
   loading, ready
@@ -145,6 +148,7 @@ class AppController extends GetxController {
 
   bool isSettingDeviceInfo() {
     final map = box.read("device_info") ?? {};
+    print('map: ${map.toString()}');
     if(map['bed_id'] != null && map['bed_id'] != 'null'){
       print('device_info: ${map.toString()}');
       return true;
@@ -159,7 +163,60 @@ class AppController extends GetxController {
   Future<bool> callCleanService() async {
       final res  = await loanServiceRepository.orderCleaningService();
       if(res.status == true) {
-        return true;
+          List<LoanServiceModel> services = [];
+          if(res.results != null && res.results.length > 0 ) {
+            for(var element in res.results) {
+              services.add(LoanServiceModel.fromJson(element));
+            }
+          }
+          if(services.isNotEmpty) {
+            List<Map<String, dynamic>> list = [];
+            for (var element in services) {
+              LoanServiceModel pro =
+              LoanServiceModel(
+                  id: element.id,
+                  serviceCode: element.serviceCode,
+                  serviceName: element.serviceName,
+                  categoryId: element.categoryId,
+                  categoryCode: element.categoryCode,
+                  categoryName: element.categoryName,
+                  defaultQuantity: element.defaultQuantity,
+                  imageUrl: element.imageUrl,
+                  status: element.status,
+                  price: element.price,
+                  quantity: 1,
+                  note: ''
+              );
+              list.add(pro.toJson());
+            }
+
+            HomeController homeController = Get.find<HomeController>();
+            SettingController settingController = Get.find<SettingController>();
+            String? receptionQueueId = homeController.patientInfo.receptionQueueId;
+            DateTime selectedDay = DateTime.now();
+            int timeOrder = timeToTimeStamp(selectedDay);
+            Map<String, dynamic> products = {
+              "patient_id": homeController.patientInfo.patientId,
+              "patient_fullname": homeController.patientInfo.patientName,
+              "bed_id": settingController.selectedBed.value.bedId,
+              "bed_name": settingController.selectedBed.value.bedName,
+              "room_id": settingController.selectedRoom.value.roomId,
+              "room_name":  settingController.selectedRoom.value.roomName,
+              "reception_queue_id": receptionQueueId,
+              "status": "TODO",
+              "status_name": "Chưa xử lý",
+              "used_at": timeOrder,
+              "services": list,
+            };
+            ResultModel res = await loanServiceRepository.order(products);
+            if(res.status == true) {
+              return true;
+            } else {
+              return false;
+            }
+          } else {
+            return false;
+          }
       } else {
         return false;
       }

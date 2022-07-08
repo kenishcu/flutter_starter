@@ -15,7 +15,7 @@ import 'package:flutter_stater/models/settings/room_model.dart';
 import 'package:flutter_stater/models/settings/setting_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-// import 'package:mac_address/mac_address.dart';
+import 'package:mac_address/mac_address.dart';
 
 import '../routes/app_pages.dart';
 
@@ -223,11 +223,15 @@ class SettingController extends GetxController {
     final ipv4 = await Ipify.ipv4();
     ipAddress.value.text = ipv4;
 
-    // try {
-    //   macAddress.value.text = await GetMac.macAddress;
-    // } on PlatformException {
-    //   print('Failed to get Device MAC Address.');
-    // }
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      platformVersion = await GetMac.macAddress;
+    } on PlatformException {
+      platformVersion = 'Failed to get Device MAC Address.';
+    }
+    print('mac address: $platformVersion');
+    macAddress.value.text = platformVersion;
   }
 
 

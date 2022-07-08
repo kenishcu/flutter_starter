@@ -125,6 +125,7 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
                                 child: SizedBox(
                                   height: 80,
                                   width: 80,
+
                                   child: CircularProgressIndicator(
                                     value: controllerAnimation.value,
                                     strokeWidth: 10.0,
