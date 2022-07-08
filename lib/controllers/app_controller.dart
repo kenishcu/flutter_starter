@@ -12,6 +12,7 @@ import 'package:flutter_stater/models/app/setting_result_model.dart';
 import 'package:flutter_stater/models/result/result_model.dart';
 import 'package:flutter_stater/models/settings/itrmin_setting_model.dart';
 import 'package:flutter_stater/models/user/bed_info_model.dart';
+import 'package:flutter_stater/models/user/user_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -113,9 +114,16 @@ class AppController extends GetxController {
           print('bed patient Info: ${bedInfo.patientId}');
           print('current patient Info: ${homeController.patientInfo.patientId}');
           if(bedInfo.patientId != homeController.patientInfo.patientId) {
-            Get.off(Routes.INTRO);
+            UserModel userModel = UserModel();
+            homeController.setPatientInfo(userModel);
+            Get.toNamed('/intro');
           }
+        } else {
+          UserModel userModel = UserModel();
+          homeController.setPatientInfo(userModel);
+          Get.toNamed('/intro');
         }
+
     }
   }
 
