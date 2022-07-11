@@ -122,7 +122,7 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                               flex: 1,
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 20),
-                                child: Text(convertFromUnixToHourString(widget.listMeal[index].usedAt!), style: TextStyle(
+                                child: Text('', style: TextStyle(
                                     color: Theme.of(context).colorScheme.secondary,
                                     fontSize: 15
                                 )),
