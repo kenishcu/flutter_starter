@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/app_controller.dart';
-import 'package:flutter_stater/controllers/setting_controller.dart';
-import 'package:flutter_stater/models/food_treatment/meal_type_model.dart';
-import 'package:flutter_stater/models/food_treatment/menu_model.dart';
-import 'package:flutter_stater/models/result/result_model.dart';
+import 'package:itrapp/controllers/app_controller.dart';
+import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/models/food_treatment/meal_type_model.dart';
+import 'package:itrapp/models/food_treatment/menu_model.dart';
+import 'package:itrapp/models/result/result_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

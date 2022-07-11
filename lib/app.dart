@@ -1,8 +1,8 @@
-import 'package:flutter_stater/routes/app_pages.dart';
-import 'package:flutter_stater/theme/dart_theme.dart';
-import 'package:flutter_stater/theme/light_theme.dart';
+import 'package:itrapp/routes/app_pages.dart';
+import 'package:itrapp/theme/dart_theme.dart';
+import 'package:itrapp/theme/light_theme.dart';
 import 'package:get/get.dart';
-import 'package:flutter_stater/controllers/index.dart';
+import 'package:itrapp/controllers/index.dart';
 import 'package:flutter/material.dart';
 
 import 'container.dart';

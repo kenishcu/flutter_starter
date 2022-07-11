@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/adapters/repository/restaurant/restaurant_repository.dart';
-import 'package:flutter_stater/models/restaurant/category_model.dart';
-import 'package:flutter_stater/models/restaurant/item_product_model.dart';
-import 'package:flutter_stater/models/restaurant/payment_type_model.dart';
-import 'package:flutter_stater/models/restaurant/sub_category_model.dart';
+import 'package:itrapp/adapters/repository/restaurant/restaurant_repository.dart';
+import 'package:itrapp/models/restaurant/category_model.dart';
+import 'package:itrapp/models/restaurant/item_product_model.dart';
+import 'package:itrapp/models/restaurant/payment_type_model.dart';
+import 'package:itrapp/models/restaurant/sub_category_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';

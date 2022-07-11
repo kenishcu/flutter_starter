@@ -1,6 +1,6 @@
-import 'package:flutter_stater/adapters/repository/medical_history/medical_history_repository.dart';
-import 'package:flutter_stater/controllers/home_controller.dart';
-import 'package:flutter_stater/models/medical_history/medical_meta_data_model.dart';
+import 'package:itrapp/adapters/repository/medical_history/medical_history_repository.dart';
+import 'package:itrapp/controllers/home_controller.dart';
+import 'package:itrapp/models/medical_history/medical_meta_data_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

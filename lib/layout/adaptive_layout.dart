@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/layout/wide_layout.dart';
+import 'package:itrapp/layout/wide_layout.dart';
 
 class AdaptiveLayout extends StatelessWidget {
 

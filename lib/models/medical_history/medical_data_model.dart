@@ -1,5 +1,5 @@
-import 'package:flutter_stater/models/medical_history/service_data_model.dart';
-import 'package:flutter_stater/models/medical_history/service_id_model.dart';
+import 'package:itrapp/models/medical_history/service_data_model.dart';
+import 'package:itrapp/models/medical_history/service_id_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'medical_data_model.freezed.dart';

@@ -1,5 +1,5 @@
-import 'package:flutter_stater/adapters/repository/loan_service/loan_service_repository.dart';
-import 'package:flutter_stater/controllers/loan_service_controller.dart';
+import 'package:itrapp/adapters/repository/loan_service/loan_service_repository.dart';
+import 'package:itrapp/controllers/loan_service_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

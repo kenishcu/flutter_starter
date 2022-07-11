@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_stater/adapters/dio/api_dio.dart';
-import 'package:flutter_stater/models/app/setting_result_model.dart';
-import 'package:flutter_stater/models/result/result_model.dart';
+import 'package:itrapp/adapters/dio/api_dio.dart';
+import 'package:itrapp/models/app/setting_result_model.dart';
+import 'package:itrapp/models/result/result_model.dart';
 
 class AppRepository {
 

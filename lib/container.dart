@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_stater/bindings/bill_and_payment_binding.dart';
-import 'package:flutter_stater/bindings/food_treatment_binding.dart';
-import 'package:flutter_stater/bindings/home_binding.dart';
-import 'package:flutter_stater/bindings/intro_binding.dart';
-import 'package:flutter_stater/bindings/loan_service_binding.dart';
-import 'package:flutter_stater/bindings/medical_history_binding.dart';
-import 'package:flutter_stater/bindings/restaurant_binding.dart';
-import 'package:flutter_stater/controllers/app_controller.dart';
-import 'package:flutter_stater/storages/app_storages.dart';
+import 'package:itrapp/bindings/bill_and_payment_binding.dart';
+import 'package:itrapp/bindings/food_treatment_binding.dart';
+import 'package:itrapp/bindings/home_binding.dart';
+import 'package:itrapp/bindings/intro_binding.dart';
+import 'package:itrapp/bindings/loan_service_binding.dart';
+import 'package:itrapp/bindings/medical_history_binding.dart';
+import 'package:itrapp/bindings/restaurant_binding.dart';
+import 'package:itrapp/controllers/app_controller.dart';
+import 'package:itrapp/storages/app_storages.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 

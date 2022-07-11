@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_stater/adapters/dio/service_dio.dart';
+import 'package:itrapp/adapters/dio/service_dio.dart';
 import 'package:get/get.dart';
 
 import '../../constants.dart';

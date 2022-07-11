@@ -2,8 +2,8 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:flutter_stater/models/home/pharma/pharma_info_model.dart';
-import 'package:flutter_stater/utils/convert.dart';
+import 'package:itrapp/models/home/pharma/pharma_info_model.dart';
+import 'package:itrapp/utils/convert.dart';
 
 class ExpandablePharmaWidget extends StatefulWidget {
 

@@ -1,4 +1,4 @@
-import 'package:flutter_stater/models/restaurant/product_model.dart';
+import 'package:itrapp/models/restaurant/product_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'item_product_model.freezed.dart';

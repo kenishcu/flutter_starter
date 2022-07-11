@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_stater/adapters/dio/api_dio.dart';
-import 'package:flutter_stater/models/result/result_model.dart';
-import 'package:flutter_stater/models/settings/department_model.dart';
+import 'package:itrapp/adapters/dio/api_dio.dart';
+import 'package:itrapp/models/result/result_model.dart';
+import 'package:itrapp/models/settings/department_model.dart';
 
 class DepartmentRepository {
 

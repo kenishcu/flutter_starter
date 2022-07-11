@@ -1,6 +1,6 @@
-import 'package:flutter_stater/adapters/repository/restaurant/restaurant_repository.dart';
-import 'package:flutter_stater/controllers/restaurant/product_restaurant_controller.dart';
-import 'package:flutter_stater/controllers/restaurant/restaurant_controller.dart';
+import 'package:itrapp/adapters/repository/restaurant/restaurant_repository.dart';
+import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
+import 'package:itrapp/controllers/restaurant/restaurant_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

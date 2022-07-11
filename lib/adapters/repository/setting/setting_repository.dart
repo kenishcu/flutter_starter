@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_stater/adapters/dio/api_dio.dart';
+import 'package:itrapp/adapters/dio/api_dio.dart';
 
 import '../../../models/result/result_model.dart';
 

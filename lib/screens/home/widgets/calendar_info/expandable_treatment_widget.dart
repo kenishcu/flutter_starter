@@ -2,7 +2,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:flutter_stater/utils/convert.dart';
+import 'package:itrapp/utils/convert.dart';
 
 import '../../../../models/home/treatment/reception_treatment_model.dart';
 import '../../../../models/home/treatment/treatment_info_model.dart';

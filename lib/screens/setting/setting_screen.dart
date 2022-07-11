@@ -1,13 +1,13 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/setting_controller.dart';
-import 'package:flutter_stater/layout/setting_layout.dart';
-import 'package:flutter_stater/models/settings/department_model.dart';
-import 'package:flutter_stater/models/settings/room_model.dart';
-import 'package:flutter_stater/screens/setting/widgets/selection_bed.dart';
-import 'package:flutter_stater/screens/setting/widgets/selection_branch.dart';
-import 'package:flutter_stater/screens/setting/widgets/selection_department.dart';
-import 'package:flutter_stater/screens/setting/widgets/selection_room.dart';
+import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/layout/setting_layout.dart';
+import 'package:itrapp/models/settings/department_model.dart';
+import 'package:itrapp/models/settings/room_model.dart';
+import 'package:itrapp/screens/setting/widgets/selection_bed.dart';
+import 'package:itrapp/screens/setting/widgets/selection_branch.dart';
+import 'package:itrapp/screens/setting/widgets/selection_department.dart';
+import 'package:itrapp/screens/setting/widgets/selection_room.dart';
 import 'package:get/get.dart';
 
 class SettingScreen extends GetView<SettingController> {

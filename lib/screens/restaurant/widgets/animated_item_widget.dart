@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/restaurant/product_restaurant_controller.dart';
+import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../models/restaurant/item_product_model.dart';

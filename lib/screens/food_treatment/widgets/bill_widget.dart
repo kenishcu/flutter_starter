@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/food_treatment_controller.dart';
-import 'package:flutter_stater/screens/food_treatment/widgets/animated_item_widget.dart';
+import 'package:itrapp/controllers/food_treatment_controller.dart';
+import 'package:itrapp/screens/food_treatment/widgets/animated_item_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -324,11 +324,11 @@ class _BillWidgetState extends State<BillWidget> {
                         width: double.infinity,
                         child: Row(
                           children: [
-                            Expanded(
+                            const Expanded(
                               flex: 1,
                               child: Padding(
-                                  padding: const EdgeInsets.only(left: 20, top: 10),
-                                  child: Obx(() => Text('Tổng : ${formatPrice(controller.total.value)}'))),
+                                  padding: EdgeInsets.only(left: 20, top: 10),
+                                  child: Text('Tổng : 0')),
                             ),
                             Expanded(
                                 flex: 1,

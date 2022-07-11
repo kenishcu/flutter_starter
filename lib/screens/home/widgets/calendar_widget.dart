@@ -1,9 +1,9 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/home_controller.dart';
-import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_meal_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_pharma_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/calendar_info/expandable_treatment_widget.dart';
+import 'package:itrapp/controllers/home_controller.dart';
+import 'package:itrapp/screens/home/widgets/calendar_info/expandable_meal_widget.dart';
+import 'package:itrapp/screens/home/widgets/calendar_info/expandable_pharma_widget.dart';
+import 'package:itrapp/screens/home/widgets/calendar_info/expandable_treatment_widget.dart';
 import 'package:get/get.dart';
 
 class CalendarWidget extends StatefulWidget {

@@ -1,7 +1,7 @@
-import 'package:flutter_stater/adapters/repository/home/user_repository.dart';
-import 'package:flutter_stater/adapters/repository/setting/setting_repository.dart';
-import 'package:flutter_stater/controllers/index.dart';
-import 'package:flutter_stater/storages/app_storages.dart';
+import 'package:itrapp/adapters/repository/home/user_repository.dart';
+import 'package:itrapp/adapters/repository/setting/setting_repository.dart';
+import 'package:itrapp/controllers/index.dart';
+import 'package:itrapp/storages/app_storages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

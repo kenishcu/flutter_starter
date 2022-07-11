@@ -1,11 +1,11 @@
-import 'package:flutter_stater/screens/bill_and_payment/bill_and_payment_screen.dart';
-import 'package:flutter_stater/screens/food_treatment/food_treatment_screen.dart';
-import 'package:flutter_stater/screens/home/home_screen.dart';
-import 'package:flutter_stater/screens/intro/intro_screen.dart';
-import 'package:flutter_stater/screens/medical_history/medical_history_screen.dart';
-import 'package:flutter_stater/screens/restaurant/restaurant_screen.dart';
-import 'package:flutter_stater/screens/setting/setting_screen.dart';
-import 'package:flutter_stater/screens/splash/splash_screen.dart';
+import 'package:itrapp/screens/bill_and_payment/bill_and_payment_screen.dart';
+import 'package:itrapp/screens/food_treatment/food_treatment_screen.dart';
+import 'package:itrapp/screens/home/home_screen.dart';
+import 'package:itrapp/screens/intro/intro_screen.dart';
+import 'package:itrapp/screens/medical_history/medical_history_screen.dart';
+import 'package:itrapp/screens/restaurant/restaurant_screen.dart';
+import 'package:itrapp/screens/setting/setting_screen.dart';
+import 'package:itrapp/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
 import '../screens/loan_service/loan_service_screen.dart';

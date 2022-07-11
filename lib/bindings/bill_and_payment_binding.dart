@@ -1,5 +1,5 @@
-import 'package:flutter_stater/adapters/repository/bill_and_payment/bill_and_payment_repository.dart';
-import 'package:flutter_stater/controllers/bill_and_payment_controller.dart';
+import 'package:itrapp/adapters/repository/bill_and_payment/bill_and_payment_repository.dart';
+import 'package:itrapp/controllers/bill_and_payment_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
