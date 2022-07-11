@@ -324,11 +324,11 @@ class _BillWidgetState extends State<BillWidget> {
                         width: double.infinity,
                         child: Row(
                           children: [
-                            Expanded(
+                            const Expanded(
                               flex: 1,
                               child: Padding(
-                                  padding: const EdgeInsets.only(left: 20, top: 10),
-                                  child: Obx(() => Text('Tổng : ${formatPrice(controller.total.value)}'))),
+                                  padding: EdgeInsets.only(left: 20, top: 10),
+                                  child: Text('Tổng : 0')),
                             ),
                             Expanded(
                                 flex: 1,
