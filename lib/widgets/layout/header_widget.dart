@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/widgets/button/button_header_widget.dart';
+import 'package:itrapp/widgets/button/button_header_widget.dart';
 import 'package:get/get.dart';
 
 import '../../routes/app_pages.dart';

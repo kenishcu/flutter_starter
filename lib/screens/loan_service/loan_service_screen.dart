@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/screens/loan_service/widgets/bill_widget.dart';
-import 'package:flutter_stater/screens/loan_service/widgets/product_widget.dart';
+import 'package:itrapp/screens/loan_service/widgets/bill_widget.dart';
+import 'package:itrapp/screens/loan_service/widgets/product_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../layout/main_layout.dart';

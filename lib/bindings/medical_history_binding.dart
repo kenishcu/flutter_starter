@@ -1,5 +1,5 @@
-import 'package:flutter_stater/adapters/repository/medical_history/medical_history_repository.dart';
-import 'package:flutter_stater/controllers/index.dart';
+import 'package:itrapp/adapters/repository/medical_history/medical_history_repository.dart';
+import 'package:itrapp/controllers/index.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

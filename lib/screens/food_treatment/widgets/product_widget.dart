@@ -1,7 +1,7 @@
-import 'package:flutter_stater/controllers/food_treatment_controller.dart';
+import 'package:itrapp/controllers/food_treatment_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/models/food_treatment/category_model.dart';
-import 'package:flutter_stater/models/food_treatment/meal_type_model.dart';
+import 'package:itrapp/models/food_treatment/category_model.dart';
+import 'package:itrapp/models/food_treatment/meal_type_model.dart';
 import 'package:get/get.dart';
 
 import '../../../models/food_treatment/product_model.dart';

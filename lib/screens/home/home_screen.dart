@@ -1,16 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/layout/adaptive_layout.dart';
-import 'package:flutter_stater/screens/home/widgets/bed_type_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/bill_service_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/calendar_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/clock_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/diagnosis_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/patient_info_widget.dart';
-import 'package:flutter_stater/screens/home/widgets/service_widget.dart';
+import 'package:itrapp/layout/adaptive_layout.dart';
+import 'package:itrapp/screens/home/widgets/bed_type_widget.dart';
+import 'package:itrapp/screens/home/widgets/bill_service_widget.dart';
+import 'package:itrapp/screens/home/widgets/calendar_widget.dart';
+import 'package:itrapp/screens/home/widgets/clock_widget.dart';
+import 'package:itrapp/screens/home/widgets/diagnosis_widget.dart';
+import 'package:itrapp/screens/home/widgets/patient_info_widget.dart';
+import 'package:itrapp/screens/home/widgets/service_widget.dart';
 import 'package:get/get.dart';
-import 'package:flutter_stater/controllers/index.dart';
+import 'package:itrapp/controllers/index.dart';
 
 class HomeScreen extends StatefulWidget {
 

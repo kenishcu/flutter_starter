@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/food_treatment_controller.dart';
-import 'package:flutter_stater/models/food_treatment/item_product_model.dart';
+import 'package:itrapp/controllers/food_treatment_controller.dart';
+import 'package:itrapp/models/food_treatment/item_product_model.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/convert.dart';

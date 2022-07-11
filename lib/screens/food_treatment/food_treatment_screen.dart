@@ -1,4 +1,4 @@
-import 'package:flutter_stater/controllers/food_treatment_controller.dart';
+import 'package:itrapp/controllers/food_treatment_controller.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';

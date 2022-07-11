@@ -1,5 +1,5 @@
 
-import 'package:flutter_stater/models/medical/vitality/vitality_detail_model.dart';
+import 'package:itrapp/models/medical/vitality/vitality_detail_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'vitality_model.freezed.dart';

@@ -1,7 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/setting_controller.dart';
-import 'package:flutter_stater/models/settings/room_model.dart';
+import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/models/settings/room_model.dart';
 import 'package:get/get.dart';
 
 class SelectionRoom extends GetView<SettingController> {

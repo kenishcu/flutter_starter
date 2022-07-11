@@ -1,4 +1,4 @@
-import 'package:flutter_stater/models/home/treatment/treatment_info_model.dart';
+import 'package:itrapp/models/home/treatment/treatment_info_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'reception_treatment_model.freezed.dart';

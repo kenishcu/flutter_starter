@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/app_controller.dart';
-import 'package:flutter_stater/utils/convert.dart';
-import 'package:flutter_stater/widgets/layout/header_widget.dart';
-import 'package:flutter_stater/widgets/layout/user_info_widget.dart';
+import 'package:itrapp/controllers/app_controller.dart';
+import 'package:itrapp/utils/convert.dart';
+import 'package:itrapp/widgets/layout/header_widget.dart';
+import 'package:itrapp/widgets/layout/user_info_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

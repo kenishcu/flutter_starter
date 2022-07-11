@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/widgets/layout/header_setting_widget.dart';
+import 'package:itrapp/widgets/layout/header_setting_widget.dart';
 
 class SettingLayout extends StatelessWidget {
 

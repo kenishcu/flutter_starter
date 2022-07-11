@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_stater/adapters/dio/service_dio.dart';
+import 'package:itrapp/adapters/dio/service_dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class InterWrapper extends InterceptorsWrapper {

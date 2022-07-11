@@ -1,8 +1,8 @@
-import 'package:flutter_stater/adapters/repository/app/app_repository.dart';
-import 'package:flutter_stater/adapters/repository/loan_service/loan_service_repository.dart';
-import 'package:flutter_stater/controllers/app_controller.dart';
-import 'package:flutter_stater/controllers/setting_controller.dart';
-import 'package:flutter_stater/storages/app_storages.dart';
+import 'package:itrapp/adapters/repository/app/app_repository.dart';
+import 'package:itrapp/adapters/repository/loan_service/loan_service_repository.dart';
+import 'package:itrapp/controllers/app_controller.dart';
+import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/storages/app_storages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

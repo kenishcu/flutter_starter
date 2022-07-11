@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_stater/screens/medical_history/widgets/date_selection_widget.dart';
-import 'package:flutter_stater/screens/medical_history/widgets/history_board_widget.dart';
+import 'package:itrapp/screens/medical_history/widgets/date_selection_widget.dart';
+import 'package:itrapp/screens/medical_history/widgets/history_board_widget.dart';
 
 import '../../layout/main_layout.dart';
 

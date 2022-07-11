@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:itrapp/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
 class BedTypeWidget extends GetView<HomeController> {

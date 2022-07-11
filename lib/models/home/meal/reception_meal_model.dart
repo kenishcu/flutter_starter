@@ -1,7 +1,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:flutter_stater/models/home/meal/meal_info_model.dart';
+import 'package:itrapp/models/home/meal/meal_info_model.dart';
 part 'reception_meal_model.freezed.dart';
 part 'reception_meal_model.g.dart';
 

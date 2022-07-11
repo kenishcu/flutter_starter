@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payment_by_digital_wallet_momo.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payment_by_digital_wallet_vnpay.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payment_success_widget.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/payments_in_reception.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/waiting_order_payment_widget.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/waiting_payment_widget.dart';
+import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/payment_by_digital_wallet_momo.dart';
+import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/payment_by_digital_wallet_vnpay.dart';
+import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/payment_success_widget.dart';
+import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/payments_in_reception.dart';
+import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/waiting_order_payment_widget.dart';
+import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/waiting_payment_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

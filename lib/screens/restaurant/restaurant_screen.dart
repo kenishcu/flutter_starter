@@ -1,5 +1,5 @@
-import 'package:flutter_stater/screens/restaurant/widgets/bill_widget.dart';
-import 'package:flutter_stater/screens/restaurant/widgets/product_widget.dart';
+import 'package:itrapp/screens/restaurant/widgets/bill_widget.dart';
+import 'package:itrapp/screens/restaurant/widgets/product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

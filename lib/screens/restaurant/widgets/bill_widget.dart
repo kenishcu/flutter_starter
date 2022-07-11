@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/models/restaurant/item_product_model.dart';
-import 'package:flutter_stater/screens/restaurant/widgets/animated_item_widget.dart';
+import 'package:itrapp/models/restaurant/item_product_model.dart';
+import 'package:itrapp/screens/restaurant/widgets/animated_item_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

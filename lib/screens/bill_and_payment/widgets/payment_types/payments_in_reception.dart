@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/bill_and_payment_controller.dart';
-import 'package:flutter_stater/screens/bill_and_payment/widgets/payment_types/waiting_payment_widget.dart';
+import 'package:itrapp/controllers/bill_and_payment_controller.dart';
+import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/waiting_payment_widget.dart';
 import 'package:get/get.dart';
 
 class PaymentInReception extends StatefulWidget {

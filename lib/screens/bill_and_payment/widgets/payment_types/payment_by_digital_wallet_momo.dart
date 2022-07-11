@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/bill_and_payment_controller.dart';
+import 'package:itrapp/controllers/bill_and_payment_controller.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 

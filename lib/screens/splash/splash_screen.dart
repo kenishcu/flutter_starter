@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:flutter_stater/controllers/setting_controller.dart';
-import 'package:flutter_stater/routes/app_pages.dart';
+import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_stater/controllers/app_controller.dart';
+import 'package:itrapp/controllers/app_controller.dart';
 
 class SplashScreen extends StatefulWidget {
 

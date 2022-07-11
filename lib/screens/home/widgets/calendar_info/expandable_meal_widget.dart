@@ -2,8 +2,8 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:flutter_stater/models/home/meal/reception_meal_model.dart';
-import 'package:flutter_stater/utils/convert.dart';
+import 'package:itrapp/models/home/meal/reception_meal_model.dart';
+import 'package:itrapp/utils/convert.dart';
 
 class ExpandableMealWidget extends StatefulWidget {
 

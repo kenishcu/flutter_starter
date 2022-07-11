@@ -1,7 +1,7 @@
-import 'package:flutter_stater/controllers/index.dart';
-import 'package:flutter_stater/layout/setting_layout.dart';
-import 'package:flutter_stater/routes/app_pages.dart';
-import 'package:flutter_stater/screens/intro/widgets/youtube_player.dart';
+import 'package:itrapp/controllers/index.dart';
+import 'package:itrapp/layout/setting_layout.dart';
+import 'package:itrapp/routes/app_pages.dart';
+import 'package:itrapp/screens/intro/widgets/youtube_player.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';

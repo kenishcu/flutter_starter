@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/food_treatment_controller.dart';
-import 'package:flutter_stater/screens/food_treatment/widgets/animated_item_widget.dart';
+import 'package:itrapp/controllers/food_treatment_controller.dart';
+import 'package:itrapp/screens/food_treatment/widgets/animated_item_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

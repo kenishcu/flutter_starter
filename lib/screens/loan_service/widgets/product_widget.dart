@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stater/controllers/loan_service_controller.dart';
+import 'package:itrapp/controllers/loan_service_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../models/loan_service/loan_service_model.dart';

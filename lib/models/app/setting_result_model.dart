@@ -1,4 +1,4 @@
-import 'package:flutter_stater/models/app/payment_info_model.dart';
+import 'package:itrapp/models/app/payment_info_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'setting_result_model.freezed.dart';

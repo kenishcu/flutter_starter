@@ -1,8 +1,8 @@
-import 'package:flutter_stater/models/medical/blood_type/blood_type_model.dart';
-import 'package:flutter_stater/models/medical/icd_model.dart';
-import 'package:flutter_stater/models/medical/level_care_model.dart';
-import 'package:flutter_stater/models/medical/patient_company_insurance_selected_model.dart';
-import 'package:flutter_stater/models/medical/vitality/vitality_model.dart';
+import 'package:itrapp/models/medical/blood_type/blood_type_model.dart';
+import 'package:itrapp/models/medical/icd_model.dart';
+import 'package:itrapp/models/medical/level_care_model.dart';
+import 'package:itrapp/models/medical/patient_company_insurance_selected_model.dart';
+import 'package:itrapp/models/medical/vitality/vitality_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.freezed.dart';

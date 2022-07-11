@@ -1,6 +1,6 @@
-import 'package:flutter_stater/adapters/repository/home/calendar_info_repository.dart';
-import 'package:flutter_stater/adapters/repository/home/receipt_repositiry.dart';
-import 'package:flutter_stater/controllers/home_controller.dart';
+import 'package:itrapp/adapters/repository/home/calendar_info_repository.dart';
+import 'package:itrapp/adapters/repository/home/receipt_repositiry.dart';
+import 'package:itrapp/controllers/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
