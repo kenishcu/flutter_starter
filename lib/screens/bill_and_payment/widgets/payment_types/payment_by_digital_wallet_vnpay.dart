@@ -134,10 +134,10 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.0)
                               ),
-                              child: controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : const Padding(
-                                  padding: EdgeInsets.only(top: 20),
-                                   child: InProcessing(),
-                              ),
+                              child: Obx(() => controller.base64VnPay.value.isNotEmpty ? imageFromBase64String( controller.base64VnPay.value) : const Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: InProcessing(),
+                              )),
                             ))
                       ],
                     ),

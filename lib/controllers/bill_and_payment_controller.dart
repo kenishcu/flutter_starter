@@ -128,6 +128,7 @@ class BillAndPaymentController extends GetxController {
       await getLinkMoMo();
     } else if (orderBillStatus.value.paymentTypeRequestedInRoom == "VNPAY") {
       selectedPaymentInRoomType.value = 3;
+      print('get link VNPAY');
       await getVnPayQr();
     }
     initScreen.value = true;
