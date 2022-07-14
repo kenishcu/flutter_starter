@@ -22,7 +22,7 @@ BloodTypeModel _$BloodTypeModelFromJson(Map<String, dynamic> json) {
 class _$BloodTypeModelTearOff {
   const _$BloodTypeModelTearOff();
 
-  _BloodTypeModel call({String? id, String? name}) {
+  _BloodTypeModel call({int? id, String? name}) {
     return _BloodTypeModel(
       id: id,
       name: name,
@@ -39,7 +39,7 @@ const $BloodTypeModel = _$BloodTypeModelTearOff();
 
 /// @nodoc
 mixin _$BloodTypeModel {
-  String? get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $BloodTypeModelCopyWith<$Res> {
   factory $BloodTypeModelCopyWith(
           BloodTypeModel value, $Res Function(BloodTypeModel) then) =
       _$BloodTypeModelCopyWithImpl<$Res>;
-  $Res call({String? id, String? name});
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$BloodTypeModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -90,7 +90,7 @@ abstract class _$BloodTypeModelCopyWith<$Res>
           _BloodTypeModel value, $Res Function(_BloodTypeModel) then) =
       __$BloodTypeModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? name});
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$BloodTypeModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class _$_BloodTypeModel extends _BloodTypeModel {
       _$$_BloodTypeModelFromJson(json);
 
   @override
-  final String? id;
+  final int? id;
   @override
   final String? name;
 
@@ -167,14 +167,14 @@ class _$_BloodTypeModel extends _BloodTypeModel {
 }
 
 abstract class _BloodTypeModel extends BloodTypeModel {
-  factory _BloodTypeModel({String? id, String? name}) = _$_BloodTypeModel;
+  factory _BloodTypeModel({int? id, String? name}) = _$_BloodTypeModel;
   _BloodTypeModel._() : super._();
 
   factory _BloodTypeModel.fromJson(Map<String, dynamic> json) =
       _$_BloodTypeModel.fromJson;
 
   @override
-  String? get id;
+  int? get id;
   @override
   String? get name;
   @override

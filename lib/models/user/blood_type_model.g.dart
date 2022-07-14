@@ -8,7 +8,7 @@ part of 'blood_type_model.dart';
 
 _$_BloodTypeModel _$$_BloodTypeModelFromJson(Map<String, dynamic> json) =>
     _$_BloodTypeModel(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       name: json['name'] as String?,
     );
 

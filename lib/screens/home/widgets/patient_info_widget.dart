@@ -37,7 +37,7 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 30,
-                    child: Text(controller.patientInfo.bloodTypes?.bloodType?.name ?? '', textAlign: TextAlign.center ,style: TextStyle(
+                    child: Text(controller.patientInfo.bloodTypes?.name ?? '', textAlign: TextAlign.center ,style: TextStyle(
                         color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
