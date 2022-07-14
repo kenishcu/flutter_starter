@@ -4,7 +4,7 @@ import 'package:itrapp/models/medical/patient_company_insurance_selected_model.d
 import 'package:itrapp/models/medical/vitality/vitality_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../medical/blood_type/blood_type_model.dart';
+import 'blood_type_model.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';

@@ -9,7 +9,7 @@ class BloodTypeModel  with _$BloodTypeModel  {
   const BloodTypeModel._();
 
   factory BloodTypeModel({
-    String? id,
+    int? id,
     String? name,
   }) = _BloodTypeModel;
 
