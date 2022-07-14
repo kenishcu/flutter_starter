@@ -108,7 +108,7 @@ class _CustomizedDatePickerState extends State<CustomizedDatePicker> {
       selectionColor: highlightColor,
       selectionTextStyle:
       TextStyle(color: isDark ? Colors.black : Colors.white, fontSize: 14),
-      minDate: DateTime.now().add(const Duration(days: -100)),
+      minDate: DateTime.now().add(const Duration(days: 0)),
       maxDate: DateTime.now().add(const Duration(days: 500)),
       headerStyle: DateRangePickerHeaderStyle(
           textAlign: TextAlign.center,

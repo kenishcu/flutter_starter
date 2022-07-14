@@ -198,5 +198,4 @@ class _PaymentByDigitalWalletVnPayState extends State<PaymentByDigitalWalletVnPa
       ),
     );
   }
-
 }
