@@ -71,8 +71,7 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 30,
-                    child: Text('${controller.patientInfo.vitality?.vitals != null ?
-                    controller.patientInfo.vitality?.vitals?.first.chieuCao.toString() : ''}', textAlign: TextAlign.center ,style: TextStyle(
+                    child: Text(controller.patientInfo.vitality?.vitality?.first.chieuCao.toString() ?? '', textAlign: TextAlign.center ,style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -107,8 +106,7 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 30,
-                    child: Text('${controller.patientInfo.vitality?.vitals != null ?
-                    controller.patientInfo.vitality?.vitals?.first.canNang : ''}', textAlign: TextAlign.center ,style: TextStyle(
+                    child: Text( controller.patientInfo.vitality?.vitality?.first.canNang.toString() ?? '', textAlign: TextAlign.center ,style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
