@@ -9,7 +9,9 @@ part of 'vitality_model.dart';
 _$_VitalityModel _$$_VitalityModelFromJson(Map<String, dynamic> json) {
 
   if(json == null) {
-    return null;
+    return _$_VitalityModel(
+      vitality: [],
+    );
   }
 
   var keys = json.keys;
@@ -20,7 +22,7 @@ _$_VitalityModel _$$_VitalityModelFromJson(Map<String, dynamic> json) {
   // (json['vitality'] as List<dynamic>?)
   //     ?.map((e) => VitalityDetailModel.fromJson(e as Map<String, dynamic>))
   //     .toList()
-  _$_VitalityModel(
+  return _$_VitalityModel(
     vitality: vitality,
   );
 

@@ -70,6 +70,7 @@ class IntroController extends GetxController {
       UserModel user = UserModel.fromJson(response.results);
       final HomeController homeController = Get.find<HomeController>();
       homeController.setPatientInfo(user);
+      print('user inf : ${user.toJson()}');
       homeController.setBedInfo();
       await homeController.getBillAndPaymentInfo(user.patientId!, user.receptionQueueId!);
       await homeController.getScheduleOfPatient();
