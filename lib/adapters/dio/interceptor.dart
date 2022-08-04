@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:itrapp/adapters/dio/service_dio.dart';
+import 'package:itrapp/controllers/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class InterWrapper extends InterceptorsWrapper {
@@ -39,8 +40,11 @@ class InterWrapper extends InterceptorsWrapper {
     print('ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
     print('ERROR[${err.toString()}]');
     if(err.message == 'HttpException: Failed to parse header value') {
-      await serviceDio.reGetToken();
-      await serviceDio.retry(err.requestOptions);
+
+      if (serviceDio.isSettingDevice()) {
+        await serviceDio.reGetToken();
+        await serviceDio.retry(err.requestOptions);
+      }
     } else {
       return super.onError(err, handler);
     }

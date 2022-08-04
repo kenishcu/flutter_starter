@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/app_controller.dart';
 import '../../controllers/setting_controller.dart';
 
 class ServiceDio {
@@ -27,5 +30,10 @@ class ServiceDio {
         queryParameters: requestOptions.queryParameters,
         options: options
     );
+  }
+
+  bool isSettingDevice() {
+    AppController appController = Get.find<AppController>();
+    return appController.isSettingDeviceInfo();
   }
 }

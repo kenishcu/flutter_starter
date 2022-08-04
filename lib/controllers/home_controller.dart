@@ -190,7 +190,10 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
         _meals.add(m);
         var calendar = calendarInfo;
         for(int i = 0; i < calendar.length; i++) {
+          print('date: ' + calendar[i]['dayUnix'].toString());
           if(isSameDay(calendar[i]['dayUnix'], m.usedAt!)) {
+            print(isSameDay(calendar[i]['dayUnix'], m.usedAt!));
+            print(m.usedAt!);
             calendarInfo[i]['data']['meal'].add(m.toJson());
           }
         }
