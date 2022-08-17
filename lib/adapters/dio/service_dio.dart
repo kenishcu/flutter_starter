@@ -14,7 +14,7 @@ class ServiceDio {
 
   Future reGetToken() async {
     final settingController = Get.find<SettingController>();
-    await settingController.submitSetting();
+    await settingController.regetToken();
   }
 
   Future retry(RequestOptions requestOptions) async {

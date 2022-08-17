@@ -3,6 +3,7 @@ import 'package:itrapp/adapters/repository/home/receipt_repositiry.dart';
 import 'package:itrapp/controllers/index.dart';
 import 'package:itrapp/controllers/loan_service_controller.dart';
 import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
+import 'package:itrapp/controllers/setting_controller.dart';
 import 'package:itrapp/models/home/bill_and_payment/bill_and_payment_model.dart';
 import 'package:itrapp/models/home/meal/reception_meal_model.dart';
 import 'package:itrapp/models/home/pharma/reception_pharma_model.dart';
