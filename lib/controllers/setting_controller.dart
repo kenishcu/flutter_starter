@@ -16,6 +16,7 @@ import 'package:itrapp/models/settings/setting_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mac_address/mac_address.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../routes/app_pages.dart';
 
@@ -94,6 +95,11 @@ class SettingController extends GetxController {
     } else {
       branches.clear();
     }
+  }
+
+  void setToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiZWRfaWQiOjEyMzEyMywiYmVkX25hbWUiOiJ0ZXN0IDEiLCJicmFuY2hfaWQiOjE3MDYsImJyYW5jaF9uYW1lIjoiUGjDumMgVHLGsOG7nW5nIE1pbmgiLCJkZXZpY2VfdG9rZW4iOiJjWDlTTTFhRlRkbWljN2N3MHdDbUpEOkFQQTkxYkVGYWFOSklQc3h6LTZvWkJEZWtsRllZMkhIb2dtRGlaZ2RPNWFyYi1icmJ6RGFGWmJGaDRBRmtzZUpJVXRhdkYyZXhCYzJIa3RGYkZhSGlaeVFZMlpEWWdzN2FENEJSTmVMc3EzNmcxcjBjY3lrcmhsLXA0UF9rMElVLVMzeFRaYkxocEFrIiwiZXhwIjoxNjYwNzMxNjUzLCJpcF9hZGRyZXNzIjoiMjIyLjI1Mi4yOC41MCIsIm1hY19hZGRyZXNzIjoiMDI6MTU6QjI6MDA6MDA6MDAiLCJtYWlsIjoiIiwibmFtZSI6IiIsIm9yaWdfaWF0IjoxNjYwNzMxNTkzLCJwYXJlbnRfaWQiOjAsInBsYXRmb3JtIjoxLCJyb2xlX2NvZGUiOiIiLCJyb2xlX2lkIjowLCJyb2xlX25hbWUiOiIiLCJyb29tX2lkIjowLCJ0b2tlbiI6IiIsInVzZXJuYW1lIjoiIn0.liiFdM7YoxR0Mw_ZHGOvI-H0YDgfBMTFjwhL4Ak7Kkw');
   }
 
   /// Function setBranch: set selected branch
@@ -271,6 +277,37 @@ class SettingController extends GetxController {
       selectedDepartment.value = listDepartments.where((element) => map['parent_id'] == element.parentId ).toList()[0];
       selectedRoom.value = listRooms.where((element) => map['room_id'] == element.roomId).toList()[0];
       selectedBed.value = selectedRoom.value.beds!.where((element) => element.bedId == map['bed_id']).toList()[0];
+    }
+  }
+
+  Future regetToken() async {
+    final map = box.read("device_info") ?? {};
+    SettingModel setting =  SettingModel(
+        branchId: map['branch_id'],
+        branchName: map['branch_name'],
+        parentId: map['parent_id'],
+        parentName: map['parent_name'],
+        roomId: map['room_id'],
+        roomName: map['room_name'],
+        bedId: map['bed_id'],
+        bedName: map['bed_name'],
+        ipAddress: map['ip_address'],
+        macAddress: map['mac_address'],
+        deviceToken: map['device_token'],
+        hotLine: "",
+        authToken: "",
+        contracts: []
+    );
+    ResultModel res = await settingRepository.sendSetting(setting.toJson());
+    if(res.status == true) {
+      storeSettingConfig(setting);
+      final map = box.read("device_info") ?? {};
+      print('map save : ' + map.toString());
+      AppController appController = Get.find<AppController>();
+      appController.initAppSetting();
+      Get.offAndToNamed(Routes.INTRO);
+    } else {
+      print("error");
     }
   }
 

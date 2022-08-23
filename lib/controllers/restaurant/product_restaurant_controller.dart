@@ -47,7 +47,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   RxInt selectedTab = 0.obs;
   int selectedCategory = 0;
   late ScrollController scrollController;
-  DateTime selectedDay = DateTime.now();
+  Rx<DateTime> selectedDay = DateTime.now().obs;
   RxInt total = 0.obs;
 
   RxBool initScreen = false.obs;
@@ -55,6 +55,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   @override
   void onInit() {
     super.onInit();
+    selectedDay.value = DateTime.now();
     controllerCircle = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -118,6 +119,11 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
         }
       }
     }
+  }
+
+  void setSelectedDay() {
+     selectedDay.value = DateTime.now();
+     print(selectedDay);
   }
 
   Future initMealTypes() async {
@@ -249,7 +255,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       HomeController homeController = Get.find<HomeController>();
       SettingController settingController = Get.find<SettingController>();
       String? receptionQueueId = homeController.patientInfo.receptionQueueId;
-      int timeOrder = timeToTimeStamp(selectedDay);
+      int timeOrder = timeToTimeStamp(selectedDay.value);
       Map<String, dynamic> products = {
         "patient_id": homeController.patientInfo.patientId,
         "patient_fullname": homeController.patientInfo.patientName,

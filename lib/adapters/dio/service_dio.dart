@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/app_controller.dart';
 import '../../controllers/setting_controller.dart';
 
 class ServiceDio {
@@ -11,7 +14,7 @@ class ServiceDio {
 
   Future reGetToken() async {
     final settingController = Get.find<SettingController>();
-    await settingController.submitSetting();
+    await settingController.regetToken();
   }
 
   Future retry(RequestOptions requestOptions) async {
@@ -27,5 +30,10 @@ class ServiceDio {
         queryParameters: requestOptions.queryParameters,
         options: options
     );
+  }
+
+  bool isSettingDevice() {
+    AppController appController = Get.find<AppController>();
+    return appController.isSettingDeviceInfo();
   }
 }

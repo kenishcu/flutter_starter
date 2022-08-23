@@ -82,5 +82,4 @@ class IntroController extends GetxController {
       return false;
     }
   }
-
 }

@@ -29,7 +29,7 @@ String convertFromUnixToDatetime(int timeUnix) {
 bool isSameDay(int timeUnixFromMillisecond, int timeUnixFromSecond) {
   DateTime date1 = DateTime.fromMillisecondsSinceEpoch(timeUnixFromSecond * 1000);
   DateTime date2 = DateTime.fromMillisecondsSinceEpoch(timeUnixFromMillisecond);
-  if(date1.difference(date2).inDays == 0){
+  if(date1.day == date2.day){
     return true;
   }
   return false;

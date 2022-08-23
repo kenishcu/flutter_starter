@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +21,7 @@ class ProductWidget extends StatefulWidget {
 }
 
 class _ProductWidgetState extends State<ProductWidget> {
+
 
   ProductRestaurantController controller = Get.find<ProductRestaurantController>();
 
@@ -167,23 +170,23 @@ class _ProductWidgetState extends State<ProductWidget> {
                       builder: (_) => showCalendarDialog(context),
                     );
                   },
-                  child: Row(
+                  child: Obx(() => Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        child: Text(formatTime(controller.selectedDay) + "", style: const TextStyle(
+                        child: Text(formatTime(controller.selectedDay.value), style: const TextStyle(
                             fontSize: 20
                         )),
                       ),
                       const SizedBox(
                         width: 20,
                       ),
-                      Obx(() => SizedBox(
+                      SizedBox(
                         child: Text(controller.selectedMealType.value.mealTypeName.toString() + "", style: const TextStyle(
                             fontSize: 20
                         )),
-                      )),
+                      ),
                       SizedBox(
                         width: 30,
                         child:  IconButton(
@@ -195,7 +198,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                         ),
                       )
                     ],
-                  ),
+                  ))
                 )
             )
           ],
@@ -521,6 +524,18 @@ class _ProductWidgetState extends State<ProductWidget> {
           ),
         )
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    reGetDaySelected();
+  }
+
+  reGetDaySelected() {
+    Timer.periodic(const Duration(seconds: 300), (timer) async {
+      controller.setSelectedDay();
+    });
   }
 
   @override
