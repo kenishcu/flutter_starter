@@ -96,4 +96,21 @@ class RestaurantRepository {
     }
   }
 
+  Future<ResultModel> getOrder(int patientId, String receptionQueueId) async {
+    try {
+      var response = await client.dio.request(
+          baseUrl + '/orders?patient_id=${patientId.toString()}&reception_queue_id=${receptionQueueId.toString()}&order_type=DOANNHAHANG',
+          options: Options(method: 'GET')
+      );
+      return ResultModel.fromJson(response.data);
+    } on DioError catch (e) {
+      print("error: $e");
+      return ResultModel(
+          status: false,
+          error: e.error,
+          results: null,
+          appVersion: ''
+      );
+    }
+  }
 }
