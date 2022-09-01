@@ -17,10 +17,14 @@ _$_OrderModel _$$_OrderModelFromJson(Map<String, dynamic> json) =>
       roomId: json['room_id'] as int?,
       roomName: json['room_name'] as String?,
       reservationId: json['reservation_id'] as int?,
-      createAt: json['create_at'] as int?,
+      createAt: json['created_at'] as int?,
       status: json['status'] as String?,
-      paymentType: json['payment_type'] as String?,
+      paymentType: json['payment_result'] as String?,
       orderType: json['order_type'] as String?,
+      mealTypeModel: json['meal_type'] == null
+          ? null
+          : MealTypeModel.fromJson(
+              json['meal_type'] as Map<String, dynamic>),
       usedAt: json['used_at'] as int?,
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
@@ -38,10 +42,11 @@ Map<String, dynamic> _$$_OrderModelToJson(_$_OrderModel instance) =>
       'room_id': instance.roomId,
       'room_name': instance.roomName,
       'reservation_id': instance.reservationId,
-      'create_at': instance.createAt,
+      'created_at': instance.createAt,
       'status': instance.status,
       'payment_type': instance.paymentType,
       'order_type': instance.orderType,
+      'meal_type': instance.mealTypeModel,
       'used_at': instance.usedAt,
       'products': instance.products,
     };

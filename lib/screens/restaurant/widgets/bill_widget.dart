@@ -8,6 +8,7 @@ import 'package:money2/money2.dart';
 
 import '../../../controllers/restaurant/product_restaurant_controller.dart';
 import '../../../models/restaurant/product_model.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utils/convert.dart';
 
 class BillWidget extends StatefulWidget {
@@ -38,6 +39,132 @@ class _BillWidgetState extends State<BillWidget> {
     return DateFormat('hh:mm').format(dateTime);
   }
 
+//   _showConfirmPrice(BuildContext context) {
+//     showDialog(
+//         context: context,
+//         builder: (BuildContext context){
+//           return AlertDialog(
+//             title: Text("Xác nhận đặt món"),
+//             content: SizedBox(
+//               height: 150,
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 mainAxisAlignment: MainAxisAlignment.start,
+//                 children: [
+//                   const SizedBox(
+//                     height: 60,
+//                     child: Text("Hóa đơn của quý khách sẽ tính thêm 5% phụ phí, và 5% thuế vui lòng nhập số tiền cần thanh toán để xác nhận đặt món :"),
+//                   ),
+//                   Container(
+//                     height: 35,
+//                     padding: EdgeInsets.only(left: 20),
+//                     child: RichText(
+//                       text: TextSpan(
+//                           text: "Số tiền cần thanh toán",
+//                           style: TextStyle(
+//                               color: Colors.black54,
+//                               fontSize: 20
+//                           ),
+//                           children: <TextSpan> [
+//                             TextSpan(text: " ${total}", style: TextStyle(fontWeight: FontWeight.bold,  color: Colors.black54)),
+//                             TextSpan(text: " + " + Money.fromInt((_total * 1.05 * 1.05 - _total).toInt(), vnd).format('###,###').toString() , style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54)),
+//                             TextSpan(text: "  = " +  (_total * 1.05 * 1.05).toInt().toString() , style: TextStyle(fontWeight: FontWeight.bold, color:  Color(0xffD66666))),
+//                           ]
+//                       ),
+//                     ),
+//                   ),
+//                   Container(
+//                     height: 50,
+//                     child: Row(
+//                       children: [
+//                         Container(
+//                           height: 40,
+//                           width: 250,
+//                           margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+//                           decoration: BoxDecoration(
+//                             color: Colors.white,
+//                             borderRadius: BorderRadius.circular(10),
+//                             border: Border.all(color: kGrey, width: 0.2),
+//                           ),
+//                           child: TextField(
+//                             decoration: const InputDecoration(
+//                               filled: true,
+//                               hintText: 'Tổng tiền',
+//                               border: InputBorder.none,
+//                               hintStyle: TextStyle(
+//                                   fontSize: 15, color: kGrey, decoration: TextDecoration.none, fontFamily: 'Roboto', fontWeight: FontWeight.w100
+//                               ),
+//                             ),
+//                             onChanged: (value) {
+//                             },
+//                           ),
+//                         ),
+//                         Container(
+//                           margin: const EdgeInsets.only(left: 250),
+//                           height: 60,
+//                           width: 120,
+//                           child: TextButton(
+//                             child: const Text("Đóng", style: TextStyle(
+//                                 fontSize: 20,
+//                                 color: Colors.white
+//                             ),),
+//                             onPressed: () {
+//                               Navigator.pop(context);
+//                             },
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+// //                                                                    actions: <Widget>[
+// //                                                                      FlatButton(
+// //                                                                        color: Colors.red,
+// //                                                                        child: Text("Đóng"),
+// //                                                                        onPressed: () {
+// ////                                                                        for (var i = 0; i <= _items.length - 1; i++) {
+// ////                                                                          listKey.currentState.removeItem(0,
+// ////                                                                                  (BuildContext context, Animation<double> animation) {
+// ////                                                                                return Container();
+// ////                                                                              });
+// ////                                                                        }
+// ////                                                                        setState(() {
+// ////                                                                          _items.clear();
+// ////                                                                        });
+// //                                                                          Navigator.pop(context);
+// //                                                                        },
+// //                                                                      ),
+// //                                                                      FlatButton(
+// //                                                                        color: kGreen,
+// //                                                                        child: Text("Đặt"),
+// //                                                                        onPressed: () async {
+// //                                                                          http.Response res = await restaurantApiProvider.orderProducts(_token, products);
+// //                                                                          final body = jsonDecode(res.body);
+// //                                                                          if(body['results']) {
+// //                                                                            for (var i = 0; i <= _items.length - 1; i++) {
+// //                                                                              listKey.currentState.removeItem(0,
+// //                                                                                      (BuildContext context, Animation<double> animation) {
+// //                                                                                    return Container();
+// //                                                                                  });
+// //                                                                            }
+// //                                                                            setState(() {
+// //                                                                              _items.clear();
+// //                                                                            });
+// //                                                                            toast.showToastSuccess("Đặt món thành công !");
+// //                                                                            // get Notification Information
+// //                                                                          } else {
+// //                                                                            toast.showToastError("Đặt món không thành công !");
+// //                                                                          }
+// //                                                                          Navigator.pop(context);
+// //                                                                        },
+// //                                                                      ),
+// //                                                                    ],
+//           );
+//         }
+//     );
+//   }
   _showToastSuccess() {
     Widget toast = Container(
       height: 80,
@@ -201,11 +328,36 @@ class _BillWidgetState extends State<BillWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         height: 60,
-                        child: Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child:  Text("Giỏ hàng"),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child:  Text("Giỏ hàng"),
+                            ),
+                            Container(
+                              width: 80,
+                              height: 40,
+                              margin: const EdgeInsets.only(right: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Theme.of(context).colorScheme.secondaryVariant,
+                              ),
+                              child: TextButton(
+                                onPressed: () async {
+                                  Get.offAndToNamed(Routes.RESTAURANT_HISTORY);
+                                },
+                                child: const SizedBox(
+                                  child: Text("Lịch sử", style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.white
+                                  ),),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       Expanded(
@@ -242,6 +394,7 @@ class _BillWidgetState extends State<BillWidget> {
                                       ),
                                       child: TextButton(
                                         onPressed: () async {
+                                          // _showConfirmPrice();
                                           bool res = await controller.order(widget.listKey);
                                           if(res) {
                                             _showToastSuccess();

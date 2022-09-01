@@ -52,6 +52,7 @@ dependencies:
   firebase_messaging: ^11.4.1
   firebase_core: ^1.17.1
   expandable: ^5.0.1
+  data_table_2: ^2.3.6
   crypto: ^3.0.2
 dev_dependencies:
   flutter_test:

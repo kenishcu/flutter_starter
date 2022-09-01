@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/adapters/repository/restaurant/restaurant_repository.dart';
+import 'package:itrapp/models/order/order_model.dart';
 import 'package:itrapp/models/restaurant/category_model.dart';
 import 'package:itrapp/models/restaurant/item_product_model.dart';
 import 'package:itrapp/models/restaurant/payment_type_model.dart';
@@ -328,7 +329,26 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   }
 
   Future initScreenRestaurant() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     initScreen.value = true;
+  }
+
+  Future<List<OrderModel>> getOrderHistory() async {
+    HomeController homeController = Get.find<HomeController>();
+    String? receptionQueueId = homeController.patientInfo.receptionQueueId;
+    int? patientId = homeController.patientInfo.patientId;
+    ResultModel res = await restaurantRepository.getOrders(patientId, receptionQueueId);
+    List<OrderModel> orders = [];
+    if(res.status == true) {
+      if(res.results.length > 0) {
+        for(int i = 0; i < res.results.length; i++) {
+          print(res.results[i]);
+          orders.add(OrderModel.fromJson(res.results[i]));
+        }
+      }
+      return orders;
+    } else {
+      return orders;
+    }
   }
 }

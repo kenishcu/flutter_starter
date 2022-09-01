@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'meal_type_model.dart';
 import 'product_model.dart';
 
 part 'order_model.freezed.dart';
@@ -24,6 +25,7 @@ class OrderModel with _$OrderModel {
     String? status,
     String? paymentType,
     String? orderType,
+    MealTypeModel? mealTypeModel,
     int? usedAt,
     List<ProductModel>? products
   }) = _OrderModel;

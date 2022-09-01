@@ -1,8 +1,10 @@
 import 'package:itrapp/screens/bill_and_payment/bill_and_payment_screen.dart';
+import 'package:itrapp/screens/food_treatment/food_treatment_history/food_treatment_history_screen.dart';
 import 'package:itrapp/screens/food_treatment/food_treatment_screen.dart';
 import 'package:itrapp/screens/home/home_screen.dart';
 import 'package:itrapp/screens/intro/intro_screen.dart';
 import 'package:itrapp/screens/medical_history/medical_history_screen.dart';
+import 'package:itrapp/screens/restaurant/restaurant_history/restaurant_history_screen.dart';
 import 'package:itrapp/screens/restaurant/restaurant_screen.dart';
 import 'package:itrapp/screens/setting/setting_screen.dart';
 import 'package:itrapp/screens/splash/splash_screen.dart';
@@ -28,6 +30,10 @@ abstract class AppPages {
         page: () => const RestaurantScreen()
     ),
     GetPage(
+        name: Routes.RESTAURANT_HISTORY,
+        page: () => const RestaurantHistoryScreen()
+    ),
+    GetPage(
       name: Routes.INTRO,
       page: () => const IntroScreen()
     ),
@@ -42,6 +48,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.FOOD_TREATMENT,
       page: () => const FoodTreatmentScreen()
+    ),
+    GetPage(
+        name: Routes.FOOD_TREATMENT_HISTORY,
+        page: () => const FoodTreatmentHistoryScreen()
     ),
     GetPage(
         name: Routes.MEDICAL_HISTORY,
