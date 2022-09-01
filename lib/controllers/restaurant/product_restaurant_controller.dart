@@ -42,6 +42,8 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
 
   List<TextEditingController> textSearch = <TextEditingController>[].obs;
 
+  late Rx<bool> isButtonDisabled = true.obs;
+
   late Rx<MealTypeModel> selectedMealType = MealTypeModel().obs;
 
   late TabController tabController;
@@ -122,6 +124,9 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
     }
   }
 
+  void setDisableButton(bool status) {
+     isButtonDisabled.value = status;
+  }
   void setSelectedDay() {
      selectedDay.value = DateTime.now();
      print(selectedDay);

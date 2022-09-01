@@ -62,6 +62,31 @@ String formatMoney(int price) {
   return Money.fromIntWithCurrency(price, vnd, scale: 3).toString();
 }
 
+String formatMoneyWithRounded(int price) {
+  if (price == 0) {
+    return price.toString();
+  }
+  price = roundNumber(price);
+  final vnd = Currency.create('VND', 3,
+      symbol: 'đ', invertSeparators: true, pattern: '#.##0,000');
+  return Money.fromIntWithCurrency(price, vnd, scale: 3).toString();
+}
+
+int roundNumber(int number) {
+  int round;
+  if( number % 1000 != 0) {
+    int r  = number % 1000;
+    if(r >= 500) {
+      round = ((number / 1000 ).round() * 1000);
+    } else {
+      round = ((number / 1000 ).round() * 1000) + 1000;
+    }
+  } else {
+    round = number;
+  }
+  return round;
+}
+
 String formatTime(DateTime time) {
   String formattedDate = DateFormat('dd-MM-yyyy').format(time);
   return formattedDate;
