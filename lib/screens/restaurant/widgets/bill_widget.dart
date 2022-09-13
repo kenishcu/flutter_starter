@@ -69,7 +69,7 @@ class _BillWidgetState extends State<BillWidget> {
                           children: <TextSpan> [
                             TextSpan(text: " ${formatMoney(controller.total.value)}", style: const TextStyle(fontWeight: FontWeight.bold,  color: Colors.black54)),
                             TextSpan(text: " + ${formatMoneyWithRounded(((controller.total.value * 1.05) - controller.total.value).toInt())}", style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black54)),
-                            TextSpan(text: "  = ${formatMoneyWithRounded((controller.total.value * 1.05).toInt())}", style: const TextStyle(fontWeight: FontWeight.bold, color:  Color(0xffD66666))),
+                            TextSpan(text: "  = ${formatMoneyWithRounded((controller.total.value * 1.05).toInt())}", style: TextStyle(fontWeight: FontWeight.bold, color:  Theme.of(context).colorScheme.secondary)),
                           ]
                       ),
                     ),
@@ -128,11 +128,11 @@ class _BillWidgetState extends State<BillWidget> {
                           child: Container(
                             margin: const EdgeInsets.only(left: 10),
                             decoration: BoxDecoration(
-                                color: controller.isButtonDisabled.value ? Colors.grey : Theme.of(context).colorScheme.secondaryContainer,
+                                color: controller.isButtonDisabled.value ? Colors.grey : Theme.of(context).colorScheme.secondary,
                                 borderRadius: BorderRadius.circular(10.0)
                             ),
                             child: TextButton(
-                              child: const Text("Hoàn tất", style: TextStyle(
+                              child: const Text("Đặt", style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white
                               )),

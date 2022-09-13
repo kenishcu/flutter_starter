@@ -200,7 +200,6 @@ class RestaurautService {
       RangeValues? caloriesFilter, String sortedBy, bool sortedAsc) async {
      final ProductRestaurantController restaurantController = Get.find<ProductRestaurantController>();
      List<OrderModel> orders = await restaurantController.getOrderHistory();
-     print('order: ${orders}');
      return DesertsFakeWebServiceResponse(orders.length, orders);
   }
 }
