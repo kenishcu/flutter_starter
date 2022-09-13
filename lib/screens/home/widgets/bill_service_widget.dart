@@ -167,7 +167,7 @@ class BillServiceWidget extends GetView<HomeController> {
                                         flex: 1,
                                         child: Center(
                                           child: Text(
-                                              formatPriceNoSymbol(controller.billAndPaymentInfo[index].finalPrice! * (controller.billAndPaymentInfo[index].quantity!)).toString()
+                                              formatPriceNoSymbol(controller.billAndPaymentInfo[index].servicePrice! * (controller.billAndPaymentInfo[index].quantity!)).toString()
                                           ),
                                         ),
                                       ),

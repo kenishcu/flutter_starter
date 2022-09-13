@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../models/food_treatment/item_product_model.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utils/convert.dart';
 
 
@@ -303,11 +304,36 @@ class _BillWidgetState extends State<BillWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         height: 60,
-                        child: Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child:  Text("Giỏ hàng"),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child:  Text("Giỏ hàng"),
+                            ),
+                            Container(
+                              width: 80,
+                              height: 40,
+                              margin: const EdgeInsets.only(right: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Theme.of(context).colorScheme.secondaryVariant,
+                              ),
+                              child: TextButton(
+                                onPressed: () async {
+                                  Get.offAndToNamed(Routes.FOOD_TREATMENT_HISTORY);
+                                },
+                                child: const SizedBox(
+                                  child: Text("Lịch sử", style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.white
+                                  ),),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       Expanded(

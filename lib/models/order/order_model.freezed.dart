@@ -36,6 +36,7 @@ class _$OrderModelTearOff {
       String? status,
       String? paymentType,
       String? orderType,
+      MealTypeModel? mealTypeModel,
       int? usedAt,
       List<ProductModel>? products}) {
     return _OrderModel(
@@ -52,6 +53,7 @@ class _$OrderModelTearOff {
       status: status,
       paymentType: paymentType,
       orderType: orderType,
+      mealTypeModel: mealTypeModel,
       usedAt: usedAt,
       products: products,
     );
@@ -80,6 +82,7 @@ mixin _$OrderModel {
   String? get status => throw _privateConstructorUsedError;
   String? get paymentType => throw _privateConstructorUsedError;
   String? get orderType => throw _privateConstructorUsedError;
+  MealTypeModel? get mealTypeModel => throw _privateConstructorUsedError;
   int? get usedAt => throw _privateConstructorUsedError;
   List<ProductModel>? get products => throw _privateConstructorUsedError;
 
@@ -108,8 +111,11 @@ abstract class $OrderModelCopyWith<$Res> {
       String? status,
       String? paymentType,
       String? orderType,
+      MealTypeModel? mealTypeModel,
       int? usedAt,
       List<ProductModel>? products});
+
+  $MealTypeModelCopyWith<$Res>? get mealTypeModel;
 }
 
 /// @nodoc
@@ -135,6 +141,7 @@ class _$OrderModelCopyWithImpl<$Res> implements $OrderModelCopyWith<$Res> {
     Object? status = freezed,
     Object? paymentType = freezed,
     Object? orderType = freezed,
+    Object? mealTypeModel = freezed,
     Object? usedAt = freezed,
     Object? products = freezed,
   }) {
@@ -191,6 +198,10 @@ class _$OrderModelCopyWithImpl<$Res> implements $OrderModelCopyWith<$Res> {
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
               as String?,
+      mealTypeModel: mealTypeModel == freezed
+          ? _value.mealTypeModel
+          : mealTypeModel // ignore: cast_nullable_to_non_nullable
+              as MealTypeModel?,
       usedAt: usedAt == freezed
           ? _value.usedAt
           : usedAt // ignore: cast_nullable_to_non_nullable
@@ -200,6 +211,17 @@ class _$OrderModelCopyWithImpl<$Res> implements $OrderModelCopyWith<$Res> {
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductModel>?,
     ));
+  }
+
+  @override
+  $MealTypeModelCopyWith<$Res>? get mealTypeModel {
+    if (_value.mealTypeModel == null) {
+      return null;
+    }
+
+    return $MealTypeModelCopyWith<$Res>(_value.mealTypeModel!, (value) {
+      return _then(_value.copyWith(mealTypeModel: value));
+    });
   }
 }
 
@@ -223,8 +245,12 @@ abstract class _$OrderModelCopyWith<$Res> implements $OrderModelCopyWith<$Res> {
       String? status,
       String? paymentType,
       String? orderType,
+      MealTypeModel? mealTypeModel,
       int? usedAt,
       List<ProductModel>? products});
+
+  @override
+  $MealTypeModelCopyWith<$Res>? get mealTypeModel;
 }
 
 /// @nodoc
@@ -252,6 +278,7 @@ class __$OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
     Object? status = freezed,
     Object? paymentType = freezed,
     Object? orderType = freezed,
+    Object? mealTypeModel = freezed,
     Object? usedAt = freezed,
     Object? products = freezed,
   }) {
@@ -308,6 +335,10 @@ class __$OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
               as String?,
+      mealTypeModel: mealTypeModel == freezed
+          ? _value.mealTypeModel
+          : mealTypeModel // ignore: cast_nullable_to_non_nullable
+              as MealTypeModel?,
       usedAt: usedAt == freezed
           ? _value.usedAt
           : usedAt // ignore: cast_nullable_to_non_nullable
@@ -337,6 +368,7 @@ class _$_OrderModel extends _OrderModel {
       this.status,
       this.paymentType,
       this.orderType,
+      this.mealTypeModel,
       this.usedAt,
       this.products})
       : super._();
@@ -371,13 +403,15 @@ class _$_OrderModel extends _OrderModel {
   @override
   final String? orderType;
   @override
+  final MealTypeModel? mealTypeModel;
+  @override
   final int? usedAt;
   @override
   final List<ProductModel>? products;
 
   @override
   String toString() {
-    return 'OrderModel(id: $id, bedName: $bedName, bedId: $bedId, patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, roomId: $roomId, roomName: $roomName, reservationId: $reservationId, createAt: $createAt, status: $status, paymentType: $paymentType, orderType: $orderType, usedAt: $usedAt, products: $products)';
+    return 'OrderModel(id: $id, bedName: $bedName, bedId: $bedId, patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, roomId: $roomId, roomName: $roomName, reservationId: $reservationId, createAt: $createAt, status: $status, paymentType: $paymentType, orderType: $orderType, mealTypeModel: $mealTypeModel, usedAt: $usedAt, products: $products)';
   }
 
   @override
@@ -402,6 +436,8 @@ class _$_OrderModel extends _OrderModel {
             const DeepCollectionEquality()
                 .equals(other.paymentType, paymentType) &&
             const DeepCollectionEquality().equals(other.orderType, orderType) &&
+            const DeepCollectionEquality()
+                .equals(other.mealTypeModel, mealTypeModel) &&
             const DeepCollectionEquality().equals(other.usedAt, usedAt) &&
             const DeepCollectionEquality().equals(other.products, products));
   }
@@ -422,6 +458,7 @@ class _$_OrderModel extends _OrderModel {
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(paymentType),
       const DeepCollectionEquality().hash(orderType),
+      const DeepCollectionEquality().hash(mealTypeModel),
       const DeepCollectionEquality().hash(usedAt),
       const DeepCollectionEquality().hash(products));
 
@@ -451,6 +488,7 @@ abstract class _OrderModel extends OrderModel {
       String? status,
       String? paymentType,
       String? orderType,
+      MealTypeModel? mealTypeModel,
       int? usedAt,
       List<ProductModel>? products}) = _$_OrderModel;
   _OrderModel._() : super._();
@@ -484,6 +522,8 @@ abstract class _OrderModel extends OrderModel {
   String? get paymentType;
   @override
   String? get orderType;
+  @override
+  MealTypeModel? get mealTypeModel;
   @override
   int? get usedAt;
   @override

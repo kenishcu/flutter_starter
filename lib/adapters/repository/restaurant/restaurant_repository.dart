@@ -96,7 +96,7 @@ class RestaurantRepository {
     }
   }
 
-  Future<ResultModel> getOrder(int patientId, String receptionQueueId) async {
+  Future<ResultModel> getOrders(int? patientId, String? receptionQueueId) async {
     try {
       var response = await client.dio.request(
           baseUrl + '/orders?patient_id=${patientId.toString()}&reception_queue_id=${receptionQueueId.toString()}&order_type=DOANNHAHANG',

@@ -10,6 +10,7 @@ import 'package:get_storage/get_storage.dart';
 import '../adapters/repository/food_treatment/food_treatment_repository.dart';
 import '../models/food_treatment/item_product_model.dart';
 import '../models/food_treatment/product_model.dart';
+import '../models/order/order_model.dart';
 import '../models/restaurant/payment_type_model.dart';
 import '../utils/convert.dart';
 import 'home_controller.dart';
@@ -93,6 +94,7 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
           myTabs.add(MenuModel.fromJson(e))
         });
         myTabs = myTabs.where((element) => element.orderType == 'DOANDIEUTRI').toList();
+        myTabs = List.from(myTabs.reversed);
       }
 
       for (var element in myTabs) {
@@ -324,5 +326,23 @@ class FoodTreatmentController extends GetxController  with GetSingleTickerProvid
 
   setDisabledOrder() {
     disabledOrder.value = false;
+  }
+
+  Future<List<OrderModel>> getOrderHistory() async {
+    HomeController homeController = Get.find<HomeController>();
+    String? receptionQueueId = homeController.patientInfo.receptionQueueId;
+    int? patientId = homeController.patientInfo.patientId;
+    ResultModel res = await foodTreatmentRepository.getOrders(patientId!, receptionQueueId!);
+    List<OrderModel> orders = [];
+    if(res.status == true) {
+      if(res.results.length > 0) {
+        for(int i = 0; i < res.results.length; i++) {
+          orders.add(OrderModel.fromJson(res.results[i]));
+        }
+      }
+      return orders;
+    } else {
+      return orders;
+    }
   }
 }
