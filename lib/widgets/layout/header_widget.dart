@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/widgets/button/button_header_widget.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
+
 
 import '../../routes/app_pages.dart';
 
@@ -64,7 +66,7 @@ class HeaderWidget extends StatelessWidget {
                     Get.toNamed(Routes.HOME);
                   },
                   iconData: Icons.home,
-                  buttonTitle: 'Trang chủ',
+                  buttonTitle: AppLocalizations.of(context).getTranslate('home'),
                 ),
                 ButtonHeaderWidget(
                   iconData: Icons.notifications,
@@ -75,6 +77,13 @@ class HeaderWidget extends StatelessWidget {
                   iconData: Icons.cleaning_services,
                   buttonTitle: 'Dọn phòng',
                   onPressed: onCallCleanService
+                ),
+                DropdownButton(
+                  items: const [
+                    DropdownMenuItem(child: Text("Tiếng Việt"), value: "vi"),
+                    DropdownMenuItem(child: Text("English"), value: "en"),
+                  ],
+                  onChanged: null,
                 )
               ],
             )
