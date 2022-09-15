@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:itrapp/widgets/button/button_header_widget.dart';
 import 'package:get/get.dart';
 import 'package:itrapp/lang/appLocalizations.dart';
-
-
+import 'package:itrapp/app.dart';
 import '../../routes/app_pages.dart';
 
 class HeaderWidget extends StatelessWidget {
-
-  const HeaderWidget({Key? key, required this.onOpenDraw, required this.onCallCleanService}) : super(key: key);
+  const HeaderWidget(
+      {Key? key, required this.onOpenDraw, required this.onCallCleanService})
+      : super(key: key);
 
   final VoidCallback onOpenDraw;
 
   final VoidCallback onCallCleanService;
-
 
   @override
   Widget build(BuildContext context) {
@@ -66,31 +65,37 @@ class HeaderWidget extends StatelessWidget {
                     Get.toNamed(Routes.HOME);
                   },
                   iconData: Icons.home,
-                  buttonTitle: AppLocalizations.of(context).getTranslate('home'),
+                  buttonTitle:
+                      AppLocalizations.of(context).getTranslate('home'),
                 ),
                 ButtonHeaderWidget(
                   iconData: Icons.notifications,
-                  buttonTitle: 'Thông báo',
+                  buttonTitle: AppLocalizations.of(context).getTranslate('notifications'),
                   onPressed: onOpenDraw,
                 ),
                 ButtonHeaderWidget(
-                  iconData: Icons.cleaning_services,
-                  buttonTitle: 'Dọn phòng',
-                  onPressed: onCallCleanService
-                ),
+                    iconData: Icons.cleaning_services,
+                    buttonTitle: AppLocalizations.of(context).getTranslate('cleaning_services'),
+                    onPressed: onCallCleanService),
                 DropdownButton(
+                  hint: Text(AppLocalizations.of(context).getTranslate('language')),
                   items: const [
-                    DropdownMenuItem(child: Text("Tiếng Việt"), value: "vi"),
-                    DropdownMenuItem(child: Text("English"), value: "en"),
+                    DropdownMenuItem(
+                      child: Text("Tiếng Việt"),
+                      value: 'vi',
+                    ),
+                    DropdownMenuItem(
+                      child: Text("English"),
+                      value: 'en',
+                    )
                   ],
-                  onChanged: null,
-                )
+                  onChanged: (value) {
+                    Get.updateLocale(Locale(value.toString(), ''));
+                  },
+                ),
               ],
-            )
-        )
+            ))
       ],
     );
   }
-
-
 }
