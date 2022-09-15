@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/home_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:get/get.dart';
 
 class BedTypeWidget extends GetView<HomeController> {
@@ -37,7 +38,7 @@ class BedTypeWidget extends GetView<HomeController> {
                       children: [
                         Container(
                           child: Text(
-                            "Chi nhánh ${controller.deviceInfo.branchName.toString()}",
+                            "${AppLocalizations.of(context).getTranslate('branch')} ${controller.deviceInfo.branchName.toString()}",
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16
@@ -70,7 +71,7 @@ class BedTypeWidget extends GetView<HomeController> {
                 child: RichText(
                   overflow: TextOverflow.ellipsis,
                   text: TextSpan(
-                    text: 'Bác sĩ : ',
+                    text: '${AppLocalizations.of(context).getTranslate('doctor')} : ',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                     children: <TextSpan>[
                       TextSpan(text: controller.patientInfo.examiningByFullname ?? '', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
@@ -94,7 +95,7 @@ class BedTypeWidget extends GetView<HomeController> {
                 child: RichText(
                   overflow: TextOverflow.ellipsis,
                   text: TextSpan(
-                    text: 'Y tá : ',
+                    text: '${AppLocalizations.of(context).getTranslate('nurse')} : ',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                     children: <TextSpan>[
                       TextSpan(text:  controller.patientInfo.nurseByFullname ?? '', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),

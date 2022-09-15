@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/home_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/convert.dart';
@@ -35,7 +36,7 @@ class BillServiceWidget extends GetView<HomeController> {
                 children: [
                   Container(
                     padding: const EdgeInsets.only(left: 20.0, top: 15.0),
-                    child: const Text("Theo dõi bảng kê", style: TextStyle(
+                    child: Text(AppLocalizations.of(context).getTranslate('follow_the_list'), style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600
                     )),
@@ -52,7 +53,7 @@ class BillServiceWidget extends GetView<HomeController> {
                         await controller.goToBill();
                       },
                       child: Text(
-                        "Xem chi tiết".toUpperCase(),
+                        AppLocalizations.of(context).getTranslate('see_details').toUpperCase(),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12
@@ -205,7 +206,7 @@ class BillServiceWidget extends GetView<HomeController> {
                       flex: 1,
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Tổng tạm ứng: ${formatPriceNoSymbol(controller.patientInfo.totalDepositPrice! - controller.patientInfo.totalReturnPrice!)}" , style: const TextStyle(
+                        child: Text("${AppLocalizations.of(context).getTranslate('total_deposit')}: ${formatPriceNoSymbol(controller.patientInfo.totalDepositPrice! - controller.patientInfo.totalReturnPrice!)}" , style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600
                         )),

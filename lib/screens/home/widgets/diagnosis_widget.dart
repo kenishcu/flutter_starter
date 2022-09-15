@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/home_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:get/get.dart';
 
 class DiagnosisWidget extends GetView<HomeController> {
-  
+
   const DiagnosisWidget({Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +32,7 @@ class DiagnosisWidget extends GetView<HomeController> {
                       child: RichText(
                         overflow: TextOverflow.ellipsis,
                         text: TextSpan(
-                          text: 'Chẩn đoán điều trị : ',
+                          text: '${AppLocalizations.of(context).getTranslate('positive_diagnosis')}: ',
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                           children: <TextSpan>[
                             TextSpan(text: controller.patientInfo.icds?.first.serviceName ?? '', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
@@ -46,7 +47,7 @@ class DiagnosisWidget extends GetView<HomeController> {
                       child: RichText(
                         overflow: TextOverflow.ellipsis,
                         text: TextSpan(
-                          text: 'Mức chăm sóc : ',
+                          text: '${AppLocalizations.of(context).getTranslate('medical_care_level')}: ',
                           style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onBackground),
                           children: <TextSpan>[
                             TextSpan(text: controller.patientInfo.levelCare?.levelCareName ?? '', style: TextStyle(fontSize: 14)),
@@ -84,7 +85,7 @@ class DiagnosisWidget extends GetView<HomeController> {
                                     child: RichText(
                                       overflow: TextOverflow.ellipsis,
                                       text: TextSpan(
-                                        text: 'Thông tin dị ứng : ',
+                                        text: '${AppLocalizations.of(context).getTranslate('allergy_information')} : ',
                                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                                       ),
                                     ),
@@ -125,7 +126,7 @@ class DiagnosisWidget extends GetView<HomeController> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      "Chú ý",
+                                      AppLocalizations.of(context).getTranslate('noted'),
                                       style: TextStyle(fontSize: 16, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.bold),
                                     ),
                                     Container(
@@ -166,5 +167,5 @@ class DiagnosisWidget extends GetView<HomeController> {
       ),
     );
   }
-  
+
 }

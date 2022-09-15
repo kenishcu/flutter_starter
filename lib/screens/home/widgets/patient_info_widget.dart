@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/home_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:get/get.dart';
 
 class PatientInfoWidget extends GetView<HomeController> {
@@ -31,7 +32,7 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 20,
-                    child: Text("Nhóm máu", style: TextStyle(
+                    child: Text(AppLocalizations.of(context).getTranslate('blood_group'), style: TextStyle(
                       color: Theme.of(context).colorScheme.secondary
                     )),
                   ),
@@ -65,7 +66,7 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 20,
-                    child: Text("Chiều cao", style: TextStyle(
+                    child: Text(AppLocalizations.of(context).getTranslate('height'), style: TextStyle(
                         color: Theme.of(context).colorScheme.secondary
                     )),
                   ),
@@ -100,7 +101,7 @@ class PatientInfoWidget extends GetView<HomeController> {
                   ),
                   SizedBox(
                     height: 20,
-                    child: Text("Cân nặng", style: TextStyle(
+                    child: Text(AppLocalizations.of(context).getTranslate('weight'), style: TextStyle(
                         color: Theme.of(context).colorScheme.secondary
                     )),
                   ),

@@ -1,6 +1,7 @@
 import 'package:itrapp/controllers/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/widgets/button/button_service_widget.dart';
 
 import '../../../routes/app_pages.dart';
@@ -30,7 +31,7 @@ class ServiceWidget extends GetView<HomeController> {
                 height: 80,
                 child: Container(
                   padding: const EdgeInsets.only(left: 30, top: 20),
-                  child: const Text("Dịch vụ", style: TextStyle(
+                  child: Text(AppLocalizations.of(context).getTranslate('service'), style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20
                   )),
@@ -48,7 +49,7 @@ class ServiceWidget extends GetView<HomeController> {
                     children: <Widget>[
                       ButtonServiceWidget(
                         iconData: Icons.restaurant,
-                        buttonTitle: 'Nhà hàng',
+                        buttonTitle: AppLocalizations.of(context).getTranslate('restaurant'),
                         onPressed: () {
                           controller.getRestaurantInfo();
                           Get.offAndToNamed(Routes.RESTAURANT);
@@ -56,7 +57,7 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.ramen_dining_outlined,
-                        buttonTitle: 'Đồ ăn điều trị',
+                        buttonTitle: AppLocalizations.of(context).getTranslate('treatment_food'),
                         onPressed: () {
                           controller.getFoodTreatmentInfo();
                           Get.offAndToNamed(Routes.FOOD_TREATMENT);
@@ -64,7 +65,7 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.checkroom_outlined,
-                        buttonTitle: 'Mượn đồ',
+                        buttonTitle: AppLocalizations.of(context).getTranslate('borrowing_items'),
                         onPressed: () {
                           controller.getLoanServiceInfo();
                           Get.offAndToNamed(Routes.LOAN_SERVICE);
@@ -72,7 +73,7 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.payments_outlined,
-                        buttonTitle: 'Xem bảng kê & thanh toán',
+                        buttonTitle: AppLocalizations.of(context).getTranslate('view_statement_payment'),
                         onPressed: () {
                           controller.getBillAndPayment();
                           Get.offAndToNamed(Routes.BILL_AND_PAYMENT);
@@ -80,7 +81,7 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.medical_services_outlined,
-                        buttonTitle: 'Bệnh sử',
+                        buttonTitle: AppLocalizations.of(context).getTranslate('medical_history'),
                         onPressed: () {
                           controller.getMedicalHistory();
                           Get.offAndToNamed(Routes.MEDICAL_HISTORY);
