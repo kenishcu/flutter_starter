@@ -1,4 +1,5 @@
 {
-  "notify": "Notification",
-  "home": "Home"
+  "notifications": "Notification",
+  "home": "Home",
+  "cleaning_services": "Cleaning"
 }
