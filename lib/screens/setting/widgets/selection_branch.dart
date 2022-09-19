@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/models/settings/branch_model.dart';
 import 'package:itrapp/models/settings/department_model.dart';
 import 'package:get/get.dart';
@@ -50,14 +51,14 @@ class SelectionBranch extends GetView<SettingController> {
       width: double.infinity,
       child: Row(
         children: [
-          const SizedBox(
+          SizedBox(
             height: 50,
             width: 200,
             child: Align(
               alignment: Alignment.center,
-              child: Text("Chi nhánh ",
+              child: Text("${AppLocalizations.of(context).getTranslate('branch')} ",
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 20
                 ),
@@ -97,10 +98,10 @@ class SelectionBranch extends GetView<SettingController> {
                       topRight: Radius.circular(20),
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      'Chi nhánh',
-                      style: TextStyle(
+                      AppLocalizations.of(context).getTranslate('branch'),
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/utils/convert.dart';
 
 import '../../../../models/order/product_model.dart';
@@ -253,7 +254,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                             columns: [
                               DataColumn(label: Text('Tên')),
                               DataColumn(label: Text('SL')),
-                              DataColumn(label: Text('Ghi chú')),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('note'))),
                               DataColumn(label: Text('Thành tiền')),
                             ],
                             rows: products.map((product) => DataRow(
@@ -319,7 +320,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                             children: [
                               Container(
                                 width: 700,
-                                child: Text("Tổng tiền", style: TextStyle(
+                                child: Text(AppLocalizations.of(context).getTranslate('total'), style: TextStyle(
                                     fontSize: 26
                                 )),
                               ),
@@ -346,7 +347,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("Đóng", style: TextStyle(
+                            child: Text(AppLocalizations.of(context).getTranslate('close'), style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                             )),

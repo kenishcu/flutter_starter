@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 import '../routes/app_pages.dart';
 import '../widgets/layout/header_setting_widget.dart';
@@ -82,11 +83,11 @@ class HistoryLayout extends StatelessWidget {
                                   },
                                 )
                             ),
-                            const SizedBox(
+                            SizedBox(
                               height: 40,
                               child: Align(
                                 alignment: Alignment.center,
-                                child: Text("TRỞ LẠI", style: TextStyle(
+                                child: Text(AppLocalizations.of(context).getTranslate('back'), style: const TextStyle(
                                     fontSize: 18,
                                     color: Colors.white
                                 )),

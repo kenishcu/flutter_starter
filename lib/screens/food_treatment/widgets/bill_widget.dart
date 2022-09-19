@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/food_treatment_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/screens/food_treatment/widgets/animated_item_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -61,17 +62,17 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_successfully'), style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14
                       )),
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Nhà hàng đã nhận order", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('the_restaurant_had_received_order'), style: const TextStyle(
                         fontSize: 12
                       )),
                     )
@@ -117,10 +118,10 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_not_successful'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         color: Colors.white
@@ -128,7 +129,7 @@ class _BillWidgetState extends State<BillWidget> {
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Nhà hàng chưa nhận order", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('the_restaurant_had_not_received_order'), style: const TextStyle(
                           fontSize: 12,
                           color: Colors.white
                       )),
@@ -166,9 +167,9 @@ class _BillWidgetState extends State<BillWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 60,
-              child: Text("Vui lòng nhập mật khẩu :"),
+              child: Text("${AppLocalizations.of(context).getTranslate('please_enter_a_password')} :"),
             ),
             SizedBox(
               height: 80,
@@ -216,7 +217,7 @@ class _BillWidgetState extends State<BillWidget> {
                           borderRadius: BorderRadius.circular(20.0)
                       ),
                       child: TextButton(
-                        child: const Text("Đóng", style: TextStyle(
+                        child: Text(AppLocalizations.of(context).getTranslate('close'), style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white
                         ),),
@@ -278,12 +279,12 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 40,
-                      child: Text('Chú ý'),
+                      child: Text(AppLocalizations.of(context).getTranslate('noted')),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     )
                   ],
@@ -309,9 +310,9 @@ class _BillWidgetState extends State<BillWidget> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child:  Text("Giỏ hàng"),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child:  Text(AppLocalizations.of(context).getTranslate('cart')),
                             ),
                             Container(
                               width: 80,
@@ -325,8 +326,8 @@ class _BillWidgetState extends State<BillWidget> {
                                 onPressed: () async {
                                   Get.offAndToNamed(Routes.FOOD_TREATMENT_HISTORY);
                                 },
-                                child: const SizedBox(
-                                  child: Text("Lịch sử", style: TextStyle(
+                                child: SizedBox(
+                                  child: Text(AppLocalizations.of(context).getTranslate('order_history'), style: const TextStyle(
                                     fontSize: 12,
                                     color: Colors.white
                                   ),),
@@ -350,11 +351,11 @@ class _BillWidgetState extends State<BillWidget> {
                         width: double.infinity,
                         child: Row(
                           children: [
-                            const Expanded(
+                            Expanded(
                               flex: 1,
                               child: Padding(
-                                  padding: EdgeInsets.only(left: 20, top: 10),
-                                  child: Text('Tổng : 0')),
+                                  padding: const EdgeInsets.only(left: 20, top: 10),
+                                  child: Text('${AppLocalizations.of(context).getTranslate('total')} : 0')),
                             ),
                             Expanded(
                                 flex: 1,
@@ -379,22 +380,22 @@ class _BillWidgetState extends State<BillWidget> {
                                           );
                                         },
                                         child: Row(
-                                          children: const [
-                                            SizedBox(
+                                          children: [
+                                            const SizedBox(
                                               width: 5,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               child: Icon(
                                                 Icons.done,
                                                 size: 20,
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 5,
                                             ),
                                             SizedBox(
-                                              child: Text("HOÀN TẤT", style: TextStyle(
+                                              child: Text(AppLocalizations.of(context).getTranslate('complete'), style: const TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white,
                                               ),),

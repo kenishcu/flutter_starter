@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/home_controller.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 class UserInfoWidget extends StatelessWidget {
 
@@ -37,7 +38,7 @@ class UserInfoWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       )),
-                  Text("Mã y tế: ${controller.patientInfo.patientId.toString()}", style: const TextStyle(
+                  Text("${AppLocalizations.of(context).getTranslate('medical_number')}: ${controller.patientInfo.patientId.toString()}", style: const TextStyle(
                     fontSize: 14,
                   ))
                 ],

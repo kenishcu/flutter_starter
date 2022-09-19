@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/payment_by_digital_wallet_momo.dart';
 import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/payment_by_digital_wallet_vnpay.dart';
 import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/payment_success_widget.dart';
@@ -70,17 +71,17 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Yêu cầu thanh toán thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('payment_request_successful'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14
                       )),
                     ),
                     SizedBox(
                       height: 30,
-                      child: Text("Hệ thống đá nhận được yêu cầu", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('the_system_has_received_the_request'), style: const TextStyle(
                           fontSize: 12
                       )),
                     )
@@ -172,11 +173,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 40,
             child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Tổng kết hoá đơn",  style: TextStyle(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(AppLocalizations.of(context).getTranslate('bill_summary'),  style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ))
@@ -204,7 +205,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               width: double.infinity,
                               child: Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text("Tổng hoá đơn ${index + 1}  : ${formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].finalPrice!)}", style: const TextStyle(
+                                child: Text("${AppLocalizations.of(context).getTranslate('total_bill')} ${index + 1}  : ${formatPriceNoSymbol(controller.myTabs[controller.selectedTab.value].finalPrice!)}", style: const TextStyle(
                                     fontWeight: FontWeight.w600
                                 )),
                               ),
@@ -217,7 +218,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       width: double.infinity,
                       child: RichText(
                         text: TextSpan(
-                          text: 'Tổng tất cả hoá đơn: ',
+                          text: '${AppLocalizations.of(context).getTranslate('total_of_all_bills')}: ',
                           style: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.black
@@ -245,11 +246,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(
+          SizedBox(
             height: 40,
             child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Chọn hình thức thanh toán",  style: TextStyle(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(AppLocalizations.of(context).getTranslate('choose_payment_method'),  style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ))
@@ -284,7 +285,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           controller.setSelectedPayment(0);
                         },
                         child: Center(
-                          child: Text("Tại giường", style: TextStyle(
+                          child: Text(AppLocalizations.of(context).getTranslate('in_room'), style: TextStyle(
                               color: controller.selectedPaymentType.value == 0 ? Colors.white : Colors.black
                           )),
                         ),
@@ -351,11 +352,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                         _showToastError();
                       }
                     },
-                    child: const SizedBox(
+                    child: SizedBox(
                       height: 40,
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("Tiếp", style: TextStyle(
+                        child: Text(AppLocalizations.of(context).getTranslate('next'), style: const TextStyle(
                             fontSize: 18,
                             color: Colors.white
                         )),
@@ -391,11 +392,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 40,
               child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text("Chọn hình thức thanh toán",  style: TextStyle(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(AppLocalizations.of(context).getTranslate('choose_payment_method'),  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))

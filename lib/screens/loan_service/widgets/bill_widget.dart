@@ -3,6 +3,7 @@ import 'package:itrapp/controllers/loan_service_controller.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 import '../../../controllers/restaurant/product_restaurant_controller.dart';
 import '../../../utils/convert.dart';
@@ -55,10 +56,10 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_successfully'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14
                       )),
@@ -110,10 +111,10 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_not_successful'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                           color: Colors.white
@@ -172,10 +173,10 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 40,
-                      child: Text('Chú ý'),
+                      child: Text(AppLocalizations.of(context).getTranslate('noted')),
                     ),
                   ],
                 ),
@@ -195,11 +196,11 @@ class _BillWidgetState extends State<BillWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         height: 60,
                         child: Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child:  Text("Giỏ hàng"),
+                          padding: const EdgeInsets.all(20.0),
+                          child:  Text(AppLocalizations.of(context).getTranslate('cart')),
                         ),
                       ),
                       Expanded(
@@ -220,7 +221,7 @@ class _BillWidgetState extends State<BillWidget> {
                               flex: 1,
                               child: Padding(
                                   padding: const EdgeInsets.only(left: 20, top: 10),
-                                  child: Obx(() => Text('Tổng : ${formatPrice(controller.total.value)}'))),
+                                  child: Obx(() => Text('${AppLocalizations.of(context).getTranslate('total')} : ${formatPrice(controller.total.value)}'))),
                             ),
                             Expanded(
                                 flex: 1,
@@ -244,22 +245,22 @@ class _BillWidgetState extends State<BillWidget> {
                                           }
                                         },
                                         child: Row(
-                                          children: const [
-                                            SizedBox(
+                                          children: [
+                                            const SizedBox(
                                               width: 5,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               child: Icon(
                                                 Icons.done,
                                                 size: 20,
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 5,
                                             ),
                                             SizedBox(
-                                              child: Text("HOÀN TẤT", style: TextStyle(
+                                              child: Text(AppLocalizations.of(context).getTranslate('complete'), style: const TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white,
                                               ),),

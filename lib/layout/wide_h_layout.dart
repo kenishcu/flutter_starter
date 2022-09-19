@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/routes/app_pages.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -63,10 +64,10 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_successfully'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14
                       )),
@@ -119,10 +120,10 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_not_successful'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                           color: Colors.white
@@ -170,11 +171,11 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 180,
                     child: Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text("Thông báo", style: TextStyle(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(AppLocalizations.of(context).getTranslate('notifications'), style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold
                       )),
@@ -384,11 +385,11 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                                                             },
                                                           )
                                                       ),
-                                                      const SizedBox(
+                                                      SizedBox(
                                                         height: 40,
                                                         child: Align(
                                                           alignment: Alignment.center,
-                                                          child: Text("TRỞ LẠI", style: TextStyle(
+                                                          child: Text(AppLocalizations.of(context).getTranslate('back'), style: const TextStyle(
                                                               fontSize: 18,
                                                               color: Colors.white
                                                           )),

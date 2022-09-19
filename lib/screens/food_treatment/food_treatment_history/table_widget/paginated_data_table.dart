@@ -61,43 +61,43 @@ class _PaginatedRestaurantDataTableState extends State<PaginatedRestaurantDataTa
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 400,
           child: Center(
-            child: Text('Phòng'),
+            child: Text(AppLocalizations.of(context).getTranslate('room')),
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 200,
           child: Center(
-            child: Text('Bữa'),
+            child: Text(AppLocalizations.of(context).getTranslate('meal')),
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 250,
           child: Center(
-            child: Text('Hình thức thanh toán'),
+            child: Text(AppLocalizations.of(context).getTranslate('payment_method')),
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 200,
           child: Center(
-            child: Text('Thời gian đặt'),
+            child: Text(AppLocalizations.of(context).getTranslate('booking_time')),
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 200,
           child: Center(
-            child: Text('Ngày sử dụng'),
+            child: Text(AppLocalizations.of(context).getTranslate('used_date')),
           ),
         ),
       ),
@@ -139,7 +139,7 @@ class _PaginatedRestaurantDataTableState extends State<PaginatedRestaurantDataTa
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: [
-                  Text("Lịch sử")
+                  Text(AppLocalizations.of(context).getTranslate('order_history'))
               ]),
           rowsPerPage: _rowsPerPage,
           // Default - do nothing, autoRows - goToLast, other - goToFirst

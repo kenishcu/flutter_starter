@@ -1,4 +1,5 @@
 import 'package:itrapp/controllers/index.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/layout/setting_layout.dart';
 import 'package:itrapp/routes/app_pages.dart';
 import 'package:itrapp/screens/intro/widgets/youtube_player.dart';
@@ -58,10 +59,10 @@ class IntroScreenState extends State<IntroScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 40,
-                      child: Text("Lấy thông tin bệnh nhân thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('obtaining_patient_information_successfully'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14
                       )),
@@ -108,10 +109,10 @@ class IntroScreenState extends State<IntroScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 40,
-                      child: Text("Lấy thông tin bệnh nhân thất bại", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('obtaining_patient_information_failed'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                           color: Colors.white

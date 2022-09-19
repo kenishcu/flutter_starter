@@ -5,6 +5,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:itrapp/controllers/food_treatment_controller.dart';
 import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
 import 'package:itrapp/utils/convert.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 import '../../../../models/order/product_model.dart';
 import '../../../../models/order/order_model.dart';
@@ -254,7 +255,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                             columns: [
                               DataColumn(label: Text('Tên')),
                               DataColumn(label: Text('SL')),
-                              DataColumn(label: Text('Ghi chú')),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('note'))),
                               DataColumn(label: Text('Thành tiền')),
                             ],
                             rows: products.map((product) => DataRow(
@@ -320,7 +321,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                             children: [
                               Container(
                                 width: 700,
-                                child: Text("Tổng tiền", style: TextStyle(
+                                child: Text(AppLocalizations.of(context).getTranslate('total'), style: const TextStyle(
                                     fontSize: 26
                                 )),
                               ),
@@ -339,7 +340,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                         child: Container(
                           width: 110,
                           height: 50,
-                          margin: EdgeInsets.only(left: 1000, top: 20),
+                          margin: const EdgeInsets.only(left: 1000, top: 20),
                           decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primaryVariant
                           ),
@@ -347,7 +348,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("Đóng", style: TextStyle(
+                            child: Text(AppLocalizations.of(context).getTranslate('close'), style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                             )),

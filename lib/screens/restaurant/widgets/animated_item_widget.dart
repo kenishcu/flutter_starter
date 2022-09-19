@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 import '../../../models/restaurant/item_product_model.dart';
 import '../../../utils/convert.dart';
@@ -91,14 +92,14 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                                           flex: 2,
                                           child: Padding(
                                             padding: const EdgeInsets.all(10.0),
-                                            child: Text("Giá : " + formatPrice(item.product!.price!) + "/1Sp"),
+                                            child: Text("${AppLocalizations.of(context).getTranslate('price')}: " + formatPrice(item.product!.price!) + "/1Sp"),
                                           ),
                                         ),
                                         Expanded(
                                           flex: 2,
                                           child: Padding(
                                             padding: const EdgeInsets.all(10.0),
-                                            child: Text("Số lượng : " + item.number.toString()),
+                                            child: Text("${AppLocalizations.of(context).getTranslate('amount')}: " + item.number.toString()),
                                           ),
                                         ),
                                       ],
@@ -114,9 +115,9 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                       padding: const EdgeInsets.all(20.0),
                       child: Row(
                         children: [
-                          const Expanded(
+                          Expanded(
                             flex: 1,
-                            child: Text("Ghi chú"),
+                            child: Text(AppLocalizations.of(context).getTranslate('note')),
                           ),
                           Expanded(
                               flex: 3,
@@ -190,7 +191,7 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                                   controller.editProduct(item, editingController.text, index);
                                   Navigator.pop(context);
                                 },
-                                child: Text("Ghi chú"),
+                                child: Text(AppLocalizations.of(context).getTranslate('note')),
                               ),
                             ),
                           ),
@@ -353,18 +354,18 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                                               child: Row(
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 mainAxisAlignment: MainAxisAlignment.center,
-                                                children: const [
+                                                children: [
                                                   SizedBox(
-                                                    child: Text("Ghi chú", style: TextStyle(
+                                                    child: Text(AppLocalizations.of(context).getTranslate('note'), style: const TextStyle(
                                                         fontSize: 12,
                                                         color: Colors.white
                                                     )
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 5,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: double.infinity,
                                                     child: Icon(
                                                       Icons.edit,
@@ -391,11 +392,11 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                   width: double.infinity,
                   child: Row(
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 80,
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text("Ghi chú"),
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(AppLocalizations.of(context).getTranslate('note')),
                         ),
                       ),
                       SizedBox(

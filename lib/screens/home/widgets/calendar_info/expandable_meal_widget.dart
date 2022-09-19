@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'dart:math' as math;
 
 import 'package:itrapp/models/home/meal/reception_meal_model.dart';
@@ -36,9 +37,9 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        "Lịch ăn", style: TextStyle(
+                        AppLocalizations.of(context).getTranslate('meal_schedule'), style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600
                       ),
@@ -94,7 +95,7 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                                       height: 30,
                                       child: Padding(
                                         padding: const EdgeInsets.only(top: 10),
-                                        child: Text("Phục vụ ăn ${widget.listMeal[index].mealTypeName}",
+                                        child: Text("${AppLocalizations.of(context).getTranslate('serving_food')} ${widget.listMeal[index].mealTypeName}",
                                             overflow: TextOverflow.ellipsis,
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
@@ -106,10 +107,10 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                                       height: 30,
                                       child: Container(
                                         padding: const EdgeInsets.only(top: 5),
-                                        child: const Text("Tại phòng",
+                                        child: Text(AppLocalizations.of(context).getTranslate('room_service'),
                                             maxLines: 3,
                                             overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 12
                                             )),
                                       ),

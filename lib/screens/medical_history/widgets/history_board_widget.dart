@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/index.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 import '../../../utils/convert.dart';
 
@@ -72,11 +73,11 @@ class _HistoryBoardWidgetState extends State<HistoryBoardWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 30,
             child: Padding(
-                padding: EdgeInsets.only(left: 20, top: 10),
-                child: Text("Trang chủ > Bệnh sử",  style: TextStyle(
+                padding: const EdgeInsets.only(left: 20, top: 10),
+                child: Text("${AppLocalizations.of(context).getTranslate('home')} > ${AppLocalizations.of(context).getTranslate('medical_history')}",  style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ))

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/screens/restaurant/widgets/animated_item_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -87,11 +88,11 @@ class _BillWidgetState extends State<BillWidget> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: TextField(
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               filled: true,
-                              hintText: 'Tổng tiền',
+                              hintText: AppLocalizations.of(context).getTranslate('total'),
                               border: InputBorder.none,
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                   fontSize: 15, decoration: TextDecoration.none, fontFamily: 'Roboto', fontWeight: FontWeight.w100
                               ),
                             ),
@@ -113,7 +114,7 @@ class _BillWidgetState extends State<BillWidget> {
                               borderRadius: BorderRadius.circular(10.0)
                           ),
                           child: TextButton(
-                            child: const Text("Đóng", style: TextStyle(
+                            child: Text(AppLocalizations.of(context).getTranslate('close'), style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.white
                             )),
@@ -180,10 +181,10 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_successfully'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14
                       )),
@@ -236,10 +237,10 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_not_successful'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                           color: Colors.white
@@ -247,7 +248,7 @@ class _BillWidgetState extends State<BillWidget> {
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Nhà hàng chưa nhận order", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('the_restaurant_had_not_received_order'), style: const TextStyle(
                           fontSize: 12,
                           color: Colors.white
                       )),
@@ -296,12 +297,12 @@ class _BillWidgetState extends State<BillWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 40,
-                      child: Text('Chú ý'),
+                      child: Text(AppLocalizations.of(context).getTranslate('noted')),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     )
                   ],
@@ -327,9 +328,9 @@ class _BillWidgetState extends State<BillWidget> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child:  Text("Giỏ hàng"),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child:  Text(AppLocalizations.of(context).getTranslate('cart')),
                             ),
                             Container(
                               width: 80,
@@ -343,8 +344,8 @@ class _BillWidgetState extends State<BillWidget> {
                                 onPressed: () async {
                                   Get.offAndToNamed(Routes.RESTAURANT_HISTORY);
                                 },
-                                child: const SizedBox(
-                                  child: Text("Lịch sử", style: TextStyle(
+                                child: SizedBox(
+                                  child: Text(AppLocalizations.of(context).getTranslate('order_history'), style: const TextStyle(
                                       fontSize: 12,
                                       color: Colors.white
                                   ),),
@@ -372,7 +373,7 @@ class _BillWidgetState extends State<BillWidget> {
                               flex: 1,
                               child: Padding(
                                   padding: const EdgeInsets.only(left: 20, top: 10),
-                                  child: Obx(() => Text('Tổng : ${formatPrice(controller.total.value)}'))),
+                                  child: Obx(() => Text('${AppLocalizations.of(context).getTranslate('total')} : ${formatPrice(controller.total.value)}'))),
                             ),
                             Expanded(
                                 flex: 1,

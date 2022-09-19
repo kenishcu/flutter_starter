@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/index.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:intl/intl.dart';
 
 class DateSelectionWidget extends StatefulWidget {
@@ -32,11 +33,11 @@ class _DateSelectionWidget extends State<DateSelectionWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 70,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 30, top: 30),
-                        child: Text("Từ ngày - Đến ngày", style: TextStyle(
+                        padding: const EdgeInsets.only(left: 30, top: 30),
+                        child: Text(AppLocalizations.of(context).getTranslate('from_day_to_day'), style: const TextStyle(
                           fontSize: 18
                         )),
                       ),

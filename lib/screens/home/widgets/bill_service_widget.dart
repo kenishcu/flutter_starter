@@ -75,13 +75,13 @@ class BillServiceWidget extends GetView<HomeController> {
                     SizedBox(
                       height: 50,
                       child: Row(
-                        children: const [
+                        children: [
                           Expanded(
                             flex: 1,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                  "Tên dịch vụ"
+                                  AppLocalizations.of(context).getTranslate('service')
                               ),
                             ),
                           ),
@@ -89,7 +89,7 @@ class BillServiceWidget extends GetView<HomeController> {
                             flex: 1,
                             child: Center(
                               child: Text(
-                                  "Số lượng"
+                                  AppLocalizations.of(context).getTranslate('amount')
                               ),
                             ),
                           ),
@@ -97,7 +97,7 @@ class BillServiceWidget extends GetView<HomeController> {
                             flex: 1,
                             child: Center(
                               child: Text(
-                                  "Đơn giá"
+                                  AppLocalizations.of(context).getTranslate('rate')
                               ),
                             ),
                           ),
@@ -105,7 +105,7 @@ class BillServiceWidget extends GetView<HomeController> {
                             flex: 1,
                             child: Center(
                               child: Text(
-                                  "Thành tiền"
+                                  AppLocalizations.of(context).getTranslate('into_money')
                               ),
                             ),
                           ),
@@ -113,7 +113,7 @@ class BillServiceWidget extends GetView<HomeController> {
                             flex: 1,
                             child: Center(
                               child: Text(
-                                  "Ngày dùng"
+                                  AppLocalizations.of(context).getTranslate('used_date')
                               ),
                             ),
                           )
@@ -216,7 +216,7 @@ class BillServiceWidget extends GetView<HomeController> {
                       flex: 1,
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text("Tổng tạm tính: ${formatPriceNoSymbol(total)}" , style: const TextStyle(
+                          child: Text("${AppLocalizations.of(context).getTranslate('temporary_total_amount')}: ${formatPriceNoSymbol(total)}" , style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600
                         )),

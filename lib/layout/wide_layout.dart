@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/app_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/utils/convert.dart';
 import 'package:itrapp/widgets/layout/header_widget.dart';
 import 'package:itrapp/widgets/layout/user_info_widget.dart';
@@ -62,10 +63,10 @@ class _WideLayoutState extends State<WideLayout> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_successfully'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14
                       )),
@@ -118,10 +119,10 @@ class _WideLayoutState extends State<WideLayout> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Đặt đồ không thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_not_successful'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                           color: Colors.white
@@ -169,11 +170,11 @@ class _WideLayoutState extends State<WideLayout> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 180,
                     child: Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text("Thông báo", style: TextStyle(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(AppLocalizations.of(context).getTranslate('notifications'), style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold
                       )),

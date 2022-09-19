@@ -2,6 +2,7 @@ import 'package:itrapp/controllers/food_treatment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/models/food_treatment/category_model.dart';
 import 'package:itrapp/models/food_treatment/meal_type_model.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:get/get.dart';
 
 import '../../../models/food_treatment/product_model.dart';
@@ -104,9 +105,9 @@ class _ProductWidgetState extends State<ProductWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 20,
-              child: Text("Đặt cho ngày", style: TextStyle(
+              child: Text(AppLocalizations.of(context).getTranslate('book_for_date'), style: const TextStyle(
               )),
             ),
             SizedBox(
@@ -168,11 +169,11 @@ class _ProductWidgetState extends State<ProductWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 50,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 20.0, left: 30.0),
-                  child: Text("Đặt cho ngày :" , style: TextStyle(
+                  padding: const EdgeInsets.only(top: 20.0, left: 30.0),
+                  child: Text("${AppLocalizations.of(context).getTranslate('book_for_date')} :" , style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
                   )),
@@ -182,11 +183,11 @@ class _ProductWidgetState extends State<ProductWidget> {
                   flex: 1,
                   child: CustomizedDatePicker()
               ),
-              const SizedBox(
+              SizedBox(
                 height: 40,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 5.0, left: 30.0),
-                  child: Text("Đặt cho ca :" , style: TextStyle(
+                  padding: const EdgeInsets.only(top: 5.0, left: 30.0),
+                  child: Text("${AppLocalizations.of(context).getTranslate('book_for_shift')} :" , style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
                   )),
@@ -255,7 +256,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 onPressed: () {
                   Get.back();
                 },
-                child: const Text("Đóng", style: TextStyle(
+                child: Text(AppLocalizations.of(context).getTranslate('close'), style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   color: Colors.white
@@ -314,9 +315,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                       onPressed: () {
                       },
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
-                      child: Text("Lọc" , style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('filter') , style: const TextStyle(
                           fontSize: 10
                       )),
                     )
@@ -340,9 +341,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                     onPressed: () {
                     },
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 10,
-                    child: Text("Sắp xếp" , style: TextStyle(
+                    child: Text(AppLocalizations.of(context).getTranslate('sort') , style: const TextStyle(
                         fontSize: 10
                     )),
                   )
@@ -514,19 +515,19 @@ class _ProductWidgetState extends State<ProductWidget> {
                                           controller.addItem(productModel, widget.listKey);
                                         },
                                         child: Row(
-                                          children: const [
-                                            SizedBox(
+                                          children: [
+                                            const SizedBox(
                                               child: Icon(
                                                 Icons.add_shopping_cart,
                                                 size: 20,
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 5,
                                             ),
                                             SizedBox(
-                                              child: Text("Thêm vào giỏ", style: TextStyle(
+                                              child: Text(AppLocalizations.of(context).getTranslate('add_to_basket'), style: const TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white,
                                               ),),
@@ -561,11 +562,11 @@ class _ProductWidgetState extends State<ProductWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 30,
             child: Padding(
-                padding: EdgeInsets.only(left: 20, top: 10),
-                child: Text("Trang chủ > Đồ ăn điều trị",  style: TextStyle(
+                padding: const EdgeInsets.only(left: 20, top: 10),
+                child: Text("${AppLocalizations.of(context).getTranslate('home')} > ${AppLocalizations.of(context).getTranslate('treatment_food')}",  style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ))

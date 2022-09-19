@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/bill_and_payment_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 import '../../../utils/convert.dart';
 
@@ -29,21 +30,21 @@ class _BillWidgetState extends State<BillWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 30,
               child: Padding(
-                  padding: EdgeInsets.only(left: 20, top: 10),
-                  child: Text("Trang chủ > Xem bảng kê và thanh toán",  style: TextStyle(
+                  padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Text("${AppLocalizations.of(context).getTranslate('home')} > ${AppLocalizations.of(context).getTranslate('view_statement_payment')}",  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ))
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 40,
               child: Padding(
-                  padding: EdgeInsets.only(left: 20, top: 10),
-                  child: Text("Bảng kê chi tiết(Tạm tính)",  style: TextStyle(
+                  padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Text(AppLocalizations.of(context).getTranslate('detailed_list_temporary'),  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))
@@ -69,13 +70,13 @@ class _BillWidgetState extends State<BillWidget> {
                           color: Theme.of(context).colorScheme.onPrimary,
                         ),
                         child: Row(
-                          children: const [
+                          children: [
                             Expanded(
                               flex: 1,
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                    "Tên dịch vụ"
+                                    AppLocalizations.of(context).getTranslate('service')
                                 ),
                               ),
                             ),
@@ -83,7 +84,7 @@ class _BillWidgetState extends State<BillWidget> {
                               flex: 1,
                               child: Center(
                                 child: Text(
-                                    "Số lượng"
+                                    AppLocalizations.of(context).getTranslate('amount')
                                 ),
                               ),
                             ),
@@ -91,7 +92,7 @@ class _BillWidgetState extends State<BillWidget> {
                               flex: 1,
                               child: Center(
                                 child: Text(
-                                    "Đơn giá"
+                                    AppLocalizations.of(context).getTranslate('rate')
                                 ),
                               ),
                             ),
@@ -99,7 +100,7 @@ class _BillWidgetState extends State<BillWidget> {
                               flex: 1,
                               child: Center(
                                 child: Text(
-                                    "Thành tiền"
+                                    AppLocalizations.of(context).getTranslate('total_amount')
                                 ),
                               ),
                             ),
@@ -107,7 +108,7 @@ class _BillWidgetState extends State<BillWidget> {
                               flex: 1,
                               child: Center(
                                 child: Text(
-                                    "Ngày dùng"
+                                    AppLocalizations.of(context).getTranslate('used_date')
                                 ),
                               ),
                             )

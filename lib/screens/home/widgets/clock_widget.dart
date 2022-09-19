@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 class ClockWidget extends StatefulWidget {
 
@@ -55,11 +56,11 @@ class _ClockWidgetState extends State<ClockWidget> {
         ),
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
                 flex: 1,
-                child: Text("Giờ:",
+                child: Text("${AppLocalizations.of(context).getTranslate('hours')}:",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25
                   ),

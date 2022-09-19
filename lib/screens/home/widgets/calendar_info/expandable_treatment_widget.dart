@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'dart:math' as math;
 
 import 'package:itrapp/utils/convert.dart';
@@ -38,9 +39,9 @@ class _ExpandableTreatmentWidgetState extends State<ExpandableTreatmentWidget> {
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        "Lịch điều trị", style: TextStyle(
+                        AppLocalizations.of(context).getTranslate('treatment_schedule'), style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600
                       ),

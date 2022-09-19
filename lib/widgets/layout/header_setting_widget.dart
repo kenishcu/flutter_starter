@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 class HeaderSettingWidget  extends StatelessWidget {
 
@@ -26,7 +27,7 @@ class HeaderSettingWidget  extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Text("Bệnh viện đa khoa Hồng Ngọc".toUpperCase(),
+                    child: Text(AppLocalizations.of(context).getTranslate('hong_ngoc_gerenal_hospital').toUpperCase(),
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primaryVariant,
                           fontSize: 18,
@@ -35,7 +36,7 @@ class HeaderSettingWidget  extends StatelessWidget {
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 10),
-                    child: const Text("Nơi gửi trọn niềm tin"),
+                    child: Text(AppLocalizations.of(context).getTranslate('the_place_to_trust')),
                   ),
                 ],
               )
