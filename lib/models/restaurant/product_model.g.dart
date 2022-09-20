@@ -30,6 +30,9 @@ _$_ProductModel _$$_ProductModelFromJson(Map<String, dynamic> json) =>
       discountRate: json['discount_rate'] as int?,
       note: json['note'] as String?,
       imageUrl: json['image_url'] as String?,
+      lang: json['lang'] == null
+          ? null
+          : LangProductModel.fromJson(json['lang'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ProductModelToJson(_$_ProductModel instance) =>
@@ -56,4 +59,5 @@ Map<String, dynamic> _$$_ProductModelToJson(_$_ProductModel instance) =>
       'discount_rate': instance.discountRate,
       'note': instance.note,
       'image_url': instance.imageUrl,
+      'lang': instance.lang,
     };

@@ -58,7 +58,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ),
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text(controller.myTabs[index].categoryName!, style: const TextStyle(
+                          child: Text(Localizations.localeOf(context).languageCode == 'en' ? (controller.myTabs[index].lang?.categoryNameEN ?? controller.myTabs[index].categoryName)! : (controller.myTabs[index].lang!.categoryNameVI ?? controller.myTabs[index].categoryName)!, style: const TextStyle(
                               color: Colors.black
                           ))
                       )
@@ -94,7 +94,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                   margin: const EdgeInsets.only(left: 10, right: 10),
                   child: ChoiceChip(
                     backgroundColor: controller.selectedCategories[controller.selectedTab.value] == index ? Theme.of(context).colorScheme.onSecondary : Colors.white,
-                    label: Text(controller.myCategories[controller.selectedTab.value][index].categoryName.toString() , style: const TextStyle(
+                    label: Text(
+                        Localizations.localeOf(context).languageCode == 'en' ? (controller.myCategories[controller.selectedTab.value][index].lang?.categoryNameEN! ?? controller.myCategories[controller.selectedTab.value][index].categoryName)! :
+                    (controller.myCategories[controller.selectedTab.value][index].lang?.categoryNameVI! ?? controller.myCategories[controller.selectedTab.value][index].categoryName)!,
+                        style: const TextStyle(
                     )),
                     selected: controller.selectedCategories[controller.selectedTab.value] == index,
                     onSelected: (bool selected) {
@@ -457,7 +460,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                            child: Text(productModel.productName!,
+                            child: Text(Localizations.localeOf(context).languageCode == 'en' ? (productModel.lang?.productNameEN ?? productModel.productName)! : (productModel.lang?.productNameVI ?? productModel.productName)!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: const TextStyle(

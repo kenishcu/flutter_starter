@@ -12,72 +12,11 @@ part of 'product_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
   return _ProductModel.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductModelTearOff {
-  const _$ProductModelTearOff();
-
-  _ProductModel call(
-      {String? id,
-        String? productCode,
-        String? productName,
-        String? categoryDailyParentId,
-        String? categoryDailyParentCode,
-        String? categoryDailyParentName,
-        String? categoryDailyId,
-        String? categoryDailyCode,
-        String? categoryDailyName,
-        String? categoryParentId,
-        String? categoryParentCode,
-        String? categoryParentName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? status,
-        int? price,
-        int? quantity,
-        int? discount,
-        int? discountRate,
-        String? note,
-        String? imageUrl}) {
-    return _ProductModel(
-      id: id,
-      productCode: productCode,
-      productName: productName,
-      categoryDailyParentId: categoryDailyParentId,
-      categoryDailyParentCode: categoryDailyParentCode,
-      categoryDailyParentName: categoryDailyParentName,
-      categoryDailyId: categoryDailyId,
-      categoryDailyCode: categoryDailyCode,
-      categoryDailyName: categoryDailyName,
-      categoryParentId: categoryParentId,
-      categoryParentCode: categoryParentCode,
-      categoryParentName: categoryParentName,
-      categoryId: categoryId,
-      categoryCode: categoryCode,
-      categoryName: categoryName,
-      status: status,
-      price: price,
-      quantity: quantity,
-      discount: discount,
-      discountRate: discountRate,
-      note: note,
-      imageUrl: imageUrl,
-    );
-  }
-
-  ProductModel fromJson(Map<String, Object?> json) {
-    return ProductModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProductModel = _$ProductModelTearOff();
 
 /// @nodoc
 mixin _$ProductModel {
@@ -103,6 +42,7 @@ mixin _$ProductModel {
   int? get discountRate => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
+  LangProductModel? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -113,31 +53,34 @@ mixin _$ProductModel {
 /// @nodoc
 abstract class $ProductModelCopyWith<$Res> {
   factory $ProductModelCopyWith(
-      ProductModel value, $Res Function(ProductModel) then) =
-  _$ProductModelCopyWithImpl<$Res>;
+          ProductModel value, $Res Function(ProductModel) then) =
+      _$ProductModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-        String? productCode,
-        String? productName,
-        String? categoryDailyParentId,
-        String? categoryDailyParentCode,
-        String? categoryDailyParentName,
-        String? categoryDailyId,
-        String? categoryDailyCode,
-        String? categoryDailyName,
-        String? categoryParentId,
-        String? categoryParentCode,
-        String? categoryParentName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? status,
-        int? price,
-        int? quantity,
-        int? discount,
-        int? discountRate,
-        String? note,
-        String? imageUrl});
+      String? productCode,
+      String? productName,
+      String? categoryDailyParentId,
+      String? categoryDailyParentCode,
+      String? categoryDailyParentName,
+      String? categoryDailyId,
+      String? categoryDailyCode,
+      String? categoryDailyName,
+      String? categoryParentId,
+      String? categoryParentCode,
+      String? categoryParentName,
+      String? categoryId,
+      String? categoryCode,
+      String? categoryName,
+      String? status,
+      int? price,
+      int? quantity,
+      int? discount,
+      int? discountRate,
+      String? note,
+      String? imageUrl,
+      LangProductModel? lang});
+
+  $LangProductModelCopyWith<$Res>? get lang;
 }
 
 /// @nodoc
@@ -172,141 +115,162 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
     Object? discountRate = freezed,
     Object? note = freezed,
     Object? imageUrl = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       productCode: productCode == freezed
           ? _value.productCode
           : productCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       productName: productName == freezed
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyParentId: categoryDailyParentId == freezed
           ? _value.categoryDailyParentId
           : categoryDailyParentId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyParentCode: categoryDailyParentCode == freezed
           ? _value.categoryDailyParentCode
           : categoryDailyParentCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyParentName: categoryDailyParentName == freezed
           ? _value.categoryDailyParentName
           : categoryDailyParentName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyId: categoryDailyId == freezed
           ? _value.categoryDailyId
           : categoryDailyId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyCode: categoryDailyCode == freezed
           ? _value.categoryDailyCode
           : categoryDailyCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyName: categoryDailyName == freezed
           ? _value.categoryDailyName
           : categoryDailyName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryParentId: categoryParentId == freezed
           ? _value.categoryParentId
           : categoryParentId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryParentCode: categoryParentCode == freezed
           ? _value.categoryParentCode
           : categoryParentCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryParentName: categoryParentName == freezed
           ? _value.categoryParentName
           : categoryParentName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       discount: discount == freezed
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       discountRate: discountRate == freezed
           ? _value.discountRate
           : discountRate // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as LangProductModel?,
     ));
+  }
+
+  @override
+  $LangProductModelCopyWith<$Res>? get lang {
+    if (_value.lang == null) {
+      return null;
+    }
+
+    return $LangProductModelCopyWith<$Res>(_value.lang!, (value) {
+      return _then(_value.copyWith(lang: value));
+    });
   }
 }
 
 /// @nodoc
-abstract class _$ProductModelCopyWith<$Res>
+abstract class _$$_ProductModelCopyWith<$Res>
     implements $ProductModelCopyWith<$Res> {
-  factory _$ProductModelCopyWith(
-      _ProductModel value, $Res Function(_ProductModel) then) =
-  __$ProductModelCopyWithImpl<$Res>;
+  factory _$$_ProductModelCopyWith(
+          _$_ProductModel value, $Res Function(_$_ProductModel) then) =
+      __$$_ProductModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
-        String? productCode,
-        String? productName,
-        String? categoryDailyParentId,
-        String? categoryDailyParentCode,
-        String? categoryDailyParentName,
-        String? categoryDailyId,
-        String? categoryDailyCode,
-        String? categoryDailyName,
-        String? categoryParentId,
-        String? categoryParentCode,
-        String? categoryParentName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? status,
-        int? price,
-        int? quantity,
-        int? discount,
-        int? discountRate,
-        String? note,
-        String? imageUrl});
+      String? productCode,
+      String? productName,
+      String? categoryDailyParentId,
+      String? categoryDailyParentCode,
+      String? categoryDailyParentName,
+      String? categoryDailyId,
+      String? categoryDailyCode,
+      String? categoryDailyName,
+      String? categoryParentId,
+      String? categoryParentCode,
+      String? categoryParentName,
+      String? categoryId,
+      String? categoryCode,
+      String? categoryName,
+      String? status,
+      int? price,
+      int? quantity,
+      int? discount,
+      int? discountRate,
+      String? note,
+      String? imageUrl,
+      LangProductModel? lang});
+
+  @override
+  $LangProductModelCopyWith<$Res>? get lang;
 }
 
 /// @nodoc
-class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
-    implements _$ProductModelCopyWith<$Res> {
-  __$ProductModelCopyWithImpl(
-      _ProductModel _value, $Res Function(_ProductModel) _then)
-      : super(_value, (v) => _then(v as _ProductModel));
+class __$$_ProductModelCopyWithImpl<$Res>
+    extends _$ProductModelCopyWithImpl<$Res>
+    implements _$$_ProductModelCopyWith<$Res> {
+  __$$_ProductModelCopyWithImpl(
+      _$_ProductModel _value, $Res Function(_$_ProductModel) _then)
+      : super(_value, (v) => _then(v as _$_ProductModel));
 
   @override
-  _ProductModel get _value => super._value as _ProductModel;
+  _$_ProductModel get _value => super._value as _$_ProductModel;
 
   @override
   $Res call({
@@ -332,96 +296,101 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
     Object? discountRate = freezed,
     Object? note = freezed,
     Object? imageUrl = freezed,
+    Object? lang = freezed,
   }) {
-    return _then(_ProductModel(
+    return _then(_$_ProductModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       productCode: productCode == freezed
           ? _value.productCode
           : productCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       productName: productName == freezed
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyParentId: categoryDailyParentId == freezed
           ? _value.categoryDailyParentId
           : categoryDailyParentId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyParentCode: categoryDailyParentCode == freezed
           ? _value.categoryDailyParentCode
           : categoryDailyParentCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyParentName: categoryDailyParentName == freezed
           ? _value.categoryDailyParentName
           : categoryDailyParentName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyId: categoryDailyId == freezed
           ? _value.categoryDailyId
           : categoryDailyId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyCode: categoryDailyCode == freezed
           ? _value.categoryDailyCode
           : categoryDailyCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryDailyName: categoryDailyName == freezed
           ? _value.categoryDailyName
           : categoryDailyName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryParentId: categoryParentId == freezed
           ? _value.categoryParentId
           : categoryParentId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryParentCode: categoryParentCode == freezed
           ? _value.categoryParentCode
           : categoryParentCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryParentName: categoryParentName == freezed
           ? _value.categoryParentName
           : categoryParentName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       discount: discount == freezed
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       discountRate: discountRate == freezed
           ? _value.discountRate
           : discountRate // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as LangProductModel?,
     ));
   }
 }
@@ -431,27 +400,28 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
 class _$_ProductModel extends _ProductModel {
   _$_ProductModel(
       {this.id,
-        this.productCode,
-        this.productName,
-        this.categoryDailyParentId,
-        this.categoryDailyParentCode,
-        this.categoryDailyParentName,
-        this.categoryDailyId,
-        this.categoryDailyCode,
-        this.categoryDailyName,
-        this.categoryParentId,
-        this.categoryParentCode,
-        this.categoryParentName,
-        this.categoryId,
-        this.categoryCode,
-        this.categoryName,
-        this.status,
-        this.price,
-        this.quantity,
-        this.discount,
-        this.discountRate,
-        this.note,
-        this.imageUrl})
+      this.productCode,
+      this.productName,
+      this.categoryDailyParentId,
+      this.categoryDailyParentCode,
+      this.categoryDailyParentName,
+      this.categoryDailyId,
+      this.categoryDailyCode,
+      this.categoryDailyName,
+      this.categoryParentId,
+      this.categoryParentCode,
+      this.categoryParentName,
+      this.categoryId,
+      this.categoryCode,
+      this.categoryName,
+      this.status,
+      this.price,
+      this.quantity,
+      this.discount,
+      this.discountRate,
+      this.note,
+      this.imageUrl,
+      this.lang})
       : super._();
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
@@ -501,17 +471,19 @@ class _$_ProductModel extends _ProductModel {
   final String? note;
   @override
   final String? imageUrl;
+  @override
+  final LangProductModel? lang;
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, productCode: $productCode, productName: $productName, categoryDailyParentId: $categoryDailyParentId, categoryDailyParentCode: $categoryDailyParentCode, categoryDailyParentName: $categoryDailyParentName, categoryDailyId: $categoryDailyId, categoryDailyCode: $categoryDailyCode, categoryDailyName: $categoryDailyName, categoryParentId: $categoryParentId, categoryParentCode: $categoryParentCode, categoryParentName: $categoryParentName, categoryId: $categoryId, categoryCode: $categoryCode, categoryName: $categoryName, status: $status, price: $price, quantity: $quantity, discount: $discount, discountRate: $discountRate, note: $note, imageUrl: $imageUrl)';
+    return 'ProductModel(id: $id, productCode: $productCode, productName: $productName, categoryDailyParentId: $categoryDailyParentId, categoryDailyParentCode: $categoryDailyParentCode, categoryDailyParentName: $categoryDailyParentName, categoryDailyId: $categoryDailyId, categoryDailyCode: $categoryDailyCode, categoryDailyName: $categoryDailyName, categoryParentId: $categoryParentId, categoryParentCode: $categoryParentCode, categoryParentName: $categoryParentName, categoryId: $categoryId, categoryCode: $categoryCode, categoryName: $categoryName, status: $status, price: $price, quantity: $quantity, discount: $discount, discountRate: $discountRate, note: $note, imageUrl: $imageUrl, lang: $lang)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductModel &&
+            other is _$_ProductModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.productCode, productCode) &&
@@ -548,40 +520,43 @@ class _$_ProductModel extends _ProductModel {
             const DeepCollectionEquality()
                 .equals(other.discountRate, discountRate) &&
             const DeepCollectionEquality().equals(other.note, note) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality().equals(other.lang, lang));
   }
-
-  @override
-  int get hashCode => Object.hashAll([
-    runtimeType,
-    const DeepCollectionEquality().hash(id),
-    const DeepCollectionEquality().hash(productCode),
-    const DeepCollectionEquality().hash(productName),
-    const DeepCollectionEquality().hash(categoryDailyParentId),
-    const DeepCollectionEquality().hash(categoryDailyParentCode),
-    const DeepCollectionEquality().hash(categoryDailyParentName),
-    const DeepCollectionEquality().hash(categoryDailyId),
-    const DeepCollectionEquality().hash(categoryDailyCode),
-    const DeepCollectionEquality().hash(categoryDailyName),
-    const DeepCollectionEquality().hash(categoryParentId),
-    const DeepCollectionEquality().hash(categoryParentCode),
-    const DeepCollectionEquality().hash(categoryParentName),
-    const DeepCollectionEquality().hash(categoryId),
-    const DeepCollectionEquality().hash(categoryCode),
-    const DeepCollectionEquality().hash(categoryName),
-    const DeepCollectionEquality().hash(status),
-    const DeepCollectionEquality().hash(price),
-    const DeepCollectionEquality().hash(quantity),
-    const DeepCollectionEquality().hash(discount),
-    const DeepCollectionEquality().hash(discountRate),
-    const DeepCollectionEquality().hash(note),
-    const DeepCollectionEquality().hash(imageUrl)
-  ]);
 
   @JsonKey(ignore: true)
   @override
-  _$ProductModelCopyWith<_ProductModel> get copyWith =>
-      __$ProductModelCopyWithImpl<_ProductModel>(this, _$identity);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(productCode),
+        const DeepCollectionEquality().hash(productName),
+        const DeepCollectionEquality().hash(categoryDailyParentId),
+        const DeepCollectionEquality().hash(categoryDailyParentCode),
+        const DeepCollectionEquality().hash(categoryDailyParentName),
+        const DeepCollectionEquality().hash(categoryDailyId),
+        const DeepCollectionEquality().hash(categoryDailyCode),
+        const DeepCollectionEquality().hash(categoryDailyName),
+        const DeepCollectionEquality().hash(categoryParentId),
+        const DeepCollectionEquality().hash(categoryParentCode),
+        const DeepCollectionEquality().hash(categoryParentName),
+        const DeepCollectionEquality().hash(categoryId),
+        const DeepCollectionEquality().hash(categoryCode),
+        const DeepCollectionEquality().hash(categoryName),
+        const DeepCollectionEquality().hash(status),
+        const DeepCollectionEquality().hash(price),
+        const DeepCollectionEquality().hash(quantity),
+        const DeepCollectionEquality().hash(discount),
+        const DeepCollectionEquality().hash(discountRate),
+        const DeepCollectionEquality().hash(note),
+        const DeepCollectionEquality().hash(imageUrl),
+        const DeepCollectionEquality().hash(lang)
+      ]);
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ProductModelCopyWith<_$_ProductModel> get copyWith =>
+      __$$_ProductModelCopyWithImpl<_$_ProductModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -591,79 +566,82 @@ class _$_ProductModel extends _ProductModel {
 
 abstract class _ProductModel extends ProductModel {
   factory _ProductModel(
-      {String? id,
-        String? productCode,
-        String? productName,
-        String? categoryDailyParentId,
-        String? categoryDailyParentCode,
-        String? categoryDailyParentName,
-        String? categoryDailyId,
-        String? categoryDailyCode,
-        String? categoryDailyName,
-        String? categoryParentId,
-        String? categoryParentCode,
-        String? categoryParentName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? status,
-        int? price,
-        int? quantity,
-        int? discount,
-        int? discountRate,
-        String? note,
-        String? imageUrl}) = _$_ProductModel;
+      {final String? id,
+      final String? productCode,
+      final String? productName,
+      final String? categoryDailyParentId,
+      final String? categoryDailyParentCode,
+      final String? categoryDailyParentName,
+      final String? categoryDailyId,
+      final String? categoryDailyCode,
+      final String? categoryDailyName,
+      final String? categoryParentId,
+      final String? categoryParentCode,
+      final String? categoryParentName,
+      final String? categoryId,
+      final String? categoryCode,
+      final String? categoryName,
+      final String? status,
+      final int? price,
+      final int? quantity,
+      final int? discount,
+      final int? discountRate,
+      final String? note,
+      final String? imageUrl,
+      final LangProductModel? lang}) = _$_ProductModel;
   _ProductModel._() : super._();
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
-  _$_ProductModel.fromJson;
+      _$_ProductModel.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get productCode;
+  String? get productCode => throw _privateConstructorUsedError;
   @override
-  String? get productName;
+  String? get productName => throw _privateConstructorUsedError;
   @override
-  String? get categoryDailyParentId;
+  String? get categoryDailyParentId => throw _privateConstructorUsedError;
   @override
-  String? get categoryDailyParentCode;
+  String? get categoryDailyParentCode => throw _privateConstructorUsedError;
   @override
-  String? get categoryDailyParentName;
+  String? get categoryDailyParentName => throw _privateConstructorUsedError;
   @override
-  String? get categoryDailyId;
+  String? get categoryDailyId => throw _privateConstructorUsedError;
   @override
-  String? get categoryDailyCode;
+  String? get categoryDailyCode => throw _privateConstructorUsedError;
   @override
-  String? get categoryDailyName;
+  String? get categoryDailyName => throw _privateConstructorUsedError;
   @override
-  String? get categoryParentId;
+  String? get categoryParentId => throw _privateConstructorUsedError;
   @override
-  String? get categoryParentCode;
+  String? get categoryParentCode => throw _privateConstructorUsedError;
   @override
-  String? get categoryParentName;
+  String? get categoryParentName => throw _privateConstructorUsedError;
   @override
-  String? get categoryId;
+  String? get categoryId => throw _privateConstructorUsedError;
   @override
-  String? get categoryCode;
+  String? get categoryCode => throw _privateConstructorUsedError;
   @override
-  String? get categoryName;
+  String? get categoryName => throw _privateConstructorUsedError;
   @override
-  String? get status;
+  String? get status => throw _privateConstructorUsedError;
   @override
-  int? get price;
+  int? get price => throw _privateConstructorUsedError;
   @override
-  int? get quantity;
+  int? get quantity => throw _privateConstructorUsedError;
   @override
-  int? get discount;
+  int? get discount => throw _privateConstructorUsedError;
   @override
-  int? get discountRate;
+  int? get discountRate => throw _privateConstructorUsedError;
   @override
-  String? get note;
+  String? get note => throw _privateConstructorUsedError;
   @override
-  String? get imageUrl;
+  String? get imageUrl => throw _privateConstructorUsedError;
+  @override
+  LangProductModel? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductModelCopyWith<_ProductModel> get copyWith =>
+  _$$_ProductModelCopyWith<_$_ProductModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

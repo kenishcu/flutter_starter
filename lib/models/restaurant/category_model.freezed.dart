@@ -12,38 +12,18 @@ part of 'category_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
   return _CategoryModel.fromJson(json);
 }
 
 /// @nodoc
-class _$CategoryModelTearOff {
-  const _$CategoryModelTearOff();
-
-  _CategoryModel call(
-      {String? categoryId, String? categoryCode, String? categoryName}) {
-    return _CategoryModel(
-      categoryId: categoryId,
-      categoryCode: categoryCode,
-      categoryName: categoryName,
-    );
-  }
-
-  CategoryModel fromJson(Map<String, Object?> json) {
-    return CategoryModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CategoryModel = _$CategoryModelTearOff();
-
-/// @nodoc
 mixin _$CategoryModel {
   String? get categoryId => throw _privateConstructorUsedError;
   String? get categoryCode => throw _privateConstructorUsedError;
   String? get categoryName => throw _privateConstructorUsedError;
+  LangCategoryModel? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,9 +34,15 @@ mixin _$CategoryModel {
 /// @nodoc
 abstract class $CategoryModelCopyWith<$Res> {
   factory $CategoryModelCopyWith(
-      CategoryModel value, $Res Function(CategoryModel) then) =
-  _$CategoryModelCopyWithImpl<$Res>;
-  $Res call({String? categoryId, String? categoryCode, String? categoryName});
+          CategoryModel value, $Res Function(CategoryModel) then) =
+      _$CategoryModelCopyWithImpl<$Res>;
+  $Res call(
+      {String? categoryId,
+      String? categoryCode,
+      String? categoryName,
+      LangCategoryModel? lang});
+
+  $LangCategoryModelCopyWith<$Res>? get lang;
 }
 
 /// @nodoc
@@ -73,64 +59,92 @@ class _$CategoryModelCopyWithImpl<$Res>
     Object? categoryId = freezed,
     Object? categoryCode = freezed,
     Object? categoryName = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as LangCategoryModel?,
     ));
+  }
+
+  @override
+  $LangCategoryModelCopyWith<$Res>? get lang {
+    if (_value.lang == null) {
+      return null;
+    }
+
+    return $LangCategoryModelCopyWith<$Res>(_value.lang!, (value) {
+      return _then(_value.copyWith(lang: value));
+    });
   }
 }
 
 /// @nodoc
-abstract class _$CategoryModelCopyWith<$Res>
+abstract class _$$_CategoryModelCopyWith<$Res>
     implements $CategoryModelCopyWith<$Res> {
-  factory _$CategoryModelCopyWith(
-      _CategoryModel value, $Res Function(_CategoryModel) then) =
-  __$CategoryModelCopyWithImpl<$Res>;
+  factory _$$_CategoryModelCopyWith(
+          _$_CategoryModel value, $Res Function(_$_CategoryModel) then) =
+      __$$_CategoryModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? categoryId, String? categoryCode, String? categoryName});
+  $Res call(
+      {String? categoryId,
+      String? categoryCode,
+      String? categoryName,
+      LangCategoryModel? lang});
+
+  @override
+  $LangCategoryModelCopyWith<$Res>? get lang;
 }
 
 /// @nodoc
-class __$CategoryModelCopyWithImpl<$Res>
+class __$$_CategoryModelCopyWithImpl<$Res>
     extends _$CategoryModelCopyWithImpl<$Res>
-    implements _$CategoryModelCopyWith<$Res> {
-  __$CategoryModelCopyWithImpl(
-      _CategoryModel _value, $Res Function(_CategoryModel) _then)
-      : super(_value, (v) => _then(v as _CategoryModel));
+    implements _$$_CategoryModelCopyWith<$Res> {
+  __$$_CategoryModelCopyWithImpl(
+      _$_CategoryModel _value, $Res Function(_$_CategoryModel) _then)
+      : super(_value, (v) => _then(v as _$_CategoryModel));
 
   @override
-  _CategoryModel get _value => super._value as _CategoryModel;
+  _$_CategoryModel get _value => super._value as _$_CategoryModel;
 
   @override
   $Res call({
     Object? categoryId = freezed,
     Object? categoryCode = freezed,
     Object? categoryName = freezed,
+    Object? lang = freezed,
   }) {
-    return _then(_CategoryModel(
+    return _then(_$_CategoryModel(
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as LangCategoryModel?,
     ));
   }
 }
@@ -138,7 +152,8 @@ class __$CategoryModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CategoryModel extends _CategoryModel {
-  _$_CategoryModel({this.categoryId, this.categoryCode, this.categoryName})
+  _$_CategoryModel(
+      {this.categoryId, this.categoryCode, this.categoryName, this.lang})
       : super._();
 
   factory _$_CategoryModel.fromJson(Map<String, dynamic> json) =>
@@ -150,36 +165,41 @@ class _$_CategoryModel extends _CategoryModel {
   final String? categoryCode;
   @override
   final String? categoryName;
+  @override
+  final LangCategoryModel? lang;
 
   @override
   String toString() {
-    return 'CategoryModel(categoryId: $categoryId, categoryCode: $categoryCode, categoryName: $categoryName)';
+    return 'CategoryModel(categoryId: $categoryId, categoryCode: $categoryCode, categoryName: $categoryName, lang: $lang)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CategoryModel &&
+            other is _$_CategoryModel &&
             const DeepCollectionEquality()
                 .equals(other.categoryId, categoryId) &&
             const DeepCollectionEquality()
                 .equals(other.categoryCode, categoryCode) &&
             const DeepCollectionEquality()
-                .equals(other.categoryName, categoryName));
+                .equals(other.categoryName, categoryName) &&
+            const DeepCollectionEquality().equals(other.lang, lang));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(categoryId),
       const DeepCollectionEquality().hash(categoryCode),
-      const DeepCollectionEquality().hash(categoryName));
+      const DeepCollectionEquality().hash(categoryName),
+      const DeepCollectionEquality().hash(lang));
 
   @JsonKey(ignore: true)
   @override
-  _$CategoryModelCopyWith<_CategoryModel> get copyWith =>
-      __$CategoryModelCopyWithImpl<_CategoryModel>(this, _$identity);
+  _$$_CategoryModelCopyWith<_$_CategoryModel> get copyWith =>
+      __$$_CategoryModelCopyWithImpl<_$_CategoryModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -189,22 +209,25 @@ class _$_CategoryModel extends _CategoryModel {
 
 abstract class _CategoryModel extends CategoryModel {
   factory _CategoryModel(
-      {String? categoryId,
-        String? categoryCode,
-        String? categoryName}) = _$_CategoryModel;
+      {final String? categoryId,
+      final String? categoryCode,
+      final String? categoryName,
+      final LangCategoryModel? lang}) = _$_CategoryModel;
   _CategoryModel._() : super._();
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
-  _$_CategoryModel.fromJson;
+      _$_CategoryModel.fromJson;
 
   @override
-  String? get categoryId;
+  String? get categoryId => throw _privateConstructorUsedError;
   @override
-  String? get categoryCode;
+  String? get categoryCode => throw _privateConstructorUsedError;
   @override
-  String? get categoryName;
+  String? get categoryName => throw _privateConstructorUsedError;
+  @override
+  LangCategoryModel? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CategoryModelCopyWith<_CategoryModel> get copyWith =>
+  _$$_CategoryModelCopyWith<_$_CategoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
