@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:itrapp/lang/lang_meal_type_model.dart';
 
 part 'meal_type_model.freezed.dart';
 part 'meal_type_model.g.dart';
@@ -11,7 +12,8 @@ class MealTypeModel with _$MealTypeModel {
   factory MealTypeModel({
     int? mealTypeId,
     String? mealTypeCode,
-    String? mealTypeName
+    String? mealTypeName,
+    LangMealTypeModel? lang
   }) = _MealTypeModel;
 
 

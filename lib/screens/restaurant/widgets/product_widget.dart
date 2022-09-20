@@ -187,7 +187,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                         width: 20,
                       ),
                       SizedBox(
-                        child: Text(controller.selectedMealType.value.mealTypeName.toString() + "", style: const TextStyle(
+                        child: Text(
+                            Localizations.localeOf(context).languageCode == 'en' ? (controller.selectedMealType.value.lang?.mealTypeNameEN ?? controller.selectedMealType.value.mealTypeName!):
+                            (controller.selectedMealType.value.lang?.mealTypeNameVI ?? controller.selectedMealType.value.mealTypeName!)
+                            , style: const TextStyle(
                             fontSize: 20
                         )),
                       ),

@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'lang_category_model.dart';
+import 'package:itrapp/lang/lang_category_model.dart';
 
 part 'sub_category_model.freezed.dart';
 part 'sub_category_model.g.dart';

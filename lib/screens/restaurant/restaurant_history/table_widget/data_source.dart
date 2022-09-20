@@ -113,7 +113,8 @@ class DessertDataSourceAsync extends AsyncDataTableSource {
                     width: 100,
                     child: Center(
                       child: Text(
-                        '${order.mealTypeModel?.mealTypeName!}',
+                        Localizations.localeOf(context).languageCode == 'en' ? (order.mealTypeModel?.lang?.mealTypeNameEN ?? order.mealTypeModel!.mealTypeName!):
+                        (order.mealTypeModel?.lang?.mealTypeNameVI ?? order.mealTypeModel!.mealTypeName!),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
