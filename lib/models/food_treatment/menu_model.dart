@@ -13,6 +13,7 @@ class MenuModel with _$MenuModel {
     String? menuCalendarDailyCode,
     String? menuCalendarDailyName,
     String? orderType,
+    Map<dynamic,dynamic>? lang
   }) = _MenuModel;
 
   factory MenuModel.fromJson(Map<String, dynamic> json) => _$MenuModelFromJson(json);

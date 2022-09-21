@@ -12,36 +12,11 @@ part of 'menu_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MenuModel _$MenuModelFromJson(Map<String, dynamic> json) {
   return _MenuModel.fromJson(json);
 }
-
-/// @nodoc
-class _$MenuModelTearOff {
-  const _$MenuModelTearOff();
-
-  _MenuModel call(
-      {String? id,
-        String? menuCalendarDailyCode,
-        String? menuCalendarDailyName,
-        String? orderType}) {
-    return _MenuModel(
-      id: id,
-      menuCalendarDailyCode: menuCalendarDailyCode,
-      menuCalendarDailyName: menuCalendarDailyName,
-      orderType: orderType,
-    );
-  }
-
-  MenuModel fromJson(Map<String, Object?> json) {
-    return MenuModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MenuModel = _$MenuModelTearOff();
 
 /// @nodoc
 mixin _$MenuModel {
@@ -49,6 +24,7 @@ mixin _$MenuModel {
   String? get menuCalendarDailyCode => throw _privateConstructorUsedError;
   String? get menuCalendarDailyName => throw _privateConstructorUsedError;
   String? get orderType => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,12 +35,13 @@ mixin _$MenuModel {
 /// @nodoc
 abstract class $MenuModelCopyWith<$Res> {
   factory $MenuModelCopyWith(MenuModel value, $Res Function(MenuModel) then) =
-  _$MenuModelCopyWithImpl<$Res>;
+      _$MenuModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-        String? menuCalendarDailyCode,
-        String? menuCalendarDailyName,
-        String? orderType});
+      String? menuCalendarDailyCode,
+      String? menuCalendarDailyName,
+      String? orderType,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -81,49 +58,56 @@ class _$MenuModelCopyWithImpl<$Res> implements $MenuModelCopyWith<$Res> {
     Object? menuCalendarDailyCode = freezed,
     Object? menuCalendarDailyName = freezed,
     Object? orderType = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       menuCalendarDailyCode: menuCalendarDailyCode == freezed
           ? _value.menuCalendarDailyCode
           : menuCalendarDailyCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       menuCalendarDailyName: menuCalendarDailyName == freezed
           ? _value.menuCalendarDailyName
           : menuCalendarDailyName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       orderType: orderType == freezed
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$MenuModelCopyWith<$Res> implements $MenuModelCopyWith<$Res> {
-  factory _$MenuModelCopyWith(
-      _MenuModel value, $Res Function(_MenuModel) then) =
-  __$MenuModelCopyWithImpl<$Res>;
+abstract class _$$_MenuModelCopyWith<$Res> implements $MenuModelCopyWith<$Res> {
+  factory _$$_MenuModelCopyWith(
+          _$_MenuModel value, $Res Function(_$_MenuModel) then) =
+      __$$_MenuModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
-        String? menuCalendarDailyCode,
-        String? menuCalendarDailyName,
-        String? orderType});
+      String? menuCalendarDailyCode,
+      String? menuCalendarDailyName,
+      String? orderType,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
-class __$MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
-    implements _$MenuModelCopyWith<$Res> {
-  __$MenuModelCopyWithImpl(_MenuModel _value, $Res Function(_MenuModel) _then)
-      : super(_value, (v) => _then(v as _MenuModel));
+class __$$_MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
+    implements _$$_MenuModelCopyWith<$Res> {
+  __$$_MenuModelCopyWithImpl(
+      _$_MenuModel _value, $Res Function(_$_MenuModel) _then)
+      : super(_value, (v) => _then(v as _$_MenuModel));
 
   @override
-  _MenuModel get _value => super._value as _MenuModel;
+  _$_MenuModel get _value => super._value as _$_MenuModel;
 
   @override
   $Res call({
@@ -131,24 +115,29 @@ class __$MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
     Object? menuCalendarDailyCode = freezed,
     Object? menuCalendarDailyName = freezed,
     Object? orderType = freezed,
+    Object? lang = freezed,
   }) {
-    return _then(_MenuModel(
+    return _then(_$_MenuModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       menuCalendarDailyCode: menuCalendarDailyCode == freezed
           ? _value.menuCalendarDailyCode
           : menuCalendarDailyCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       menuCalendarDailyName: menuCalendarDailyName == freezed
           ? _value.menuCalendarDailyName
           : menuCalendarDailyName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       orderType: orderType == freezed
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
+      lang: lang == freezed
+          ? _value._lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
@@ -158,10 +147,12 @@ class __$MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
 class _$_MenuModel extends _MenuModel {
   _$_MenuModel(
       {this.id,
-        this.menuCalendarDailyCode,
-        this.menuCalendarDailyName,
-        this.orderType})
-      : super._();
+      this.menuCalendarDailyCode,
+      this.menuCalendarDailyName,
+      this.orderType,
+      final Map<dynamic, dynamic>? lang})
+      : _lang = lang,
+        super._();
 
   factory _$_MenuModel.fromJson(Map<String, dynamic> json) =>
       _$$_MenuModelFromJson(json);
@@ -174,37 +165,48 @@ class _$_MenuModel extends _MenuModel {
   final String? menuCalendarDailyName;
   @override
   final String? orderType;
+  final Map<dynamic, dynamic>? _lang;
+  @override
+  Map<dynamic, dynamic>? get lang {
+    final value = _lang;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'MenuModel(id: $id, menuCalendarDailyCode: $menuCalendarDailyCode, menuCalendarDailyName: $menuCalendarDailyName, orderType: $orderType)';
+    return 'MenuModel(id: $id, menuCalendarDailyCode: $menuCalendarDailyCode, menuCalendarDailyName: $menuCalendarDailyName, orderType: $orderType, lang: $lang)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MenuModel &&
+            other is _$_MenuModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.menuCalendarDailyCode, menuCalendarDailyCode) &&
             const DeepCollectionEquality()
                 .equals(other.menuCalendarDailyName, menuCalendarDailyName) &&
-            const DeepCollectionEquality().equals(other.orderType, orderType));
+            const DeepCollectionEquality().equals(other.orderType, orderType) &&
+            const DeepCollectionEquality().equals(other._lang, _lang));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(menuCalendarDailyCode),
       const DeepCollectionEquality().hash(menuCalendarDailyName),
-      const DeepCollectionEquality().hash(orderType));
+      const DeepCollectionEquality().hash(orderType),
+      const DeepCollectionEquality().hash(_lang));
 
   @JsonKey(ignore: true)
   @override
-  _$MenuModelCopyWith<_MenuModel> get copyWith =>
-      __$MenuModelCopyWithImpl<_MenuModel>(this, _$identity);
+  _$$_MenuModelCopyWith<_$_MenuModel> get copyWith =>
+      __$$_MenuModelCopyWithImpl<_$_MenuModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -214,25 +216,28 @@ class _$_MenuModel extends _MenuModel {
 
 abstract class _MenuModel extends MenuModel {
   factory _MenuModel(
-      {String? id,
-        String? menuCalendarDailyCode,
-        String? menuCalendarDailyName,
-        String? orderType}) = _$_MenuModel;
+      {final String? id,
+      final String? menuCalendarDailyCode,
+      final String? menuCalendarDailyName,
+      final String? orderType,
+      final Map<dynamic, dynamic>? lang}) = _$_MenuModel;
   _MenuModel._() : super._();
 
   factory _MenuModel.fromJson(Map<String, dynamic> json) =
-  _$_MenuModel.fromJson;
+      _$_MenuModel.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get menuCalendarDailyCode;
+  String? get menuCalendarDailyCode => throw _privateConstructorUsedError;
   @override
-  String? get menuCalendarDailyName;
+  String? get menuCalendarDailyName => throw _privateConstructorUsedError;
   @override
-  String? get orderType;
+  String? get orderType => throw _privateConstructorUsedError;
+  @override
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MenuModelCopyWith<_MenuModel> get copyWith =>
+  _$$_MenuModelCopyWith<_$_MenuModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

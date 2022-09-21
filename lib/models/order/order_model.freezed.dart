@@ -12,60 +12,11 @@ part of 'order_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 OrderModel _$OrderModelFromJson(Map<String, dynamic> json) {
   return _OrderModel.fromJson(json);
 }
-
-/// @nodoc
-class _$OrderModelTearOff {
-  const _$OrderModelTearOff();
-
-  _OrderModel call(
-      {String? id,
-      String? bedName,
-      int? bedId,
-      int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? roomId,
-      String? roomName,
-      int? reservationId,
-      int? createAt,
-      String? status,
-      String? paymentType,
-      String? orderType,
-      MealTypeModel? mealTypeModel,
-      int? usedAt,
-      List<ProductModel>? products}) {
-    return _OrderModel(
-      id: id,
-      bedName: bedName,
-      bedId: bedId,
-      patientId: patientId,
-      patientFullname: patientFullname,
-      receptionQueueId: receptionQueueId,
-      roomId: roomId,
-      roomName: roomName,
-      reservationId: reservationId,
-      createAt: createAt,
-      status: status,
-      paymentType: paymentType,
-      orderType: orderType,
-      mealTypeModel: mealTypeModel,
-      usedAt: usedAt,
-      products: products,
-    );
-  }
-
-  OrderModel fromJson(Map<String, Object?> json) {
-    return OrderModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $OrderModel = _$OrderModelTearOff();
 
 /// @nodoc
 mixin _$OrderModel {
@@ -226,10 +177,11 @@ class _$OrderModelCopyWithImpl<$Res> implements $OrderModelCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$OrderModelCopyWith<$Res> implements $OrderModelCopyWith<$Res> {
-  factory _$OrderModelCopyWith(
-          _OrderModel value, $Res Function(_OrderModel) then) =
-      __$OrderModelCopyWithImpl<$Res>;
+abstract class _$$_OrderModelCopyWith<$Res>
+    implements $OrderModelCopyWith<$Res> {
+  factory _$$_OrderModelCopyWith(
+          _$_OrderModel value, $Res Function(_$_OrderModel) then) =
+      __$$_OrderModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
@@ -254,14 +206,14 @@ abstract class _$OrderModelCopyWith<$Res> implements $OrderModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
-    implements _$OrderModelCopyWith<$Res> {
-  __$OrderModelCopyWithImpl(
-      _OrderModel _value, $Res Function(_OrderModel) _then)
-      : super(_value, (v) => _then(v as _OrderModel));
+class __$$_OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
+    implements _$$_OrderModelCopyWith<$Res> {
+  __$$_OrderModelCopyWithImpl(
+      _$_OrderModel _value, $Res Function(_$_OrderModel) _then)
+      : super(_value, (v) => _then(v as _$_OrderModel));
 
   @override
-  _OrderModel get _value => super._value as _OrderModel;
+  _$_OrderModel get _value => super._value as _$_OrderModel;
 
   @override
   $Res call({
@@ -282,7 +234,7 @@ class __$OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
     Object? usedAt = freezed,
     Object? products = freezed,
   }) {
-    return _then(_OrderModel(
+    return _then(_$_OrderModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -344,7 +296,7 @@ class __$OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
           : usedAt // ignore: cast_nullable_to_non_nullable
               as int?,
       products: products == freezed
-          ? _value.products
+          ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductModel>?,
     ));
@@ -370,8 +322,9 @@ class _$_OrderModel extends _OrderModel {
       this.orderType,
       this.mealTypeModel,
       this.usedAt,
-      this.products})
-      : super._();
+      final List<ProductModel>? products})
+      : _products = products,
+        super._();
 
   factory _$_OrderModel.fromJson(Map<String, dynamic> json) =>
       _$$_OrderModelFromJson(json);
@@ -406,8 +359,14 @@ class _$_OrderModel extends _OrderModel {
   final MealTypeModel? mealTypeModel;
   @override
   final int? usedAt;
+  final List<ProductModel>? _products;
   @override
-  final List<ProductModel>? products;
+  List<ProductModel>? get products {
+    final value = _products;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -418,7 +377,7 @@ class _$_OrderModel extends _OrderModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OrderModel &&
+            other is _$_OrderModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.bedName, bedName) &&
             const DeepCollectionEquality().equals(other.bedId, bedId) &&
@@ -439,9 +398,10 @@ class _$_OrderModel extends _OrderModel {
             const DeepCollectionEquality()
                 .equals(other.mealTypeModel, mealTypeModel) &&
             const DeepCollectionEquality().equals(other.usedAt, usedAt) &&
-            const DeepCollectionEquality().equals(other.products, products));
+            const DeepCollectionEquality().equals(other._products, _products));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -460,12 +420,12 @@ class _$_OrderModel extends _OrderModel {
       const DeepCollectionEquality().hash(orderType),
       const DeepCollectionEquality().hash(mealTypeModel),
       const DeepCollectionEquality().hash(usedAt),
-      const DeepCollectionEquality().hash(products));
+      const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
-  _$OrderModelCopyWith<_OrderModel> get copyWith =>
-      __$OrderModelCopyWithImpl<_OrderModel>(this, _$identity);
+  _$$_OrderModelCopyWith<_$_OrderModel> get copyWith =>
+      __$$_OrderModelCopyWithImpl<_$_OrderModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -475,61 +435,61 @@ class _$_OrderModel extends _OrderModel {
 
 abstract class _OrderModel extends OrderModel {
   factory _OrderModel(
-      {String? id,
-      String? bedName,
-      int? bedId,
-      int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? roomId,
-      String? roomName,
-      int? reservationId,
-      int? createAt,
-      String? status,
-      String? paymentType,
-      String? orderType,
-      MealTypeModel? mealTypeModel,
-      int? usedAt,
-      List<ProductModel>? products}) = _$_OrderModel;
+      {final String? id,
+      final String? bedName,
+      final int? bedId,
+      final int? patientId,
+      final String? patientFullname,
+      final String? receptionQueueId,
+      final int? roomId,
+      final String? roomName,
+      final int? reservationId,
+      final int? createAt,
+      final String? status,
+      final String? paymentType,
+      final String? orderType,
+      final MealTypeModel? mealTypeModel,
+      final int? usedAt,
+      final List<ProductModel>? products}) = _$_OrderModel;
   _OrderModel._() : super._();
 
   factory _OrderModel.fromJson(Map<String, dynamic> json) =
       _$_OrderModel.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get bedName;
+  String? get bedName => throw _privateConstructorUsedError;
   @override
-  int? get bedId;
+  int? get bedId => throw _privateConstructorUsedError;
   @override
-  int? get patientId;
+  int? get patientId => throw _privateConstructorUsedError;
   @override
-  String? get patientFullname;
+  String? get patientFullname => throw _privateConstructorUsedError;
   @override
-  String? get receptionQueueId;
+  String? get receptionQueueId => throw _privateConstructorUsedError;
   @override
-  int? get roomId;
+  int? get roomId => throw _privateConstructorUsedError;
   @override
-  String? get roomName;
+  String? get roomName => throw _privateConstructorUsedError;
   @override
-  int? get reservationId;
+  int? get reservationId => throw _privateConstructorUsedError;
   @override
-  int? get createAt;
+  int? get createAt => throw _privateConstructorUsedError;
   @override
-  String? get status;
+  String? get status => throw _privateConstructorUsedError;
   @override
-  String? get paymentType;
+  String? get paymentType => throw _privateConstructorUsedError;
   @override
-  String? get orderType;
+  String? get orderType => throw _privateConstructorUsedError;
   @override
-  MealTypeModel? get mealTypeModel;
+  MealTypeModel? get mealTypeModel => throw _privateConstructorUsedError;
   @override
-  int? get usedAt;
+  int? get usedAt => throw _privateConstructorUsedError;
   @override
-  List<ProductModel>? get products;
+  List<ProductModel>? get products => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OrderModelCopyWith<_OrderModel> get copyWith =>
+  _$$_OrderModelCopyWith<_$_OrderModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

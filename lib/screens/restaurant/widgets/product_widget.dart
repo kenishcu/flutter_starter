@@ -58,7 +58,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ),
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text(Localizations.localeOf(context).languageCode == 'en' ? (controller.myTabs[index].lang?.categoryNameEN ?? controller.myTabs[index].categoryName)! : (controller.myTabs[index].lang!.categoryNameVI ?? controller.myTabs[index].categoryName)!, style: const TextStyle(
+                          child: Text(
+                              controller.myTabs[index].lang?["category_name_${Localizations.localeOf(context).languageCode}"]! ?? controller.myCategories[controller.selectedTab.value][index].categoryName!,
+                              style: const TextStyle(
                               color: Colors.black
                           ))
                       )
@@ -95,8 +97,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                   child: ChoiceChip(
                     backgroundColor: controller.selectedCategories[controller.selectedTab.value] == index ? Theme.of(context).colorScheme.onSecondary : Colors.white,
                     label: Text(
-                        Localizations.localeOf(context).languageCode == 'en' ? (controller.myCategories[controller.selectedTab.value][index].lang?.categoryNameEN! ?? controller.myCategories[controller.selectedTab.value][index].categoryName)! :
-                    (controller.myCategories[controller.selectedTab.value][index].lang?.categoryNameVI! ?? controller.myCategories[controller.selectedTab.value][index].categoryName)!,
+                        controller.myCategories[controller.selectedTab.value][index].lang?["category_name_${Localizations.localeOf(context).languageCode}"]!
+                            ?? controller.myCategories[controller.selectedTab.value][index].categoryName!,
                         style: const TextStyle(
                     )),
                     selected: controller.selectedCategories[controller.selectedTab.value] == index,
@@ -188,9 +190,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ),
                       SizedBox(
                         child: Text(
-                            Localizations.localeOf(context).languageCode == 'en' ? (controller.selectedMealType.value.lang?.mealTypeNameEN ?? controller.selectedMealType.value.mealTypeName!):
-                            (controller.selectedMealType.value.lang?.mealTypeNameVI ?? controller.selectedMealType.value.mealTypeName!)
-                            , style: const TextStyle(
+                            controller.selectedMealType.value.lang?['meal_type_name_${Localizations.localeOf(context).languageCode}']! ?? controller.selectedMealType.value.mealTypeName!,
+                            style: const TextStyle(
                             fontSize: 20
                         )),
                       ),
@@ -270,7 +271,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     value: meal,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: Text(meal.mealTypeName.toString()),
+                      child: Text(meal.lang?['meal_type_name_${Localizations.localeOf(context).languageCode}']! ?? meal.mealTypeName!),
                     ));
               }).toList()
           ),

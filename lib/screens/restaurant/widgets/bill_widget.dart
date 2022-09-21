@@ -395,22 +395,22 @@ class _BillWidgetState extends State<BillWidget> {
                                           }
                                         },
                                         child: Row(
-                                          children: const [
-                                            SizedBox(
+                                          children: [
+                                            const SizedBox(
                                               width: 5,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               child: Icon(
                                                 Icons.done,
                                                 size: 20,
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 5,
                                             ),
                                             SizedBox(
-                                              child: Text("XÁC NHẬN", style: TextStyle(
+                                              child: Text(AppLocalizations.of(context).getTranslate('confirm'), style: const TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white,
                                               ),),

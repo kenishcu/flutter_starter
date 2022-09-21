@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:itrapp/lang/lang_category_model.dart';
 
 part 'category_model.freezed.dart';
 
@@ -13,7 +12,7 @@ class CategoryModel with _$CategoryModel {
     String? categoryId,
     String? categoryCode,
     String? categoryName,
-    LangCategoryModel? lang,
+    Map<dynamic,dynamic>? lang
   }) = _CategoryModel;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>

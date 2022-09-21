@@ -23,7 +23,7 @@ mixin _$SubCategoryModel {
   String? get categoryId => throw _privateConstructorUsedError;
   String? get categoryCode => throw _privateConstructorUsedError;
   String? get categoryName => throw _privateConstructorUsedError;
-  LangCategoryModel? get lang => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +40,7 @@ abstract class $SubCategoryModelCopyWith<$Res> {
       {String? categoryId,
       String? categoryCode,
       String? categoryName,
-      LangCategoryModel? lang});
-
-  $LangCategoryModelCopyWith<$Res>? get lang;
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -77,19 +75,8 @@ class _$SubCategoryModelCopyWithImpl<$Res>
       lang: lang == freezed
           ? _value.lang
           : lang // ignore: cast_nullable_to_non_nullable
-              as LangCategoryModel?,
+              as Map<dynamic, dynamic>?,
     ));
-  }
-
-  @override
-  $LangCategoryModelCopyWith<$Res>? get lang {
-    if (_value.lang == null) {
-      return null;
-    }
-
-    return $LangCategoryModelCopyWith<$Res>(_value.lang!, (value) {
-      return _then(_value.copyWith(lang: value));
-    });
   }
 }
 
@@ -104,10 +91,7 @@ abstract class _$$_SubCategoryModelCopyWith<$Res>
       {String? categoryId,
       String? categoryCode,
       String? categoryName,
-      LangCategoryModel? lang});
-
-  @override
-  $LangCategoryModelCopyWith<$Res>? get lang;
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -142,9 +126,9 @@ class __$$_SubCategoryModelCopyWithImpl<$Res>
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String?,
       lang: lang == freezed
-          ? _value.lang
+          ? _value._lang
           : lang // ignore: cast_nullable_to_non_nullable
-              as LangCategoryModel?,
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
@@ -153,8 +137,12 @@ class __$$_SubCategoryModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SubCategoryModel extends _SubCategoryModel {
   _$_SubCategoryModel(
-      {this.categoryId, this.categoryCode, this.categoryName, this.lang})
-      : super._();
+      {this.categoryId,
+      this.categoryCode,
+      this.categoryName,
+      final Map<dynamic, dynamic>? lang})
+      : _lang = lang,
+        super._();
 
   factory _$_SubCategoryModel.fromJson(Map<String, dynamic> json) =>
       _$$_SubCategoryModelFromJson(json);
@@ -165,8 +153,14 @@ class _$_SubCategoryModel extends _SubCategoryModel {
   final String? categoryCode;
   @override
   final String? categoryName;
+  final Map<dynamic, dynamic>? _lang;
   @override
-  final LangCategoryModel? lang;
+  Map<dynamic, dynamic>? get lang {
+    final value = _lang;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
@@ -184,7 +178,7 @@ class _$_SubCategoryModel extends _SubCategoryModel {
                 .equals(other.categoryCode, categoryCode) &&
             const DeepCollectionEquality()
                 .equals(other.categoryName, categoryName) &&
-            const DeepCollectionEquality().equals(other.lang, lang));
+            const DeepCollectionEquality().equals(other._lang, _lang));
   }
 
   @JsonKey(ignore: true)
@@ -194,7 +188,7 @@ class _$_SubCategoryModel extends _SubCategoryModel {
       const DeepCollectionEquality().hash(categoryId),
       const DeepCollectionEquality().hash(categoryCode),
       const DeepCollectionEquality().hash(categoryName),
-      const DeepCollectionEquality().hash(lang));
+      const DeepCollectionEquality().hash(_lang));
 
   @JsonKey(ignore: true)
   @override
@@ -212,7 +206,7 @@ abstract class _SubCategoryModel extends SubCategoryModel {
       {final String? categoryId,
       final String? categoryCode,
       final String? categoryName,
-      final LangCategoryModel? lang}) = _$_SubCategoryModel;
+      final Map<dynamic, dynamic>? lang}) = _$_SubCategoryModel;
   _SubCategoryModel._() : super._();
 
   factory _SubCategoryModel.fromJson(Map<String, dynamic> json) =
@@ -225,7 +219,7 @@ abstract class _SubCategoryModel extends SubCategoryModel {
   @override
   String? get categoryName => throw _privateConstructorUsedError;
   @override
-  LangCategoryModel? get lang => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SubCategoryModelCopyWith<_$_SubCategoryModel> get copyWith =>

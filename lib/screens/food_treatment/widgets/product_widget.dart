@@ -55,7 +55,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ),
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text(controller.myTabs[index].menuCalendarDailyName!,
+                          child: Text(controller.myTabs[index].lang?["menu_calendar_daily_name_${Localizations.localeOf(context).languageCode}"]! ?? controller.myTabs[index].menuCalendarDailyName!,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                   color: Colors.black
@@ -480,7 +480,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                            child: Text(productModel.productName!,
+                            child: Text(Localizations.localeOf(context).languageCode == 'en' ? (productModel.lang?.productNameEN ?? productModel.productName)! : (productModel.lang?.productNameVI ?? productModel.productName)!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: const TextStyle(

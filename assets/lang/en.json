@@ -59,7 +59,7 @@
   "payment_method": "Payment method",
   "booking_time": "Booking time",
   "used_date": "Date",
-  "into_money": "into money",
+  "into_money": "Into money",
   "detailed_list_temporary": "Detailed list (temporary)",
   "rate": "Rate",
   "total_amount": "Rate",
@@ -72,6 +72,7 @@
   "total_bill": "Total bill",
   "next": "Next",
   "in_room": "In room",
-  "order_history": "Order history",
+  "order_history": "History",
+  "confirm": "Confirm",
   "language": "Language"
 }

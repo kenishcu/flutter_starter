@@ -23,7 +23,7 @@ mixin _$MealTypeModel {
   int? get mealTypeId => throw _privateConstructorUsedError;
   String? get mealTypeCode => throw _privateConstructorUsedError;
   String? get mealTypeName => throw _privateConstructorUsedError;
-  LangMealTypeModel? get lang => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +40,7 @@ abstract class $MealTypeModelCopyWith<$Res> {
       {int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
-      LangMealTypeModel? lang});
-
-  $LangMealTypeModelCopyWith<$Res>? get lang;
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -77,19 +75,8 @@ class _$MealTypeModelCopyWithImpl<$Res>
       lang: lang == freezed
           ? _value.lang
           : lang // ignore: cast_nullable_to_non_nullable
-              as LangMealTypeModel?,
+              as Map<dynamic, dynamic>?,
     ));
-  }
-
-  @override
-  $LangMealTypeModelCopyWith<$Res>? get lang {
-    if (_value.lang == null) {
-      return null;
-    }
-
-    return $LangMealTypeModelCopyWith<$Res>(_value.lang!, (value) {
-      return _then(_value.copyWith(lang: value));
-    });
   }
 }
 
@@ -104,10 +91,7 @@ abstract class _$$_MealTypeModelCopyWith<$Res>
       {int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
-      LangMealTypeModel? lang});
-
-  @override
-  $LangMealTypeModelCopyWith<$Res>? get lang;
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -142,9 +126,9 @@ class __$$_MealTypeModelCopyWithImpl<$Res>
           : mealTypeName // ignore: cast_nullable_to_non_nullable
               as String?,
       lang: lang == freezed
-          ? _value.lang
+          ? _value._lang
           : lang // ignore: cast_nullable_to_non_nullable
-              as LangMealTypeModel?,
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
@@ -153,8 +137,12 @@ class __$$_MealTypeModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MealTypeModel extends _MealTypeModel {
   _$_MealTypeModel(
-      {this.mealTypeId, this.mealTypeCode, this.mealTypeName, this.lang})
-      : super._();
+      {this.mealTypeId,
+      this.mealTypeCode,
+      this.mealTypeName,
+      final Map<dynamic, dynamic>? lang})
+      : _lang = lang,
+        super._();
 
   factory _$_MealTypeModel.fromJson(Map<String, dynamic> json) =>
       _$$_MealTypeModelFromJson(json);
@@ -165,8 +153,14 @@ class _$_MealTypeModel extends _MealTypeModel {
   final String? mealTypeCode;
   @override
   final String? mealTypeName;
+  final Map<dynamic, dynamic>? _lang;
   @override
-  final LangMealTypeModel? lang;
+  Map<dynamic, dynamic>? get lang {
+    final value = _lang;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
@@ -184,7 +178,7 @@ class _$_MealTypeModel extends _MealTypeModel {
                 .equals(other.mealTypeCode, mealTypeCode) &&
             const DeepCollectionEquality()
                 .equals(other.mealTypeName, mealTypeName) &&
-            const DeepCollectionEquality().equals(other.lang, lang));
+            const DeepCollectionEquality().equals(other._lang, _lang));
   }
 
   @JsonKey(ignore: true)
@@ -194,7 +188,7 @@ class _$_MealTypeModel extends _MealTypeModel {
       const DeepCollectionEquality().hash(mealTypeId),
       const DeepCollectionEquality().hash(mealTypeCode),
       const DeepCollectionEquality().hash(mealTypeName),
-      const DeepCollectionEquality().hash(lang));
+      const DeepCollectionEquality().hash(_lang));
 
   @JsonKey(ignore: true)
   @override
@@ -212,7 +206,7 @@ abstract class _MealTypeModel extends MealTypeModel {
       {final int? mealTypeId,
       final String? mealTypeCode,
       final String? mealTypeName,
-      final LangMealTypeModel? lang}) = _$_MealTypeModel;
+      final Map<dynamic, dynamic>? lang}) = _$_MealTypeModel;
   _MealTypeModel._() : super._();
 
   factory _MealTypeModel.fromJson(Map<String, dynamic> json) =
@@ -225,7 +219,7 @@ abstract class _MealTypeModel extends MealTypeModel {
   @override
   String? get mealTypeName => throw _privateConstructorUsedError;
   @override
-  LangMealTypeModel? get lang => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MealTypeModelCopyWith<_$_MealTypeModel> get copyWith =>

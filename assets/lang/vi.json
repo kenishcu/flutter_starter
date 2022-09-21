@@ -59,7 +59,7 @@
   "payment_method": "Hình thức thanh toán",
   "booking_time": "Thời gian đặt",
   "used_date": "Ngày sử dụng",
-  "into_money": "thành tiền",
+  "into_money": "Thành tiền",
   "detailed_list_temporary": "Bảng kê chi tiết (tạm tính)",
   "rate": "Đơn giá",
   "total_amount": "Thành tiền",
@@ -73,5 +73,6 @@
   "next": "Tiếp",
   "in_room": "Tại phòng",
   "order_history": "Lịch sử đặt món",
+  "confirm": "Xác nhận",
   "language": "Ngôn ngữ"
 }

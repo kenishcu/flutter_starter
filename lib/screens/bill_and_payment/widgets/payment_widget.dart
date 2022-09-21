@@ -481,11 +481,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           _showToastError();
                         }
                       },
-                      child: const SizedBox(
+                      child: SizedBox(
                         height: 40,
                         child: Align(
                           alignment: Alignment.center,
-                          child: Text("Xác nhận", style: TextStyle(
+                          child: Text(AppLocalizations.of(context).getTranslate('confirm'), style: const TextStyle(
                               fontSize: 18,
                               color: Colors.white
                           )),
