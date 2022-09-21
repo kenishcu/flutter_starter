@@ -42,7 +42,7 @@ mixin _$ProductModel {
   int? get discountRate => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
-  LangProductModel? get lang => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -78,9 +78,7 @@ abstract class $ProductModelCopyWith<$Res> {
       int? discountRate,
       String? note,
       String? imageUrl,
-      LangProductModel? lang});
-
-  $LangProductModelCopyWith<$Res>? get lang;
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -209,19 +207,8 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
       lang: lang == freezed
           ? _value.lang
           : lang // ignore: cast_nullable_to_non_nullable
-              as LangProductModel?,
+              as Map<dynamic, dynamic>?,
     ));
-  }
-
-  @override
-  $LangProductModelCopyWith<$Res>? get lang {
-    if (_value.lang == null) {
-      return null;
-    }
-
-    return $LangProductModelCopyWith<$Res>(_value.lang!, (value) {
-      return _then(_value.copyWith(lang: value));
-    });
   }
 }
 
@@ -255,10 +242,7 @@ abstract class _$$_ProductModelCopyWith<$Res>
       int? discountRate,
       String? note,
       String? imageUrl,
-      LangProductModel? lang});
-
-  @override
-  $LangProductModelCopyWith<$Res>? get lang;
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -388,9 +372,9 @@ class __$$_ProductModelCopyWithImpl<$Res>
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       lang: lang == freezed
-          ? _value.lang
+          ? _value._lang
           : lang // ignore: cast_nullable_to_non_nullable
-              as LangProductModel?,
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
@@ -421,8 +405,9 @@ class _$_ProductModel extends _ProductModel {
       this.discountRate,
       this.note,
       this.imageUrl,
-      this.lang})
-      : super._();
+      final Map<dynamic, dynamic>? lang})
+      : _lang = lang,
+        super._();
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductModelFromJson(json);
@@ -471,8 +456,14 @@ class _$_ProductModel extends _ProductModel {
   final String? note;
   @override
   final String? imageUrl;
+  final Map<dynamic, dynamic>? _lang;
   @override
-  final LangProductModel? lang;
+  Map<dynamic, dynamic>? get lang {
+    final value = _lang;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
@@ -521,7 +512,7 @@ class _$_ProductModel extends _ProductModel {
                 .equals(other.discountRate, discountRate) &&
             const DeepCollectionEquality().equals(other.note, note) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.lang, lang));
+            const DeepCollectionEquality().equals(other._lang, _lang));
   }
 
   @JsonKey(ignore: true)
@@ -550,7 +541,7 @@ class _$_ProductModel extends _ProductModel {
         const DeepCollectionEquality().hash(discountRate),
         const DeepCollectionEquality().hash(note),
         const DeepCollectionEquality().hash(imageUrl),
-        const DeepCollectionEquality().hash(lang)
+        const DeepCollectionEquality().hash(_lang)
       ]);
 
   @JsonKey(ignore: true)
@@ -588,7 +579,7 @@ abstract class _ProductModel extends ProductModel {
       final int? discountRate,
       final String? note,
       final String? imageUrl,
-      final LangProductModel? lang}) = _$_ProductModel;
+      final Map<dynamic, dynamic>? lang}) = _$_ProductModel;
   _ProductModel._() : super._();
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
@@ -639,7 +630,7 @@ abstract class _ProductModel extends ProductModel {
   @override
   String? get imageUrl => throw _privateConstructorUsedError;
   @override
-  LangProductModel? get lang => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ProductModelCopyWith<_$_ProductModel> get copyWith =>

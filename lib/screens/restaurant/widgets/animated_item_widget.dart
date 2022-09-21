@@ -76,8 +76,7 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                                     flex: 1,
                                     child: Padding(
                                       padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 20.0, right: 10.0),
-                                      child: Text(Localizations.localeOf(context).languageCode == 'en' ? (item.product?.lang?.productNameEN ?? item.product!.productName)! :
-                                      (item.product?.lang?.productNameVI ?? item.product!.productName)!,
+                                      child: Text(item.product?.lang?['product_name_${Localizations.localeOf(context).languageCode}'] ?? item.product!.productName!,
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 2,
                                           style: const TextStyle(
@@ -267,8 +266,7 @@ class _AnimatedItemWidgetState extends State<AnimatedItemWidget> {
                                     Expanded(
                                         flex: 3,
                                         child: Text(
-                                            Localizations.localeOf(context).languageCode == 'en' ? (controller.itemEs[index].product?.lang?.productNameEN ?? controller.itemEs[index].product!.productName)! :
-                                        (controller.itemEs[index].product?.lang?.productNameVI ?? controller.itemEs[index].product!.productName)!,
+                                            controller.itemEs[index].product?.lang?['product_name_${Localizations.localeOf(context).languageCode}'] ?? controller.itemEs[index].product!.productName!,
                                             overflow: TextOverflow.ellipsis,
                                             style: const TextStyle(
                                               fontSize: 16,

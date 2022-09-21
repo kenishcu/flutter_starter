@@ -132,7 +132,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                         width: 20,
                       ),
                       Obx(() => SizedBox(
-                        child: Text(controller.selectedMealType.value.mealTypeName.toString() + "", style: const TextStyle(
+                        child: Text(controller.selectedMealType.value.lang?['meal_type_name_${Localizations.localeOf(context).languageCode}'] ?? controller.selectedMealType.value.mealTypeName, style: const TextStyle(
                             fontSize: 20
                         )),
                       )),
@@ -227,7 +227,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     value: meal,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: Text(meal.mealTypeName.toString()),
+                      child: Text(meal.lang?['meal_type_name_${Localizations.localeOf(context).languageCode}'] ?? meal.mealTypeName),
                     ));
               }).toList()
           ),
@@ -480,7 +480,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                            child: Text(Localizations.localeOf(context).languageCode == 'en' ? (productModel.lang?.productNameEN ?? productModel.productName)! : (productModel.lang?.productNameVI ?? productModel.productName)!,
+                            child: Text(
+                                productModel.lang?['product_name_${Localizations.localeOf(context).languageCode}'] ?? productModel.productName!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: const TextStyle(

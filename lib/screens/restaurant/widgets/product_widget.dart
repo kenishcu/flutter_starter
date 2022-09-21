@@ -464,7 +464,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                            child: Text(Localizations.localeOf(context).languageCode == 'en' ? (productModel.lang?.productNameEN ?? productModel.productName)! : (productModel.lang?.productNameVI ?? productModel.productName)!,
+                            child: Text(
+                                productModel.lang?['product_name_${Localizations.localeOf(context).languageCode}'] ?? productModel.productName!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: const TextStyle(
