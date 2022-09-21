@@ -7,21 +7,24 @@ class FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      hint: Text(AppLocalizations.of(context).getTranslate('language')),
-      items: const [
-        DropdownMenuItem(
-          child: Text("Tiếng Việt"),
-          value: 'vi',
-        ),
-        DropdownMenuItem(
-          child: Text("English"),
-          value: 'en',
-        )
-      ],
-      onChanged: (value) {
-        Get.updateLocale(Locale(value.toString(), ''));
-      },
-    );
+    return Container(
+        constraints: const BoxConstraints(maxHeight: 40),
+        //padding: const EdgeInsets.only(left: 120, top: 0, bottom: 0, right: 20),
+        child: DropdownButton(
+          hint: Text(AppLocalizations.of(context).getTranslate('language')),
+          items: const [
+            DropdownMenuItem(
+              child: Text("Tiếng Việt"),
+              value: 'vi',
+            ),
+            DropdownMenuItem(
+              child: Text("English"),
+              value: 'en',
+            )
+          ],
+          onChanged: (value) {
+            Get.updateLocale(Locale(value.toString(), ''));
+          },
+        ));
   }
 }
