@@ -8,8 +8,7 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        constraints: const BoxConstraints(maxHeight: 40),
-        //padding: const EdgeInsets.only(left: 120, top: 0, bottom: 0, right: 20),
+        padding: const EdgeInsets.only(left: 120, top: 0, bottom: 0, right: 20),
         child: DropdownButton(
           hint: Text(AppLocalizations.of(context).getTranslate('language')),
           items: const [

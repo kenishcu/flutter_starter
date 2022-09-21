@@ -41,7 +41,7 @@ class DiagnosisWidget extends GetView<HomeController> {
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 8,
                     ),
                     SizedBox(
                       child: RichText(

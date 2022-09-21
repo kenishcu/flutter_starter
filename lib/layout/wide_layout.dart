@@ -308,7 +308,7 @@ class _WideLayoutState extends State<WideLayout> {
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.only(left: 40, top: 20, bottom: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, top: 20, bottom: 0, right: 40),
               decoration: BoxDecoration(
                   color: Theme.of(context).backgroundColor
               ),
