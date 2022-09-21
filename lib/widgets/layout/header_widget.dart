@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:itrapp/widgets/button/button_header_widget.dart';
 import 'package:get/get.dart';
 import 'package:itrapp/lang/appLocalizations.dart';
-import 'package:itrapp/app.dart';
 import '../../routes/app_pages.dart';
 
 class HeaderWidget extends StatelessWidget {
@@ -37,10 +36,7 @@ class HeaderWidget extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                          AppLocalizations.of(context)
-                              .getTranslate('hong_ngoc_gerenal_hospital')
-                              .toUpperCase(),
+                      child: Text(AppLocalizations.of(context).getTranslate('hong_ngoc_gerenal_hospital').toUpperCase(),
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primaryVariant,
                             fontSize: 18,
@@ -49,8 +45,7 @@ class HeaderWidget extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 10),
-                      child: Text(AppLocalizations.of(context)
-                          .getTranslate('the_place_to_trust')),
+                      child: Text(AppLocalizations.of(context).getTranslate('the_place_to_trust')),
                     ),
                   ],
                 ),
@@ -60,7 +55,9 @@ class HeaderWidget extends StatelessWidget {
         ),
         Expanded(
             flex: 1,
-            child: Wrap(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ButtonHeaderWidget(
                   onPressed: () {
@@ -72,18 +69,15 @@ class HeaderWidget extends StatelessWidget {
                 ),
                 ButtonHeaderWidget(
                   iconData: Icons.notifications,
-                  buttonTitle: AppLocalizations.of(context)
-                      .getTranslate('notifications'),
+                  buttonTitle: AppLocalizations.of(context).getTranslate('notifications'),
                   onPressed: onOpenDraw,
                 ),
                 ButtonHeaderWidget(
                     iconData: Icons.cleaning_services,
-                    buttonTitle: AppLocalizations.of(context)
-                        .getTranslate('cleaning_services'),
+                    buttonTitle: AppLocalizations.of(context).getTranslate('cleaning_services'),
                     onPressed: onCallCleanService),
                 DropdownButton(
-                  hint: Text(
-                      AppLocalizations.of(context).getTranslate('language')),
+                  hint: Text(AppLocalizations.of(context).getTranslate('language')),
                   items: const [
                     DropdownMenuItem(
                       child: Text("Tiếng Việt"),
