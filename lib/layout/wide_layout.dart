@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/app_controller.dart';
 import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/utils/convert.dart';
+import 'package:itrapp/widgets/layout/footer_layout.dart';
 import 'package:itrapp/widgets/layout/header_widget.dart';
 import 'package:itrapp/widgets/layout/user_info_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -334,6 +335,10 @@ class _WideLayoutState extends State<WideLayout> {
                       child: widget.childLeftContent,
                     ),
                     flex: 5,
+                  ),
+                  const Expanded(
+                    flex: 0,
+                    child: FooterWidget(),
                   )
                 ],
               ),

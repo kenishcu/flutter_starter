@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/lang/appLocalizations.dart';
+import 'package:itrapp/widgets/layout/footer_layout.dart';
 import 'package:itrapp/routes/app_pages.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -408,6 +409,7 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                               ),
                               flex: 5,
                             ),
+                            const Expanded(flex: 0, child: FooterWidget())
                           ],
                         ),
                       ),
