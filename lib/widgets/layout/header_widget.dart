@@ -36,7 +36,10 @@ class HeaderWidget extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(left: 10),
-                      child: Text(AppLocalizations.of(context).getTranslate('hong_ngoc_gerenal_hospital').toUpperCase(),
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate('hong_ngoc_gerenal_hospital')
+                              .toUpperCase(),
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primaryVariant,
                             fontSize: 18,
@@ -45,7 +48,8 @@ class HeaderWidget extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 10),
-                      child: Text(AppLocalizations.of(context).getTranslate('the_place_to_trust')),
+                      child: Text(AppLocalizations.of(context)
+                          .getTranslate('the_place_to_trust')),
                     ),
                   ],
                 ),
@@ -57,41 +61,47 @@ class HeaderWidget extends StatelessWidget {
             flex: 1,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                ButtonHeaderWidget(
+                Expanded(
+                    child: ButtonHeaderWidget(
                   onPressed: () {
                     Get.toNamed(Routes.HOME);
                   },
                   iconData: Icons.home,
                   buttonTitle:
                       AppLocalizations.of(context).getTranslate('home'),
-                ),
-                ButtonHeaderWidget(
+                )),
+                Expanded(
+                    child: ButtonHeaderWidget(
                   iconData: Icons.notifications,
-                  buttonTitle: AppLocalizations.of(context).getTranslate('notifications'),
+                  buttonTitle: AppLocalizations.of(context)
+                      .getTranslate('notifications'),
                   onPressed: onOpenDraw,
-                ),
-                ButtonHeaderWidget(
-                    iconData: Icons.cleaning_services,
-                    buttonTitle: AppLocalizations.of(context).getTranslate('cleaning_services'),
-                    onPressed: onCallCleanService),
-                DropdownButton(
-                  hint: Text(AppLocalizations.of(context).getTranslate('language')),
-                  items: const [
-                    DropdownMenuItem(
-                      child: Text("Tiếng Việt"),
-                      value: 'vi',
-                    ),
-                    DropdownMenuItem(
-                      child: Text("English"),
-                      value: 'en',
-                    )
-                  ],
-                  onChanged: (value) {
-                    Get.updateLocale(Locale(value.toString(), ''));
-                  },
-                ),
+                )),
+                Expanded(
+                    child: ButtonHeaderWidget(
+                        iconData: Icons.cleaning_services,
+                        buttonTitle: AppLocalizations.of(context)
+                            .getTranslate('cleaning_services'),
+                        onPressed: onCallCleanService)),
+                Expanded(
+                    child: DropdownButton(
+                        hint: Text(AppLocalizations.of(context)
+                            .getTranslate('language')),
+                        items: const [
+                          DropdownMenuItem(
+                            child: Text("Tiếng Việt"),
+                            value: 'vi',
+                          ),
+                          DropdownMenuItem(
+                            child: Text("English"),
+                            value: 'en',
+                          )
+                        ],
+                        onChanged: (value) {
+                          Get.updateLocale(Locale(value.toString(), ''));
+                        }))
               ],
             ))
       ],
