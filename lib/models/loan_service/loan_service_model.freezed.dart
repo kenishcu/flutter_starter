@@ -12,52 +12,11 @@ part of 'loan_service_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LoanServiceModel _$LoanServiceModelFromJson(Map<String, dynamic> json) {
   return _LoanServiceModel.fromJson(json);
 }
-
-/// @nodoc
-class _$LoanServiceModelTearOff {
-  const _$LoanServiceModelTearOff();
-
-  _LoanServiceModel call(
-      {String? id,
-        String? serviceCode,
-        String? serviceName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? note,
-        String? imageUrl,
-        int? defaultQuantity,
-        int? quantity,
-        int? price,
-        int? status}) {
-    return _LoanServiceModel(
-      id: id,
-      serviceCode: serviceCode,
-      serviceName: serviceName,
-      categoryId: categoryId,
-      categoryCode: categoryCode,
-      categoryName: categoryName,
-      note: note,
-      imageUrl: imageUrl,
-      defaultQuantity: defaultQuantity,
-      quantity: quantity,
-      price: price,
-      status: status,
-    );
-  }
-
-  LoanServiceModel fromJson(Map<String, Object?> json) {
-    return LoanServiceModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LoanServiceModel = _$LoanServiceModelTearOff();
 
 /// @nodoc
 mixin _$LoanServiceModel {
@@ -73,6 +32,7 @@ mixin _$LoanServiceModel {
   int? get quantity => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -83,21 +43,22 @@ mixin _$LoanServiceModel {
 /// @nodoc
 abstract class $LoanServiceModelCopyWith<$Res> {
   factory $LoanServiceModelCopyWith(
-      LoanServiceModel value, $Res Function(LoanServiceModel) then) =
-  _$LoanServiceModelCopyWithImpl<$Res>;
+          LoanServiceModel value, $Res Function(LoanServiceModel) then) =
+      _$LoanServiceModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-        String? serviceCode,
-        String? serviceName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? note,
-        String? imageUrl,
-        int? defaultQuantity,
-        int? quantity,
-        int? price,
-        int? status});
+      String? serviceCode,
+      String? serviceName,
+      String? categoryId,
+      String? categoryCode,
+      String? categoryName,
+      String? note,
+      String? imageUrl,
+      int? defaultQuantity,
+      int? quantity,
+      int? price,
+      int? status,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -123,92 +84,98 @@ class _$LoanServiceModelCopyWithImpl<$Res>
     Object? quantity = freezed,
     Object? price = freezed,
     Object? status = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       serviceCode: serviceCode == freezed
           ? _value.serviceCode
           : serviceCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       serviceName: serviceName == freezed
           ? _value.serviceName
           : serviceName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       defaultQuantity: defaultQuantity == freezed
           ? _value.defaultQuantity
           : defaultQuantity // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$LoanServiceModelCopyWith<$Res>
+abstract class _$$_LoanServiceModelCopyWith<$Res>
     implements $LoanServiceModelCopyWith<$Res> {
-  factory _$LoanServiceModelCopyWith(
-      _LoanServiceModel value, $Res Function(_LoanServiceModel) then) =
-  __$LoanServiceModelCopyWithImpl<$Res>;
+  factory _$$_LoanServiceModelCopyWith(
+          _$_LoanServiceModel value, $Res Function(_$_LoanServiceModel) then) =
+      __$$_LoanServiceModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
-        String? serviceCode,
-        String? serviceName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? note,
-        String? imageUrl,
-        int? defaultQuantity,
-        int? quantity,
-        int? price,
-        int? status});
+      String? serviceCode,
+      String? serviceName,
+      String? categoryId,
+      String? categoryCode,
+      String? categoryName,
+      String? note,
+      String? imageUrl,
+      int? defaultQuantity,
+      int? quantity,
+      int? price,
+      int? status,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
-class __$LoanServiceModelCopyWithImpl<$Res>
+class __$$_LoanServiceModelCopyWithImpl<$Res>
     extends _$LoanServiceModelCopyWithImpl<$Res>
-    implements _$LoanServiceModelCopyWith<$Res> {
-  __$LoanServiceModelCopyWithImpl(
-      _LoanServiceModel _value, $Res Function(_LoanServiceModel) _then)
-      : super(_value, (v) => _then(v as _LoanServiceModel));
+    implements _$$_LoanServiceModelCopyWith<$Res> {
+  __$$_LoanServiceModelCopyWithImpl(
+      _$_LoanServiceModel _value, $Res Function(_$_LoanServiceModel) _then)
+      : super(_value, (v) => _then(v as _$_LoanServiceModel));
 
   @override
-  _LoanServiceModel get _value => super._value as _LoanServiceModel;
+  _$_LoanServiceModel get _value => super._value as _$_LoanServiceModel;
 
   @override
   $Res call({
@@ -224,56 +191,61 @@ class __$LoanServiceModelCopyWithImpl<$Res>
     Object? quantity = freezed,
     Object? price = freezed,
     Object? status = freezed,
+    Object? lang = freezed,
   }) {
-    return _then(_LoanServiceModel(
+    return _then(_$_LoanServiceModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       serviceCode: serviceCode == freezed
           ? _value.serviceCode
           : serviceCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       serviceName: serviceName == freezed
           ? _value.serviceName
           : serviceName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryCode: categoryCode == freezed
           ? _value.categoryCode
           : categoryCode // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-      as String?,
+              as String?,
       defaultQuantity: defaultQuantity == freezed
           ? _value.defaultQuantity
           : defaultQuantity // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-      as int?,
+              as int?,
+      lang: lang == freezed
+          ? _value._lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
@@ -283,18 +255,20 @@ class __$LoanServiceModelCopyWithImpl<$Res>
 class _$_LoanServiceModel extends _LoanServiceModel {
   _$_LoanServiceModel(
       {this.id,
-        this.serviceCode,
-        this.serviceName,
-        this.categoryId,
-        this.categoryCode,
-        this.categoryName,
-        this.note,
-        this.imageUrl,
-        this.defaultQuantity,
-        this.quantity,
-        this.price,
-        this.status})
-      : super._();
+      this.serviceCode,
+      this.serviceName,
+      this.categoryId,
+      this.categoryCode,
+      this.categoryName,
+      this.note,
+      this.imageUrl,
+      this.defaultQuantity,
+      this.quantity,
+      this.price,
+      this.status,
+      final Map<dynamic, dynamic>? lang})
+      : _lang = lang,
+        super._();
 
   factory _$_LoanServiceModel.fromJson(Map<String, dynamic> json) =>
       _$$_LoanServiceModelFromJson(json);
@@ -323,17 +297,25 @@ class _$_LoanServiceModel extends _LoanServiceModel {
   final int? price;
   @override
   final int? status;
+  final Map<dynamic, dynamic>? _lang;
+  @override
+  Map<dynamic, dynamic>? get lang {
+    final value = _lang;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'LoanServiceModel(id: $id, serviceCode: $serviceCode, serviceName: $serviceName, categoryId: $categoryId, categoryCode: $categoryCode, categoryName: $categoryName, note: $note, imageUrl: $imageUrl, defaultQuantity: $defaultQuantity, quantity: $quantity, price: $price, status: $status)';
+    return 'LoanServiceModel(id: $id, serviceCode: $serviceCode, serviceName: $serviceName, categoryId: $categoryId, categoryCode: $categoryCode, categoryName: $categoryName, note: $note, imageUrl: $imageUrl, defaultQuantity: $defaultQuantity, quantity: $quantity, price: $price, status: $status, lang: $lang)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoanServiceModel &&
+            other is _$_LoanServiceModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.serviceCode, serviceCode) &&
@@ -351,9 +333,11 @@ class _$_LoanServiceModel extends _LoanServiceModel {
                 .equals(other.defaultQuantity, defaultQuantity) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.status, status));
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other._lang, _lang));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -368,12 +352,13 @@ class _$_LoanServiceModel extends _LoanServiceModel {
       const DeepCollectionEquality().hash(defaultQuantity),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(status));
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(_lang));
 
   @JsonKey(ignore: true)
   @override
-  _$LoanServiceModelCopyWith<_LoanServiceModel> get copyWith =>
-      __$LoanServiceModelCopyWithImpl<_LoanServiceModel>(this, _$identity);
+  _$$_LoanServiceModelCopyWith<_$_LoanServiceModel> get copyWith =>
+      __$$_LoanServiceModelCopyWithImpl<_$_LoanServiceModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -383,49 +368,52 @@ class _$_LoanServiceModel extends _LoanServiceModel {
 
 abstract class _LoanServiceModel extends LoanServiceModel {
   factory _LoanServiceModel(
-      {String? id,
-        String? serviceCode,
-        String? serviceName,
-        String? categoryId,
-        String? categoryCode,
-        String? categoryName,
-        String? note,
-        String? imageUrl,
-        int? defaultQuantity,
-        int? quantity,
-        int? price,
-        int? status}) = _$_LoanServiceModel;
+      {final String? id,
+      final String? serviceCode,
+      final String? serviceName,
+      final String? categoryId,
+      final String? categoryCode,
+      final String? categoryName,
+      final String? note,
+      final String? imageUrl,
+      final int? defaultQuantity,
+      final int? quantity,
+      final int? price,
+      final int? status,
+      final Map<dynamic, dynamic>? lang}) = _$_LoanServiceModel;
   _LoanServiceModel._() : super._();
 
   factory _LoanServiceModel.fromJson(Map<String, dynamic> json) =
-  _$_LoanServiceModel.fromJson;
+      _$_LoanServiceModel.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get serviceCode;
+  String? get serviceCode => throw _privateConstructorUsedError;
   @override
-  String? get serviceName;
+  String? get serviceName => throw _privateConstructorUsedError;
   @override
-  String? get categoryId;
+  String? get categoryId => throw _privateConstructorUsedError;
   @override
-  String? get categoryCode;
+  String? get categoryCode => throw _privateConstructorUsedError;
   @override
-  String? get categoryName;
+  String? get categoryName => throw _privateConstructorUsedError;
   @override
-  String? get note;
+  String? get note => throw _privateConstructorUsedError;
   @override
-  String? get imageUrl;
+  String? get imageUrl => throw _privateConstructorUsedError;
   @override
-  int? get defaultQuantity;
+  int? get defaultQuantity => throw _privateConstructorUsedError;
   @override
-  int? get quantity;
+  int? get quantity => throw _privateConstructorUsedError;
   @override
-  int? get price;
+  int? get price => throw _privateConstructorUsedError;
   @override
-  int? get status;
+  int? get status => throw _privateConstructorUsedError;
+  @override
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LoanServiceModelCopyWith<_LoanServiceModel> get copyWith =>
+  _$$_LoanServiceModelCopyWith<_$_LoanServiceModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

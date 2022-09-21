@@ -95,7 +95,7 @@ class _ExpandableMealWidgetState extends State<ExpandableMealWidget> {
                                       height: 30,
                                       child: Padding(
                                         padding: const EdgeInsets.only(top: 10),
-                                        child: Text("${AppLocalizations.of(context).getTranslate('serving_food')} ${widget.listMeal[index].mealTypeName}",
+                                        child: Text("${AppLocalizations.of(context).getTranslate('serving_food')} ${widget.listMeal[index].lang?['meal_type_name_${Localizations.localeOf(context).languageCode}'] ?? widget.listMeal[index].mealTypeName}",
                                             overflow: TextOverflow.ellipsis,
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold,

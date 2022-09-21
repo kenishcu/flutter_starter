@@ -21,6 +21,7 @@ class LoanServiceModel with _$LoanServiceModel {
     int? quantity,
     int? price,
     int? status,
+    Map<dynamic,dynamic>? lang
   }) = _LoanServiceModel;
 
   factory LoanServiceModel.fromJson(Map<String, dynamic> json) => _$LoanServiceModelFromJson(json);

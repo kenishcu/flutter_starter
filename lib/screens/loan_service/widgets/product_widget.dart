@@ -52,7 +52,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ),
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text(controller.myTabs[index].categoryName!, style: const TextStyle(
+                          child: Text(controller.myTabs[index].lang?['category_name_${Localizations.localeOf(context).languageCode}'] ?? controller.myTabs[index].categoryName!, style: const TextStyle(
                               color: Colors.black
                           ))
                       )
@@ -329,7 +329,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                            child: Text(productModel.serviceName!,
+                            child: Text(productModel.lang?['service_name_${Localizations.localeOf(context).languageCode}'] ?? productModel.serviceName!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: const TextStyle(

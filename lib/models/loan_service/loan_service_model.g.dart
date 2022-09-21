@@ -20,6 +20,7 @@ _$_LoanServiceModel _$$_LoanServiceModelFromJson(Map<String, dynamic> json) =>
       quantity: json['quantity'] as int?,
       price: json['price'] as int?,
       status: json['status'] as int?,
+      lang: json['lang'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$$_LoanServiceModelToJson(_$_LoanServiceModel instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$_LoanServiceModelToJson(_$_LoanServiceModel instance) =>
       'quantity': instance.quantity,
       'price': instance.price,
       'status': instance.status,
+      'lang': instance.lang,
     };

@@ -296,7 +296,7 @@ class SettingController extends GetxController {
         deviceToken: map['device_token'],
         hotLine: "",
         authToken: "",
-        contracts: []
+        contact: []
     );
     ResultModel res = await settingRepository.sendSetting(setting.toJson());
     if(res.status == true) {
@@ -326,7 +326,7 @@ class SettingController extends GetxController {
       deviceToken: tokenFirebase.value,
       hotLine: "",
       authToken: "",
-      contracts: []
+      contact: []
     );
     ResultModel res = await settingRepository.sendSetting(setting.toJson());
     if(res.status == true) {

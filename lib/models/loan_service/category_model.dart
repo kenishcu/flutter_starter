@@ -15,6 +15,7 @@ class CategoryModel with _$CategoryModel {
     String? categoryId,
     String? thumbnailUrl,
     int? status,
+    Map<dynamic,dynamic>? lang
   }) = _CategoryModel;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);

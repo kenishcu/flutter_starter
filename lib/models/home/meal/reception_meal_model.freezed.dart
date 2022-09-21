@@ -12,44 +12,11 @@ part of 'reception_meal_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ReceptionMealModel _$ReceptionMealModelFromJson(Map<String, dynamic> json) {
   return _ReceptionMealModel.fromJson(json);
 }
-
-/// @nodoc
-class _$ReceptionMealModelTearOff {
-  const _$ReceptionMealModelTearOff();
-
-  _ReceptionMealModel call(
-      {int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? usedAt,
-      int? mealTypeId,
-      String? mealTypeCode,
-      String? mealTypeName,
-      List<MealInfoModel>? meals}) {
-    return _ReceptionMealModel(
-      patientId: patientId,
-      patientFullname: patientFullname,
-      receptionQueueId: receptionQueueId,
-      usedAt: usedAt,
-      mealTypeId: mealTypeId,
-      mealTypeCode: mealTypeCode,
-      mealTypeName: mealTypeName,
-      meals: meals,
-    );
-  }
-
-  ReceptionMealModel fromJson(Map<String, Object?> json) {
-    return ReceptionMealModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ReceptionMealModel = _$ReceptionMealModelTearOff();
 
 /// @nodoc
 mixin _$ReceptionMealModel {
@@ -61,6 +28,7 @@ mixin _$ReceptionMealModel {
   String? get mealTypeCode => throw _privateConstructorUsedError;
   String? get mealTypeName => throw _privateConstructorUsedError;
   List<MealInfoModel>? get meals => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -81,7 +49,8 @@ abstract class $ReceptionMealModelCopyWith<$Res> {
       int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
-      List<MealInfoModel>? meals});
+      List<MealInfoModel>? meals,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -103,6 +72,7 @@ class _$ReceptionMealModelCopyWithImpl<$Res>
     Object? mealTypeCode = freezed,
     Object? mealTypeName = freezed,
     Object? meals = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       patientId: patientId == freezed
@@ -137,16 +107,20 @@ class _$ReceptionMealModelCopyWithImpl<$Res>
           ? _value.meals
           : meals // ignore: cast_nullable_to_non_nullable
               as List<MealInfoModel>?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$ReceptionMealModelCopyWith<$Res>
+abstract class _$$_ReceptionMealModelCopyWith<$Res>
     implements $ReceptionMealModelCopyWith<$Res> {
-  factory _$ReceptionMealModelCopyWith(
-          _ReceptionMealModel value, $Res Function(_ReceptionMealModel) then) =
-      __$ReceptionMealModelCopyWithImpl<$Res>;
+  factory _$$_ReceptionMealModelCopyWith(_$_ReceptionMealModel value,
+          $Res Function(_$_ReceptionMealModel) then) =
+      __$$_ReceptionMealModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {int? patientId,
@@ -156,19 +130,20 @@ abstract class _$ReceptionMealModelCopyWith<$Res>
       int? mealTypeId,
       String? mealTypeCode,
       String? mealTypeName,
-      List<MealInfoModel>? meals});
+      List<MealInfoModel>? meals,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
-class __$ReceptionMealModelCopyWithImpl<$Res>
+class __$$_ReceptionMealModelCopyWithImpl<$Res>
     extends _$ReceptionMealModelCopyWithImpl<$Res>
-    implements _$ReceptionMealModelCopyWith<$Res> {
-  __$ReceptionMealModelCopyWithImpl(
-      _ReceptionMealModel _value, $Res Function(_ReceptionMealModel) _then)
-      : super(_value, (v) => _then(v as _ReceptionMealModel));
+    implements _$$_ReceptionMealModelCopyWith<$Res> {
+  __$$_ReceptionMealModelCopyWithImpl(
+      _$_ReceptionMealModel _value, $Res Function(_$_ReceptionMealModel) _then)
+      : super(_value, (v) => _then(v as _$_ReceptionMealModel));
 
   @override
-  _ReceptionMealModel get _value => super._value as _ReceptionMealModel;
+  _$_ReceptionMealModel get _value => super._value as _$_ReceptionMealModel;
 
   @override
   $Res call({
@@ -180,8 +155,9 @@ class __$ReceptionMealModelCopyWithImpl<$Res>
     Object? mealTypeCode = freezed,
     Object? mealTypeName = freezed,
     Object? meals = freezed,
+    Object? lang = freezed,
   }) {
-    return _then(_ReceptionMealModel(
+    return _then(_$_ReceptionMealModel(
       patientId: patientId == freezed
           ? _value.patientId
           : patientId // ignore: cast_nullable_to_non_nullable
@@ -211,9 +187,13 @@ class __$ReceptionMealModelCopyWithImpl<$Res>
           : mealTypeName // ignore: cast_nullable_to_non_nullable
               as String?,
       meals: meals == freezed
-          ? _value.meals
+          ? _value._meals
           : meals // ignore: cast_nullable_to_non_nullable
               as List<MealInfoModel>?,
+      lang: lang == freezed
+          ? _value._lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
@@ -229,8 +209,11 @@ class _$_ReceptionMealModel extends _ReceptionMealModel {
       this.mealTypeId,
       this.mealTypeCode,
       this.mealTypeName,
-      this.meals})
-      : super._();
+      final List<MealInfoModel>? meals,
+      final Map<dynamic, dynamic>? lang})
+      : _meals = meals,
+        _lang = lang,
+        super._();
 
   factory _$_ReceptionMealModel.fromJson(Map<String, dynamic> json) =>
       _$$_ReceptionMealModelFromJson(json);
@@ -249,19 +232,34 @@ class _$_ReceptionMealModel extends _ReceptionMealModel {
   final String? mealTypeCode;
   @override
   final String? mealTypeName;
+  final List<MealInfoModel>? _meals;
   @override
-  final List<MealInfoModel>? meals;
+  List<MealInfoModel>? get meals {
+    final value = _meals;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final Map<dynamic, dynamic>? _lang;
+  @override
+  Map<dynamic, dynamic>? get lang {
+    final value = _lang;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'ReceptionMealModel(patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, usedAt: $usedAt, mealTypeId: $mealTypeId, mealTypeCode: $mealTypeCode, mealTypeName: $mealTypeName, meals: $meals)';
+    return 'ReceptionMealModel(patientId: $patientId, patientFullname: $patientFullname, receptionQueueId: $receptionQueueId, usedAt: $usedAt, mealTypeId: $mealTypeId, mealTypeCode: $mealTypeCode, mealTypeName: $mealTypeName, meals: $meals, lang: $lang)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ReceptionMealModel &&
+            other is _$_ReceptionMealModel &&
             const DeepCollectionEquality().equals(other.patientId, patientId) &&
             const DeepCollectionEquality()
                 .equals(other.patientFullname, patientFullname) &&
@@ -274,9 +272,11 @@ class _$_ReceptionMealModel extends _ReceptionMealModel {
                 .equals(other.mealTypeCode, mealTypeCode) &&
             const DeepCollectionEquality()
                 .equals(other.mealTypeName, mealTypeName) &&
-            const DeepCollectionEquality().equals(other.meals, meals));
+            const DeepCollectionEquality().equals(other._meals, _meals) &&
+            const DeepCollectionEquality().equals(other._lang, _lang));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -287,12 +287,14 @@ class _$_ReceptionMealModel extends _ReceptionMealModel {
       const DeepCollectionEquality().hash(mealTypeId),
       const DeepCollectionEquality().hash(mealTypeCode),
       const DeepCollectionEquality().hash(mealTypeName),
-      const DeepCollectionEquality().hash(meals));
+      const DeepCollectionEquality().hash(_meals),
+      const DeepCollectionEquality().hash(_lang));
 
   @JsonKey(ignore: true)
   @override
-  _$ReceptionMealModelCopyWith<_ReceptionMealModel> get copyWith =>
-      __$ReceptionMealModelCopyWithImpl<_ReceptionMealModel>(this, _$identity);
+  _$$_ReceptionMealModelCopyWith<_$_ReceptionMealModel> get copyWith =>
+      __$$_ReceptionMealModelCopyWithImpl<_$_ReceptionMealModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -302,37 +304,40 @@ class _$_ReceptionMealModel extends _ReceptionMealModel {
 
 abstract class _ReceptionMealModel extends ReceptionMealModel {
   factory _ReceptionMealModel(
-      {int? patientId,
-      String? patientFullname,
-      String? receptionQueueId,
-      int? usedAt,
-      int? mealTypeId,
-      String? mealTypeCode,
-      String? mealTypeName,
-      List<MealInfoModel>? meals}) = _$_ReceptionMealModel;
+      {final int? patientId,
+      final String? patientFullname,
+      final String? receptionQueueId,
+      final int? usedAt,
+      final int? mealTypeId,
+      final String? mealTypeCode,
+      final String? mealTypeName,
+      final List<MealInfoModel>? meals,
+      final Map<dynamic, dynamic>? lang}) = _$_ReceptionMealModel;
   _ReceptionMealModel._() : super._();
 
   factory _ReceptionMealModel.fromJson(Map<String, dynamic> json) =
       _$_ReceptionMealModel.fromJson;
 
   @override
-  int? get patientId;
+  int? get patientId => throw _privateConstructorUsedError;
   @override
-  String? get patientFullname;
+  String? get patientFullname => throw _privateConstructorUsedError;
   @override
-  String? get receptionQueueId;
+  String? get receptionQueueId => throw _privateConstructorUsedError;
   @override
-  int? get usedAt;
+  int? get usedAt => throw _privateConstructorUsedError;
   @override
-  int? get mealTypeId;
+  int? get mealTypeId => throw _privateConstructorUsedError;
   @override
-  String? get mealTypeCode;
+  String? get mealTypeCode => throw _privateConstructorUsedError;
   @override
-  String? get mealTypeName;
+  String? get mealTypeName => throw _privateConstructorUsedError;
   @override
-  List<MealInfoModel>? get meals;
+  List<MealInfoModel>? get meals => throw _privateConstructorUsedError;
+  @override
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ReceptionMealModelCopyWith<_ReceptionMealModel> get copyWith =>
+  _$$_ReceptionMealModelCopyWith<_$_ReceptionMealModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

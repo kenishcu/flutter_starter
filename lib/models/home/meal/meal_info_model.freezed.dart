@@ -12,43 +12,16 @@ part of 'meal_info_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MealInfoModel _$MealInfoModelFromJson(Map<String, dynamic> json) {
   return _MealInfoModel.fromJson(json);
 }
 
 /// @nodoc
-class _$MealInfoModelTearOff {
-  const _$MealInfoModelTearOff();
-
-  _MealInfoModel call(
-      {String? productId,
-      String? name,
-      int? quantity,
-      String? unit,
-      String? note}) {
-    return _MealInfoModel(
-      productId: productId,
-      name: name,
-      quantity: quantity,
-      unit: unit,
-      note: note,
-    );
-  }
-
-  MealInfoModel fromJson(Map<String, Object?> json) {
-    return MealInfoModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MealInfoModel = _$MealInfoModelTearOff();
-
-/// @nodoc
 mixin _$MealInfoModel {
-  String? get productId => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  String? get productCode => throw _privateConstructorUsedError;
+  String? get productName => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
@@ -65,8 +38,8 @@ abstract class $MealInfoModelCopyWith<$Res> {
           MealInfoModel value, $Res Function(MealInfoModel) then) =
       _$MealInfoModelCopyWithImpl<$Res>;
   $Res call(
-      {String? productId,
-      String? name,
+      {String? productCode,
+      String? productName,
       int? quantity,
       String? unit,
       String? note});
@@ -83,20 +56,20 @@ class _$MealInfoModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? productId = freezed,
-    Object? name = freezed,
+    Object? productCode = freezed,
+    Object? productName = freezed,
     Object? quantity = freezed,
     Object? unit = freezed,
     Object? note = freezed,
   }) {
     return _then(_value.copyWith(
-      productId: productId == freezed
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
+      productCode: productCode == freezed
+          ? _value.productCode
+          : productCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      productName: productName == freezed
+          ? _value.productName
+          : productName // ignore: cast_nullable_to_non_nullable
               as String?,
       quantity: quantity == freezed
           ? _value.quantity
@@ -115,47 +88,47 @@ class _$MealInfoModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MealInfoModelCopyWith<$Res>
+abstract class _$$_MealInfoModelCopyWith<$Res>
     implements $MealInfoModelCopyWith<$Res> {
-  factory _$MealInfoModelCopyWith(
-          _MealInfoModel value, $Res Function(_MealInfoModel) then) =
-      __$MealInfoModelCopyWithImpl<$Res>;
+  factory _$$_MealInfoModelCopyWith(
+          _$_MealInfoModel value, $Res Function(_$_MealInfoModel) then) =
+      __$$_MealInfoModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? productId,
-      String? name,
+      {String? productCode,
+      String? productName,
       int? quantity,
       String? unit,
       String? note});
 }
 
 /// @nodoc
-class __$MealInfoModelCopyWithImpl<$Res>
+class __$$_MealInfoModelCopyWithImpl<$Res>
     extends _$MealInfoModelCopyWithImpl<$Res>
-    implements _$MealInfoModelCopyWith<$Res> {
-  __$MealInfoModelCopyWithImpl(
-      _MealInfoModel _value, $Res Function(_MealInfoModel) _then)
-      : super(_value, (v) => _then(v as _MealInfoModel));
+    implements _$$_MealInfoModelCopyWith<$Res> {
+  __$$_MealInfoModelCopyWithImpl(
+      _$_MealInfoModel _value, $Res Function(_$_MealInfoModel) _then)
+      : super(_value, (v) => _then(v as _$_MealInfoModel));
 
   @override
-  _MealInfoModel get _value => super._value as _MealInfoModel;
+  _$_MealInfoModel get _value => super._value as _$_MealInfoModel;
 
   @override
   $Res call({
-    Object? productId = freezed,
-    Object? name = freezed,
+    Object? productCode = freezed,
+    Object? productName = freezed,
     Object? quantity = freezed,
     Object? unit = freezed,
     Object? note = freezed,
   }) {
-    return _then(_MealInfoModel(
-      productId: productId == freezed
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
+    return _then(_$_MealInfoModel(
+      productCode: productCode == freezed
+          ? _value.productCode
+          : productCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      productName: productName == freezed
+          ? _value.productName
+          : productName // ignore: cast_nullable_to_non_nullable
               as String?,
       quantity: quantity == freezed
           ? _value.quantity
@@ -177,16 +150,16 @@ class __$MealInfoModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MealInfoModel extends _MealInfoModel {
   _$_MealInfoModel(
-      {this.productId, this.name, this.quantity, this.unit, this.note})
+      {this.productCode, this.productName, this.quantity, this.unit, this.note})
       : super._();
 
   factory _$_MealInfoModel.fromJson(Map<String, dynamic> json) =>
       _$$_MealInfoModelFromJson(json);
 
   @override
-  final String? productId;
+  final String? productCode;
   @override
-  final String? name;
+  final String? productName;
   @override
   final int? quantity;
   @override
@@ -196,34 +169,37 @@ class _$_MealInfoModel extends _MealInfoModel {
 
   @override
   String toString() {
-    return 'MealInfoModel(productId: $productId, name: $name, quantity: $quantity, unit: $unit, note: $note)';
+    return 'MealInfoModel(productCode: $productCode, productName: $productName, quantity: $quantity, unit: $unit, note: $note)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MealInfoModel &&
-            const DeepCollectionEquality().equals(other.productId, productId) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            other is _$_MealInfoModel &&
+            const DeepCollectionEquality()
+                .equals(other.productCode, productCode) &&
+            const DeepCollectionEquality()
+                .equals(other.productName, productName) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality().equals(other.unit, unit) &&
             const DeepCollectionEquality().equals(other.note, note));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(productId),
-      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(productCode),
+      const DeepCollectionEquality().hash(productName),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(unit),
       const DeepCollectionEquality().hash(note));
 
   @JsonKey(ignore: true)
   @override
-  _$MealInfoModelCopyWith<_MealInfoModel> get copyWith =>
-      __$MealInfoModelCopyWithImpl<_MealInfoModel>(this, _$identity);
+  _$$_MealInfoModelCopyWith<_$_MealInfoModel> get copyWith =>
+      __$$_MealInfoModelCopyWithImpl<_$_MealInfoModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -233,28 +209,28 @@ class _$_MealInfoModel extends _MealInfoModel {
 
 abstract class _MealInfoModel extends MealInfoModel {
   factory _MealInfoModel(
-      {String? productId,
-      String? name,
-      int? quantity,
-      String? unit,
-      String? note}) = _$_MealInfoModel;
+      {final String? productCode,
+      final String? productName,
+      final int? quantity,
+      final String? unit,
+      final String? note}) = _$_MealInfoModel;
   _MealInfoModel._() : super._();
 
   factory _MealInfoModel.fromJson(Map<String, dynamic> json) =
       _$_MealInfoModel.fromJson;
 
   @override
-  String? get productId;
+  String? get productCode => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get productName => throw _privateConstructorUsedError;
   @override
-  int? get quantity;
+  int? get quantity => throw _privateConstructorUsedError;
   @override
-  String? get unit;
+  String? get unit => throw _privateConstructorUsedError;
   @override
-  String? get note;
+  String? get note => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MealInfoModelCopyWith<_MealInfoModel> get copyWith =>
+  _$$_MealInfoModelCopyWith<_$_MealInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

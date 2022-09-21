@@ -24,7 +24,7 @@ class SettingModel with _$SettingModel {
     String? deviceToken,
     String? hotLine,
     String? authToken,
-    List<ContactModel>? contracts,
+    List<ContactModel>? contact,
   }) = _SettingModel;
 
   factory SettingModel.fromJson(Map<String, dynamic> json) =>

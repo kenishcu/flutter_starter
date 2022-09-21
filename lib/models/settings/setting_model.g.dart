@@ -21,7 +21,7 @@ _$_SettingModel _$$_SettingModelFromJson(Map<String, dynamic> json) =>
       deviceToken: json['device_token'] as String?,
       hotLine: json['hotline'] as String?,
       authToken: json['auth_token'] as String?,
-      contracts: (json['contracts'] as List<dynamic>?)
+      contact: (json['contact'] as List<dynamic>?)
           ?.map((e) => ContactModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -41,5 +41,5 @@ Map<String, dynamic> _$$_SettingModelToJson(_$_SettingModel instance) =>
       'device_token': instance.deviceToken,
       'hotline': instance.hotLine,
       'auth_token': instance.authToken,
-      'contracts': instance.contracts,
+      'contact': instance.contact,
     };

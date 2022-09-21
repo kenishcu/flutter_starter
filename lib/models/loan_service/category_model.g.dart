@@ -14,6 +14,7 @@ _$_CategoryModel _$$_CategoryModelFromJson(Map<String, dynamic> json) =>
       categoryId: json['category_id'] as String?,
       thumbnailUrl: json['thumbnail_url'] as String?,
       status: json['status'] as int?,
+      lang: json['lang'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$$_CategoryModelToJson(_$_CategoryModel instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_CategoryModelToJson(_$_CategoryModel instance) =>
       'category_id': instance.categoryId,
       'thumbnail_url': instance.thumbnailUrl,
       'status': instance.status,
+      'lang': instance.lang,
     };

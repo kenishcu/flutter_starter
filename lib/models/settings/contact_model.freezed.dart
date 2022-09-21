@@ -12,40 +12,11 @@ part of 'contact_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ContactModel _$ContactModelFromJson(Map<String, dynamic> json) {
   return _ContactModel.fromJson(json);
 }
-
-/// @nodoc
-class _$ContactModelTearOff {
-  const _$ContactModelTearOff();
-
-  _ContactModel call(
-      {String? id,
-      String? hotLineName,
-      int? hotLineNumber,
-      int? parentId,
-      String? parentName,
-      int? status}) {
-    return _ContactModel(
-      id: id,
-      hotLineName: hotLineName,
-      hotLineNumber: hotLineNumber,
-      parentId: parentId,
-      parentName: parentName,
-      status: status,
-    );
-  }
-
-  ContactModel fromJson(Map<String, Object?> json) {
-    return ContactModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ContactModel = _$ContactModelTearOff();
 
 /// @nodoc
 mixin _$ContactModel {
@@ -123,11 +94,11 @@ class _$ContactModelCopyWithImpl<$Res> implements $ContactModelCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ContactModelCopyWith<$Res>
+abstract class _$$_ContactModelCopyWith<$Res>
     implements $ContactModelCopyWith<$Res> {
-  factory _$ContactModelCopyWith(
-          _ContactModel value, $Res Function(_ContactModel) then) =
-      __$ContactModelCopyWithImpl<$Res>;
+  factory _$$_ContactModelCopyWith(
+          _$_ContactModel value, $Res Function(_$_ContactModel) then) =
+      __$$_ContactModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
@@ -139,14 +110,15 @@ abstract class _$ContactModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ContactModelCopyWithImpl<$Res> extends _$ContactModelCopyWithImpl<$Res>
-    implements _$ContactModelCopyWith<$Res> {
-  __$ContactModelCopyWithImpl(
-      _ContactModel _value, $Res Function(_ContactModel) _then)
-      : super(_value, (v) => _then(v as _ContactModel));
+class __$$_ContactModelCopyWithImpl<$Res>
+    extends _$ContactModelCopyWithImpl<$Res>
+    implements _$$_ContactModelCopyWith<$Res> {
+  __$$_ContactModelCopyWithImpl(
+      _$_ContactModel _value, $Res Function(_$_ContactModel) _then)
+      : super(_value, (v) => _then(v as _$_ContactModel));
 
   @override
-  _ContactModel get _value => super._value as _ContactModel;
+  _$_ContactModel get _value => super._value as _$_ContactModel;
 
   @override
   $Res call({
@@ -157,7 +129,7 @@ class __$ContactModelCopyWithImpl<$Res> extends _$ContactModelCopyWithImpl<$Res>
     Object? parentName = freezed,
     Object? status = freezed,
   }) {
-    return _then(_ContactModel(
+    return _then(_$_ContactModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -223,7 +195,7 @@ class _$_ContactModel extends _ContactModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ContactModel &&
+            other is _$_ContactModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.hotLineName, hotLineName) &&
@@ -235,6 +207,7 @@ class _$_ContactModel extends _ContactModel {
             const DeepCollectionEquality().equals(other.status, status));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -247,8 +220,8 @@ class _$_ContactModel extends _ContactModel {
 
   @JsonKey(ignore: true)
   @override
-  _$ContactModelCopyWith<_ContactModel> get copyWith =>
-      __$ContactModelCopyWithImpl<_ContactModel>(this, _$identity);
+  _$$_ContactModelCopyWith<_$_ContactModel> get copyWith =>
+      __$$_ContactModelCopyWithImpl<_$_ContactModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -258,31 +231,31 @@ class _$_ContactModel extends _ContactModel {
 
 abstract class _ContactModel extends ContactModel {
   factory _ContactModel(
-      {String? id,
-      String? hotLineName,
-      int? hotLineNumber,
-      int? parentId,
-      String? parentName,
-      int? status}) = _$_ContactModel;
+      {final String? id,
+      final String? hotLineName,
+      final int? hotLineNumber,
+      final int? parentId,
+      final String? parentName,
+      final int? status}) = _$_ContactModel;
   _ContactModel._() : super._();
 
   factory _ContactModel.fromJson(Map<String, dynamic> json) =
       _$_ContactModel.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get hotLineName;
+  String? get hotLineName => throw _privateConstructorUsedError;
   @override
-  int? get hotLineNumber;
+  int? get hotLineNumber => throw _privateConstructorUsedError;
   @override
-  int? get parentId;
+  int? get parentId => throw _privateConstructorUsedError;
   @override
-  String? get parentName;
+  String? get parentName => throw _privateConstructorUsedError;
   @override
-  int? get status;
+  int? get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ContactModelCopyWith<_ContactModel> get copyWith =>
+  _$$_ContactModelCopyWith<_$_ContactModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

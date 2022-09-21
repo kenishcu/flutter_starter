@@ -315,7 +315,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           controller.setSelectedPayment(1);
                         },
                         child: Center(
-                          child: Text("Tại quầy lễ tân", style: TextStyle(
+                          child: Text(AppLocalizations.of(context).getTranslate('at_the_front_desk'), style: TextStyle(
                             color: controller.selectedPaymentType.value == 1 ? Colors.white : Colors.black,
                           )),
                         ),

@@ -12,40 +12,11 @@ part of 'category_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
   return _CategoryModel.fromJson(json);
 }
-
-/// @nodoc
-class _$CategoryModelTearOff {
-  const _$CategoryModelTearOff();
-
-  _CategoryModel call(
-      {String? id,
-      String? categoryCode,
-      String? categoryName,
-      String? categoryId,
-      String? thumbnailUrl,
-      int? status}) {
-    return _CategoryModel(
-      id: id,
-      categoryCode: categoryCode,
-      categoryName: categoryName,
-      categoryId: categoryId,
-      thumbnailUrl: thumbnailUrl,
-      status: status,
-    );
-  }
-
-  CategoryModel fromJson(Map<String, Object?> json) {
-    return CategoryModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CategoryModel = _$CategoryModelTearOff();
 
 /// @nodoc
 mixin _$CategoryModel {
@@ -55,6 +26,7 @@ mixin _$CategoryModel {
   String? get categoryId => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,7 +45,8 @@ abstract class $CategoryModelCopyWith<$Res> {
       String? categoryName,
       String? categoryId,
       String? thumbnailUrl,
-      int? status});
+      int? status,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
@@ -93,6 +66,7 @@ class _$CategoryModelCopyWithImpl<$Res>
     Object? categoryId = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -119,16 +93,20 @@ class _$CategoryModelCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$CategoryModelCopyWith<$Res>
+abstract class _$$_CategoryModelCopyWith<$Res>
     implements $CategoryModelCopyWith<$Res> {
-  factory _$CategoryModelCopyWith(
-          _CategoryModel value, $Res Function(_CategoryModel) then) =
-      __$CategoryModelCopyWithImpl<$Res>;
+  factory _$$_CategoryModelCopyWith(
+          _$_CategoryModel value, $Res Function(_$_CategoryModel) then) =
+      __$$_CategoryModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
@@ -136,19 +114,20 @@ abstract class _$CategoryModelCopyWith<$Res>
       String? categoryName,
       String? categoryId,
       String? thumbnailUrl,
-      int? status});
+      int? status,
+      Map<dynamic, dynamic>? lang});
 }
 
 /// @nodoc
-class __$CategoryModelCopyWithImpl<$Res>
+class __$$_CategoryModelCopyWithImpl<$Res>
     extends _$CategoryModelCopyWithImpl<$Res>
-    implements _$CategoryModelCopyWith<$Res> {
-  __$CategoryModelCopyWithImpl(
-      _CategoryModel _value, $Res Function(_CategoryModel) _then)
-      : super(_value, (v) => _then(v as _CategoryModel));
+    implements _$$_CategoryModelCopyWith<$Res> {
+  __$$_CategoryModelCopyWithImpl(
+      _$_CategoryModel _value, $Res Function(_$_CategoryModel) _then)
+      : super(_value, (v) => _then(v as _$_CategoryModel));
 
   @override
-  _CategoryModel get _value => super._value as _CategoryModel;
+  _$_CategoryModel get _value => super._value as _$_CategoryModel;
 
   @override
   $Res call({
@@ -158,8 +137,9 @@ class __$CategoryModelCopyWithImpl<$Res>
     Object? categoryId = freezed,
     Object? thumbnailUrl = freezed,
     Object? status = freezed,
+    Object? lang = freezed,
   }) {
-    return _then(_CategoryModel(
+    return _then(_$_CategoryModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -184,6 +164,10 @@ class __$CategoryModelCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
+      lang: lang == freezed
+          ? _value._lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
     ));
   }
 }
@@ -197,8 +181,10 @@ class _$_CategoryModel extends _CategoryModel {
       this.categoryName,
       this.categoryId,
       this.thumbnailUrl,
-      this.status})
-      : super._();
+      this.status,
+      final Map<dynamic, dynamic>? lang})
+      : _lang = lang,
+        super._();
 
   factory _$_CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryModelFromJson(json);
@@ -215,17 +201,25 @@ class _$_CategoryModel extends _CategoryModel {
   final String? thumbnailUrl;
   @override
   final int? status;
+  final Map<dynamic, dynamic>? _lang;
+  @override
+  Map<dynamic, dynamic>? get lang {
+    final value = _lang;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'CategoryModel(id: $id, categoryCode: $categoryCode, categoryName: $categoryName, categoryId: $categoryId, thumbnailUrl: $thumbnailUrl, status: $status)';
+    return 'CategoryModel(id: $id, categoryCode: $categoryCode, categoryName: $categoryName, categoryId: $categoryId, thumbnailUrl: $thumbnailUrl, status: $status, lang: $lang)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CategoryModel &&
+            other is _$_CategoryModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.categoryCode, categoryCode) &&
@@ -235,9 +229,11 @@ class _$_CategoryModel extends _CategoryModel {
                 .equals(other.categoryId, categoryId) &&
             const DeepCollectionEquality()
                 .equals(other.thumbnailUrl, thumbnailUrl) &&
-            const DeepCollectionEquality().equals(other.status, status));
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other._lang, _lang));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -246,12 +242,13 @@ class _$_CategoryModel extends _CategoryModel {
       const DeepCollectionEquality().hash(categoryName),
       const DeepCollectionEquality().hash(categoryId),
       const DeepCollectionEquality().hash(thumbnailUrl),
-      const DeepCollectionEquality().hash(status));
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(_lang));
 
   @JsonKey(ignore: true)
   @override
-  _$CategoryModelCopyWith<_CategoryModel> get copyWith =>
-      __$CategoryModelCopyWithImpl<_CategoryModel>(this, _$identity);
+  _$$_CategoryModelCopyWith<_$_CategoryModel> get copyWith =>
+      __$$_CategoryModelCopyWithImpl<_$_CategoryModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -261,31 +258,34 @@ class _$_CategoryModel extends _CategoryModel {
 
 abstract class _CategoryModel extends CategoryModel {
   factory _CategoryModel(
-      {String? id,
-      String? categoryCode,
-      String? categoryName,
-      String? categoryId,
-      String? thumbnailUrl,
-      int? status}) = _$_CategoryModel;
+      {final String? id,
+      final String? categoryCode,
+      final String? categoryName,
+      final String? categoryId,
+      final String? thumbnailUrl,
+      final int? status,
+      final Map<dynamic, dynamic>? lang}) = _$_CategoryModel;
   _CategoryModel._() : super._();
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
       _$_CategoryModel.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get categoryCode;
+  String? get categoryCode => throw _privateConstructorUsedError;
   @override
-  String? get categoryName;
+  String? get categoryName => throw _privateConstructorUsedError;
   @override
-  String? get categoryId;
+  String? get categoryId => throw _privateConstructorUsedError;
   @override
-  String? get thumbnailUrl;
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
   @override
-  int? get status;
+  int? get status => throw _privateConstructorUsedError;
+  @override
+  Map<dynamic, dynamic>? get lang => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CategoryModelCopyWith<_CategoryModel> get copyWith =>
+  _$$_CategoryModelCopyWith<_$_CategoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
