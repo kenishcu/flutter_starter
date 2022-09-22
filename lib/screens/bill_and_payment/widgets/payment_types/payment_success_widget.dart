@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 
 class PaymentSuccessWidget extends StatelessWidget{
 
@@ -16,12 +17,12 @@ class PaymentSuccessWidget extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget> [
+          children: <Widget> [
             SizedBox(
               height: 40,
               child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text("Hoá đơn của quý khách đã được thanh toán thành công",  style: TextStyle(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(AppLocalizations.of(context).getTranslate('your_invoice_has_been_successfully_paid'),  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))

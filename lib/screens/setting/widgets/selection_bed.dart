@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/models/settings/bed_model.dart';
 import 'package:get/get.dart';
 
@@ -49,14 +50,14 @@ class SelectionBed extends GetView<SettingController> {
       width: double.infinity,
       child: Row(
         children: [
-         const SizedBox(
+         SizedBox(
            height: 50,
            width: 200,
            child: Align(
              alignment: Alignment.center,
-             child: Text("Giường",
+             child: Text(AppLocalizations.of(context).getTranslate('bed'),
                textAlign: TextAlign.center,
-               style: TextStyle(
+               style: const TextStyle(
                    fontWeight: FontWeight.w600,
                    fontSize: 20
                ),
@@ -81,10 +82,10 @@ class SelectionBed extends GetView<SettingController> {
              },
              showSearchBox: true,
              searchFieldProps: TextFieldProps(
-               decoration: const InputDecoration(
-                 border:  OutlineInputBorder(),
-                 contentPadding: EdgeInsets.fromLTRB(12, 12, 8, 0),
-                 labelText: "Tìm kiếm giường",
+               decoration: InputDecoration(
+                 border:  const OutlineInputBorder(),
+                 contentPadding: const EdgeInsets.fromLTRB(12, 12, 8, 0),
+                 labelText: AppLocalizations.of(context).getTranslate('find_a_bed'),
                ),
              ),
              popupTitle: Container(
@@ -96,10 +97,10 @@ class SelectionBed extends GetView<SettingController> {
                    topRight: Radius.circular(20),
                  ),
                ),
-               child: const Center(
+               child: Center(
                  child: Text(
-                   'Giường',
-                   style: TextStyle(
+                   AppLocalizations.of(context).getTranslate('bed'),
+                   style: const TextStyle(
                      fontSize: 24,
                      fontWeight: FontWeight.bold,
                      color: Colors.white,

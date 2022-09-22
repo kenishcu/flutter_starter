@@ -240,7 +240,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primaryVariant
                       ),
-                      child: Text("Chi tiết đơn đặt hàng", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_details'), style: const TextStyle(
                         fontSize: 22,
                         color: Colors.white,
                         fontWeight: FontWeight.w200,
@@ -249,14 +249,14 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                     ),
                     Container(
                       height: 480,
-                      padding: EdgeInsets.only(left: 40, right: 40),
+                      padding: const EdgeInsets.only(left: 40, right: 40),
                       child: ListView(children: <Widget>[
                         DataTable(
                             columns: [
-                              DataColumn(label: Text('Tên')),
-                              DataColumn(label: Text('SL')),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('name'))),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('amount'))),
                               DataColumn(label: Text(AppLocalizations.of(context).getTranslate('note'))),
-                              DataColumn(label: Text('Thành tiền')),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('into_money'))),
                             ],
                             rows: products.map((product) => DataRow(
                                 cells: [
@@ -264,11 +264,11 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                                       Container(
                                         width: 200,
                                         height: 100,
-                                        padding: EdgeInsets.only(top: 5),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        decoration: const BoxDecoration(
                                         ),
                                         child:  ConstrainedBox(
-                                          constraints:  BoxConstraints(maxHeight: 400, minHeight: 100.0),
+                                          constraints:  const BoxConstraints(maxHeight: 400, minHeight: 100.0),
                                           child:  Text(product.productName!),
                                         ),
                                       )

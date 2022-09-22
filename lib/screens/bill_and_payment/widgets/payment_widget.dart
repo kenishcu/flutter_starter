@@ -126,10 +126,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       height: 20,
-                      child: Text("Yêu cầu thanh toán không thành công", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('payment_request_failed'), style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                           color: Colors.white
@@ -137,7 +137,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     ),
                     SizedBox(
                       height: 30,
-                      child: Text("Lỗi hệ thống", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('system_error'), style: const TextStyle(
                           fontSize: 12,
                           color: Colors.white
                       )),

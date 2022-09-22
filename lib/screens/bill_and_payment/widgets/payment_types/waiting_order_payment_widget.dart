@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/bill_and_payment_controller.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class WaitingOrderPaymentWidget extends StatefulWidget {
@@ -51,17 +52,17 @@ class _WaitingOrderPaymentWidgetState extends State<WaitingOrderPaymentWidget> w
               height: 40,
               child: Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Text("Thanh toán ${widget.title}",  style: const TextStyle(
+                  child: Text("${AppLocalizations.of(context).getTranslate('payment')} ${widget.title}",  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 120,
               child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text("Yêu cầu của quý khách đang được xử lý. Quý khách vui lòng đợi trong giây lát",  style: TextStyle(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(AppLocalizations.of(context).getTranslate('your_request_is_being_processed'),  style: const TextStyle(
                     fontSize: 16,
                   ))
               ),

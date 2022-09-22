@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/bill_and_payment_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/screens/bill_and_payment/widgets/payment_types/waiting_payment_widget.dart';
 import 'package:get/get.dart';
 
@@ -25,12 +26,12 @@ class _PaymentInReceptionState extends State<PaymentInReception>  {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget> [
+          children: <Widget> [
             SizedBox(
               height: 40,
               child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text("Thanh toán tại quầy",  style: TextStyle(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(AppLocalizations.of(context).getTranslate('pay_at_the_counter'),  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))
@@ -39,8 +40,8 @@ class _PaymentInReceptionState extends State<PaymentInReception>  {
             SizedBox(
               height: 120,
               child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text("Yêu cầu của quý khách đang được xác nhận. Quý khách vui lòng xuống quầy lễ tân để hoàn tất thủ tục thanh toán.",  style: TextStyle(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(AppLocalizations.of(context).getTranslate('your_request_is_being_confirmed'),  style: const TextStyle(
                     fontSize: 16,
                   ))
               ),

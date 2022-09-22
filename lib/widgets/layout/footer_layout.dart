@@ -7,9 +7,19 @@ class FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.only(left: 120, top: 0, bottom: 0, right: 20),
-        child: DropdownButton(
+    return Row(
+      children: [
+        const SizedBox(
+          width: 800,
+        ),
+        Container(
+          margin: const EdgeInsets.only(right: 5, top: 8),
+          width: 36,
+          child: Image.asset(
+              'icons/flags/png/${Localizations.localeOf(context).languageCode == 'en' ? 'us' : (Localizations.localeOf(context).languageCode == 'vi' ? 'vn' : Localizations.localeOf(context).languageCode)}.png',
+              package: 'country_icons'),
+        ),
+        DropdownButton(
           hint: Text(AppLocalizations.of(context).getTranslate('language')),
           items: const [
             DropdownMenuItem(
@@ -24,6 +34,8 @@ class FooterWidget extends StatelessWidget {
           onChanged: (value) {
             Get.updateLocale(Locale(value.toString(), ''));
           },
-        ));
+        )
+      ],
+    );
   }
 }

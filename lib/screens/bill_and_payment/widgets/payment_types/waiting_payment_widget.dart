@@ -113,11 +113,11 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
                                 },
                               )
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 40,
                             child: Align(
                               alignment: Alignment.center,
-                              child: Text("Quay lại", style: TextStyle(
+                              child: Text(AppLocalizations.of(context).getTranslate('back'), style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.black
                               )),

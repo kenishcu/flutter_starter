@@ -79,8 +79,9 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Lễ tân đã nhận order",
-                          style: TextStyle(fontSize: 12)),
+                      child: Text( AppLocalizations.of(context)
+                          .getTranslate('the_reception_has_received_the_order'),
+                          style: const TextStyle(fontSize: 12)),
                     )
                   ],
                 ),
@@ -134,8 +135,9 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Lễ tân chưa nhận order",
-                          style: TextStyle(fontSize: 12, color: Colors.white)),
+                      child: Text(AppLocalizations.of(context)
+                          .getTranslate('the_reception_has_not_received_the_order_yet'),
+                          style: const TextStyle(fontSize: 12, color: Colors.white)),
                     )
                   ],
                 ),
@@ -234,15 +236,15 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            const SizedBox(
+                                            SizedBox(
                                               height: 25,
                                               child: Padding(
                                                 padding:
-                                                    EdgeInsets.only(top: 5),
-                                                child: Text("Đặt thành công",
+                                                    const EdgeInsets.only(top: 5),
+                                                child: Text(AppLocalizations.of(context).getTranslate('order_success'),
                                                     overflow:
                                                         TextOverflow.ellipsis,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 16)),

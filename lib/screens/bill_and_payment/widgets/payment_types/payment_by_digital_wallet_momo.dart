@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/bill_and_payment_controller.dart';
 import 'package:get/get.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class PaymentByDigitalWalletMoMo extends StatefulWidget {
@@ -46,11 +47,11 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(
+          SizedBox(
             height: 40,
             child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text("Thanh toán bằng ví điện tử",  style: TextStyle(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(AppLocalizations.of(context).getTranslate('payment_by_e_wallet'),  style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ))
@@ -173,11 +174,11 @@ class _PaymentByDigitalWalletMoMoState extends State<PaymentByDigitalWalletMoMo>
                               },
                             )
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 40,
                           child: Align(
                             alignment: Alignment.center,
-                            child: Text("Quay lại", style: TextStyle(
+                            child: Text(AppLocalizations.of(context).getTranslate('back'), style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.black
                             )),

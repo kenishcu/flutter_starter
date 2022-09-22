@@ -46,23 +46,23 @@ class _BillWidgetState extends State<BillWidget> {
         context: context,
         builder: (BuildContext context){
           return AlertDialog(
-            title: const Text("Xác nhận đặt món"),
+            title: Text(AppLocalizations.of(context).getTranslate('order_confirmation')),
             content: SizedBox(
               height: 150,
               child: Obx(() => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 60,
-                    child: Text("Hóa đơn của quý khách sẽ tính thêm 5% phụ phí vui lòng nhập số tiền cần thanh toán để xác nhận đặt món :"),
+                    child: Text(AppLocalizations.of(context).getTranslate('your_order_will_be_subject_to_an_additional')),
                   ),
                   Container(
                     height: 35,
                     padding: const EdgeInsets.only(left: 20),
                     child: RichText(
                       text: TextSpan(
-                          text: "Số tiền cần thanh toán",
+                          text: AppLocalizations.of(context).getTranslate('your_order_will_be_subject_to_an_additional'),
                           style: const TextStyle(
                               color: Colors.black54,
                               fontSize: 20
@@ -133,7 +133,7 @@ class _BillWidgetState extends State<BillWidget> {
                                 borderRadius: BorderRadius.circular(10.0)
                             ),
                             child: TextButton(
-                              child: const Text("Đặt", style: TextStyle(
+                              child: Text(AppLocalizations.of(context).getTranslate('order'), style: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.white
                               )),
@@ -191,7 +191,7 @@ class _BillWidgetState extends State<BillWidget> {
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Nhà hàng đã nhận order", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('the_restaurant_has_taken_orders'), style: const TextStyle(
                           fontSize: 12
                       )),
                     )
