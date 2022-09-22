@@ -40,10 +40,15 @@ class RestaurantRepository {
   }
 
   Future<ResultModel> findAllProduct(String categoryId, String query, String parentId,  int limit, int page) async {
-
     try {
+      DateTime date = DateTime.now();
+      var menuAlaCarte = '60cddbdbe23e805d14acf007';
       var response = await client.dio.request(
-          baseUrl + '/products?category_id=' + categoryId.toString()+"&query=" + query +"&parent_id=" + parentId + "&n=${limit.toString()}&p=${page.toString()}",
+          baseUrl + '/products?category_id=' + categoryId.toString()+
+              "&query=" + query +
+              "&parent_id=" + parentId +
+              "&menu_calendar_daily_id=$menuAlaCarte&calendar_daily_id=${date.weekday}" +
+              "&n=${limit.toString()}&p=${page.toString()}",
           options: Options(method: 'GET')
       );
       return ResultModel.fromJson(response.data);

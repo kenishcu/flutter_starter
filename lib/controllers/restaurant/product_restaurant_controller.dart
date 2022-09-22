@@ -110,7 +110,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
       }
 
       for (var element in myTabs) {
-        var responseProduct = await restaurantRepository.findAllProduct("", "", element.categoryId!, 50, 0);
+        var responseProduct = await restaurantRepository.findAllProduct("", "", element.categoryId!, 50, 1);
         if(responseProduct.status == true) {
           List<ProductModel> ps = [];
           for (var p in responseProduct.results) {
@@ -157,7 +157,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
 
     selectedCategories[selectedTab.value] = selectedCategory;
 
-    var responseProduct = await restaurantRepository.findAllProduct(myCategories[selectedTab.value][selectedCategory].categoryId.toString(), "", myTabs[selectedTab.value].categoryId.toString(), 50, 0);
+    var responseProduct = await restaurantRepository.findAllProduct(myCategories[selectedTab.value][selectedCategory].categoryId.toString(), "", myTabs[selectedTab.value].categoryId.toString(), 50, 1);
     if(responseProduct.status == true) {
       List<ProductModel> ps = [];
       for (var p in responseProduct.results) {
@@ -300,7 +300,7 @@ class ProductRestaurantController extends GetxController with GetTickerProviderS
   }
 
   Future search(String text) async {
-    var responseProduct = await restaurantRepository.findAllProduct(myCategories[selectedTab.value][selectedCategory].categoryId.toString(), text, myTabs[selectedTab.value].categoryId.toString(), 50, 0);
+    var responseProduct = await restaurantRepository.findAllProduct(myCategories[selectedTab.value][selectedCategory].categoryId.toString(), text, myTabs[selectedTab.value].categoryId.toString(), 50, 1);
     if(responseProduct.status == true) {
       List<ProductModel> ps = [];
       for (var p in responseProduct.results) {
