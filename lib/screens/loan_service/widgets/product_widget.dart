@@ -373,7 +373,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                               ),
                                             ),
                                             const SizedBox(
-                                              width: 5,
+                                              width: 2,
                                             ),
                                             SizedBox(
                                               child: Text(AppLocalizations.of(context).getTranslate('add_to_basket'), style: const TextStyle(

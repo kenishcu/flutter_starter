@@ -362,7 +362,7 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Expanded(flex: 12, child: widget.childLeftContent),
+                          Expanded(flex: 9, child: widget.childLeftContent),
                           Expanded(
                               flex: 1,
                               child: Row(
