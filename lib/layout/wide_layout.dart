@@ -9,20 +9,21 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-
 class WideLayout extends StatefulWidget {
-
   final Widget childLeftContent;
   final Widget childRightContent;
 
-  const WideLayout({Key? key, required this.childLeftContent, required this.childRightContent}) : super(key: key);
+  const WideLayout(
+      {Key? key,
+      required this.childLeftContent,
+      required this.childRightContent})
+      : super(key: key);
 
   @override
   _WideLayoutState createState() => _WideLayoutState();
 }
 
 class _WideLayoutState extends State<WideLayout> {
-
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   AppController controller = Get.find<AppController>();
@@ -56,7 +57,8 @@ class _WideLayoutState extends State<WideLayout> {
         children: [
           Expanded(
             flex: 1,
-            child: Icon(Icons.notifications, size: 28, color: Theme.of(context).colorScheme.secondary),
+            child: Icon(Icons.notifications,
+                size: 28, color: Theme.of(context).colorScheme.secondary),
           ),
           Expanded(
               flex: 3,
@@ -67,26 +69,24 @@ class _WideLayoutState extends State<WideLayout> {
                   children: [
                     SizedBox(
                       height: 20,
-                      child: Text(AppLocalizations.of(context).getTranslate('order_successfully'), style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14
-                      )),
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate('order_successfully'),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 14)),
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Lễ tân đã nhận order", style: TextStyle(
-                          fontSize: 12
-                      )),
+                      child: Text("Lễ tân đã nhận order",
+                          style: TextStyle(fontSize: 12)),
                     )
                   ],
                 ),
-              )
-          ),
+              )),
           Expanded(
             flex: 1,
             child: Text(_timeString),
-          )
-          ,
+          ),
         ],
       ),
     );
@@ -99,7 +99,6 @@ class _WideLayoutState extends State<WideLayout> {
   }
 
   _showToastError() {
-
     Widget toast = Container(
       height: 80,
       width: 280,
@@ -123,34 +122,32 @@ class _WideLayoutState extends State<WideLayout> {
                   children: [
                     SizedBox(
                       height: 20,
-                      child: Text(AppLocalizations.of(context).getTranslate('order_not_successful'), style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                          color: Colors.white
-                      )),
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate('order_not_successful'),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: Colors.white)),
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Lễ tân chưa nhận order", style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white
-                      )),
+                      child: Text("Lễ tân chưa nhận order",
+                          style: TextStyle(fontSize: 12, color: Colors.white)),
                     )
                   ],
                 ),
-              )
-          ),
+              )),
           Expanded(
             flex: 1,
-            child: Text(_timeString, style: const TextStyle(
-                color: Colors.white
-            ),),
-          )
-          ,
+            child: Text(
+              _timeString,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
-
 
     fToast.showToast(
       child: toast,
@@ -175,10 +172,11 @@ class _WideLayoutState extends State<WideLayout> {
                     width: 180,
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Text(AppLocalizations.of(context).getTranslate('notifications'), style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold
-                      )),
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate('notifications'),
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
                   ),
                   SizedBox(
@@ -186,113 +184,133 @@ class _WideLayoutState extends State<WideLayout> {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        icon: const Icon(Icons.arrow_back_ios_rounded)
-                    ),
+                        icon: const Icon(Icons.arrow_back_ios_rounded)),
                   )
                 ],
-              )
-          ),
+              )),
           Expanded(
               child: Container(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                        child: ListView.builder(
-                            itemCount: controller.notifications.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return SizedBox(
-                                height: 80,
-                                child: Container(
-                                  height: 80,
-                                  width: 280,
-                                  margin: const EdgeInsets.only(bottom: 10.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    color: Theme.of(context).colorScheme.secondaryContainer,
+            padding:
+                const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                    child: ListView.builder(
+                        itemCount: controller.notifications.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return SizedBox(
+                            height: 80,
+                            child: Container(
+                              height: 80,
+                              width: 280,
+                              margin: const EdgeInsets.only(bottom: 10.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .secondaryContainer,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Icon(Icons.notifications,
+                                        size: 28,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary),
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Expanded(
-                                        flex: 1,
-                                        child: Icon(Icons.notifications, size: 28, color: Theme.of(context).colorScheme.secondary),
-                                      ),
-                                      Expanded(
-                                          flex: 3,
-                                          child: SizedBox(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                const SizedBox(
-                                                  height: 25,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(top: 5),
-                                                    child: Text("Đặt thành công",
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: TextStyle(
-                                                            fontWeight: FontWeight.bold,
-                                                            fontSize: 16
-                                                        )),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 40,
-                                                  child: Container(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text(controller.notifications[index].title!,
-                                                        maxLines: 3,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: const TextStyle(
-                                                            fontSize: 12
-                                                        )),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                      ),
-                                      Expanded(
-                                        flex: 1,
+                                  Expanded(
+                                      flex: 3,
+                                      child: SizedBox(
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                             Expanded(
-                                                child: Padding(
-                                                  padding: const EdgeInsets.only(top: 20),
-                                                  child: Text(convertFromUnixToHourString(controller.notifications[index].createdAt!), style: TextStyle(
-                                                      color: Theme.of(context).colorScheme.secondary,
-                                                      fontSize: 15
-                                                  )),
-                                                )
-                                            ),
-                                            Expanded(
+                                            const SizedBox(
+                                              height: 25,
                                               child: Padding(
-                                                  padding: const EdgeInsets.only(top: 10),
-                                                  child: Text(convertFromUnixToTimeString(controller.notifications[index].createdAt!), style: const TextStyle(
-                                                      fontSize: 8
-                                                  ))
-                                              )
+                                                padding:
+                                                    EdgeInsets.only(top: 5),
+                                                child: Text("Đặt thành công",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 16)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 40,
+                                              child: Container(
+                                                padding: const EdgeInsets.only(
+                                                    top: 5),
+                                                child: Text(
+                                                    controller
+                                                        .notifications[index]
+                                                        .title!,
+                                                    maxLines: 3,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: const TextStyle(
+                                                        fontSize: 12)),
+                                              ),
                                             )
                                           ],
-                                        )
-                                      )
-                                      ,
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }
-                        )
-                    )
-                  ],
-                ),
-              )
-          )
+                                        ),
+                                      )),
+                                  Expanded(
+                                      flex: 1,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                              child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 20),
+                                            child: Text(
+                                                convertFromUnixToHourString(
+                                                    controller
+                                                        .notifications[index]
+                                                        .createdAt!),
+                                                style: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .secondary,
+                                                    fontSize: 15)),
+                                          )),
+                                          Expanded(
+                                              child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10),
+                                                  child: Text(
+                                                      convertFromUnixToTimeString(
+                                                          controller
+                                                              .notifications[
+                                                                  index]
+                                                              .createdAt!),
+                                                      style: const TextStyle(
+                                                          fontSize: 8))))
+                                        ],
+                                      )),
+                                ],
+                              ),
+                            ),
+                          );
+                        }))
+              ],
+            ),
+          ))
         ],
       ),
     );
@@ -308,10 +326,10 @@ class _WideLayoutState extends State<WideLayout> {
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.only(left: 40, top: 20, bottom: 0, right: 40),
-              decoration: BoxDecoration(
-                  color: Theme.of(context).backgroundColor
-              ),
+              padding: const EdgeInsets.only(
+                  left: 40, top: 20, bottom: 0, right: 40),
+              decoration:
+                  BoxDecoration(color: Theme.of(context).backgroundColor),
               child: Column(
                 children: [
                   Expanded(
@@ -321,7 +339,7 @@ class _WideLayoutState extends State<WideLayout> {
                       },
                       onCallCleanService: () async {
                         final res = await controller.callCleanService();
-                        if(res) {
+                        if (res) {
                           _showToastSuccess();
                         } else {
                           _showToastError();
@@ -347,7 +365,8 @@ class _WideLayoutState extends State<WideLayout> {
           ),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.only(left: 20, top: 20, bottom: 40, right: 20),
+              padding: const EdgeInsets.only(
+                  left: 20, top: 20, bottom: 40, right: 20),
               child: Column(
                 children: [
                   const Expanded(
@@ -369,6 +388,5 @@ class _WideLayoutState extends State<WideLayout> {
       ),
       drawer: _drawer(context),
     );
-
   }
 }

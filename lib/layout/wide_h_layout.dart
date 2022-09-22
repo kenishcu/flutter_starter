@@ -12,18 +12,20 @@ import '../widgets/layout/header_widget.dart';
 import '../widgets/layout/user_info_widget.dart';
 
 class WideHLayout extends StatefulWidget {
-
   final Widget childLeftContent;
   final Widget childRightContent;
 
-  const WideHLayout({Key? key, required this.childLeftContent, required this.childRightContent}) : super(key: key);
+  const WideHLayout(
+      {Key? key,
+      required this.childLeftContent,
+      required this.childRightContent})
+      : super(key: key);
 
   @override
   _WidgetHLayoutState createState() => _WidgetHLayoutState();
 }
 
 class _WidgetHLayoutState extends State<WideHLayout> {
-
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   AppController controller = Get.find<AppController>();
@@ -57,7 +59,8 @@ class _WidgetHLayoutState extends State<WideHLayout> {
         children: [
           Expanded(
             flex: 1,
-            child: Icon(Icons.notifications, size: 28, color: Theme.of(context).colorScheme.secondary),
+            child: Icon(Icons.notifications,
+                size: 28, color: Theme.of(context).colorScheme.secondary),
           ),
           Expanded(
               flex: 3,
@@ -68,26 +71,24 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                   children: [
                     SizedBox(
                       height: 20,
-                      child: Text(AppLocalizations.of(context).getTranslate('order_successfully'), style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14
-                      )),
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate('order_successfully'),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 14)),
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Lễ tân đã nhận order", style: TextStyle(
-                          fontSize: 12
-                      )),
+                      child: Text("Lễ tân đã nhận order",
+                          style: TextStyle(fontSize: 12)),
                     )
                   ],
                 ),
-              )
-          ),
+              )),
           Expanded(
             flex: 1,
             child: Text(_timeString),
-          )
-          ,
+          ),
         ],
       ),
     );
@@ -100,7 +101,6 @@ class _WidgetHLayoutState extends State<WideHLayout> {
   }
 
   _showToastError() {
-
     Widget toast = Container(
       height: 80,
       width: 280,
@@ -124,34 +124,32 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                   children: [
                     SizedBox(
                       height: 20,
-                      child: Text(AppLocalizations.of(context).getTranslate('order_not_successful'), style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                          color: Colors.white
-                      )),
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate('order_not_successful'),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: Colors.white)),
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Lễ tân chưa nhận order", style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white
-                      )),
+                      child: Text("Lễ tân chưa nhận order",
+                          style: TextStyle(fontSize: 12, color: Colors.white)),
                     )
                   ],
                 ),
-              )
-          ),
+              )),
           Expanded(
             flex: 1,
-            child: Text(_timeString, style: const TextStyle(
-                color: Colors.white
-            ),),
-          )
-          ,
+            child: Text(
+              _timeString,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
-
 
     fToast.showToast(
       child: toast,
@@ -176,10 +174,11 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                     width: 180,
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Text(AppLocalizations.of(context).getTranslate('notifications'), style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold
-                      )),
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .getTranslate('notifications'),
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
                   ),
                   SizedBox(
@@ -187,113 +186,133 @@ class _WidgetHLayoutState extends State<WideHLayout> {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        icon: const Icon(Icons.arrow_back_ios_rounded)
-                    ),
+                        icon: const Icon(Icons.arrow_back_ios_rounded)),
                   )
                 ],
-              )
-          ),
+              )),
           Expanded(
               child: Container(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                        child: ListView.builder(
-                            itemCount: controller.notifications.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return SizedBox(
-                                height: 80,
-                                child: Container(
-                                  height: 80,
-                                  width: 280,
-                                  margin: const EdgeInsets.only(bottom: 10.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    color: Theme.of(context).colorScheme.secondaryContainer,
+            padding:
+                const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                    child: ListView.builder(
+                        itemCount: controller.notifications.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return SizedBox(
+                            height: 80,
+                            child: Container(
+                              height: 80,
+                              width: 280,
+                              margin: const EdgeInsets.only(bottom: 10.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .secondaryContainer,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Icon(Icons.notifications,
+                                        size: 28,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary),
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Expanded(
-                                        flex: 1,
-                                        child: Icon(Icons.notifications, size: 28, color: Theme.of(context).colorScheme.secondary),
-                                      ),
-                                      Expanded(
-                                          flex: 3,
-                                          child: SizedBox(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                const SizedBox(
-                                                  height: 25,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(top: 5),
-                                                    child: Text("Đặt thành công",
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: TextStyle(
-                                                            fontWeight: FontWeight.bold,
-                                                            fontSize: 16
-                                                        )),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 40,
-                                                  child: Container(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text(controller.notifications[index].title!,
-                                                        maxLines: 3,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: const TextStyle(
-                                                            fontSize: 12
-                                                        )),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                      ),
-                                      Expanded(
-                                          flex: 1,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Expanded(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(top: 20),
-                                                    child: Text(convertFromUnixToHourString(controller.notifications[index].createdAt!), style: TextStyle(
-                                                        color: Theme.of(context).colorScheme.secondary,
-                                                        fontSize: 15
-                                                    )),
-                                                  )
+                                  Expanded(
+                                      flex: 3,
+                                      child: SizedBox(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const SizedBox(
+                                              height: 25,
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 5),
+                                                child: Text("Đặt thành công",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 16)),
                                               ),
-                                              Expanded(
-                                                  child: Padding(
-                                                      padding: const EdgeInsets.only(top: 10),
-                                                      child: Text(convertFromUnixToTimeString(controller.notifications[index].createdAt!), style: const TextStyle(
-                                                          fontSize: 8
-                                                      ))
-                                                  )
-                                              )
-                                            ],
-                                          )
-                                      )
-                                      ,
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }
-                        )
-                    )
-                  ],
-                ),
-              )
-          )
+                                            ),
+                                            SizedBox(
+                                              height: 40,
+                                              child: Container(
+                                                padding: const EdgeInsets.only(
+                                                    top: 5),
+                                                child: Text(
+                                                    controller
+                                                        .notifications[index]
+                                                        .title!,
+                                                    maxLines: 3,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: const TextStyle(
+                                                        fontSize: 12)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )),
+                                  Expanded(
+                                      flex: 1,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                              child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 20),
+                                            child: Text(
+                                                convertFromUnixToHourString(
+                                                    controller
+                                                        .notifications[index]
+                                                        .createdAt!),
+                                                style: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .secondary,
+                                                    fontSize: 15)),
+                                          )),
+                                          Expanded(
+                                              child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10),
+                                                  child: Text(
+                                                      convertFromUnixToTimeString(
+                                                          controller
+                                                              .notifications[
+                                                                  index]
+                                                              .createdAt!),
+                                                      style: const TextStyle(
+                                                          fontSize: 8))))
+                                        ],
+                                      )),
+                                ],
+                              ),
+                            ),
+                          );
+                        }))
+              ],
+            ),
+          ))
         ],
       ),
     );
@@ -301,149 +320,141 @@ class _WidgetHLayoutState extends State<WideHLayout> {
 
   @override
   Widget build(BuildContext context) {
-
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    // Size size = MediaQuery
+    //     .of(context)
+    //     .size;
 
     return Scaffold(
       key: _key,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                width: size.width * 1,
-                height: size.height * 1,
-                child:  Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 40, top: 20, bottom: 40, right: 40),
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).backgroundColor
-                        ),
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: HeaderWidget(
-                                onOpenDraw: () {
-                                  _key.currentState!.openDrawer();
-                                },
-                                onCallCleanService: () async {
-                                  final res = await controller.callCleanService();
-                                  if(res) {
-                                    _showToastSuccess();
-                                  } else {
-                                    _showToastError();
-                                  }
-                                },
-                              ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(
+                  left: 40, top: 20, bottom: 0, right: 40),
+              decoration:
+                  BoxDecoration(color: Theme.of(context).backgroundColor),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: HeaderWidget(
+                      onOpenDraw: () {
+                        _key.currentState!.openDrawer();
+                      },
+                      onCallCleanService: () async {
+                        final res = await controller.callCleanService();
+                        if (res) {
+                          _showToastSuccess();
+                        } else {
+                          _showToastError();
+                        }
+                      },
+                    ),
+                    flex: 1,
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      height: double.infinity,
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(flex: 12, child: widget.childLeftContent),
+                          Expanded(
                               flex: 1,
-                            ),
-                            Expanded(
-                              child: SizedBox(
-                                height: double.infinity,
-                                width: double.infinity,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                        flex: 9,
-                                        child: widget.childLeftContent
-                                    ),
-                                    Expanded(
-                                        flex: 1,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 50,
+                                    width: 150,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Get.toNamed(Routes.HOME);
+                                        },
                                         child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             SizedBox(
-                                              height: 50,
-                                              width: 150,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  color: Theme.of(context).colorScheme.secondary,
-                                                  borderRadius: BorderRadius.circular(20.0),
-                                                ),
-                                                child: TextButton(
-                                                  onPressed: () {
-                                                    Get.toNamed(Routes.HOME);
-                                                  },
-                                                  child: Row(
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    children: [
-                                                      SizedBox(
-                                                          child: IconButton(
-                                                            padding: const EdgeInsets.all(0.0),
-                                                            icon: const Icon(Icons.arrow_back_ios, size: 30, color: Colors.white),
-                                                            tooltip: 'Increase',
-                                                            onPressed: () {
-                                                            },
-                                                          )
-                                                      ),
-                                                      SizedBox(
-                                                        height: 40,
-                                                        child: Align(
-                                                          alignment: Alignment.center,
-                                                          child: Text(AppLocalizations.of(context).getTranslate('back'), style: const TextStyle(
-                                                              fontSize: 18,
-                                                              color: Colors.white
-                                                          )),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
+                                                child: IconButton(
+                                              padding:
+                                                  const EdgeInsets.all(0.0),
+                                              icon: const Icon(
+                                                  Icons.arrow_back_ios,
+                                                  size: 30,
+                                                  color: Colors.white),
+                                              tooltip: 'Increase',
+                                              onPressed: () {},
+                                            )),
+                                            SizedBox(
+                                              height: 40,
+                                              child: Align(
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                    AppLocalizations.of(context)
+                                                        .getTranslate('back'),
+                                                    style: const TextStyle(
+                                                        fontSize: 18,
+                                                        color: Colors.white)),
                                               ),
-                                            )
+                                            ),
                                           ],
-                                        )
-                                    )
-                                  ],
-                                ),
-                              ),
-                              flex: 5,
-                            ),
-                            const Expanded(flex: 0, child: FooterWidget())
-                          ],
-                        ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ))
+                        ],
                       ),
-                      flex: 3,
                     ),
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 20, top: 20, bottom: 40, right: 20),
-                        child: Column(
-                          children: [
-                            const Expanded(
-                              child: UserInfoWidget(),
-                              flex: 1,
-                            ),
-                            Expanded(
-                              child: Container(
-                                child: widget.childRightContent,
-                              ),
-                              flex: 5,
-                            )
-                          ],
-                        ),
-                      ),
-                      flex: 1,
-                    ),
-                  ],
-                ),
-              )
-            ],
+                    flex: 5,
+                  ),
+                  const Expanded(flex: 0, child: FooterWidget())
+                ],
+              ),
+            ),
+            flex: 3,
           ),
-        ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(
+                  left: 20, top: 20, bottom: 40, right: 20),
+              child: Column(
+                children: [
+                  const Expanded(
+                    child: UserInfoWidget(),
+                    flex: 1,
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: widget.childRightContent,
+                    ),
+                    flex: 5,
+                  )
+                ],
+              ),
+            ),
+            flex: 1,
+          ),
+        ],
       ),
       drawer: _drawer(context),
     );
-
   }
 }
