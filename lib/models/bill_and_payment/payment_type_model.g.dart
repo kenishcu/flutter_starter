@@ -11,6 +11,7 @@ _$_PaymentTypeModel _$$_PaymentTypeModelFromJson(Map<String, dynamic> json) =>
       paymentTypeId: json['payment_type_id'] as String?,
       paymentTypeCode: json['payment_type_code'] as String?,
       paymentTypeName: json['payment_type_name'] as String?,
+      paymentTypeNameEN: json['payment_type_name_en'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentTypeModelToJson(_$_PaymentTypeModel instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$_PaymentTypeModelToJson(_$_PaymentTypeModel instance) =>
       'payment_type_id': instance.paymentTypeId,
       'payment_type_code': instance.paymentTypeCode,
       'payment_type_name': instance.paymentTypeName,
+      'payment_type_name_en': instance.paymentTypeNameEN,
     };

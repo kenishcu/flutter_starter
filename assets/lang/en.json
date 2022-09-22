@@ -95,5 +95,9 @@
   "system_error": "System error",
   "order_details": "Order details",
   "name": "Name",
+  "number_of": "No",
+  "invoice_number": "Invoice number",
+  "status": "Status",
+  "detail": "Detail",
   "language": "English"
 }

@@ -43,25 +43,25 @@ class BillAndPaymentController extends GetxController {
 
   List<PaymentTypeModel> payments = [
     PaymentTypeModel(
-      paymentTypeId: '0',
-      paymentTypeCode: "CASH",
-      paymentTypeName: "Thanh toán bằng tiền mặt"
-    ),
+        paymentTypeId: '0',
+        paymentTypeCode: "CASH",
+        paymentTypeName: "Thanh toán bằng tiền mặt",
+        paymentTypeNameEN: "Payment by cash"),
     PaymentTypeModel(
         paymentTypeId: '1',
         paymentTypeCode: "DEBIT",
-        paymentTypeName: "Thanh toán bằng thẻ tín dụng"
-    ),
+        paymentTypeName: "Thanh toán bằng thẻ tín dụng",
+        paymentTypeNameEN: "Payment by credit card"),
     PaymentTypeModel(
         paymentTypeId: '2',
         paymentTypeCode: "MOMO",
-        paymentTypeName: "Thanh toán bằng ví điện tử (MoMo)"
-    ),
+        paymentTypeName: "Thanh toán bằng ví điện tử (MoMo)",
+        paymentTypeNameEN: "Payment by e-wallet (Momo)"),
     PaymentTypeModel(
         paymentTypeId: '4',
         paymentTypeCode: "VNPAY",
-        paymentTypeName: "Thanh toán bằng ví điện tử (VnPay)"
-    )
+        paymentTypeName: "Thanh toán bằng ví điện tử (VnPay)",
+        paymentTypeNameEN: "Payment by e-wallet (VnPay)")
   ];
 
   @override

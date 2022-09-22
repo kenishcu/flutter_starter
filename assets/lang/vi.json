@@ -95,5 +95,9 @@
   "system_error": "Lỗi hệ thống",
   "order_details": "Chi tiết đơn đặt hàng",
   "name": "Tên",
+  "number_of": "STT",
+  "invoice_number": "Số hoá đơn",
+  "status": "Trạng thái",
+  "detail": "Chi tiết",
   "language": "Tiếng việt"
 }

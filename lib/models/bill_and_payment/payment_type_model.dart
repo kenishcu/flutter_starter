@@ -12,6 +12,7 @@ class PaymentTypeModel with _$PaymentTypeModel {
     String? paymentTypeId,
     String? paymentTypeCode,
     String? paymentTypeName,
+    String? paymentTypeNameEN,
   }) = _PaymentTypeModel;
 
   factory PaymentTypeModel.fromJson(Map<String, dynamic> json) => _$PaymentTypeModelFromJson(json);

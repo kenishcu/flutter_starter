@@ -446,7 +446,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                 ),
                                 SizedBox(
                                   child: Text(
-                                      controller.payments[index].paymentTypeName!
+                                      Localizations.localeOf(context).languageCode == 'en' ? controller.payments[index].paymentTypeNameEN! : controller.payments[index].paymentTypeName!
                                   ),
                                 )
                               ],

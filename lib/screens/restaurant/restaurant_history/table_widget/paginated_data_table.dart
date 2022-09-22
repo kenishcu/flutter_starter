@@ -45,19 +45,19 @@ class _PaginatedRestaurantDataTableState extends State<PaginatedRestaurantDataTa
 
   List<DataColumn> get _columns {
     return [
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 50,
           child: Center(
-            child: Text('STT'),
+            child: Text(AppLocalizations.of(context).getTranslate('number_of')),
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 100,
           child: Center(
-            child: Text('Số hoá đơn'),
+            child: Text(AppLocalizations.of(context).getTranslate('invoice_number')),
           ),
         ),
       ),
@@ -101,19 +101,19 @@ class _PaginatedRestaurantDataTableState extends State<PaginatedRestaurantDataTa
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 200,
           child: Center(
-            child: Text('Trạng thái'),
+            child: Text(AppLocalizations.of(context).getTranslate('status')),
           ),
         ),
       ),
-      const DataColumn(
+      DataColumn(
         label: SizedBox(
           width: 200,
           child: Center(
-            child: Text('Chi tiết'),
+            child: Text(AppLocalizations.of(context).getTranslate('detail')),
           ),
         ),
       ),
