@@ -54,7 +54,7 @@ class _WaitingPaymentWidgetState extends State<WaitingPaymentWidget> with Ticker
               height: 40,
               child: Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Text("Thanh toán bằng ${widget.title}",  style: const TextStyle(
+                  child: Text("${AppLocalizations.of(context).getTranslate('payment_by')} ${widget.title}",  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ))

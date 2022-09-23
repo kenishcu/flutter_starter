@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/controllers/setting_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/models/settings/department_model.dart';
 import 'package:get/get.dart';
 
@@ -51,14 +52,14 @@ class SelectionDepartment extends GetView<SettingController> {
       width: double.infinity,
       child: Row(
         children: [
-          const SizedBox(
+          SizedBox(
             height: 50,
             width: 200,
             child: Align(
               alignment: Alignment.center,
-              child: Text("Khoa",
+              child: Text(AppLocalizations.of(context).getTranslate('faculty'),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 20
                 ),
@@ -83,10 +84,10 @@ class SelectionDepartment extends GetView<SettingController> {
                 },
                 showSearchBox: true,
                 searchFieldProps: TextFieldProps(
-                  decoration: const InputDecoration(
-                    border:  OutlineInputBorder(),
-                    contentPadding: EdgeInsets.fromLTRB(12, 12, 8, 0),
-                    labelText: "Tìm kiếm khoa",
+                  decoration: InputDecoration(
+                    border:  const OutlineInputBorder(),
+                    contentPadding: const EdgeInsets.fromLTRB(12, 12, 8, 0),
+                    labelText: AppLocalizations.of(context).getTranslate('faculty_search'),
                   ),
                 ),
                 popupTitle: Container(
@@ -98,10 +99,9 @@ class SelectionDepartment extends GetView<SettingController> {
                       topRight: Radius.circular(20),
                     ),
                   ),
-                  child: const Center(
-                    child: Text(
-                      'Khoa',
-                      style: TextStyle(
+                  child: Center(
+                    child: Text(AppLocalizations.of(context).getTranslate('faculty'),
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

@@ -99,5 +99,14 @@
   "invoice_number": "Invoice number",
   "status": "Status",
   "detail": "Detail",
+  "payment_by": "Payment by",
+  "the_center_has_not_received_the_order_yet": "The center has not received the order yet",
+  "in": "In",
+  "ok": "OK",
+  "faculty": "Faculty",
+  "faculty_search": "Faculty search",
+  "set_rice": "Set Rice",
+  "main_dishes": "Main dishes",
+  "diabetes": "Diabetes",
   "language": "English"
 }

@@ -99,5 +99,14 @@
   "invoice_number": "Số hoá đơn",
   "status": "Trạng thái",
   "detail": "Chi tiết",
+  "payment_by": "Thanh toán bằng",
+  "the_center_has_not_received_the_order_yet": "Trung tâm chưa nhận được order",
+  "in": "Tại",
+  "ok": "OK",
+  "faculty": "Khoa",
+  "faculty_search": "Tìm kiếm khoa",
+  "set_rice": "Set Cơm",
+  "main_dishes": "Món chính",
+  "diabetes": "Tiểu đường",
   "language": "Tiếng việt"
 }

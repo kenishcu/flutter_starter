@@ -66,7 +66,7 @@ class _BillWidgetState extends State<BillWidget> {
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Nhà hàng đã nhận order", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('the_restaurant_had_received_order'), style: const TextStyle(
                           fontSize: 12
                       )),
                     )
@@ -122,7 +122,7 @@ class _BillWidgetState extends State<BillWidget> {
                     ),
                     SizedBox(
                       height: 20,
-                      child: Text("Trung tâm chưa nhận được order", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('the_center_has_not_received_the_order_yet'), style: const TextStyle(
                           fontSize: 12,
                           color: Colors.white
                       )),

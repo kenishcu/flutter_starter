@@ -380,7 +380,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           productMonCom.isNotEmpty ? SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.only(left: 10),
-              child: const Text('Set Cơm', style: TextStyle(
+              child: Text(AppLocalizations.of(context).getTranslate('set_rice'), style: const TextStyle(
                   fontSize: 20
               )),
             ),
@@ -393,7 +393,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           productMonChinh.isNotEmpty ? SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.only(left: 10),
-              child: const Text('Món chính', style: TextStyle(
+              child: Text(AppLocalizations.of(context).getTranslate('main_dishes'), style: const TextStyle(
                   fontSize: 20
               )),
             ),
@@ -405,7 +405,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           productTieuDuong.isNotEmpty ? SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.only(left: 10),
-              child: const Text('Tiểu đường', style: TextStyle(
+              child: Text(AppLocalizations.of(context).getTranslate('diabetes'), style: const TextStyle(
                   fontSize: 20
               )),
             ),

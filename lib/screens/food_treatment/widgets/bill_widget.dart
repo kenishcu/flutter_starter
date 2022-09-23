@@ -159,7 +159,7 @@ class _BillWidgetState extends State<BillWidget> {
 
   AlertDialog _alertDialogOrder () {
     return AlertDialog(
-      title: const Text("Xác nhận đặt món"),
+      title: Text(AppLocalizations.of(context).getTranslate('order_confirmation')),
       content: SizedBox(
         height: 200,
         width: 500,
@@ -236,7 +236,7 @@ class _BillWidgetState extends State<BillWidget> {
                       ),
                       width: 120,
                       child: TextButton(
-                          child: const Text("Đặt", style: TextStyle(
+                          child: Text(AppLocalizations.of(context).getTranslate('order'), style: const TextStyle(
                               fontSize: 20,
                               color: Colors.white
                           )),

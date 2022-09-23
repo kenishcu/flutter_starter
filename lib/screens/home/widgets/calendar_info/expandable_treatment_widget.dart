@@ -111,7 +111,7 @@ class _ExpandableTreatmentWidgetState extends State<ExpandableTreatmentWidget> {
                                         height: 30,
                                         child: Container(
                                           padding: const EdgeInsets.only(top: 5),
-                                          child: Text("Tại ${widget.listTreatment[index].roomNameToDo}",
+                                          child: Text("${AppLocalizations.of(context).getTranslate('in')} ${widget.listTreatment[index].roomNameToDo}",
                                               overflow: TextOverflow.ellipsis,
                                               style: const TextStyle(
                                                   fontSize: 12

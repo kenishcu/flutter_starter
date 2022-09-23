@@ -166,7 +166,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             width: 150,
             child: TextButton(
                 onPressed: () {},
-                child: const Text("OK", style: TextStyle(
+                child: Text(AppLocalizations.of(context).getTranslate('ok'), style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold
                 ))

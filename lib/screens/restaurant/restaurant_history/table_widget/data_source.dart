@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
 import 'package:itrapp/lang/appLocalizations.dart';
@@ -224,7 +223,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
           child: Container(
               height: size.height * 0.8,
               width: size.width * 0.8,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: Container(
@@ -239,7 +238,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primaryVariant
                       ),
-                      child: Text("Chi tiết đơn đặt hàng", style: TextStyle(
+                      child: Text(AppLocalizations.of(context).getTranslate('order_details'), style: const TextStyle(
                         fontSize: 22,
                         color: Colors.white,
                         fontWeight: FontWeight.w200,
@@ -248,14 +247,14 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                     ),
                     Container(
                       height: 480,
-                      padding: EdgeInsets.only(left: 40, right: 40),
+                      padding: const EdgeInsets.only(left: 40, right: 40),
                       child: ListView(children: <Widget>[
                         DataTable(
                             columns: [
-                              DataColumn(label: Text('Tên')),
-                              DataColumn(label: Text('SL')),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('name'))),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('amount'))),
                               DataColumn(label: Text(AppLocalizations.of(context).getTranslate('note'))),
-                              DataColumn(label: Text('Thành tiền')),
+                              DataColumn(label: Text(AppLocalizations.of(context).getTranslate('into_money'))),
                             ],
                             rows: products.map((product) => DataRow(
                                 cells: [
@@ -263,11 +262,11 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                                       Container(
                                         width: 200,
                                         height: 100,
-                                        padding: EdgeInsets.only(top: 5),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        decoration: const BoxDecoration(
                                         ),
                                         child:  ConstrainedBox(
-                                          constraints:  BoxConstraints(maxHeight: 400, minHeight: 100.0),
+                                          constraints:  const BoxConstraints(maxHeight: 400, minHeight: 100.0),
                                           child:  Text(product.productName!),
                                         ),
                                       )
@@ -276,11 +275,11 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                                     Container(
                                         width: 50,
                                         height: 100,
-                                        padding: EdgeInsets.only(top: 5),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        decoration: const BoxDecoration(
                                         ),
                                         child: ConstrainedBox(
-                                          constraints:  BoxConstraints(maxHeight: 400, minHeight: 100.0),
+                                          constraints:  const BoxConstraints(maxHeight: 400, minHeight: 100.0),
                                           child: Text(product.quantity.toString()),
                                         )
                                     ),
@@ -289,12 +288,12 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                                     Container(
                                         width: 550,
                                         height: 100,
-                                        padding: EdgeInsets.only(top: 0),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.only(top: 0),
+                                        decoration: const BoxDecoration(
 //                                            border: Border.all()
                                         ),
                                         child: ConstrainedBox(
-                                          constraints:  BoxConstraints(maxHeight: 400, minHeight: 100.0),
+                                          constraints:  const BoxConstraints(maxHeight: 400, minHeight: 100.0),
                                           child: Text(product.note!),
                                         )
                                     ),
@@ -303,11 +302,11 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                                     Container(
                                         width: 100,
                                         height: 100,
-                                        padding: EdgeInsets.only(top: 5),
-                                        decoration: BoxDecoration(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        decoration: const BoxDecoration(
                                         ),
                                         child: ConstrainedBox(
-                                          constraints:  BoxConstraints(maxHeight: 400, minHeight: 100.0),
+                                          constraints:  const BoxConstraints(maxHeight: 400, minHeight: 100.0),
                                           child: Text((product.price! * product.quantity!).toString()),
                                         )
                                     ),
@@ -315,18 +314,18 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                                 ]),
                             ).toList()),
                         Container(
-                          margin: EdgeInsets.only(top: 30),
+                          margin: const EdgeInsets.only(top: 30),
                           child: Row(
                             children: [
                               Container(
                                 width: 700,
-                                child: Text(AppLocalizations.of(context).getTranslate('total'), style: TextStyle(
+                                child: Text(AppLocalizations.of(context).getTranslate('total'), style: const TextStyle(
                                     fontSize: 26
                                 )),
                               ),
                               Container(
                                 width: 300,
-                                child: Text(_total.toString(), style: TextStyle(
+                                child: Text(_total.toString(), style: const TextStyle(
                                     fontSize: 26
                                 )),
                               ),
@@ -339,7 +338,7 @@ Future _showDetail(BuildContext context, List<ProductModel> products)
                         child: Container(
                           width: 110,
                           height: 50,
-                          margin: EdgeInsets.only(left: 1000, top: 20),
+                          margin: const EdgeInsets.only(left: 1000, top: 20),
                           decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primaryVariant
                           ),
