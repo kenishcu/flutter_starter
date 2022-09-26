@@ -15,3 +15,12 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # flutter_starter
+
+#BUILD
+#Chú ý để update được version mới phải sử dụng chung Key stored
+cd android
+./gradlew signingReport -> thư mục key stored hiện tại của máy đang build
+
+copy file /assets/keystore/debug.keystore vào thư mục máy build ở trên
+
+flutter build apk
