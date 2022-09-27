@@ -80,6 +80,22 @@ class ServiceWidget extends GetView<HomeController> {
                         },
                       ),
                       ButtonServiceWidget(
+                        iconData: Icons.local_laundry_service,
+                        buttonTitle: AppLocalizations.of(context).getTranslate('laundry'),
+                        onPressed: () {
+                          controller.getLaundryInfo();
+                          Get.offAndToNamed(Routes.LAUNDRY);
+                        },
+                      ),
+                      ButtonServiceWidget(
+                        iconData: Icons.spa,
+                        buttonTitle: AppLocalizations.of(context).getTranslate('spa'),
+                        onPressed: () {
+                          controller.getSpaInfo();
+                          Get.offAndToNamed(Routes.SPA);
+                        },
+                      ),
+                      ButtonServiceWidget(
                         iconData: Icons.medical_services_outlined,
                         buttonTitle: AppLocalizations.of(context).getTranslate('medical_history'),
                         onPressed: () {

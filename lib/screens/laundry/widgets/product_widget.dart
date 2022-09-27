@@ -1,9 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:itrapp/controllers/loan_service_controller.dart';
-import 'package:itrapp/lang/appLocalizations.dart';
-import 'package:get/get.dart';
+import 'dart:async';
 
-import '../../../models/loan_service/loan_service_model.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:itrapp/controllers/laundry/product_laundry_controller.dart';
+import 'package:money2/money2.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
+
+import '../../../models/restaurant/meal_type_model.dart';
+import '../../../models/restaurant/product_model.dart';
 import '../../../utils/convert.dart';
 
 class ProductWidget extends StatefulWidget {
@@ -18,7 +23,8 @@ class ProductWidget extends StatefulWidget {
 
 class _ProductWidgetState extends State<ProductWidget> {
 
-  LoanServiceController controller = Get.find<LoanServiceController>();
+
+  ProductLaundryController controller = Get.find<ProductLaundryController>();
 
   Widget _menuBar(BuildContext context) {
     return Container(
@@ -52,7 +58,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                       ),
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text(controller.myTabs[index].lang?['category_name_${Localizations.localeOf(context).languageCode}'] ?? controller.myTabs[index].categoryName!, style: const TextStyle(
+                          child: Text(
+                              controller.myTabs[index].lang?["category_name_${Localizations.localeOf(context).languageCode}"]! ?? controller.myCategories[controller.selectedTab.value][index].categoryName!,
+                              style: const TextStyle(
                               color: Colors.black
                           ))
                       )
@@ -61,6 +69,46 @@ class _ProductWidgetState extends State<ProductWidget> {
             );
           })
       )),
+    );
+  }
+
+  Widget _categoryBar(BuildContext context) {
+    return SizedBox(
+        height: 50,
+        width: double.infinity,
+        child: Container(
+            height: 50,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey,
+                    width: 1.0,
+                  ),
+                )
+            ),
+            child: Obx(() => ListView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: controller.scrollController,
+              itemCount: controller.myCategories[controller.selectedTab.value].length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  child: ChoiceChip(
+                    backgroundColor: controller.selectedCategories[controller.selectedTab.value] == index ? Theme.of(context).colorScheme.onSecondary : Colors.white,
+                    label: Text(
+                        controller.myCategories[controller.selectedTab.value][index].lang?["category_name_${Localizations.localeOf(context).languageCode}"]!
+                            ?? controller.myCategories[controller.selectedTab.value][index].categoryName!,
+                        style: const TextStyle(
+                    )),
+                    selected: controller.selectedCategories[controller.selectedTab.value] == index,
+                    onSelected: (bool selected) {
+                      controller.setSelectedCategory(index);
+                    },
+                  ),
+                );
+              },
+            )))
     );
   }
 
@@ -74,7 +122,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
-              flex: 1,
+              flex: 2,
               child: _daySelection(context),
             ),
             Expanded(
@@ -89,6 +137,20 @@ class _ProductWidgetState extends State<ProductWidget> {
         ),
       ),
     );
+  }
+
+  String _formatTime(DateTime time) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(time);
+    return formattedDate;
+  }
+
+  String _formatPrice(int price) {
+    if(price == 0) {
+      return price.toString() + ' đ';
+    }
+    final vnd = Currency.create('VND', 3,
+        symbol: 'đ', invertSeparators: true, pattern: '#.##0,000 S');
+    return Money.fromIntWithCurrency(price, vnd, scale: 3).toString();
   }
 
   Widget _daySelection(BuildContext context){
@@ -107,39 +169,24 @@ class _ProductWidgetState extends State<ProductWidget> {
             ),
             SizedBox(
                 height: 30,
-                child: Container(
-                  child: InkWell(
-                    onTap: () {
-                      // showDialog(
-                      //   context: context,
-                      //   builder: (_) => showCalendarDialog(context),
-                      // );
-                    },
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          child: Text(formatTime(controller.selectedDay) + "", style: const TextStyle(
-                              fontSize: 20
-                          )),
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        // SizedBox(
-                        //   width: 30,
-                        //   child:  IconButton(
-                        //     padding: const EdgeInsets.all(0.0),
-                        //     icon: const Icon(Icons.arrow_drop_down, size: 30),
-                        //     tooltip: 'Increase',
-                        //     onPressed: () {
-                        //     },
-                        //   ),
-                        // )
-                      ],
-                    ),
-                  ),
+                child: GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => showCalendarDialog(context),
+                    );
+                  },
+                  child: Obx(() => Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        child: Text(formatTime(controller.selectedDay.value), style: const TextStyle(
+                            fontSize: 20
+                        )),
+                      )
+                    ],
+                  ))
                 )
             )
           ],
@@ -148,7 +195,72 @@ class _ProductWidgetState extends State<ProductWidget> {
     );
   }
 
-  Widget _submitMealInfo() {
+  Dialog showCalendarDialog(BuildContext context) {
+    return Dialog(
+      child: SizedBox(
+          width: 400,
+          height: 300,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 70,
+                child: Container(
+                  margin: const EdgeInsets.only(top: 30.0, left: 30.0),
+                  child: Text("${AppLocalizations.of(context).getTranslate('book_for_shift')} :" , style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold
+                  )),
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              _mealTypeSelection(),
+              _submitMealInfo(context)
+            ],
+          )
+      ),
+    );
+  }
+
+  Widget _mealTypeSelection() {
+    return SizedBox(
+      child: Container(
+        height: 40,
+        width: double.infinity,
+        margin: const EdgeInsets.only(right: 30.0, left: 30, bottom: 20),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(7),
+            border: Border.all()
+        ),
+        child: Obx(() => DropdownButtonHideUnderline(
+          child:  DropdownButton<MealTypeModel>(
+              icon: const Icon(Icons.arrow_drop_down),
+              value: controller.selectedMealType.value,
+              iconSize: 24,
+              elevation: 16,
+              style: const TextStyle(color: Colors.black87),
+              onChanged: (MealTypeModel? mealType) {
+                controller.setSelectedMealType(mealType!);
+              },
+              items: controller.mealTypes.map((MealTypeModel meal) {
+                return DropdownMenuItem <MealTypeModel>(
+                    value: meal,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text(meal.lang?['meal_type_name_${Localizations.localeOf(context).languageCode}']! ?? meal.mealTypeName!),
+                    ));
+              }).toList()
+          ),
+        )),
+      ),
+    );
+  }
+
+  Widget _submitMealInfo(BuildContext context) {
     return SizedBox(
       height: 50,
       width: double.infinity,
@@ -159,14 +271,17 @@ class _ProductWidgetState extends State<ProductWidget> {
           Container(
             margin: const EdgeInsets.only(right: 30.0, bottom: 10),
             decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.secondaryContainer,
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(10.0)
             ),
             height: 50,
             width: 150,
             child: TextButton(
-                onPressed: () {},
-                child: Text(AppLocalizations.of(context).getTranslate('ok'), style: const TextStyle(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(AppLocalizations.of(context).getTranslate('close'), style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold
                 ))
@@ -285,7 +400,7 @@ class _ProductWidgetState extends State<ProductWidget> {
     );
   }
 
-  Widget _buildItemProduct(LoanServiceModel productModel, BuildContext context) {
+  Widget _buildItemProduct(ProductModel productModel, BuildContext context) {
     return SizedBox(
         child: Container(
           decoration: BoxDecoration(
@@ -316,7 +431,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                   ),
                   width: double.infinity,
                   height: double.infinity,
-                  child: Image.network("https://itrapp.hongngochospital.vn" + productModel.imageUrl!),
+                  child: Image.network("https://nhapi.hongngochospital.vn" + productModel.imageUrl!),
                 ),
               ),
               Expanded(
@@ -329,7 +444,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                            child: Text(productModel.lang?['service_name_${Localizations.localeOf(context).languageCode}'] ?? productModel.serviceName!,
+                            child: Text(
+                                productModel.lang?['product_name_${Localizations.localeOf(context).languageCode}'] ?? productModel.productName!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: const TextStyle(
@@ -345,9 +461,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                                 flex: 2,
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
-                                  child: Text(formatPrice(productModel.price!)),
+                                  child: Text(_formatPrice(productModel.price!)),
                                 ),
-                              )
+                              ),
                             ],
                           )
                       )
@@ -358,6 +474,18 @@ class _ProductWidgetState extends State<ProductWidget> {
           ),
         )
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    reGetDaySelected();
+  }
+
+  reGetDaySelected() {
+    Timer.periodic(const Duration(seconds: 300), (timer) async {
+      controller.setSelectedDay();
+    });
   }
 
   @override
@@ -375,7 +503,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             height: 30,
             child: Padding(
                 padding: const EdgeInsets.only(left: 20, top: 10),
-                child: Text("${AppLocalizations.of(context).getTranslate('home')} > ${AppLocalizations.of(context).getTranslate('borrowing_items')}",  style: const TextStyle(
+                child: Text("${AppLocalizations.of(context).getTranslate('home')} > ${AppLocalizations.of(context).getTranslate('laundry')}",  style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ))
@@ -383,7 +511,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           ),
           Obx(() => controller.initScreen.value ? Expanded(
               flex: 1,
-              child: SizedBox(
+              child: Container(
                 width: double.infinity,
                 height: double.infinity,
                 child: Column(
@@ -410,9 +538,15 @@ class _ProductWidgetState extends State<ProductWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              SizedBox(
+                                height: 50,
+                                width: double.infinity,
+                                child: SingleChildScrollView(
+                                  child: _categoryBar(context),
+                                ),
+                              ),
                               _searchBar(context),
-                              Expanded(
-                                  child: CustomScrollView(
+                              Expanded(child: CustomScrollView(
                                   slivers : <Widget>[
                                     SliverPadding(
                                       padding: const EdgeInsets.all(10.0),

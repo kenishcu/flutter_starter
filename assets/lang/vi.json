@@ -72,7 +72,7 @@
   "total_bill": "Tổng hóa đơn",
   "next": "Tiếp",
   "in_room": "Tại phòng",
-  "order_history": "Lịch sử đặt món",
+  "order_history": "Lịch sử đặt",
   "confirm": "Xác nhận",
   "at_the_front_desk": "Tại quầy lễ tân",
   "the_reception_has_received_the_order": "Lễ tân đã nhận được đơn đặt hàng",
@@ -108,5 +108,7 @@
   "set_rice": "Set Cơm",
   "main_dishes": "Món chính",
   "diabetes": "Tiểu đường",
+  "laundry": "Giặt là",
+  "spa": "Spa",
   "language": "Tiếng việt"
 }

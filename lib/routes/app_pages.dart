@@ -3,10 +3,12 @@ import 'package:itrapp/screens/food_treatment/food_treatment_history/food_treatm
 import 'package:itrapp/screens/food_treatment/food_treatment_screen.dart';
 import 'package:itrapp/screens/home/home_screen.dart';
 import 'package:itrapp/screens/intro/intro_screen.dart';
+import 'package:itrapp/screens/laundry/laundry_screen.dart';
 import 'package:itrapp/screens/medical_history/medical_history_screen.dart';
 import 'package:itrapp/screens/restaurant/restaurant_history/restaurant_history_screen.dart';
 import 'package:itrapp/screens/restaurant/restaurant_screen.dart';
 import 'package:itrapp/screens/setting/setting_screen.dart';
+import 'package:itrapp/screens/spa/spa_screen.dart';
 import 'package:itrapp/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -28,6 +30,14 @@ abstract class AppPages {
     GetPage(
         name: Routes.RESTAURANT,
         page: () => const RestaurantScreen()
+    ),
+    GetPage(
+        name: Routes.LAUNDRY,
+        page: () => const LaundryScreen()
+    ),
+    GetPage(
+        name: Routes.SPA,
+        page: () => const SpaScreen()
     ),
     GetPage(
         name: Routes.RESTAURANT_HISTORY,

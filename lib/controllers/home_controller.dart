@@ -1,6 +1,7 @@
 import 'package:itrapp/adapters/repository/home/calendar_info_repository.dart';
 import 'package:itrapp/adapters/repository/home/receipt_repositiry.dart';
 import 'package:itrapp/controllers/index.dart';
+import 'package:itrapp/controllers/laundry/product_laundry_controller.dart';
 import 'package:itrapp/controllers/loan_service_controller.dart';
 import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
 import 'package:itrapp/controllers/setting_controller.dart';
@@ -19,6 +20,7 @@ import '../models/home/pharma/pharma_info_model.dart';
 import '../models/result/result_model.dart';
 import '../routes/app_pages.dart';
 import '../utils/convert.dart';
+import 'spa/product_spa_controller.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin {
 
@@ -297,6 +299,18 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     final ProductRestaurantController productRestaurantController = Get.find<ProductRestaurantController>();
     await productRestaurantController.initRestaurant();
     await productRestaurantController.initScreenRestaurant();
+  }
+
+  Future getLaundryInfo() async {
+    final ProductLaundryController productLaundryController = Get.find<ProductLaundryController>();
+    await productLaundryController.initLaundry();
+    await productLaundryController.initScreenLaundry();
+  }
+
+  Future getSpaInfo() async {
+    final ProductSpaController productSpaController = Get.find<ProductSpaController>();
+    await productSpaController.initSpa();
+    await productSpaController.initScreenSpa();
   }
 
   Future getFoodTreatmentInfo() async {
