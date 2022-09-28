@@ -331,26 +331,6 @@ class _BillWidgetState extends State<BillWidget> {
                               padding: const EdgeInsets.all(20.0),
                               child:  Text(AppLocalizations.of(context).getTranslate('cart')),
                             ),
-                            Container(
-                              width: 80,
-                              height: 40,
-                              margin: const EdgeInsets.only(right: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.0),
-                                color: Theme.of(context).colorScheme.secondaryVariant,
-                              ),
-                              child: TextButton(
-                                onPressed: () async {
-                                  Get.offAndToNamed(Routes.RESTAURANT_HISTORY);
-                                },
-                                child: SizedBox(
-                                  child: Text(AppLocalizations.of(context).getTranslate('order_history'), style: const TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white
-                                  ),),
-                                ),
-                              ),
-                            )
                           ],
                         ),
                       ),
