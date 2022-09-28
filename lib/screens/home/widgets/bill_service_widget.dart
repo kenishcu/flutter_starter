@@ -12,7 +12,7 @@ class BillServiceWidget extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    int total = 0;
+    double total = 0;
     for (var element in controller.billAndPaymentInfo) {
       total += (element.quantity!) * (element.servicePrice!);
     }
@@ -216,7 +216,7 @@ class BillServiceWidget extends GetView<HomeController> {
                       flex: 1,
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text("${AppLocalizations.of(context).getTranslate('temporary_total_amount')}: ${formatPriceNoSymbol(total)}" , style: const TextStyle(
+                          child: Text("${AppLocalizations.of(context).getTranslate('temporary_total_amount')}: ${controller.receiptModel.finalPrice! > 0 ? formatDoublePriceNoSymbol(controller.receiptModel.finalPrice!.toDouble()) : formatDoublePriceNoSymbol(total)}" , style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600
                         )),

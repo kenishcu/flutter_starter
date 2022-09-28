@@ -53,6 +53,14 @@ String formatPriceNoSymbol(int price) {
   return Money.fromIntWithCurrency(price, vnd, scale: 3).toString();
 }
 
+String formatDoublePriceNoSymbol(double price) {
+  var priceInt = price.ceil();
+  if(priceInt == 0) {
+    return priceInt.toString();
+  }
+  return NumberFormat("#,##0", "en_US").format(priceInt).toString();
+}
+
 String formatMoney(int price) {
   if(price == 0) {
     return price.toString();

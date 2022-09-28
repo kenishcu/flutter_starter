@@ -6,6 +6,7 @@ import 'package:itrapp/controllers/loan_service_controller.dart';
 import 'package:itrapp/controllers/restaurant/product_restaurant_controller.dart';
 import 'package:itrapp/controllers/setting_controller.dart';
 import 'package:itrapp/models/home/bill_and_payment/bill_and_payment_model.dart';
+import 'package:itrapp/models/home/bill_and_payment/receipt_model.dart';
 import 'package:itrapp/models/home/meal/reception_meal_model.dart';
 import 'package:itrapp/models/home/pharma/reception_pharma_model.dart';
 import 'package:itrapp/models/home/treatment/reception_treatment_model.dart';
@@ -36,6 +37,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
 
   late UserModel patientInfo;
   late SettingModel deviceInfo;
+  late ReceiptModel receiptModel;
 
   List<BillAndPaymentModel> billAndPaymentInfo = <BillAndPaymentModel>[].obs;
   List<ReceptionMealModel> meals = <ReceptionMealModel>[].obs;
@@ -179,6 +181,13 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           }
       );
       billAndPaymentInfo = billAndPaymentInfoMem;
+    }
+  }
+
+  Future getReceiptInfo(int patientId, String receptionQueueId) async {
+    ResultModel res = await receiptRepository.getReceiptInfo(patientId, receptionQueueId);
+    if(res.status == true) {
+      receiptModel = ReceiptModel.fromJson(res.results);
     }
   }
 

@@ -26,7 +26,7 @@
   "restaurant": "Nhà hàng",
   "treatment_food": "Đồ ăn điều trị",
   "borrowing_items": "Mượn đồ",
-  "view_statement_payment": "Xem bảng kê & thanh toán",
+  "view_statement_payment": "Bảng kê chi phí",
   "medical_history": "Bệnh sử",
   "temporary_total_amount": "Tổng tạm tính",
   "from_day_to_day": "Từ ngày - đến ngày",
@@ -110,5 +110,8 @@
   "diabetes": "Tiểu đường",
   "laundry": "Giặt là",
   "spa": "Spa",
+  "reduction_price": "Miễn giảm",
+  "bhyt": "BHYT",
+  "bhtn": "BHTN",
   "language": "Tiếng việt"
 }

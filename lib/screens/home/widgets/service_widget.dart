@@ -28,9 +28,9 @@ class ServiceWidget extends GetView<HomeController> {
           children: [
             SizedBox(
                 width: double.infinity,
-                height: 80,
+                height: 50,
                 child: Container(
-                  padding: const EdgeInsets.only(left: 30, top: 20),
+                  padding: const EdgeInsets.only(left: 30, top: 15),
                   child: Text(AppLocalizations.of(context).getTranslate('service'), style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20

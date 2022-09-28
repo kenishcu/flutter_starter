@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'package:itrapp/models/home/bill_and_payment/receipt_model.dart';
+import 'package:itrapp/models/home/bill_and_payment/receipt_service_model.dart';
 
 import '../adapters/repository/home/receipt_repositiry.dart';
 import '../models/home/bill_and_payment/bill_and_payment_model.dart';
@@ -37,7 +39,8 @@ class BillAndPaymentController extends GetxController {
 
   RxString linkMoMo = ''.obs;
 
-  List<BillAndPaymentModel> billAndPaymentInfo = <BillAndPaymentModel>[].obs;
+  //List<BillAndPaymentModel> billAndPaymentInfo = <BillAndPaymentModel>[].obs;
+  late ReceiptModel receiptModel;
 
   Rx<BillTypeModel> orderBillStatus = BillTypeModel().obs;
 
@@ -102,14 +105,22 @@ class BillAndPaymentController extends GetxController {
     }
 
     // get services
-    final resData = await billAndPaymentRepository.getBillAndPayment(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
-    if(resData.status ==  true) {
-      billAndPaymentInfo.clear();
-      resData.results.forEach(
-              (e) => {
-                billAndPaymentInfo.add(BillAndPaymentModel.fromJson(e))
-          }
-      );
+    // final resData = await billAndPaymentRepository.getBillAndPayment(controller.patientInfo.patientId, controller.patientInfo.receptionQueueId);
+    // if(resData.status ==  true) {
+    //   billAndPaymentInfo.clear();
+    //   resData.results.forEach(
+    //           (e) => {
+    //             billAndPaymentInfo.add(BillAndPaymentModel.fromJson(e))
+    //       }
+    //   );
+    // }
+
+    // get receipt
+    final receiptData = await billAndPaymentRepository.getReceiptInfo(
+        controller.patientInfo.patientId,
+        controller.patientInfo.receptionQueueId);
+    if (receiptData.status == true) {
+      receiptModel = ReceiptModel.fromJson(receiptData.results);
     }
 
     // get current order payment state
