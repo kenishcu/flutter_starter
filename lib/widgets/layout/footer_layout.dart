@@ -10,13 +10,13 @@ class FooterWidget extends StatelessWidget {
     return Row(
       children: [
         const SizedBox(
-          width: 800,
+          width: 600,
         ),
         Container(
           margin: const EdgeInsets.only(right: 5, top: 8),
           width: 36,
           child: Image.asset(
-              'icons/flags/png/${Localizations.localeOf(context).languageCode == 'en' ? 'us' : (Localizations.localeOf(context).languageCode == 'vi' ? 'vn' : Localizations.localeOf(context).languageCode)}.png',
+              'icons/flags/png/${Localizations.localeOf(context).languageCode == 'en' ? 'gb-nir' : (Localizations.localeOf(context).languageCode == 'vi' ? 'vn' : Localizations.localeOf(context).languageCode)}.png',
               package: 'country_icons'),
         ),
         DropdownButton(

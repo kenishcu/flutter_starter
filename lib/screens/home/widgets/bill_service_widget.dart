@@ -77,7 +77,7 @@ class BillServiceWidget extends GetView<HomeController> {
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -140,11 +140,12 @@ class BillServiceWidget extends GetView<HomeController> {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        flex: 1,
+                                        flex: 2,
                                         child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                              controller.billAndPaymentInfo[index].serviceName.toString()
+                                              controller.billAndPaymentInfo[index].serviceName.toString(),
+                                              overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ),

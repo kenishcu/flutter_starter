@@ -79,7 +79,7 @@ class _BillWidgetState extends State<BillWidget> {
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 1,
+                            flex: 3,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(AppLocalizations.of(context)
@@ -154,7 +154,7 @@ class _BillWidgetState extends State<BillWidget> {
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      flex: 1,
+                                      flex: 3,
                                       child: Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(controller.receiptModel
@@ -258,7 +258,7 @@ class _BillWidgetState extends State<BillWidget> {
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 1,
+                            flex: 3,
                             child: Text(
                                 AppLocalizations.of(context)
                                     .getTranslate('temporary_total_amount'),

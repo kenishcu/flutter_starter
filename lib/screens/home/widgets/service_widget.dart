@@ -74,9 +74,9 @@ class ServiceWidget extends GetView<HomeController> {
                       ButtonServiceWidget(
                         iconData: Icons.payments_outlined,
                         buttonTitle: AppLocalizations.of(context).getTranslate('view_statement_payment'),
-                        onPressed: () {
-                          controller.getBillAndPayment();
-                          Get.offAndToNamed(Routes.BILL_AND_PAYMENT);
+                        onPressed: () async {
+                          await controller.goToBill();
+                          //Get.offAndToNamed(Routes.BILL_AND_PAYMENT);
                         },
                       ),
                       ButtonServiceWidget(
