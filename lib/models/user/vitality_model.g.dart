@@ -17,6 +17,10 @@ _$_VitalityModel _$$_VitalityModelFromJson(Map<String, dynamic> json) {
   var keys = json.keys;
   List<VitalityDetailModel> vitality = [];
   for (var kv in keys) {
+    //todo: fix lỗi mảng với key k phải object
+    if (json[kv] is List) {
+      continue;
+    }
     vitality.add(VitalityDetailModel.fromJson(json[kv]));
   }
   // (json['vitality'] as List<dynamic>?)

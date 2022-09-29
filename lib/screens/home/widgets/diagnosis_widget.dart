@@ -97,7 +97,7 @@ class DiagnosisWidget extends GetView<HomeController> {
                                     child: RichText(
                                       overflow: TextOverflow.ellipsis,
                                       text: TextSpan(
-                                        text: controller.patientInfo.allergyFood?.first ?? '',
+                                        text: controller.patientInfo.allergyFood.toString().replaceAll('[', '').replaceAll(']', ''),
                                         style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onBackground),
                                       ),
                                     ),
