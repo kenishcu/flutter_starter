@@ -72,8 +72,16 @@ class BillServiceWidget extends GetView<HomeController> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(
+                    Container(
                       height: 50,
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Colors.grey,
+                                  width: 1.0
+                              )
+                          )
+                      ),
                       child: Row(
                         children: [
                           Expanded(
@@ -123,6 +131,7 @@ class BillServiceWidget extends GetView<HomeController> {
                     Expanded(
                         child: ListView.builder(
                             itemCount: controller.billAndPaymentInfo.length,
+                            padding: const EdgeInsets.only(top: 0, bottom: 0),
                             itemBuilder: (BuildContext context, int index) {
                               return SizedBox(
                                 height: 50,

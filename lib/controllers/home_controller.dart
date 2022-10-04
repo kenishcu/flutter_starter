@@ -308,6 +308,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     final ProductRestaurantController productRestaurantController = Get.find<ProductRestaurantController>();
     await productRestaurantController.initRestaurant();
     await productRestaurantController.initScreenRestaurant();
+    Get.offAndToNamed(Routes.RESTAURANT);
   }
 
   Future getLaundryInfo() async {

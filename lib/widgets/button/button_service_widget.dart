@@ -35,7 +35,7 @@ class ButtonServiceWidget extends StatelessWidget {
                     BoxShadow(
                       color: Theme.of(context).colorScheme.background,
                       blurRadius: 1,
-                      offset: Offset(1, 1), // Shadow position
+                      offset: const Offset(1, 1), // Shadow position
                     ),
                   ]
               ),
@@ -50,13 +50,14 @@ class ButtonServiceWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 7,
+            height: 5,
           ),
           SizedBox(
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Text(buttonTitle!,  textAlign: TextAlign.center, style: const TextStyle(
-                fontSize: 15
+                fontSize: 12,
+                fontWeight: FontWeight.bold
               )),
             ),
           )

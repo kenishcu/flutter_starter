@@ -7,7 +7,6 @@ import 'package:itrapp/widgets/button/button_service_widget.dart';
 import '../../../routes/app_pages.dart';
 
 class ServiceWidget extends GetView<HomeController> {
-
   const ServiceWidget({Key? key}) : super(key: key);
 
   @override
@@ -20,8 +19,7 @@ class ServiceWidget extends GetView<HomeController> {
         margin: const EdgeInsets.only(top: 20.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),
-            color: Theme.of(context).colorScheme.surface
-        ),
+            color: Theme.of(context).colorScheme.surface),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -31,12 +29,11 @@ class ServiceWidget extends GetView<HomeController> {
                 height: 50,
                 child: Container(
                   padding: const EdgeInsets.only(left: 30, top: 15),
-                  child: Text(AppLocalizations.of(context).getTranslate('service'), style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                  )),
-                )
-            ),
+                  child: Text(
+                      AppLocalizations.of(context).getTranslate('service'),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20)),
+                )),
             Expanded(
               child: SizedBox(
                 width: double.infinity,
@@ -46,18 +43,21 @@ class ServiceWidget extends GetView<HomeController> {
                     crossAxisSpacing: 0,
                     mainAxisSpacing: 0,
                     crossAxisCount: 3,
+                    childAspectRatio: 1.2,
                     children: <Widget>[
                       ButtonServiceWidget(
                         iconData: Icons.restaurant,
-                        buttonTitle: AppLocalizations.of(context).getTranslate('restaurant'),
-                        onPressed: () {
+                        buttonTitle: AppLocalizations.of(context)
+                            .getTranslate('restaurant'),
+                        onPressed: () async {
                           controller.getRestaurantInfo();
-                          Get.offAndToNamed(Routes.RESTAURANT);
+                          //Get.offAndToNamed(Routes.RESTAURANT);
                         },
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.ramen_dining_outlined,
-                        buttonTitle: AppLocalizations.of(context).getTranslate('treatment_food'),
+                        buttonTitle: AppLocalizations.of(context)
+                            .getTranslate('treatment_food'),
                         onPressed: () {
                           controller.getFoodTreatmentInfo();
                           Get.offAndToNamed(Routes.FOOD_TREATMENT);
@@ -65,7 +65,8 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.checkroom_outlined,
-                        buttonTitle: AppLocalizations.of(context).getTranslate('borrowing_items'),
+                        buttonTitle: AppLocalizations.of(context)
+                            .getTranslate('borrowing_items'),
                         onPressed: () {
                           controller.getLoanServiceInfo();
                           Get.offAndToNamed(Routes.LOAN_SERVICE);
@@ -73,7 +74,8 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.payments_outlined,
-                        buttonTitle: AppLocalizations.of(context).getTranslate('view_statement_payment'),
+                        buttonTitle: AppLocalizations.of(context)
+                            .getTranslate('view_statement_payment'),
                         onPressed: () async {
                           await controller.goToBill();
                           //Get.offAndToNamed(Routes.BILL_AND_PAYMENT);
@@ -81,7 +83,8 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.local_laundry_service,
-                        buttonTitle: AppLocalizations.of(context).getTranslate('laundry'),
+                        buttonTitle: AppLocalizations.of(context)
+                            .getTranslate('laundry'),
                         onPressed: () {
                           controller.getLaundryInfo();
                           Get.offAndToNamed(Routes.LAUNDRY);
@@ -89,7 +92,8 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.spa,
-                        buttonTitle: AppLocalizations.of(context).getTranslate('spa'),
+                        buttonTitle:
+                            AppLocalizations.of(context).getTranslate('spa'),
                         onPressed: () {
                           controller.getSpaInfo();
                           Get.offAndToNamed(Routes.SPA);
@@ -97,14 +101,14 @@ class ServiceWidget extends GetView<HomeController> {
                       ),
                       ButtonServiceWidget(
                         iconData: Icons.medical_services_outlined,
-                        buttonTitle: AppLocalizations.of(context).getTranslate('medical_history'),
+                        buttonTitle: AppLocalizations.of(context)
+                            .getTranslate('medical_history'),
                         onPressed: () {
                           controller.getMedicalHistory();
                           Get.offAndToNamed(Routes.MEDICAL_HISTORY);
                         },
                       ),
-                    ]
-                ),
+                    ]),
               ),
             )
           ],
@@ -112,5 +116,4 @@ class ServiceWidget extends GetView<HomeController> {
       ),
     );
   }
-
 }

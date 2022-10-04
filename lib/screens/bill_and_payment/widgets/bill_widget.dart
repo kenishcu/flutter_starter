@@ -135,6 +135,7 @@ class _BillWidgetState extends State<BillWidget> {
                   Expanded(
                       child: ListView.builder(
                           itemCount: controller.receiptModel.receipts?.length,
+                          padding: const EdgeInsets.only(top: 0, bottom: 0),
                           itemBuilder: (BuildContext context, int index) {
                             return SizedBox(
                               height: 50,
@@ -270,9 +271,14 @@ class _BillWidgetState extends State<BillWidget> {
                             flex: 1,
                             child: Text(""),
                           ),
-                          const Expanded(
+                          Expanded(
                             flex: 1,
-                            child: Text(""),
+                            child: Center(
+                              child: Text(formatDoublePriceNoSymbol(total),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                )),
+                            )
                           ),
                           Expanded(
                             flex: 1,
