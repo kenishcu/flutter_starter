@@ -260,7 +260,7 @@ class _BillWidgetState extends State<BillWidget> {
                                               width: 5,
                                             ),
                                             SizedBox(
-                                              child: Text(AppLocalizations.of(context).getTranslate('complete'), style: const TextStyle(
+                                              child: Text(AppLocalizations.of(context).getTranslate('confirm'), style: const TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white,
                                               ),),

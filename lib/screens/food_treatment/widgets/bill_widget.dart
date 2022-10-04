@@ -185,11 +185,11 @@ class _BillWidgetState extends State<BillWidget> {
                     ),
                     child: TextFormField(
                       obscureText: true,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         filled: true,
-                        hintText: 'Mật khẩu ...',
+                        hintText: "${AppLocalizations.of(context).getTranslate('password')}...",
                         border: InputBorder.none,
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 15, decoration: TextDecoration.none, fontFamily: 'Roboto', fontWeight: FontWeight.w100
                         ),
@@ -395,7 +395,7 @@ class _BillWidgetState extends State<BillWidget> {
                                               width: 5,
                                             ),
                                             SizedBox(
-                                              child: Text(AppLocalizations.of(context).getTranslate('complete'), style: const TextStyle(
+                                              child: Text(AppLocalizations.of(context).getTranslate('confirm'), style: const TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white,
                                               ),),

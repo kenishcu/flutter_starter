@@ -32,7 +32,7 @@
   "from_day_to_day": "From day to day",
   "meal_schedule": "Dining Schedule",
   "serving_food": "Food Service",
-  "room_service": "Room service",
+  "room_service": "In room",
   "treatment_schedule": "Treatment schedule",
   "medicine_schedule": "Medicine schedule",
   "book_for_date": "Reservation for date",
@@ -113,5 +113,6 @@
   "reduction_price": "Discount",
   "bhyt": "Health Insurance",
   "bhtn": "Other Insurance",
+  "all": "ALL",
   "language": "English"
 }
