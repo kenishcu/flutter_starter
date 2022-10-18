@@ -1,6 +1,8 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:itrapp/controllers/home_controller.dart';
+import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:itrapp/screens/home/widgets/calendar_info/expandable_meal_widget.dart';
 import 'package:itrapp/screens/home/widgets/calendar_info/expandable_pharma_widget.dart';
 import 'package:itrapp/screens/home/widgets/calendar_info/expandable_treatment_widget.dart';
@@ -130,10 +132,65 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         child: Container(
           height: 420,
           width: double.infinity,
-          padding: const EdgeInsets.only(top: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                child: Row(
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        setState(() {
+                          controller.currentDateTime = controller
+                              .currentDateTime
+                              .subtract(const Duration(days: 7));
+                          controller.addCalendarInfo();
+                        });
+                      },
+                      icon: const Icon(Icons.arrow_back_ios),
+                    ),
+                    Text(
+                      DateFormat.yMMMMd(
+                              Localizations.localeOf(context).languageCode ==
+                                      'en'
+                                  ? 'en_US'
+                                  : 'vi_VN')
+                          .format(controller.currentDateTime),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          controller.currentDateTime = DateTime.now();
+                          controller.addCalendarInfo();
+                        });
+                      },
+                      child: Text(AppLocalizations.of(context).getTranslate('today'), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.pinkAccent, // background
+                        foregroundColor: Colors.white, // foreground
+                      ),
+                    ),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        setState(() {
+                          controller.currentDateTime = controller
+                              .currentDateTime
+                              .add(const Duration(days: 7));
+                          controller.addCalendarInfo();
+                        });
+                      },
+                      icon: const Icon(Icons.arrow_forward_ios),
+                    )
+                  ],
+                ),
+              ),
               SizedBox(
                   height: 80,
                   child: timeline()
@@ -145,9 +202,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   child: Obx(() => ListView(
                     children: <Widget>[
                       controller.calendarInfo[controller.selectedDay.value]['data']!['meal'] != null && controller.calendarInfo[controller.selectedDay.value]['data']!['meal'].length > 0 ? ExpandableMealWidget(listMeal: controller.listMeal) : Container(),
-
                       controller.calendarInfo[controller.selectedDay.value]['data']['treatment'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['treatment'].length > 0 ? ExpandableTreatmentWidget(listTreatment: controller.listTreatment) : Container(),
-
                       controller.calendarInfo[controller.selectedDay.value]['data']['pharma'] != null &&controller.calendarInfo[controller.selectedDay.value]['data']['pharma'].length > 0 ? ExpandablePharmaWidget(listPharma: controller.listPharma) : Container()
                     ],
                   ))

@@ -54,6 +54,9 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   /// pharma
   late List<PharmaInfoModel> listPharma;
 
+  late DateTime currentDateTime;
+
+
 
   final List<Map<String, dynamic>> calendarInfo =
   [
@@ -132,6 +135,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   @override
   void onInit() {
     super.onInit();
+    currentDateTime = DateTime.now();
     addCalendarInfo();
   }
 
@@ -144,9 +148,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
 
 
   void addCalendarInfo () {
-
-    var now = DateTime.now();
-    var d = DateTime(now.year, now.month, now.day);
+    var d = DateTime(currentDateTime.year, currentDateTime.month, currentDateTime.day);
     var weekDay = d.weekday;
     selectedDay.value = d.weekday - 1;
     print('day week ${d.weekday.toString()}');

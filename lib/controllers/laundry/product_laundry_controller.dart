@@ -96,7 +96,7 @@ class ProductLaundryController extends GetxController with GetTickerProviderStat
         var responseSubCate = await laundryRepository.findAllLaundrySubCate(element.categoryId!);
         if(responseSubCate.status == true) {
           List<SubCategoryModel> subs = [
-            SubCategoryModel(categoryName: "Tất cả", categoryId: "", categoryCode: "ALL")
+            SubCategoryModel(categoryName: "Tất cả", categoryId: "", categoryCode: "ALL", lang: {"category_name_vi": "Tất cả", "category_name_en": "All"})
           ];
           for (var e in responseSubCate.results) {
             subs.add(SubCategoryModel.fromJson(e));

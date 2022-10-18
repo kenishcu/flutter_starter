@@ -4,7 +4,7 @@
   "cleaning_services": "Housekeeping",
   "obtaining_patient_information_successfully": "Obtaining patient information successfully",
   "obtaining_patient_information_failed": "Obtaining patient information failed",
-  "hong_ngoc_gerenal_hospital": "Hong Ngoc Gerenal hospital",
+  "hong_ngoc_gerenal_hospital": "Hong Ngoc General hospital",
   "the_place_to_trust": "The place to trust",
   "branch": "Branch",
   "room": "Room",
@@ -114,5 +114,6 @@
   "bhyt": "Health Insurance",
   "bhtn": "Other Insurance",
   "all": "ALL",
+  "today": "Today",
   "language": "English"
 }
