@@ -1,17 +1,19 @@
+import 'dart:convert';
+
 import 'package:itrapp/controllers/food_treatment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:itrapp/models/food_treatment/category_model.dart';
 import 'package:itrapp/models/food_treatment/meal_type_model.dart';
 import 'package:itrapp/lang/appLocalizations.dart';
 import 'package:get/get.dart';
+import "package:collection/collection.dart";
 
 import '../../../models/food_treatment/product_model.dart';
 import '../../../utils/convert.dart';
 import '../../../widgets/calendar/customized_date_picker.dart';
 
 class ProductWidget extends StatefulWidget {
-
-  const ProductWidget({Key? key, required this.listKey}): super(key: key);
+  const ProductWidget({Key? key, required this.listKey}) : super(key: key);
 
   final GlobalKey<AnimatedListState> listKey;
 
@@ -20,7 +22,6 @@ class ProductWidget extends StatefulWidget {
 }
 
 class _ProductWidgetState extends State<ProductWidget> {
-
   FoodTreatmentController controller = Get.find<FoodTreatmentController>();
 
   Widget _menuBar(BuildContext context) {
@@ -30,9 +31,7 @@ class _ProductWidgetState extends State<ProductWidget> {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onPrimary,
         borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(20),
-            topLeft: Radius.circular(20)
-        ),
+            topRight: Radius.circular(20), topLeft: Radius.circular(20)),
       ),
       child: Obx(() => Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,25 +46,24 @@ class _ProductWidgetState extends State<ProductWidget> {
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                        color: controller.selectedTab.value == index ? Colors.white : Theme.of(context).colorScheme.onPrimary,
+                        color: controller.selectedTab.value == index
+                            ? Colors.white
+                            : Theme.of(context).colorScheme.onPrimary,
                         borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(20),
-                            topLeft: Radius.circular(20)
-                        ),
+                            topLeft: Radius.circular(20)),
                       ),
                       child: Align(
                           alignment: Alignment.center,
-                          child: Text(controller.myTabs[index].lang?["menu_calendar_daily_name_${Localizations.localeOf(context).languageCode}"]! ?? controller.myTabs[index].menuCalendarDailyName!,
+                          child: Text(
+                              controller.myTabs[index].lang?[
+                                      "menu_calendar_daily_name_${Localizations.localeOf(context).languageCode}"]! ??
+                                  controller
+                                      .myTabs[index].menuCalendarDailyName!,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  color: Colors.black
-                              ))
-                      )
-                  ),
-                )
-            );
-          })
-      )),
+                              style: const TextStyle(color: Colors.black)))),
+                ));
+          }))),
     );
   }
 
@@ -73,7 +71,7 @@ class _ProductWidgetState extends State<ProductWidget> {
     return SizedBox(
       height: 80,
       child: Container(
-        padding: const EdgeInsets.only(left: 10, right: 10 , top: 10),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -96,19 +94,20 @@ class _ProductWidgetState extends State<ProductWidget> {
     );
   }
 
-  Widget _daySelection(BuildContext context){
+  Widget _daySelection(BuildContext context) {
     return SizedBox(
       height: 60,
       child: Container(
-        padding: const EdgeInsets.only( right: 10.0, left: 10, top: 10),
+        padding: const EdgeInsets.only(right: 10.0, left: 10, top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               height: 20,
-              child: Text(AppLocalizations.of(context).getTranslate('book_for_date'), style: const TextStyle(
-              )),
+              child: Text(
+                  AppLocalizations.of(context).getTranslate('book_for_date'),
+                  style: const TextStyle()),
             ),
             SizedBox(
                 height: 30,
@@ -124,21 +123,24 @@ class _ProductWidgetState extends State<ProductWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Obx(() => SizedBox(
-                        child: Text(formatTime(controller.selectedDay.value) + "", style: const TextStyle(
-                            fontSize: 20
-                        )),
-                      )),
+                            child: Text(
+                                formatTime(controller.selectedDay.value) + "",
+                                style: const TextStyle(fontSize: 20)),
+                          )),
                       const SizedBox(
                         width: 20,
                       ),
                       Obx(() => SizedBox(
-                        child: Text(controller.selectedMealType.value.lang?['meal_type_name_${Localizations.localeOf(context).languageCode}'] ?? controller.selectedMealType.value.mealTypeName, style: const TextStyle(
-                            fontSize: 20
-                        )),
-                      )),
+                            child: Text(
+                                controller.selectedMealType.value.lang?[
+                                        'meal_type_name_${Localizations.localeOf(context).languageCode}'] ??
+                                    controller
+                                        .selectedMealType.value.mealTypeName,
+                                style: const TextStyle(fontSize: 20)),
+                          )),
                       SizedBox(
                         width: 30,
-                        child:  IconButton(
+                        child: IconButton(
                           padding: const EdgeInsets.all(0.0),
                           icon: const Icon(Icons.arrow_drop_down, size: 30),
                           tooltip: 'Increase',
@@ -152,8 +154,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                       )
                     ],
                   ),
-                )
-            )
+                ))
           ],
         ),
       ),
@@ -173,31 +174,27 @@ class _ProductWidgetState extends State<ProductWidget> {
                 height: 50,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0, left: 30.0),
-                  child: Text("${AppLocalizations.of(context).getTranslate('book_for_date')} :" , style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
-                  )),
+                  child: Text(
+                      "${AppLocalizations.of(context).getTranslate('book_for_date')} :",
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold)),
                 ),
               ),
-              const Expanded(
-                  flex: 1,
-                  child: CustomizedDatePicker()
-              ),
+              const Expanded(flex: 1, child: CustomizedDatePicker()),
               SizedBox(
                 height: 40,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 5.0, left: 30.0),
-                  child: Text("${AppLocalizations.of(context).getTranslate('book_for_shift')} :" , style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
-                  )),
+                  child: Text(
+                      "${AppLocalizations.of(context).getTranslate('book_for_shift')} :",
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold)),
                 ),
               ),
               _mealTypeSelection(),
               _submitMealInfo(),
             ],
-          )
-      ),
+          )),
     );
   }
 
@@ -210,28 +207,28 @@ class _ProductWidgetState extends State<ProductWidget> {
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(7),
-            border: Border.all()
-        ),
+            border: Border.all()),
         child: Obx(() => DropdownButtonHideUnderline(
-          child:  DropdownButton<MealTypeModel>(
-              icon: const Icon(Icons.arrow_drop_down),
-              value: controller.selectedMealType.value,
-              iconSize: 24,
-              elevation: 16,
-              style: const TextStyle(color: Colors.black87),
-              onChanged: (MealTypeModel? mealType) {
-                controller.setSelectedMealType(mealType!);
-              },
-              items: controller.mealTypes.map((MealTypeModel meal) {
-                return DropdownMenuItem <MealTypeModel>(
-                    value: meal,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text(meal.lang?['meal_type_name_${Localizations.localeOf(context).languageCode}'] ?? meal.mealTypeName),
-                    ));
-              }).toList()
-          ),
-        )),
+              child: DropdownButton<MealTypeModel>(
+                  icon: const Icon(Icons.arrow_drop_down),
+                  value: controller.selectedMealType.value,
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.black87),
+                  onChanged: (MealTypeModel? mealType) {
+                    controller.setSelectedMealType(mealType!);
+                  },
+                  items: controller.mealTypes.map((MealTypeModel meal) {
+                    return DropdownMenuItem<MealTypeModel>(
+                        value: meal,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text(meal.lang?[
+                                  'meal_type_name_${Localizations.localeOf(context).languageCode}'] ??
+                              meal.mealTypeName),
+                        ));
+                  }).toList()),
+            )),
       ),
     );
   }
@@ -248,20 +245,18 @@ class _ProductWidgetState extends State<ProductWidget> {
             margin: const EdgeInsets.only(right: 30.0, bottom: 10),
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondaryVariant,
-                borderRadius: BorderRadius.circular(10.0)
-            ),
+                borderRadius: BorderRadius.circular(10.0)),
             height: 50,
             width: 150,
             child: TextButton(
                 onPressed: () {
                   Get.back();
                 },
-                child: Text(AppLocalizations.of(context).getTranslate('close'), style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  color: Colors.white
-                ))
-            ),
+                child: Text(AppLocalizations.of(context).getTranslate('close'),
+                    style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white))),
           )
         ],
       ),
@@ -281,16 +276,16 @@ class _ProductWidgetState extends State<ProductWidget> {
                 controller.search(text);
               },
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                contentPadding:
+                    const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                 prefixIcon: const Icon(Icons.search),
                 hintText: "",
                 border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black12, width: 20.0),
-                    borderRadius: BorderRadius.circular(25.0)
-                ),
+                    borderSide:
+                        const BorderSide(color: Colors.black12, width: 20.0),
+                    borderRadius: BorderRadius.circular(25.0)),
               ),
-            )
-        ));
+            )));
   }
 
   Widget _filterBar() {
@@ -312,19 +307,17 @@ class _ProductWidgetState extends State<ProductWidget> {
                       padding: const EdgeInsets.all(0.0),
                       icon: const Icon(Icons.filter_list_alt, size: 30),
                       tooltip: 'Increase',
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                     ),
                     SizedBox(
                       height: 10,
-                      child: Text(AppLocalizations.of(context).getTranslate('filter') , style: const TextStyle(
-                          fontSize: 10
-                      )),
+                      child: Text(
+                          AppLocalizations.of(context).getTranslate('filter'),
+                          style: const TextStyle(fontSize: 10)),
                     )
                   ],
                 ),
-              )
-          ),
+              )),
           const SizedBox(
             width: 10,
           ),
@@ -338,14 +331,13 @@ class _ProductWidgetState extends State<ProductWidget> {
                     padding: const EdgeInsets.all(0.0),
                     icon: const Icon(Icons.sort, size: 30),
                     tooltip: 'Increase',
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                   SizedBox(
                     height: 10,
-                    child: Text(AppLocalizations.of(context).getTranslate('sort') , style: const TextStyle(
-                        fontSize: 10
-                    )),
+                    child: Text(
+                        AppLocalizations.of(context).getTranslate('sort'),
+                        style: const TextStyle(fontSize: 10)),
                   )
                 ],
               ),
@@ -359,63 +351,40 @@ class _ProductWidgetState extends State<ProductWidget> {
     );
   }
 
-
   Widget _products(BuildContext context) {
+    var productsMap = groupBy(
+        controller.products[controller.selectedTab.value].toList(),
+        (ProductModel obj) => obj.categoryDailyParentCode);
+    List<Widget> slivers = <Widget>[];
+    for (var k in productsMap.keys) {
+      slivers.add(productsMap[k]!.isNotEmpty
+          ? SliverToBoxAdapter(
+              child: Container(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                    productsMap[k]!.first.lang?[
+                            'category_daily_parent_name_${Localizations.localeOf(context).languageCode}'] ??
+                        productsMap[k]!
+                            .first
+                            .categoryDailyParentName
+                            .toString(),
+                    style: const TextStyle(fontSize: 20)),
+              ),
+            )
+          : const SliverToBoxAdapter());
 
-    List<ProductModel> productMonChinh = controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'mon_chinh').toList();
-    List<ProductModel> productTieuDuong = controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'tieu_duong').toList();
-    List<ProductModel> productMonCom =  controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'set_com').toList();
-    List<ProductModel> productMonKhac =  controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == '').toList();
+      slivers.add(productsMap[k]!.isNotEmpty
+          ? SliverPadding(
+              padding: const EdgeInsets.all(10),
+              sliver: _buildProducts(productsMap[k]!),
+            )
+          : const SliverToBoxAdapter());
+    }
 
     return SizedBox(
       width: double.infinity,
       height: double.infinity,
-      child: CustomScrollView(
-        slivers: [
-          productMonKhac.isNotEmpty ? SliverPadding(
-            padding: const EdgeInsets.all(10),
-            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == '').toList()),
-          ) : const SliverToBoxAdapter(),
-          // Set - Com
-          productMonCom.isNotEmpty ? SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(AppLocalizations.of(context).getTranslate('set_rice'), style: const TextStyle(
-                  fontSize: 20
-              )),
-            ),
-          ): const SliverToBoxAdapter(),
-          productMonCom.isNotEmpty ? SliverPadding(
-            padding: const EdgeInsets.all(10),
-            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'set_com').toList()),
-          ) : const SliverToBoxAdapter(),
-          // Mon chinh
-          productMonChinh.isNotEmpty ? SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(AppLocalizations.of(context).getTranslate('main_dishes'), style: const TextStyle(
-                  fontSize: 20
-              )),
-            ),
-          ): const SliverToBoxAdapter(),
-          productMonChinh.isNotEmpty ? SliverPadding(
-            padding: const EdgeInsets.all(10),
-            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'mon_chinh').toList()),
-          ) : const SliverToBoxAdapter(),
-          productTieuDuong.isNotEmpty ? SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(AppLocalizations.of(context).getTranslate('diabetes'), style: const TextStyle(
-                  fontSize: 20
-              )),
-            ),
-          ): const SliverToBoxAdapter(),
-          productTieuDuong.isNotEmpty ? SliverPadding(
-            padding: const EdgeInsets.all(10),
-            sliver: _buildProducts(controller.products[controller.selectedTab.value].where((element) => element.categoryDailyParentCode == 'tieu_duong').toList()),
-          ) : const SliverToBoxAdapter(),
-        ],
-      ),
+      child: CustomScrollView(slivers: slivers),
     );
   }
 
@@ -428,7 +397,7 @@ class _ProductWidgetState extends State<ProductWidget> {
         childAspectRatio: 3.0,
       ),
       delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
+        (BuildContext context, int index) {
           return _buildItemProduct(items[index], context);
         },
         childCount: items.length,
@@ -439,126 +408,127 @@ class _ProductWidgetState extends State<ProductWidget> {
   Widget _buildItemProduct(ProductModel productModel, BuildContext context) {
     return SizedBox(
         child: Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.6),
-                  spreadRadius: 2,
-                  blurRadius: 1.5,
-                  offset: const Offset(0, 1),
-                ),
-              ]
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.6),
+              spreadRadius: 2,
+              blurRadius: 1.5,
+              offset: const Offset(0, 1),
+            ),
+          ]),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              margin: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 2)),
+              width: double.infinity,
+              height: double.infinity,
+              child: Image.network(
+                  "https://nhapi.hongngochospital.vn" + productModel.imageUrl!),
+            ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  margin: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Theme.of(context).colorScheme.secondary,
-                          width: 2
-                      )
-                  ),
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Image.network("https://nhapi.hongngochospital.vn" + productModel.imageUrl!),
-                ),
-              ),
-              Expanded(
-                  flex: 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
-                            child: Text(
-                                productModel.lang?['product_name_${Localizations.localeOf(context).languageCode}'] ?? productModel.productName!,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                )),
-                          )
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Text(formatPrice(0)),
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 3,
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Container(
-                                      height: 40,
-                                      margin: const EdgeInsets.only(right: 5.0, bottom: 10, left: 5),
-                                      decoration: BoxDecoration(
-                                          color: Theme.of(context).colorScheme.secondaryVariant,
-                                          borderRadius: BorderRadius.circular(20.0)
-                                      ),
-                                      child: TextButton(
-                                        onPressed: () {
-                                          controller.addItem(productModel, widget.listKey);
-                                        },
-                                        child: Row(
-                                          children: [
-                                            const SizedBox(
-                                              child: Icon(
-                                                Icons.add_shopping_cart,
-                                                size: 20,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 2,
-                                            ),
-                                            SizedBox(
-                                              child: Text(AppLocalizations.of(context).getTranslate('add_to_basket'), style: const TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.white,
-                                              ),),
-                                            )
-                                          ],
+          Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            bottom: 5.0, left: 5.0, top: 5.0, right: 10.0),
+                        child: Text(
+                            productModel.lang?[
+                                    'product_name_${Localizations.localeOf(context).languageCode}'] ??
+                                productModel.productName!,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            style: const TextStyle(
+                              fontSize: 16,
+                            )),
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(formatPrice(0)),
+                            ),
+                          ),
+                          Expanded(
+                              flex: 3,
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Container(
+                                  height: 40,
+                                  margin: const EdgeInsets.only(
+                                      right: 5.0, bottom: 10, left: 5),
+                                  decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondaryVariant,
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      controller.addItem(
+                                          productModel, widget.listKey);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        const SizedBox(
+                                          child: Icon(
+                                            Icons.add_shopping_cart,
+                                            size: 20,
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
+                                        const SizedBox(
+                                          width: 2,
+                                        ),
+                                        SizedBox(
+                                          child: Text(
+                                            AppLocalizations.of(context)
+                                                .getTranslate('add_to_basket'),
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
-                              )
-                            ],
-                          )
-                      )
-                    ],
-                  )
-              )
-            ],
-          ),
-        )
-    );
+                                  ),
+                                ),
+                              ))
+                        ],
+                      ))
+                ],
+              ))
+        ],
+      ),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0)
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -567,57 +537,55 @@ class _ProductWidgetState extends State<ProductWidget> {
             height: 30,
             child: Padding(
                 padding: const EdgeInsets.only(left: 20, top: 10),
-                child: Text("${AppLocalizations.of(context).getTranslate('home')} > ${AppLocalizations.of(context).getTranslate('treatment_food')}",  style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ))
-            ),
+                child: Text(
+                    "${AppLocalizations.of(context).getTranslate('home')} > ${AppLocalizations.of(context).getTranslate('treatment_food')}",
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ))),
           ),
-          Obx(() => controller.initScreen.value ? Expanded(
-              flex: 1,
-              child: SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: _menuBar(context),
-                      ),
+          Obx(() => controller.initScreen.value
+              ? Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: _menuBar(context),
+                          ),
+                        ),
+                        Expanded(
+                            flex: 1,
+                            child: Container(
+                              width: double.infinity,
+                              height: double.infinity,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  _searchBar(context),
+                                  Expanded(
+                                      child: SizedBox(
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          child: _products(context)))
+                                ],
+                              ),
+                            ))
+                      ],
                     ),
-                    Expanded(
-                        flex: 1,
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20)
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              _searchBar(context),
-                              Expanded(
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    child: _products(context)
-                                  )
-                              )
-                            ],
-                          ),
-                        )
-                    )
-                  ],
-                ),
-              )
-          ): Container())
+                  ))
+              : Container())
         ],
       ),
     );
